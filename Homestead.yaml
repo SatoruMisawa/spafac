@@ -1,0 +1,19 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/vagrant/id_rsa.pub
+keys:
+    - ~/.ssh/vagrant/id_rsa
+folders:
+    -
+        map: /Users/tomocy/Vagrant/PHP/spafac
+        to: /home/vagrant/code
+sites:
+    -
+        map: homestead.test
+        to: /home/vagrant/code/public
+databases:
+    - homestead
+name: spafac
+hostname: spafac

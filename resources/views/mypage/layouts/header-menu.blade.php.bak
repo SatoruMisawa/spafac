@@ -1,0 +1,13 @@
+<div id="mypage_header_menu">
+	<div class="account_name"><span></span></div>
+	<div class="nav_menu">
+		<ul>
+            <li><a href="<?php echo url('mypage'); ?>">マイページ </a></li>
+			<li><a href="<?php echo url('mypage/like'); ?>">お気に入り</a></li>
+			<li><a href="<?php echo url('mypage/management'); ?>">予約管理</a></li>
+			<li><a href="<?php echo url('mypage/review'); ?>">レビュー</a></li>
+			<li><a href="<?php echo url('mypage/profile/edit-account'); ?>">会員情報修正</a></li>
+            <li><a href="<?php echo url('logout'); ?>" onClick="window.open('about:blank','_self').close();">ウィンドウを閉じる</a></li>
+		</ul>
+	</div>
+</div>
