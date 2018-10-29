@@ -75,7 +75,7 @@ return [
 	'unique'               => ':attributeは既に存在します。',
 	'url'                  => ':attributeを正しい書式にしてください。',
 
-	'zip'				   => ':attributeは正しい日付ではありません。',
+	'zip'				   => ':attributeは正しい郵便番号ではありません。',
 	'tel'				   => ':attributeは正しい電話番号ではありません。',
 	'hankaku_kana'		   => ':attributeは半角片仮名のみにしてください。',
 	'zenkaku_kana'		   => ':attributeは全角片仮名のみにしてください。',
