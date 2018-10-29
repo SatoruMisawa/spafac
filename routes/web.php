@@ -42,8 +42,8 @@ Route::get('logout', 'SessionController@delete')->name('logout');
 Route::post('logout', 'SessionController@delete')->name('logout');
 
 // Login with social accounts
-Route::get('login/{provider}', 'SocialAccountAuthController@redirectToProvider');
-Route::get('login/{provider}/callback', 'SocialAccountAuthController@handleProviderCallback');
+Route::get('login/{provider}', 'SessionController@redirectToProvider');
+Route::get('login/{provider}/callback', 'SessionController@handleProviderCallback');
 
 //MOCK みさわ追加
 Route::get('event_types', '\App\Http\Controllers\IndexController@event_types');//目的から探す
