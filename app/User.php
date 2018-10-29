@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 	use MyModel;
-	use SoftDeletes;
+	// use SoftDeletes;
 	use Notifiable;
 
 	/**
@@ -19,8 +19,8 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password', 'nickname', 'profile',
-		'name1', 'name2', 'tel', 'industry_id', 'job_id', 'corporation', 'corporation_name', 'department_name', 'zip', 'prefecture_id', 'address1', 'address2', 'address3', 'profile_media_id',
+		'nickname', 'password', 'email', 'name',
+		'tel', 'zip', 'prefecture_id', 'address1', 'address2', 'address3',
 	];
 
 	/**
