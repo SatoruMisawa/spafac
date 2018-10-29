@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
    return view('welcome');
 });
@@ -41,6 +40,10 @@ Route::get('login', 'SessionController@new')->name('login');
 Route::post('login', 'SessionController@create');
 Route::get('logout', 'SessionController@delete')->name('logout');
 Route::post('logout', 'SessionController@delete')->name('logout');
+
+// Login with social accounts
+Route::get('login/{provider}', 'SocialAccountAuthController@redirectToProvider');
+Route::get('login/{provider}/callback', 'SocialAccountAuthController@handleProviderCallback');
 
 //MOCK みさわ追加
 Route::get('event_types', '\App\Http\Controllers\IndexController@event_types');//目的から探す
