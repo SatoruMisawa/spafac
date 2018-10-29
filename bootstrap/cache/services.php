@@ -36,6 +36,7 @@
     32 => 'App\\Providers\\RouteServiceProvider',
     33 => 'App\\Providers\\ValidatorServiceProvider',
     34 => 'Intervention\\Image\\ImageServiceProvider',
+    35 => 'Laravel\\Socialite\\SocialiteServiceProvider',
   ),
   'eager' => 
   array (
