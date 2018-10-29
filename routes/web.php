@@ -39,6 +39,7 @@ Route::get('commercial-transaction-law', '\App\Http\Controllers\IndexController@
 //ログイン
 Route::get('login', 'SessionController@new')->name('login');
 Route::post('login', 'SessionController@create');
+Route::get('logout', 'SessionController@delete')->name('logout');
 Route::post('logout', 'SessionController@delete')->name('logout');
 
 //MOCK みさわ追加
