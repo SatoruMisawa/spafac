@@ -15,7 +15,7 @@ use App\Mail\EmailVerification;
 class RegistrationController extends FrontController
 {
 	public function __construct() {
-		$this->middleware('guest');
+		$this->middleware('guest')->except('send');
 	}
 
 	/**
