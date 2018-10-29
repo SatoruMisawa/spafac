@@ -39,7 +39,7 @@ class RegistrationController extends FrontController
 			'email' => 'required|email|unique:users,email',
 			'tel' => 'required|tel',
 			'zip' => 'required|zip',
-			'prefecture_id' => 'required',
+			'prefecture_id' => 'required', // todo: seed prefectures
 			'address1' => 'required',
 			'address2' => 'required',
 		]);
@@ -47,6 +47,7 @@ class RegistrationController extends FrontController
 		$user = User::create($request->all());
 
 		//メール送信
+		// todo: connect email server
 		$email = new EmailVerification($user);
 		Mail::to($user->email)->send($email);
 		
