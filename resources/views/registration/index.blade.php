@@ -24,15 +24,15 @@
 							<tr>
 								<td><span>パスワード</span></td>
 								<td>
-									<?php echo Form::password('new_password', ['maxlength' => '20']); ?>
-									<?php echo App\Helper::error($errors, ['new_password']); ?>
+									<?php echo Form::password('password', ['maxlength' => '20']); ?>
+									<?php echo App\Helper::error($errors, ['password']); ?>
 								</td>
 							</tr>
 							<tr>
 								<td><span>パスワードの確認</span></td>
 								<td>
-									<?php echo Form::password('new_password_confirmation', ['maxlength' => '20']); ?>
-									<?php echo App\Helper::error($errors, ['new_password_confirmation']); ?>
+									<?php echo Form::password('password_confirmation', ['maxlength' => '20']); ?>
+									<?php echo App\Helper::error($errors, ['password_confirmation']); ?>
 								</td>
 							</tr>
 							<tr>

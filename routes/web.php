@@ -37,7 +37,10 @@ Route::get('privacy-policy', '\App\Http\Controllers\IndexController@privacyPolic
 Route::get('commercial-transaction-law', '\App\Http\Controllers\IndexController@commercialTransactionLaw');
 
 //ログイン
-Route::get('login', '\App\Http\Controllers\IndexController@login');
+Route::get('login', 'SessionController@new')->name('login');
+Route::post('login', 'SessionController@create');
+Route::get('logout', 'SessionController@delete')->name('logout');
+Route::post('logout', 'SessionController@delete')->name('logout');
 
 //MOCK みさわ追加
 Route::get('event_types', '\App\Http\Controllers\IndexController@event_types');//目的から探す
@@ -196,8 +199,5 @@ Route::group(['prefix' => 'admin'], function() {
 	
 	
 });
-
-Auth::routes();
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('home', 'HomeController@index')->name('home');
