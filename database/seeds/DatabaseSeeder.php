@@ -4,6 +4,10 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    private $seeders = [
+        ProviderSeeder::class,
+    ];
+
     /**
      * Seed the application's database.
      *
@@ -11,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        foreach ($this->seeders as $seeder) {
+            $this->call($seeder);
+        }
     }
 }
