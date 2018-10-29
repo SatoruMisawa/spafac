@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Prefecture;
@@ -45,6 +46,7 @@ class RegistrationController extends FrontController
 		]);
 
 		$user = User::create($request->all());
+		Auth::login($user, true);
 
 		//メール送信
 		// todo: connect email server
