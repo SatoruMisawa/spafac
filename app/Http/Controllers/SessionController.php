@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Service\SocialAccountService;
+use App\ProvidedUser;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Illuminate\Http\Request;
 
@@ -38,10 +38,15 @@ class SessionController extends Controller
         return $socialite->driver($provider)->redirect();
     }
 
-    public function handleProviderCallback(Socialite $socialite, SocialAccountService $service, $provider) {
-        $providedUser = $socialite->driver($provider)->user();
-        
-        $user = $service->firstOrCreate($provider, $providedUser);
+    public function handleProviderCallback(Socialite $socialite, $provider) {
+        $socialiteUser = $socialite->driver($provider)->user();
+        $providedUser = ProvidedUser::create([
+            'id' => $socialiteUser->id,
+            'name' => $socialiteUser->name,
+            'provider' => $provider,
+        ]);
+
+        $user = $providedUser->firstOrCreateUser();
 
         Auth::login($user, true);
 

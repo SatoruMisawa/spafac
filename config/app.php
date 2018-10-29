@@ -164,7 +164,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
-        App\Providers\SocialAccountServiceProvider::class,
     ],
 
     /*
