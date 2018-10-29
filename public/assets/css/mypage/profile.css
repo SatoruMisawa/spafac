@@ -1,0 +1,179 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* .form.mail */
+.form.mail table.edit_form{
+	display:block;
+	max-width:90%;	
+}
+.form.mail table.edit_form tr td{
+	display:block;
+	width:100%;
+	clear:both;
+	margin:2px 0;
+	padding:0;
+}
+.form.mail table.edit_form tr td textarea{
+	width:100%;	
+}
+.form.mail label.fileup img{
+	width:30%;
+	height:auto;	
+}
+
+
+/* .form.account */
+.form.account table.edit_form{
+	width:100%;
+	display:block;
+	float:left;
+	margin-right:0;		
+}
+.form.account table.edit_form tr td:first-child{
+	min-width:50%;
+	font-size:14px;
+}
+
+.form.account table.edit_form tr td:first-child span.required,
+.form.account table.edit_form tr td:first-child span.item{
+	font-size:14px;	
+}
+.form.account table.edit_form tr td:nth-child(2){
+	max-width:400px;
+}
+.form.account table.edit_form tr td:nth-child(2) textarea,
+.form.account table.edit_form tr td:nth-child(2) input{
+	max-width:100%;
+}
+
+
+/* .form.contact */
+.form.contact select,
+.form.contact input[type=text]{
+	border:1px solid #999;
+	padding:10px 1em;
+	height:3em;
+	border-radius:5px;
+	margin:0.5em 0;
+}
+.form.contact select,
+#mypage_contents * .form.contact input[name=name2],
+#mypage_contents * .form.contact input[name=name1]{
+	width:12em;	
+}
+.form.contact .edit_form td{
+	display: inline-block;
+	vertical-align: middle;
+	float:left;
+}
+.form.contact .job td{
+	width:25%;
+	display:block;
+	float:left;
+}
+.form.contact a.tel_code {
+    background: #00A0E9;
+    display: block;
+    margin: 20px 0 0;
+    padding: 15px 40px;
+    border-radius: 7px;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+    width: 340px;
+    text-align: center;
+}
+.sidebar-icon{
+	display:none;
+	position:fixed;
+	right:15px;
+	top:10px;	
+}
+.sidebar-icon svg{
+	width:40px;
+	height:40px;	
+}
+@media only screen and ( max-width:1000px) {
+
+#mypage_contents .inner .right_contents .form.account table.edit_form tbody,	
+#mypage_contents .inner .right_contents .form.account table.edit_form,
+#mypage_contents .inner .right_contents .form.account table.edit_form tr{
+    width:100%;
+    display: block;
+    float: left;
+    margin-right: 0;
+}	
+#mypage_contents .inner .right_contents .form.account table.edit_form tbody,
+#mypage_contents .inner .right_contents .form.account table.edit_form{
+	-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;	
+}
+
+#mypage_contents .inner .right_contents .form.account table.edit_form tr td:first-child {
+	display:block;
+    width:100%;
+    font-size:12px;
+	padding:0;
+	clear:both;
+}
+#mypage_contents .inner .right_contents .form.account table.edit_form tr td:nth-child(2) {
+	display:block;
+    width:100%;
+	padding:0;
+	clear:both;
+}
+#mypage_contents * textarea {
+	width:100%;
+    min-height: 6em;
+}
+.form.account table.edit_form tr td:nth-child(2) {
+    max-width: none;
+}
+
+.form.contact .job td {
+    width:40%;
+    display: block;
+    float: left;
+}
+}
+
+@media only screen and ( max-width:768px) {
+.sidebar-icon{
+	display:block;
+}
+.form.contact a.tel_code {
+    background: #00A0E9;
+    display: block;
+    margin:1em auto;
+    padding: 15px 1em;
+    border-radius: 7px;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+    width:100%;
+    text-align: center;
+}
+}
+@media only screen and ( max-width:640px) {
+
+#mypage_contents .inner .right_contents table.edit_form.myaccout{
+    width:100%;
+	display:block;
+    float: none;
+    z-index: 500;
+    margin: 0 auto;
+}
+#mypage_contents .inner .right_contents table.edit_form.myaccout td{
+	width:100%;
+	display:block;
+	clear:both;	
+}
+#mypage_contents .inner .right_contents table tr td {
+     padding:0px;
+}
+
+}
+
+

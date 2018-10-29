@@ -1,0 +1,804 @@
+  @charset "utf-8";
+
+/* CSS Document */
+
+a:hover img {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  -ms-filter: "alpha(opacity=70)";
+}
+
+::before, ::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.cf:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f18 {
+  font-size: 18px;
+}
+
+.fa-flash::before, .fa-bolt::before {
+  content: "\f0e7";
+}
+
+.fa-lg {
+  font-size: 1.33333em;
+  line-height: 0.75em;
+  color: #f2d42b;
+}
+
+.fa {
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+}
+
+body {
+  font: 14px/1.6 "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Verdana, "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  margin: 0;
+  color: #616161;
+}
+
+img {
+  outline: none;
+  border-style: none;
+}
+
+a {
+  color: #333;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  text-decoration-line: none;
+}
+
+a:visited {
+  color: #333;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+a:hover {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #47bef4;
+}
+
+
+/*****HEADER*****/
+
+header {
+  display: block;
+  margin: 0 auto 10px;
+  overflow: hidden;
+  height: auto;
+  padding-top: 25px;
+  border-bottom: 2px solid #eee;
+}
+
+header h1 {
+  float: left;
+}
+
+header p {
+  font-size: 100%;
+  color: #313131;
+  float: left;
+}
+
+header ul li {
+  display: inline-block;
+}
+
+header ul li a {
+  display: block;
+}
+
+h1.page_ttl {
+  font-size: 20px;
+}
+
+h1.page_ttl::before {
+  content: url(../img/logo_before.png);
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.head_l {
+  float: left;
+}
+
+.head_r {
+  float: right;
+}
+
+.new_spas_btn {
+  float: right;
+}
+
+.new_spas_btn a {
+  display: block;
+  float: right;
+  background-color: #83db66;
+  color: #FFF;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  color: #FFF;
+}
+
+.new_spas_btn a:hover {
+  background-color: #FFF;
+  color: #83db66;
+  border: 1px solid;
+}
+
+.head_r ul {
+  float: left;
+}
+
+.head_r ul li {
+  margin-right: 15px;
+}
+
+/* select */
+
+select {
+  -webkit-appearance: none;
+  /* ベンダープレフィックス(Google Chrome、Safari用) */
+  -moz-appearance: none;
+  /* ベンダープレフィックス(Firefox用) */
+  appearance: none;
+  /* 標準のスタイルを無効にする */
+}
+
+::-ms-expand {
+  /* select要素のデザインを無効にする（IE用） */
+  display: none;
+}
+
+
+/* labelタグのスタイル */
+
+.select-1 {
+  position: relative;
+  display: inline-block;
+  font-size: 1em;
+  overflow: hidden;
+  z-index: 0;
+  width: 100%;
+}
+
+
+/* 下三角の表示 */
+
+.select-1::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  top: 50%;
+  right: 0;
+  margin-top: -.2em;
+  border-width: .45em .3em;
+  border-style: solid;
+  border-color: #1177ba transparent transparent;
+  z-index: -1;
+}
+
+
+/* selectタグのスタイル */
+
+.select-1 select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+	padding-top: 3px;
+  width: 100%;
+}
+
+
+/* IEの下三角非表示 */
+
+.select-1 select::-ms-expand {
+  display: none;
+}
+
+
+/* Firefoxの点線非表示 */
+
+.select-1 select::-moz-focus-inner {
+  border: 0;
+}
+
+
+/* 表示されるオプションスタイル */
+
+.select-1 select * {
+  background: #242424;
+  color: #fff;
+  text-shadow: none;
+}
+
+div.eria {
+  width: 140px;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.time {
+  width: 100px;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+  position: relative;
+}
+
+div.time::before {
+  content: "\f017";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+div.price {
+  width: 140px;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.time, div.day, div.start, div.end, div.nin {
+  width: 80px;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.reco {
+  width: 130px;
+  padding: 5px 0 0 15px;
+  float: right;
+}
+
+div.kekka {
+  float: left;
+}
+
+div.yoyaku {
+  width: 130px;
+  padding: 5px 0 0 15px;
+  float: left;
+}
+
+div.search_btn a:before {
+  content: url(../img/syousai.png);
+}
+
+div.search_btn {
+  float: right;
+}
+
+div.search_btn a {
+  padding: 10px 50px;
+  background-color: #6abde2;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+}
+
+div.search_btn a:hover {
+  background-color: #47bef4;
+}
+
+
+/*チェックボックス*/
+
+
+/* css checkbox01 */
+
+.checkbox01-input {
+  display: none;
+}
+
+.checkbox01-parts {
+  padding-left: 20px;
+  position: relative;
+}
+
+.checkbox01-parts::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.checkbox01-input:checked+.checkbox01-parts {
+  color: #009a9a;
+}
+
+.checkbox01-input:checked+.checkbox01-parts::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 7px;
+  height: 14px;
+  transform: rotate(40deg);
+  border-bottom: 3px solid #009a9a;
+  border-right: 3px solid #009a9a;
+}
+
+
+/*****NAV*****/
+
+.head_l nav {
+  overflow: hidden;
+  float: left;
+    width: 500px;
+}
+
+nav ul {
+  margin-left: 20%;
+}
+
+nav li {
+  width: 82px;
+  text-align: center;
+  float: left;
+}
+
+nav ul li a {
+  padding: 4px 0 20px;
+}
+
+nav li:last-child {}
+
+nav li a:hover {
+  color: #333;
+  border-bottom: 2px solid #1177ba;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+nav li.current {
+  color: #333;
+  border-bottom: 2px solid #1177ba;
+}
+
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  *font-size: 100%;
+  border: none;
+}
+
+
+/*  top  */
+
+.main_top {
+  margin: 15px auto 20px;
+}
+
+
+/*****ARTICLE*****/
+
+section {}
+
+.inner {
+  max-width: 1200px;
+  margin: auto;
+}
+
+section p {
+  color: #313131;
+  margin-bottom: 5px;
+}
+
+#main {
+  float: left;
+  width: 850px;
+}
+
+#aside {
+  float: right;
+  max-width: 400px;
+}
+
+.list_wrap {
+  border-bottom: 2px solid #eee;
+  margin: 0 auto 20px;
+}
+
+
+/*1スペース*/
+
+.box_wrap {
+  width: 49%;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 25px;
+}
+
+.box_wrap:nth-child(2n) {
+  /* 偶数番目(2,4,6……番目)だけに適用されるCSS */
+  margin-right: 0;
+}
+
+.fig_wrap {
+  position: relative;
+}
+
+.icon_h {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.price_box {
+  background-color: black;
+  width: 140px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: #FFF;
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  text-align: center;
+}
+
+.price_box img {
+  vertical-align: middle;
+}
+
+.small_time {
+  font-size: 10px;
+}
+
+.box_txt {}
+
+
+/*  フッター  */
+
+footer {
+  font-size: 80%;
+  width: 100%;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #313131;
+}
+
+footer address {
+  color: #fff;
+  letter-spacing: 5px;
+}
+
+
+/*  ページャー  */
+
+.pager {
+  /* For IE */
+  -js-display: flex;
+  display: flex;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.pager li {
+  list-style-type: none;
+  flex: 1;
+  margin-right: 10px;
+  padding: 9px 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pager li.active {
+  background: #eee;
+}
+
+.pager li:hover {
+  background: #eee;
+}
+
+.pager li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pc_hide {
+  display: none;
+}
+
+.sp_hide {
+  display: block;
+}
+
+@media only screen and ( max-width: 1200px) {
+  header {
+    height: auto;
+    padding: 20px;
+  }
+  #aside {
+    float: none;
+    margin: 20px auto 10px;
+  }
+  .head_l {
+    float: none;
+    margin-bottom: 20px;
+  }
+  .head_r {
+    float: none;
+    margin-bottom: 20px;
+  }
+  div.select_wrap div {
+    margin-bottom: 20px;
+  }
+  div.search_btn {
+    margin-right: 20px;
+  }
+  #main {
+    float: none;
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and ( max-width: 960px) {
+  .head_l {
+    margin-bottom: 0;
+  }
+  /*　PC以外のメニュー　*/
+  /*ヘッダーまわりはご自由に*/
+  .pc_hide {
+    display: block;
+  }
+  .sp_hide {
+    display: none;
+  }
+  header {
+    padding: 10px;
+    padding-bottom: 0;
+    height: auto;
+  }
+  header h1, nav {
+    float: none;
+  }
+  nav ul {
+    margin-left: 0;
+  }
+  #nav-content ul li {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid;
+  }
+  #nav-content ul li:hover {
+    background: skyblue;
+  }
+  #nav-drawer {
+    position: relative;
+    text-align: right;
+  }
+  /*チェックボックス等は非表示に*/
+  .nav-unshown {
+    display: none;
+  }
+  /*アイコンのスペース*/
+  #nav-open {
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    vertical-align: middle;
+  }
+  /*ハンバーガーアイコンをCSSだけで表現*/
+  #nav-open span, #nav-open span:before, #nav-open span:after {
+    position: absolute;
+    height: 3px;
+    /*線の太さ*/
+    width: 25px;
+    /*長さ*/
+    border-radius: 3px;
+    background: #555;
+    display: block;
+    content: '';
+    cursor: pointer;
+  }
+  #nav-open span:before {
+    bottom: -8px;
+  }
+  #nav-open span:after {
+    bottom: -16px;
+  }
+  /*閉じる用の薄黒カバー*/
+  #nav-close {
+    display: none;
+    /*はじめは隠しておく*/
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    /*全体に広がるように*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    transition: .3s ease-in-out;
+  }
+  /*中身*/
+  #nav-content {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    /*最前面に*/
+    width: 90%;
+    /*右側に隙間を作る*/
+    max-width: 250px;
+    /*最大幅*/
+    height: 100%;
+    background: #fff;
+    /*背景色*/
+    transition: .3s ease-in-out;
+    /*滑らかに表示*/
+    -webkit-transform: translateX(-105%);
+    transform: translateX(-105%);
+    /*左に隠しておく*/
+  }
+  /*チェックが入ったらもろもろ表示*/
+  #nav-input:checked~#nav-close {
+    display: block;
+    /*カバーを表示*/
+    opacity: .5;
+  }
+  #nav-input:checked~#nav-content {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    /*中身を表示*/
+    box-shadow: 6px 0 25px rgba(0, 0, 0, .15);
+  }
+  /*　ヘッダー　*/
+  .inner {
+    max-width: 100%;
+    margin: auto;
+    padding: 0 10px;
+  }
+  .select_wrap div {
+    margin-bottom: 10px;
+  }
+  /*ページャー*/
+  .pager li {
+    padding: 5px;
+  }
+  @media only screen and ( max-width: 630px) {
+    /*  ページャー  */
+    /* 全てのli要素を消す */
+    .pager li {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    /* 必要なli要素を消す */
+    .pager li.active, .pager li:first-of-type, .pager li:last-of-type, .pager li:nth-of-type(2), .pager li:nth-last-of-type(2) {
+      position: static;
+      top: initial;
+      left: initial;
+    }
+    .pager li {
+      display: flex;
+      justify-content: center;
+      background-color: #FFF;
+      border: 1px solid #bbb6b6;
+      border-radius: 5px;
+    }
+    .pager a {
+      /* For IE */
+      flex: 1;
+      height: 44px;
+      text-decoration: none;
+      color: #000;
+    }
+    /* Active 以外のhover */
+    .pager li:not([class*="active"]) a:hover {
+      background-color: #eee;
+    }
+    /* Activeのスタイル */
+    .pager li.active a {
+      background-color: #eee;
+      color: #000;
+      font-weight: bold;
+    }
+    ul {
+      -webkit-padding-start: 0px;
+    }
+    #main {
+      width: 100%;
+      margin: auto;
+    }
+  }
+  @media only screen and ( max-width: 550px) {
+    .price_box {
+      background-color: black;
+      width: 130px;
+      padding: 5px 6px;
+      font-size: 12px;
+    }
+  }
+  @media only screen and ( max-width: 480px) {
+    body {
+      font-size: 12px;
+    }
+    h1.page_ttl {
+      margin-bottom: 10px;
+    }
+    .box_wrap {
+      width: 95%;
+      float: none;
+      margin: 15px auto 25px;
+    }
+    .box_wrap:nth-child(2n) {
+      margin-right: auto;
+    }
+  }
+  @media only screen and ( max-width: 380px) {
+    header {
+      padding: 10px 0 0 0;
+    }
+    .select_wrap div {
+      width: 44%;
+      margin-right: 1%;
+    }
+    .select_wrap div.checkbox02 {
+      width: auto;
+      margin-right: 0%;
+    }
+    div.select_wrap div.search_btn {
+      width: auto;
+    }
+  }

@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1.entry-title{
+	font-size:2.4rem;
+	padding:2em;
+	background-color:#CCC;	
+}
+
+.mailmaga_done-bg{
+	padding:2em 1em 5em 3em;	
+}
+.mailmaga_done-bg p{
+	line-height:2;
+	font-size:1.6rem;	
+}

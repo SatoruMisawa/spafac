@@ -1,0 +1,371 @@
+@charset "utf-8";
+/* CSS Document */
+  
+/*  top  */
+.select_wrap {
+
+}
+.select_wrap select{
+	border:none;
+	min-width:70px;
+}
+
+div.eria {
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.time {
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+  position: relative;
+}
+
+div.time::before {
+  content: "\f017";
+  font-family: FontAwesome;
+  position: absolute;
+  top:5px;
+  left: 10px;
+}
+
+div.price {
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.time, div.day, div.start, div.end, div.nin {
+  border-bottom: 1px solid #eee;
+  padding: 5px 0 0 15px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.yoyaku {
+  padding: 5px 0 0 15px;
+  float: left;
+}
+
+div.search_btn a:before {
+  content: url(../img/syousai.png);
+}
+
+div.search_btn {
+	margin:2px 0 0 0;
+  float: right;
+  display:block;
+  min-width:125px;
+}
+
+div.search_btn a {
+  padding:3px 10px;
+  background-color: #6abde2;
+  border-radius:5px;
+  color: #fff;
+  font-size:1.6rem;
+  min-width:125px;
+  display:block;
+  text-align:center;
+}
+
+div.search_btn a:hover {
+  background-color: #47bef4;
+}
+
+
+/*チェックボックス*/
+
+
+/* css checkbox01 */
+
+.checkbox01-input {
+  display: none;
+}
+
+.checkbox01-parts {
+  padding:0 0 8px 20px;
+  position: relative; 
+  border-bottom:1px solid #eee;
+}
+
+.checkbox01-parts::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top:2px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.checkbox01-input:checked+.checkbox01-parts {
+  color: #009a9a;
+}
+
+.checkbox01-input:checked+.checkbox01-parts::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top:0px;
+  left: 5px;
+  width: 7px;
+  height: 14px;
+  transform: rotate(40deg);
+  border-bottom: 3px solid #009a9a;
+  border-right: 3px solid #009a9a;
+}
+
+section.mid{
+display: block;
+  width:100%;	
+}
+div.reco {
+	min-width:145px;
+  float: right;
+}
+div.reco select{
+	border:none;
+}
+
+div.kekka {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_top {
+  margin:10px auto;
+}
+
+
+/*-------------------------------------
+ contents
+---------------------------------------*/
+#main {
+  float: left;
+  width:680px;
+}
+
+#aside {
+  float: right;
+  max-width:300px;
+}
+
+/*1スペース*/
+.box_wrap {
+  width:48%;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 25px;
+}
+
+.box_wrap:nth-child(2n) {
+  /* 偶数番目(2,4,6……番目)だけに適用されるCSS */
+  margin-right: 0;
+}
+
+.fig_wrap {
+  position: relative;
+}
+
+.icon_h {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.price_box {
+  background-color: black;
+  width: 140px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: #FFF;
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  text-align: center;
+}
+
+.price_box img {
+  vertical-align: middle;
+}
+
+.small_time {
+  font-size: 10px;
+}
+
+/* -------------------------------
+  pager
+---------------------------------- */
+.pager {
+  /* For IE */
+  -js-display: flex;
+  display: flex;
+  width:100%;
+  margin-bottom: 20px;
+}
+
+.pager li {
+  list-style-type: none;
+  flex: 1;
+  margin-right:15px;
+  padding: 9px 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width:40px;
+}
+
+.pager li.active {
+  background: #eee;
+}
+
+.pager li:hover {
+  background: #eee;
+}
+
+.pager li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and ( max-width: 960px) {
+.select_wrap select{
+	border-bottom:none;
+	width:7vw;
+		min-width:3vw;
+}
+div.yoyaku{
+  border-bottom: none;
+  padding:0;
+  float: left;
+  margin-right:1vw;
+	min-width:3vw;
+
+}div.eria,
+div.time,
+div.price,
+div.time, div.day, div.start, div.end, div.nin {
+  border-bottom: 1px solid #eee;
+  padding:0;
+  float: left;
+  margin-right:0.5vw;
+	min-width:2.5vw;
+	font-size:1.2rem;
+	padding:0;
+
+}
+
+div.search_btn {
+  min-width:12.5vw;
+    margin:0;
+}
+div.search_btn a {
+	padding:0 0.5em;
+  min-width:12.5vw;
+}
+div.reco {
+    min-width: 14.5vw;
+    float: right;
+}
+.box_wrap {
+    margin-right:0;
+}
+.box_wrap:nth-child(odd){
+    margin-right: 4%;
+}
+#aside {
+    float: none;
+    max-width:90%;
+	margin:0 auto;
+	display:block;
+	clear:both;
+}
+#second_main,
+#main {
+    float: left;
+    width:100%;
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;	
+}
+
+.price_box {
+    background-color: black;
+    width:50%;
+	max-width:160px;
+	margin:0 auto;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: #FFF;
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    text-align: center;
+}
+ul.main_nav {
+    max-width:90%;
+    margin: auto;
+	margin:0 auto;
+}
+.select-1:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 50%;
+    right:0;
+    margin:0;
+    border-width:0;
+    border-style: solid;
+    border-color: transparent;
+    z-index: 1;
+}
+
+}
+
+@media only screen and ( max-width: 640px) {
+.box_wrap {
+	width:100%;
+    margin:1em auto;
+	display:block;
+	clear:both;
+	float:none;
+}
+
+.box_wrap:nth-child(even),
+.box_wrap:nth-child(odd) {
+	width:100%;
+	display:block;
+	clear:both;
+	float:none;
+    margin:1em auto;
+}
+
+.pager li {
+    list-style-type: none;
+    flex: 1;
+    margin-right:2vw;
+    padding:1vw;
+    border: 1px solid #ddd;
+    border-radius:5px;
+    max-width:4vw;
+}
+
+}
+
+@media only screen and ( max-width: 480px) {
+
+
+}
+

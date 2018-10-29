@@ -20,7 +20,9 @@ define('LARAVEL_START', microtime(true));
 | loading any of our classes later on. It feels great to relax.
 |
 */
+// require_once __DIR__ . '/../magazine.spafac.com/wp-blog-header.php';
 
+// require __DIR__.'/../spafac.com-system/vendor/autoload.php';
 require __DIR__.'/../vendor/autoload.php';
 
 /*
@@ -35,7 +37,12 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
+// $app = require_once __DIR__.'/../spafac.com-system/bootstrap/app.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
+
+$app->bind('path.public', function() {
+	return __DIR__;
+});
 
 /*
 |--------------------------------------------------------------------------

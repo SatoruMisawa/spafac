@@ -1,0 +1,190 @@
+@charset "utf-8";
+/* CSS Document */
+
+.page .entry-header {
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:5;
+}
+  .page .entry-header .entry-title {
+    margin: 50px 0;
+    padding: 12px 16px;
+    width: 100%;
+    max-width: 480px;
+    display: inline-block;
+    font-size:3rem;
+    color: #ffffff;
+    font-weight: normal;
+    background-color: #000000;
+    text-align: center; }
+
+.page .entry-content {
+  margin: 0 auto 3em auto;
+  padding: 0 16px;
+  letter-spacing:0;
+  width: 100%;
+  max-width:1000px;
+  font-size:1.6rem;
+  line-height:150%; 
+}
+.page .entry-content *{
+	  font-size:1.6rem;	
+}
+.page .entry-content p {
+    margin: 0 0 1em 0;
+    line-height:170%;
+	  font-size:1.6rem;
+}
+
+.page .entry-content p.indm{
+	text-indent:-1em;
+	margin:0 0 0 2em;
+}
+.page .entry-content h3{
+	margin:2em 0 0.5em 0;
+	
+}
+
+h2.ordinance{
+	font-size:2rem;
+	line-height:1.5;
+	border-left:10px solid #00A2DE;
+	padding:10px 1.5em;
+	border-bottom:1px #CCCCCC solid;
+	margin:3em 0 1em 0;
+}
+
+
+.page .entry-content p.in {
+    margin: 0 0 1em 1em;
+    line-height: 170%;
+    font-size: 1.6rem;
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  display:none;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
+  .screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size:1.4rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+    /* Above WP toolbar. */ }
+
+@media only screen and ( max-width:1000px) {
+header.entry-header:nth-of-type(1){
+	position:fixed;
+    padding:0.5em 16px;
+	top:10vw;
+display: flex;
+  justify-content: center;
+  align-items: center;
+	z-index:80;
+}
+header.entry-header:nth-of-type(2){
+	position:relative;
+	z-index:8;
+	margin-bottom:2em;
+	border:none;
+display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#primary{
+	margin:15vw auto !important;
+	width:90%;		
+}
+}
+@media only screen and (max-width:768px) {
+
+header.entry-header:nth-of-type(1){
+	position:fixed;
+    padding:0.5em 0;
+	top:10vw;
+display: flex;
+  justify-content: center;
+  align-items: center;
+	z-index:80;
+}
+header.entry-header:nth-of-type(2){
+	position:relative;
+	position:0.5em 0;
+	z-index:8;
+	margin-bottom:2em;
+	border:none;
+display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header.entry-header:nth-of-type(1) h1.entry-title,
+header.entry-header:nth-of-type(2) h1.entry-title{
+	font-size:2rem;
+	margin:0;
+	padding:0.5em 0;
+}
+
+h2.ordinance{
+	font-size:1.6rem;
+	padding:1vw 0.5em;
+}
+
+.wrap{
+    max-width:100%;
+    margin: auto;
+}
+.page .entry-content p {
+    font-size: 1.4rem;
+}
+
+}
+@media only screen and ( max-width:640px) {
+header.entry-header:nth-of-type(1) h1.entry-title,
+header.entry-header:nth-of-type(2) h1.entry-title{
+	font-size:1.6rem;
+	margin:0;
+	padding:0.5em 0;
+}
+
+header.entry-header:nth-of-type(1){
+	top:13vw;
+}
+	
+}
+@media only screen and ( max-width:480px) {
+
+#primary{
+		margin:20vw auto !important;
+		width:90%;		
+	}
+
+}

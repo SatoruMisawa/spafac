@@ -1,0 +1,57 @@
+/* 画像 */
+.media-container {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	/* width: 450px; */
+}
+
+ul.media-container li {
+	position: relative;
+	background: none;
+	margin: 3px 3px 3px 0;
+	padding: 1px;
+	float: left;
+	/* width: 150px; */
+	/* height: 150px; */
+	/* font-size: 4em; */
+	text-align: center;
+}
+
+ul.media-container .delete-media {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.drag-area {
+	background-color: #87cefa;
+	padding: 15px 10px;
+	margin-bottom: 5px;
+}
+
+.drag-area.sm {
+	padding: 3px 3px;
+	margin-bottom: 0;
+}
+
+.drag-area.over {
+	background-color: #fffacd;
+}
+
+.drag-area * {
+	pointer-events: none;
+}
+
+div.fix {
+	float: none;
+	clear: both;
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	line-height: 0;
+	font-size: 0;
+}

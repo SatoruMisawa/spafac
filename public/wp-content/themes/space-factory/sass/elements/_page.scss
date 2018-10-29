@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+.page {
+
+    .entry-header {
+        margin-top: 100px;
+        padding: 0 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        .entry-title {
+            margin: 50px 0;
+            padding: 12px 16px;
+            width: 100%;
+            max-width: 480px;
+            display: inline-block;
+            font-size: 32px;
+            color: #ffffff;
+            font-weight: normal;
+            background-color: #000000;
+            text-align: center;
+        }
+    }
+
+    .entry-content {
+        margin: 0 auto 200px;
+        padding: 0 16px;
+        width: 100%;
+        max-width: 980px;
+        font-size: 15px;
+    }
+
+}

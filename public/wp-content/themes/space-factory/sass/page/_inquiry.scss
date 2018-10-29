@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+.inquiry {
+
+    .hero-image {
+        
+        margin-bottom: 115px;
+        width: 100%;
+        height: 325px;
+        background-image: url(images/inquiry__hero-image.jpg);
+        background-position: center;
+
+    }
+
+    .content {
+
+        margin: 0 auto;
+        padding: 16px;
+        width: 100%;
+        max-width: 980px;
+
+        div {
+            margin-bottom: 140px;
+
+            p {
+                margin: 0 auto 40px;
+                width: 100%;
+                max-width: 390px;
+            }
+
+            a {
+                padding-left: 50px;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 486px;
+                height: 60px;
+                display: block;
+                background-color: #000000;
+                color: #ffffff;
+                line-height: 60px;
+                position: relative;
+                
+                &:after {
+                    content: "";
+                    width: 20px;
+                    height: 60px;
+                    display: block;
+                    background-image: url(images/inquiry__button_bow.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    position: absolute;
+                    right: 50px;
+                    top: 0;
+                }
+            }
+
+            &:first-child {}
+        }
+
+    }
+
+}

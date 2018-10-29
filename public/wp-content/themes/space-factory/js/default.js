@@ -1,0 +1,1 @@
+objectFitImages('img.object-fit-img');

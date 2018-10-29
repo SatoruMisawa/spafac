@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+.registration-contract {
+
+    .cancel-table {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 860px;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+
+        tr {
+
+            &:last-child {
+                td:last-child {
+                    color: #ff0000;
+                }
+            }
+
+            th {
+                height: 50px;
+                background-color: #eeeeee;
+                font-size: 20px;
+                font-weight: normal;
+            }
+
+            td {
+                height: 50px;
+                border: 1px solid #000000;
+                border-collapse: collapse;
+                text-align: center;
+
+                &:first-child {
+                    max-width: 285px;
+                }
+
+            }
+
+        }
+
+    }
+
+    .disclaimer {
+        margin: 45px auto 0;
+        width: 730px;
+    }
+
+}
