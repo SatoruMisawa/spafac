@@ -21,5 +21,9 @@ class ProviderSeeder extends Seeder
         Provider::create([
             'name' => 'yahoojp',
         ]);
+
+        Provider::create([
+            'name' => 'google',
+        ]);
     }
 }
