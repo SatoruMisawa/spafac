@@ -163,7 +163,8 @@ return [
         App\Providers\ValidatorServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        // Laravel\Socialite\SocialiteServiceProvider::class,
+        App\Providers\SocialiteServiceProvider::class,
     ],
 
     /*

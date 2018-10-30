@@ -48,9 +48,9 @@ return [
 	],
 
 	'yahoojp' => [
-		'client_id'     => env('YAHOOJP_ID'),
-		'client_secret' => env('YAHOOJP_SECRET'),
-		'redirect'      => env('YAHOOJP_CALLBACKURL'),
+		'client_id'     => env('YAHOOJP_CLIENT_ID'),
+		'client_secret' => env('YAHOOJP_CLIENT_SECRET'),
+		'redirect'      => env('YAHOOJP_CALLBACK_URL'),
 	],
 
 ];
