@@ -21,8 +21,8 @@
 			<h3>外部サービスでログイン</h3>
 			<p>ログイン画面にサイト準備中につき、メールアドレスでの登録が可能です。</p>
 			<ul>
-				<li class="fb"><a href=""><img src="<?php echo url('assets/mypage/img/fb2.png'); ?>" alt=""><span>Facebookでログイン</span></a></li>
-				<li class="ya"><a href=""><img src="<?php echo url('assets/mypage/img/ya.png'); ?>" alt=""><span>Yahoo!でログイン</span></a></li>
+				<li class="fb"><a href="/login/facebook"><img src="<?php echo url('assets/mypage/img/fb2.png'); ?>" alt=""><span>Facebookでログイン</span></a></li>
+				<li class="ya"><a href="/login/yahoojp"><img src="<?php echo url('assets/mypage/img/ya.png'); ?>" alt=""><span>Yahoo!でログイン</span></a></li>
 				<li class="gg"><a href=""><img src="<?php echo url('assets/mypage/img/gg.png'); ?>" alt=""><span>Googleでログイン</span></a></li>
 			</ul>
 			<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
