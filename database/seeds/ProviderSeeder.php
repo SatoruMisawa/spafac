@@ -12,8 +12,14 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('providers')->truncate();
+
         Provider::create([
             'name' => 'facebook',
+        ]);
+
+        Provider::create([
+            'name' => 'yahoojp',
         ]);
     }
 }
