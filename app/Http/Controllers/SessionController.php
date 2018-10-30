@@ -43,6 +43,7 @@ class SessionController extends Controller
         $providedUser = ProvidedUser::create([
             'id' => $socialiteUser->id,
             'name' => $socialiteUser->name,
+            'email' => $socialiteUser->email,
             'provider' => $provider,
         ]);
 
