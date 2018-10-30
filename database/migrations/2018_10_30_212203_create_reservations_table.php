@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserProviderTable extends Migration
+class CreateReservationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateUserProviderTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_provider', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('provider_id')->unsigned();
-            $table->string('provided_user_id');
+            $table->bigInteger('plan_id')->unsigned();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -30,6 +29,6 @@ class CreateUserProviderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_providers');
+        Schema::dropIfExists('reservations');
     }
 }
