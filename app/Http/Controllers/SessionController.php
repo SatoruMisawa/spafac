@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\ProvidedUser;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
@@ -30,5 +32,25 @@ class SessionController extends Controller
     public function delete() {
         Auth::logout();
         return redirect('login');
+    }
+
+    public function redirectToProvider(Socialite $socialite, $provider) {
+        return $socialite->driver($provider)->redirect();
+    }
+
+    public function handleProviderCallback(Socialite $socialite, $provider) {
+        $socialiteUser = $socialite->driver($provider)->user();
+        $providedUser = ProvidedUser::create([
+            'id' => $socialiteUser->id,
+            'name' => $socialiteUser->name,
+            'email' => $socialiteUser->email,
+            'provider' => $provider,
+        ]);
+
+        $user = $providedUser->firstOrCreateUser();
+
+        Auth::login($user, true);
+
+        return redirect('/');
     }
 }

@@ -29,14 +29,15 @@
     25 => 'Laravel\\Tinker\\TinkerServiceProvider',
     26 => 'Collective\\Html\\HtmlServiceProvider',
     27 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    28 => 'Collective\\Html\\HtmlServiceProvider',
-    29 => 'App\\Providers\\AppServiceProvider',
-    30 => 'App\\Providers\\AuthServiceProvider',
-    31 => 'App\\Providers\\EventServiceProvider',
-    32 => 'App\\Providers\\RouteServiceProvider',
-    33 => 'App\\Providers\\ValidatorServiceProvider',
-    34 => 'Intervention\\Image\\ImageServiceProvider',
-    35 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    28 => 'SocialiteProviders\\Manager\\ServiceProvider',
+    29 => 'Collective\\Html\\HtmlServiceProvider',
+    30 => 'App\\Providers\\AppServiceProvider',
+    31 => 'App\\Providers\\AuthServiceProvider',
+    32 => 'App\\Providers\\EventServiceProvider',
+    33 => 'App\\Providers\\RouteServiceProvider',
+    34 => 'App\\Providers\\ValidatorServiceProvider',
+    35 => 'Intervention\\Image\\ImageServiceProvider',
+    36 => 'App\\Providers\\SocialiteServiceProvider',
   ),
   'eager' => 
   array (
@@ -160,7 +161,7 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
-    'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    'Laravel\\Socialite\\Contracts\\Factory' => 'App\\Providers\\SocialiteServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
     'html' => 'Collective\\Html\\HtmlServiceProvider',
     'form' => 'Collective\\Html\\HtmlServiceProvider',
@@ -216,6 +217,12 @@
     array (
     ),
     'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => 
+    array (
+    ),
+    'SocialiteProviders\\Manager\\ServiceProvider' => 
+    array (
+    ),
+    'App\\Providers\\SocialiteServiceProvider' => 
     array (
     ),
   ),

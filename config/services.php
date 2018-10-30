@@ -36,21 +36,21 @@ return [
     ],
 
 	'facebook' => [
-		'client_id'     => env('FB_CLIENT_ID'),
-		'client_secret' => env('FB_CLIENT_SECRET'),
-		'redirect'      => env('FB_URL'),
+		'client_id'     => env('FACEBOOK_CLIENT_ID'),
+		'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+		'redirect'      => env('FACEBOOK_CALLBACK_URL'),
 	],
 
 	'google' => [
 		'client_id'     => env('GOOGLE_CLIENT_ID'),
 		'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-		'redirect'      => env('GOOGLE_URL'),
+		'redirect'      => env('GOOGLE_CALLBACK_URL'),
 	],
 
 	'yahoojp' => [
-		'client_id'     => env('YAHOOJP_ID'),
-		'client_secret' => env('YAHOOJP_SECRET'),
-		'redirect'      => env('YAHOOJP_CALLBACKURL'),
+		'client_id'     => env('YAHOOJP_CLIENT_ID'),
+		'client_secret' => env('YAHOOJP_CLIENT_SECRET'),
+		'redirect'      => env('YAHOOJP_CALLBACK_URL'),
 	],
 
 ];

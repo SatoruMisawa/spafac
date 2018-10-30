@@ -3,14 +3,12 @@
 namespace App;
 
 use App\MyModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
 	use MyModel;
-	// use SoftDeletes;
 	use Notifiable;
 
 	/**
@@ -37,6 +35,10 @@ class User extends Authenticatable
 	*/
 	public function host() {
 		return $this->hasOne('App\Host')->withDefault();
+	}
+
+	public function providers() {
+		return $this->belongsToMany(Provider::class, 'user_provider')->using(UserProvider::class);
 	}
 	
 	/**
