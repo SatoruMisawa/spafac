@@ -16,9 +16,6 @@ class CreatePrefecturesTable extends Migration
         Schema::create('prefectures', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('display_order')->unsigned();
-            $table->timestamps();
-            $table->timestamp('deleted_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
