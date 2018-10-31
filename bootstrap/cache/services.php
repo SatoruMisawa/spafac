@@ -29,15 +29,14 @@
     25 => 'Laravel\\Tinker\\TinkerServiceProvider',
     26 => 'Collective\\Html\\HtmlServiceProvider',
     27 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    28 => 'SocialiteProviders\\Manager\\ServiceProvider',
-    29 => 'Collective\\Html\\HtmlServiceProvider',
-    30 => 'App\\Providers\\AppServiceProvider',
-    31 => 'App\\Providers\\AuthServiceProvider',
-    32 => 'App\\Providers\\EventServiceProvider',
-    33 => 'App\\Providers\\RouteServiceProvider',
-    34 => 'App\\Providers\\ValidatorServiceProvider',
-    35 => 'Intervention\\Image\\ImageServiceProvider',
-    36 => 'App\\Providers\\SocialiteServiceProvider',
+    28 => 'Collective\\Html\\HtmlServiceProvider',
+    29 => 'App\\Providers\\AppServiceProvider',
+    30 => 'App\\Providers\\AuthServiceProvider',
+    31 => 'App\\Providers\\EventServiceProvider',
+    32 => 'App\\Providers\\RouteServiceProvider',
+    33 => 'App\\Providers\\ValidatorServiceProvider',
+    34 => 'Intervention\\Image\\ImageServiceProvider',
+    35 => 'App\\Providers\\SocialiteServiceProvider',
   ),
   'eager' => 
   array (
@@ -217,9 +216,6 @@
     array (
     ),
     'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => 
-    array (
-    ),
-    'SocialiteProviders\\Manager\\ServiceProvider' => 
     array (
     ),
     'App\\Providers\\SocialiteServiceProvider' => 
