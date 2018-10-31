@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Space extends Model
 {
 	use MyModel;
-	use SoftDeletes;
+	// use SoftDeletes;
 	
 	//入力状況
 	const INPUT_STATUS_NONE = 0;
@@ -56,7 +56,7 @@ class Space extends Model
 	* The attributes that are mass assignable.
 	*/
 	protected $fillable = [
-		'institution_id', 'capacity', 'floor_space', 'key_delivery_id', 'reservation_deadline', 'reservation_acceptance', 'title', 'explanation', 'facility'
+		'address_id',
 	];
 	
 	/**
