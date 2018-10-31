@@ -41,6 +41,10 @@ class User extends Authenticatable
 		return $this->belongsToMany(Provider::class, 'user_provider')->using(UserProvider::class);
 	}
 	
+	public function applies() {
+		return $this->hasMany(Apply::class);
+	}
+
 	/**
 	* password
 	*/
@@ -108,4 +112,17 @@ class User extends Authenticatable
 		
 	}
 
+	public function apply(Plan $plan) {
+		if ($this->id === $plan->user_id) {
+			return;
+		}
+
+		if (Apply::where('plan_id', $plan->id)->exists()) {
+			return;
+		}
+
+		$this->applies()->create([
+			'plan_id' => $plan->id,
+		]);
+	}
 }
