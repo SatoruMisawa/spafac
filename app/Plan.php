@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Plan extends Model
 {
 	use MyModel;
-	use SoftDeletes;
-	
 	/**
 	* The database table used by the model.
 	*
@@ -21,17 +19,10 @@ class Plan extends Model
 	//protected $table = '';
 	
 	/**
-	* The attributes excluded from the model's JSON form.
-	*
-	* @var array
-	*/
-	protected $dates = ['deleted_at'];
-	
-	/**
 	* The attributes that are mass assignable.
 	*/
 	protected $fillable = [
-		'name', 'by_hour', 'charge_per_hour', 'by_day', 'charge_per_day', 'approve_reservation', 'period_from', 'period_to',
+		'user_id', 'space_id', 'amount',
 	];
 	
 	/**
