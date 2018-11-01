@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Stripe\Stripe;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -25,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Stripe::setApiKey(config('services.stripe.client_secret'));
     }
 }
