@@ -17,6 +17,7 @@ class CreateStripeChargesTable extends Migration
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('reservation_id')->unsigned();
+            $table->string('stripe_charge_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
