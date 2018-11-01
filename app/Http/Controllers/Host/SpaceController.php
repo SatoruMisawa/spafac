@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Host;
 use App\Address;
 use App\Space;
 use App\Purpose;
+use App\Prefecture;
 use App\KeyDelivery;
 use App\Media;
 use App\Http\Controllers\Host\Controller as HostController;
@@ -52,6 +53,13 @@ class SpaceController extends HostController
 		return $view;
 	}
 
+	public function new() {
+		$prefectures = Prefecture::all()->map(function($prefecture) {
+			return $prefecture->name;
+		})->toArray();
+		return view('host.institution.new', compact('prefectures'));
+	}
+
 	/**
 	* 施設情報確認
 	*/
@@ -88,7 +96,7 @@ class SpaceController extends HostController
 		$request->validate([
 			'name' => 'required',
 			'zip' => 'required|zip',
-			// 'prefecture_id' => 'required', // todo: seed prefectures
+			'prefecture_id' => 'required',
 			'address1' => 'required',
 			'address1_ruby' => 'required',
 			'address2' => 'required',
@@ -101,7 +109,7 @@ class SpaceController extends HostController
 		]);
 		
 		$address = Address::firstOrCreate([
-			'prefecture_id' => 1,
+			'prefecture_id' => $request->get('prefecture_id') + 1,
 			'zip' => $request->get('zip'),
 			'address1' => $request->get('address1'),
 			'address1_ruby' => $request->get('address1_ruby'),

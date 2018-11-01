@@ -50,7 +50,7 @@
 								{{ App\Helper::error($errors, ['prefecture_id']) }}
 								<div class="row">
 									<div class="col-sm-6">
-										{{-- {{ Form::select('prefecture_id', ['' => '選択してください'] + $prefectureList, null, ['class' => 'form-control p-region-id']) }} --}}
+										{{ Form::select('prefecture_id', ['' => '選択してください'] + $prefectures, null, ['class' => 'form-control p-region-id']) }}
 									</div>
 								</div>
 							</div>

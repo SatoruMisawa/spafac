@@ -147,14 +147,14 @@ Route::group(['prefix' => 'host'], function() {
 		
 		//施設情報
 		Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');
-		Route::get('institution/edit/{institution?}', '\App\Http\Controllers\Host\InstitutionController@edit');
+		Route::get('space/new', 'Host\SpaceController@new');
+		Route::post('space', 'Host\SpaceController@create');
 		Route::post('institution/confirm/{institution?}', '\App\Http\Controllers\Host\InstitutionController@confirm');
 		Route::get('institution/delete/{institution}', '\App\Http\Controllers\Host\InstitutionController@delete');
 		
 		//スペース情報
 		Route::get('space', '\App\Http\Controllers\Host\SpaceController@index');
 		Route::get('space/edit-institution/{space?}', '\App\Http\Controllers\Host\SpaceController@editInstitution');
-		Route::post('space', 'Host\SpaceController@create');
 		Route::get('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@editBasic');
 		Route::post('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@confirmBasic');
 		Route::get('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@editExplanation');
