@@ -3,6 +3,7 @@
 namespace App;
 
 use App\MyModel;
+use App\Service\Claimant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -30,9 +31,25 @@ class User extends Authenticatable
 		'password', 'remember_token',
 	];
 
+	private $claimant;
+
+	public function __construct($params = []) {
+		parent::__construct($params);
+
+		$this->claimant = app()->make(Claimant::class);
+	}
+
 	/**
 	* relations
 	*/
+	public function stripeUser() {
+		return $this->hasOne(StripeUser::class);
+	}
+
+	public function stripeCharges() {
+		return $this->hasMany(StripeCharge::class);
+	}
+
 	public function host() {
 		return $this->hasOne('App\Host')->withDefault();
 	}
@@ -123,6 +140,31 @@ class User extends Authenticatable
 
 		$this->applies()->create([
 			'plan_id' => $plan->id,
+		]);
+	}
+
+	public function approve(Apply $apply) {
+		if ($this->id !== $apply->plan->user->id) {
+			return;
+		}
+
+		Reservation::create([
+			'user_id' => $apply->user_id,
+			'plan_id' => $apply->plan_id,
+		]);
+	}
+
+	public function chargeFor(Reservation $reservation) {
+		$charge = $this->claimant->charge([
+			'amount' => $reservation->plan->amount,
+			// 'source' => $reservation->user->stripeUser->stripe_source_id,
+			'source' => 'tok_1DRiDdDX6z5hkjQAfFSM8xY8',
+			'dst_account_id' => $this->stripeUser->stripe_account_id,
+		]);
+		
+		$this->stripeCharges()->create([
+			'reservation_id' => $reservation->id,
+			'stripe_charge_id' => $charge->id,
 		]);
 	}
 }

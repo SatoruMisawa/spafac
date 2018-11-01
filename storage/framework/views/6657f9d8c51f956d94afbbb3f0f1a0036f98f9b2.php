@@ -71,8 +71,7 @@
                     <?php if(auth()->guard()->check()): ?>
                         <a href="<?php echo e(url('/home')); ?>">Home</a>
                     <?php else: ?>
-                        <a href="<?php echo e(route('login')); ?>">Login</a>
-                        <a href="<?php echo e(route('register')); ?>">Register</a>
+                        
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
@@ -88,6 +87,7 @@
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/test">Test</a>
                 </div>
             </div>
         </div>

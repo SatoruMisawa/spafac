@@ -37,6 +37,10 @@ class Plan extends Model
 	public function planDays() {
 		return $this->hasMany('App\PlanDay');
 	}
+
+	public function user() {
+		return $this->belongsTo(User::class);
+	}
 	
 	/**
 	* 現在入力中のプラン取得

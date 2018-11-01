@@ -165,6 +165,7 @@ return [
 
         // Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\SocialiteServiceProvider::class,
+        App\Providers\ClaimantServiceProvider::class,
     ],
 
     /*

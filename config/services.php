@@ -51,6 +51,10 @@ return [
 		'client_id'     => env('YAHOOJP_CLIENT_ID'),
 		'client_secret' => env('YAHOOJP_CLIENT_SECRET'),
 		'redirect'      => env('YAHOOJP_CALLBACK_URL'),
-	],
+    ],
+    
+    'stripe' => [
+        'client_secret' => env('STRIPE_CLIENT_SECRET'),
+    ],
 
 ];
