@@ -6,31 +6,15 @@ use DB;
 use Storage;
 use App\MyModel;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Prefecture extends Model
 {
 	use MyModel;
-	use SoftDeletes;
 	
-	/**
-	* The database table used by the model.
-	*
-	* @var string
-	*/
-	//protected $table = '';
-	
-	/**
-	* The attributes excluded from the model's JSON form.
-	*
-	* @var array
-	*/
-	protected $dates = ['deleted_at'];
-	
-	/**
-	* The attributes that are mass assignable.
-	*/
+	public $timestamps = false;
+
 	protected $fillable = [
+		'name',
 	];
 	
 	/**
