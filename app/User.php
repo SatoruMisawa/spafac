@@ -157,7 +157,7 @@ class User extends Authenticatable
 	public function chargeFor(Reservation $reservation) {
 		$charge = $this->claimant->charge([
 			'amount' => $reservation->plan->amount,
-			// 'source' => $apply->user->stripeUser->stripe_source_id,
+			// 'source' => $reservation->user->stripeUser->stripe_source_id,
 			'source' => 'tok_1DRMV0DX6z5hkjQAf6ZGQbAZ',
 			'dst_account_id' => $this->stripeUser->stripe_account_id,
 		]);
