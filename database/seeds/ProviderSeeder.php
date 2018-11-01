@@ -5,25 +5,16 @@ use Illuminate\Database\Seeder;
 
 class ProviderSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    private $table = 'providers';
+
     public function run()
     {
-        DB::table('providers')->truncate();
+        DB::table($this->table)->truncate();
 
-        Provider::create([
-            'name' => 'facebook',
-        ]);
-
-        Provider::create([
-            'name' => 'yahoojp',
-        ]);
-
-        Provider::create([
-            'name' => 'google',
-        ]);
+        DB::table($this->table)->insert([
+            ['name' => 'facebook'],
+            ['name' => 'yahoojp'],
+            ['name' => 'google'],
+        ]); 
     }
 }
