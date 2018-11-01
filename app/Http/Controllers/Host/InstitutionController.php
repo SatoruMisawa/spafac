@@ -35,20 +35,22 @@ class InstitutionController extends HostController
 	*/
 	public function edit(Request $request, $institution = null) {
 		
-		if (!$institution) {
-			$institution = new Institution();
-		}
+		// if (!$institution) {
+		// 	$institution = new Institution();
+		// }
 		
-		//施設種類
-		$institutionKinds = InstitutionKind::get4Select();
+		// //施設種類
+		// $institutionKinds = InstitutionKind::get4Select();
 		
-		//都道府県
-		$prefectureList = Prefecture::array4Select();
+		// //都道府県
+		// $prefectureList = Prefecture::array4Select();
 		
-		$data = compact('institution', 'institutionKinds', 'prefectureList');
+		// $data = compact('institution', 'institutionKinds', 'prefectureList');
 		
-		$view = view('host.institution.edit', $data);
-		return $view;
+		// $view = view('host.institution.edit', $data);
+		// return $view;
+
+		return $view = view('host.institution.edit');
 	}
 
 	/**

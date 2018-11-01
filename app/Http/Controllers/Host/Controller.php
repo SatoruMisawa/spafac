@@ -19,12 +19,12 @@ abstract class Controller extends AppController
 		});
 		
 		//現在編集対象のスペース
-		View::composer('*', function($view) {
-			$space = Space::getCurrentSpace();
-			$view->with('currentSpace', $space);
-			$plan = Plan::getCurrentPlan();
-			$view->with('currentPlan', $plan);
-		});
+		// View::composer('*', function($view) {
+		// 	$space = Space::getCurrentSpace();
+		// 	$view->with('currentSpace', $space);
+		// 	$plan = Plan::getCurrentPlan();
+		// 	$view->with('currentPlan', $plan);
+		// });
 		
 	}
 	

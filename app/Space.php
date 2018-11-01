@@ -39,24 +39,10 @@ class Space extends Model
 	];
 	
 	/**
-	* The database table used by the model.
-	*
-	* @var string
-	*/
-	//protected $table = '';
-	
-	/**
-	* The attributes excluded from the model's JSON form.
-	*
-	* @var array
-	*/
-	protected $dates = ['deleted_at'];
-	
-	/**
 	* The attributes that are mass assignable.
 	*/
 	protected $fillable = [
-		'address_id',
+		'address_id', 'name', 'access', 'tel',
 	];
 	
 	/**
