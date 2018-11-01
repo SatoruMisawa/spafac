@@ -68,8 +68,8 @@ Route::get('help/{page?}', '\App\Http\Controllers\IndexController@help');//目�
 
 
 //新規会員登録
-Route::get('registration', '\App\Http\Controllers\RegistrationController@index');
-Route::post('registration', '\App\Http\Controllers\RegistrationController@confirm');
+Route::get('users/new', 'UserController@new');
+Route::post('users', 'UserController@create');
 Route::get('registration/send', '\App\Http\Controllers\RegistrationController@send');
 Route::get('registration/verify/{token}', '\App\Http\Controllers\RegistrationController@verify');
 
