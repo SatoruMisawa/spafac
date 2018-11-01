@@ -55,12 +55,12 @@ class Host extends Model
 	*/
 	public function getInstitutions() {
 		
-		$query = $this->institutions()
-			->orderBy('id', 'ASC');
+		// $query = $this->institutions()
+		// 	->orderBy('id', 'ASC');
 		
-		$institutions = $query->get();
+		// $institutions = $query->get();
 		
-		return $institutions;
+		// return $institutions;
 	}
 	
 	/**

@@ -154,7 +154,7 @@ Route::group(['prefix' => 'host'], function() {
 		//スペース情報
 		Route::get('space', '\App\Http\Controllers\Host\SpaceController@index');
 		Route::get('space/edit-institution/{space?}', '\App\Http\Controllers\Host\SpaceController@editInstitution');
-		Route::post('space/edit-institution/{space?}', '\App\Http\Controllers\Host\SpaceController@confirmInstitution');
+		Route::post('space', 'Host\SpaceController@create');
 		Route::get('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@editBasic');
 		Route::post('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@confirmBasic');
 		Route::get('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@editExplanation');

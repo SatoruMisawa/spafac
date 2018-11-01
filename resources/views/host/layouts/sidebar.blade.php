@@ -6,7 +6,7 @@
 		<!-- Sidebar Menu -->
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class="header">スペース編集</li>
-			<li class="">
+			<?php /* <li class="">
 				<a href="<?php echo url('host/space/edit-institution/' . $currentSpace->id); ?>"><i class="fa fa-link"></i> <span>施設情報</span></a>
 			</li>
 			<?php if ($currentSpace->input_status >= App\Space::INPUT_STATUS_INSTITUTION) : ?>
@@ -35,7 +35,7 @@
 					<a href="<?php echo url('host/space/edit-option/' . $currentSpace->id); ?>"><i class="fa fa-link"></i> <span>オプション</span></a>
 				</li>
 				-->
-			<?php endif; ?>
+			<?php endif; ?> */ ?>
 			<li class="header">施設管理</li>
 			<li class=""><a href="<?php echo url('host/institution'); ?>"><i class="fa fa-link"></i> <span>施設一覧</span></a></li>
 			<li class=""><a href="<?php echo url('host/institution/edit'); ?>"><i class="fa fa-link"></i> <span>新規施設の作成</span></a></li>
