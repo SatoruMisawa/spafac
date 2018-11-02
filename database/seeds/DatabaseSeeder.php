@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
         FacilityKindSeeder::class,
         SpaceUsageSeeder::class,
         KeyDeliverySeeder::class,
+        PreorderDeadlineSeeder::class,
     ];
 
     /**
