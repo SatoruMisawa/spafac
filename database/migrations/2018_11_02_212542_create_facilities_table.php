@@ -17,6 +17,7 @@ class CreateFacilitiesTable extends Migration
             $table->increments('id');
             $table->bigInteger('address_id')->unsigned();
             $table->bigInteger('facility_kind_id')->unsigned();
+            $table->string('name');
             $table->text('access');
             $table->string('tel');
         });
