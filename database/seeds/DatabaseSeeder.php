@@ -8,6 +8,7 @@ class DatabaseSeeder extends Seeder
         ProviderSeeder::class,
         PrefectureSeeder::class,
         FacilityKindSeeder::class,
+        SpaceUsageSeeder::class,
     ];
 
     /**
