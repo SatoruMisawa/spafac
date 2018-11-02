@@ -15,11 +15,13 @@
 	@include('host.layouts.message', array('errors' => $errors))
 	<div class="row">
 		<div class="col-md-12">
-			{{ Form::open([
-				'url' => {{ route('host.facility.create') }},
-				'method' => 'POST'
-			]) }}
-			<form action="/host/space" method="POST">
+			{{
+				Form::open([
+					'route' => 'host.facility.create',
+					'method' => 'POST'
+				])
+			}}
+			{{-- {{ Form::open(['url' => {{ route('host.facility.create') }},'method' => 'POST']) }} --}}
 				@csrf
 				<input type="hidden" class="p-country-name" value="Japan">
 				<div class="box box-info">
@@ -141,9 +143,9 @@
 								<label><small class="label bg-red">必須</small> 施設の種類</label>
 								{{ App\Helper::error($errors, ['institution_kind_id']) }}
 								<div class="row radio">
-									{{-- @foreach ($institutionKinds as $institutionKind)
-										<div class="col-md-3 col-xs-6"><label>{{ Form::radio('institution_kind_id', $institutionKind->id, true, []) }} {{ e($institutionKind->name) }}</label></div>
-									@endforeach --}}
+									@foreach ($facilityKinds as $facilityKind)
+										<div class="col-md-3 col-xs-6"><label>{{ Form::radio('facility_kind_id', $facilityKind->id, true, []) }} {{ e($facilityKind->name) }}</label></div>
+									@endforeach
 								</div>
 							</div>
 						</div>
@@ -152,7 +154,6 @@
 						<button type="submit" class="btn btn-success pull-right">保存して進む</button>
 					</div>
 				</div>
-			</form>
 			{{ Form::close() }}
 		</div>
 	</div>

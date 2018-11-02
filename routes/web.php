@@ -147,8 +147,8 @@ Route::group(['prefix' => 'host'], function() {
 		
 		//施設情報
 		Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');
-		Route::get('space/new', 'Host\SpaceController@new');
-		Route::post('space', 'Host\SpaceController@create');
+		Route::get('facilities/new', 'Host\FacilityController@new')->name('host.facility.new');
+		Route::post('facilities', 'Host\FacilityController@create')->name('host.facility.create');
 		Route::post('institution/confirm/{institution?}', '\App\Http\Controllers\Host\InstitutionController@confirm');
 		Route::get('institution/delete/{institution}', '\App\Http\Controllers\Host\InstitutionController@delete');
 		
