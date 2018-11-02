@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Host;
 use App\Address;
 use App\FacilityKind;
 use App\Prefecture;
+use App\Space;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -48,13 +49,15 @@ class FacilityController extends Controller
 			'longitude' => $request->get('longitude'),
 		]);
 		
-		$address->facilities()->create([
+		$facility = $address->facilities()->create([
 			'facility_kind_id' => $request->get('facility_kind_id'),
 			'name' => $request->get('name'),
 			'access' => $request->get('access'),
 			'tel' => $request->get('tel'),
 		]);
 
-		return redirect('/host');
+		$space = $facility->spaces()->create();
+
+		return redirect('/host/spaces/new/'.$space->id);
 	}
 }

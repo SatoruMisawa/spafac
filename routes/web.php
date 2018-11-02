@@ -143,52 +143,64 @@ Route::group(['prefix' => 'host'], function() {
 	Route::group(['middleware' => 'auth'], function () {
 	
 		//トップページ
-		Route::get('/', '\App\Http\Controllers\Host\IndexController@index');
+		Route::get('/', '\App\Http\Controllers\Host\IndexController@index')->name('host');
 		
-		//施設情報
-		Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');
+
 		Route::get('facilities/new', 'Host\FacilityController@new')->name('host.facility.new');
 		Route::post('facilities', 'Host\FacilityController@create')->name('host.facility.create');
-		Route::post('institution/confirm/{institution?}', '\App\Http\Controllers\Host\InstitutionController@confirm');
-		Route::get('institution/delete/{institution}', '\App\Http\Controllers\Host\InstitutionController@delete');
+
+		Route::get('spaces/new/{space}', 'Host\SpaceController@new')->name('host.space.new');
+		Route::post('spaces/{space}', 'Host\SpaceController@create')->name('host.space.create');
+
+		Route::get('spaces/{space}/images/new', 'Host\SpaceImageController@new')->name('host.space.image.new');
+		Route::post('spaces/{space}/images', 'Host\SpaceImageController@create')->name('host.space.image.create');
+
+		Route::get('plans/new/{space}', 'Host\PlanController@new')->name('host.plan.new');
+		Route::post('plans/{space}', 'Host\PlanController@create')->name('host.plan.create');
+
+
+		//施設情報
+		// Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');
+		// Route::post('institution/confirm/{institution?}', '\App\Http\Controllers\Host\InstitutionController@confirm');
+		// Route::get('institution/delete/{institution}', '\App\Http\Controllers\Host\InstitutionController@delete');
 		
 		//スペース情報
-		Route::get('space', '\App\Http\Controllers\Host\SpaceController@index');
-		Route::get('space/edit-institution/{space?}', '\App\Http\Controllers\Host\SpaceController@editInstitution');
-		Route::get('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@editBasic');
-		Route::post('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@confirmBasic');
-		Route::get('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@editExplanation');
-		Route::post('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@confirmExplanation');
-		Route::get('space/edit-media/{space}', '\App\Http\Controllers\Host\SpaceController@editMedia');
-		Route::post('space/edit-media/{space}', '\App\Http\Controllers\Host\SpaceController@confirmMedia');
+		// Route::get('space', '\App\Http\Controllers\Host\SpaceController@index');
+		// Route::get('space/edit-institution/{space?}', '\App\Http\Controllers\Host\SpaceController@editInstitution');
+		// Route::get('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@editBasic');
+		// Route::post('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@confirmBasic');
+		// Route::get('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@editExplanation');
+		// Route::post('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@confirmExplanation');
+		// Route::get('space/edit-media/{space}', '\App\Http\Controllers\Host\SpaceController@editMedia');
+		// Route::post('space/edit-media/{space}', '\App\Http\Controllers\Host\SpaceController@confirmMedia');
 		//Route::get('space/edit-plan/{space}', '\App\Http\Controllers\Host\SpaceController@editPlan');
 		//Route::post('space/edit-plan/{space}', '\App\Http\Controllers\Host\SpaceController@confirmPlan');
 		//Route::get('space/edit-option/{space}', '\App\Http\Controllers\Host\SpaceController@editOption');
 		//Route::post('space/edit-option/{space}', '\App\Http\Controllers\Host\SpaceController@confirmOption');
-		Route::get('space/media/{media?}', '\App\Http\Controllers\Host\SpaceController@media');
-		Route::get('space/delete/{space}', '\App\Http\Controllers\Host\SpaceController@delete');
+		// Route::get('space/media/{media?}', '\App\Http\Controllers\Host\SpaceController@media');
+		// Route::get('space/delete/{space}', '\App\Http\Controllers\Host\SpaceController@delete');
 		
 		//プラン
-		Route::get('plan/{space}', '\App\Http\Controllers\Host\PlanController@index');
-		Route::get('plan/edit/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@edit');
-		Route::post('plan/edit/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@confirm');
-		Route::get('plan/edit-option/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@editOption');
-		Route::post('plan/edit-option/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@confirmOption');
-		Route::get('plan/delete/{space}/{plan}', '\App\Http\Controllers\Host\PlanController@delete');
+		// Route::get('plan/{space}', '\App\Http\Controllers\Host\PlanController@index');
+		// Route::get('plan/edit/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@edit');
+		// Route::post('plan/edit/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@confirm');
+		// Route::get('plan/edit-option/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@editOption');
+		// Route::post('plan/edit-option/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@confirmOption');
+		// Route::get('plan/delete/{space}/{plan}', '\App\Http\Controllers\Host\PlanController@delete');
 		
 		//スペースオーナー情報
-		Route::get('account/edit-basic', '\App\Http\Controllers\Host\AccountController@editBasic');
-		Route::post('account/edit-basic', '\App\Http\Controllers\Host\AccountController@confirmBasic');
-		Route::get('account/edit-address', '\App\Http\Controllers\Host\AccountController@editAddress');
-		Route::post('account/edit-address', '\App\Http\Controllers\Host\AccountController@confirmAddress');
-		Route::get('account/edit-bank', '\App\Http\Controllers\Host\AccountController@editBank');
-		Route::post('account/edit-bank', '\App\Http\Controllers\Host\AccountController@confirmBank');
+		// Route::get('account/edit-basic', '\App\Http\Controllers\Host\AccountController@editBasic');
+		// Route::post('account/edit-basic', '\App\Http\Controllers\Host\AccountController@confirmBasic');
+		// Route::get('account/edit-address', '\App\Http\Controllers\Host\AccountController@editAddress');
+		// Route::post('account/edit-address', '\App\Http\Controllers\Host\AccountController@confirmAddress');
+		// Route::get('account/edit-bank', '\App\Http\Controllers\Host\AccountController@editBank');
+		// Route::post('account/edit-bank', '\App\Http\Controllers\Host\AccountController@confirmBank');
 		
 		//メディア
-		Route::post('media/upload', '\App\Http\Controllers\Host\MediaController@upload');
+		// Route::post('media/upload', '\App\Http\Controllers\Host\MediaController@upload');
 		//Route::post('media/upload-ckeditor', '\App\Http\Controllers\Shop\MediaController@upload4CKEditor');
 		//Route::post('media/upload-ckeditor2', '\App\Http\Controllers\Shop\MediaController@upload4CKEditor2');
-		Route::get('media/thumbnail/{media?}/{width?}/{height?}/{fit?}', '\App\Http\Controllers\Host\MediaController@thumbnail');
+		// Route::get('media/thumbnail/{media?}/{width?}/{height?}/{fit?}', '\App\Http\Controllers\Host\MediaController@thumbnail');
 		
 	});
 });

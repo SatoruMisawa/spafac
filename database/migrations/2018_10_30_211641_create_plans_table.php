@@ -15,9 +15,13 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('space_id')->unsigned();
-            $table->integer('amount')->unsigned();
+            $table->bigInteger('preorder_deadline_id')->unsigned();
+            $table->bigInteger('preorder_period_id')->unsigned();
+            $table->integer('price_per_hour')->unsigned()->nullable();
+            $table->integer('price_per_day')->unsigned()->nullable();
+            $table->boolean('need_to_be_approved')->default(false);
+            $table->date('from')->nullable();
+            $table->date('to')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

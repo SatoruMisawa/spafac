@@ -11,31 +11,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Plan extends Model
 {
 	use MyModel;
-	/**
-	* The database table used by the model.
-	*
-	* @var string
-	*/
-	//protected $table = '';
-	
-	/**
-	* The attributes that are mass assignable.
-	*/
+
 	protected $fillable = [
-		'user_id', 'space_id', 'amount',
+		'preorder_deadline_id', 'preorder_period_id',
+		'price_per_hour', 'price_per_day',
+		'need_to_be_approved',
+		'from', 'to',
 	];
 	
 	/**
 	* relations
 	*/
 	public function space() {
-		return $this->belongsTo('App\Space');
-	}
-	public function host() {
-		return $this->belongsTo('App\Host');
-	}
-	public function planDays() {
-		return $this->hasMany('App\PlanDay');
+		return $this->hasOne(Space::class);
 	}
 
 	public function user() {

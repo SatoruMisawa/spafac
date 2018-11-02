@@ -2,172 +2,76 @@
 
 namespace App\Http\Controllers\Host;
 
-use App\Http\Controllers\Host\Controller as HostController;
-use Illuminate\Http\Request;
+use App\Day;
 use App\Plan;
+use App\PreorderDeadline;
+use App\PreorderPeriod;
+use App\Schedule;
 use App\Space;
-use App\Purpose;
-use App\KeyDelivery;
-use App\Media;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-/**
- *
- */
-class PlanController extends HostController
+
+class PlanController extends Controller
 {
-	/**
-	* トップページ
-	*/
-	public function index(Request $request, $space) {
-		
-		//プラン一覧
-		$plans = $space->getPlans();
-		
-		$data = compact('space', 'plans');
-		
-		$view = view('host.plan.index', $data);
-		return $view;
+	public function new(Space $space) {
+		return view('host.plan.new', [
+			'space' => $space,
+			'days' => Day::all(),
+			'preorderDeadlines' => PreorderDeadline::all()->map(function($deadline) {
+				return $deadline->name;
+			})->toArray(),
+			'preorderPeriods' => PreorderPeriod::all()->map(function($period) {
+				return $period->name;
+			})->toArray(),
+		]);
 	}
 
-	/**
-	* プラン情報編集
-	*/
-	public function edit(Request $request, $space, $plan = null) {
-		
-		if (!$plan) {
-			$plan = new Plan();
-		}
-		
-		//貸出可能な曜日リスト
-		$planDayList = $plan->getPlanDayList();
-		
-		//編集中のプランセット
-		Space::setCurrentSpace($space);
-		Plan::setCurrentPlan($plan);
-		
-		$data = compact('space', 'plan', 'planDayList');
-		
-		$view = view('host.plan.edit', $data);
-		return $view;
-	}
-
-	/**
-	* プラン情報確認
-	*/
-	public function confirm(Request $request, $space, $plan = null) {
-		
-		if (!$plan) {
-			$plan = new Plan();
-		}
-		
-		$plan->fillRequestData($request);
-		$planDayList = $request->input('planDayList');
-		
-		//バリデート
-		$validateRules = [
+	public function create(Request $request, Space $space) {
+		$request->validate([
 			'name' => 'required',
-			'by_hour' => '',
-			'charge_per_hour' => 'required_if:by_hour,1|nullable|integer|min:1',
-			'by_day' => '',
-			'charge_per_day' => 'required_if:by_day,1|nullable|integer|min:1',
-			'approve_reservation' => 'required',
-			'planDayList.*.available' => '',
-			'planDayList.*.hour_from' => 'required_if:planDayList.*.available,1|nullable|integer',
-			'planDayList.*.hour_to' => 'required_if:planDayList.*.available,1|nullable|integer',
+			'price_per_hour' => 'nullable|required_with:by_hour|min:1',
+			'price_per_day' => 'nullable|required_with:by_day|min:1',
+			'day_ids' => 'required|array',
+			'hour_from' => 'required|array',
+			'hour_to' => 'required|array',
+			'need_to_be_approved' => 'required|boolean',
+			'preorder_deadline_id' => 'required',
+			'preorder_period_id' => 'required',
 			'period_from' => 'nullable|date',
-			'period_to' => 'nullable|date',
-		];
-		$validateMessages = [
-		];
-		$validator = \Validator::make($request->all(), $validateRules, $validateMessages);
-		$customAttributes = [
-			'name' => 'プランの名称',
-			'by_hour' => '時間価格',
-			'charge_per_hour' => '時間価格',
-			'by_day' => '一日価格',
-			'charge_per_day' => '一日価格',
-			'approve_reservation' => '予約の承認方法',
-			'planDayList.*.available' => '有効',
-			'planDayList.*.hour_from' => '時間帯(始)',
-			'planDayList.*.hour_to' => '時間帯(終)',
-			'period_from' => '期間(始)',
-			'period_to' => '期間(終)',
-		];
-		$validator->addCustomAttributes($customAttributes);
-		if ($validator->fails()) {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
+			'period_to' => 'required_with:period_from|date|after:period_from',
+		]);
 		
-		$plan->space()->associate($space);
-		$plan->saveAll($planDayList);
-		//return redirect()->to('host/plan/edit-option/' . $space->id . '/' . $plan->id)->with('message', 'プラン情報を更新しました。');
-		return redirect()->to('host/plan/' . $space->id)->with('message', 'プランを更新しました。');
-	}
+		$plan = Plan::create([
+			'preorder_deadline_id' => $request->get('preorder_deadline_id'),
+			'preorder_period_id' => $request->get('preorder_period_id'),
+			'price_per_hour' => $request->get('price_per_hour'),
+			'price_per_day' => $request->get('price_per_day'),
+			'need_to_be_approved' => $request->get('need_to_be_approved'),
+			'from' => $request->get('period_from'),
+			'to' => $request->get('period_to'),
+		]);
+		
+		foreach ($request->get('day_ids') as $dayID) {
+			$from = $request->get('hour_from')[$dayID];
+			$to = $request->get('hour_to')[$dayID];
+			if ($to <= $from) {
+				return redirect()
+						->back()
+						->withErrors('hour_from', '終了時刻より早い時間にしてください')
+						->withInput();
+			}
 
-	/**
-	* オプション編集
-	*/
-	public function editOption(Request $request, $space, $plan) {
-		
-		if (!$plan) {
-			$plan = new Plan();
+			Schedule::create([
+				'plan_id' => $plan->id,
+				'day_id' => $dayID,
+				'from' => $from,
+				'to' => $to,
+			]);
 		}
-		
-		//編集中のプランセット
-		Space::setCurrentSpace($space);
-		Plan::setCurrentPlan($plan);
-		
-		$data = compact('space', 'plan');
-		
-		$view = view('host.plan.edit-option', $data);
-		return $view;
-	}
 
-	/**
-	* オプション確認
-	*/
-	public function confirmOption(Request $request, $space, $plan) {
-		
-		if (!$plan) {
-			$plan = new Plan();
-		}
-		
-		$plan->fillRequestData($request);
-		
-		//バリデート
-		$validateRules = [
-		];
-		$validateMessages = [
-		];
-		$validator = \Validator::make($request->all(), $validateRules, $validateMessages);
-		$customAttributes = [
-		];
-		$validator->addCustomAttributes($customAttributes);
-		if ($validator->fails()) {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
-		
-		$plan->space()->associate($space);
-		$plan->save();
-		return redirect()->to('host/space/' . $space->id)->with('message', 'オプションを更新しました。');
-	}
+		$plan->space()->save($space);
 
-	/**
-	* プラン情報削除
-	*/
-	public function delete(Request $request, $space, $plan) {
-		
-		$host = $this->loginUser()->getHost();
-		if ($space->host_id != $host->id) {
-			abort(404);
-		}
-		if ($plan->space_id != $space->id) {
-			abort(404);
-		}
-		
-		$plan->delete();
-		return redirect()->to('host/plan/' . $space->id)->with('message', 'プランを削除しました。');
-		
+		return redirect()->route('host.space.image.new', $space->id);
 	}
-
 }

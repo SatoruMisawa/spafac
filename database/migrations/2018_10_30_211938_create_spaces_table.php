@@ -15,13 +15,12 @@ class CreateSpacesTable extends Migration
     {
         Schema::create('spaces', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('facility_id')->unsigned();
-            $table->bigInteger('space_usage_id')->unsigned();
-            $table->bigInteger('key_delivery_id')->unsigned();
-            $table->bigInteger('plan_id')->unsigned();
-            $table->integer('capacity');
-            $table->integer('floor_area');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->bigInteger('facility_id')->unsigned()->nullable();
+            $table->bigInteger('key_delivery_id')->unsigned()->nullable();
+            $table->bigInteger('plan_id')->unsigned()->nullable();
+            $table->integer('capacity')->nullable();
+            $table->integer('floor_area')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

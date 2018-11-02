@@ -12,4 +12,8 @@ class Facility extends Model
         'address_id', 'facility_kind_id',
         'name', 'access', 'tel',
     ];
+
+    public function spaces() {
+        return $this->hasMany(Space::class);
+    }
 }
