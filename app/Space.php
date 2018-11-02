@@ -38,11 +38,10 @@ class Space extends Model
 		12 => '12ヶ月先まで予約を受け付ける',
 	];
 	
-	/**
-	* The attributes that are mass assignable.
-	*/
 	protected $fillable = [
-		'address_id', 'name', 'access', 'tel',
+		'user_id', 'facility_id', 'space_usage_id',
+		'key_delivery_id', 'plan_id',
+		'capacity', 'floor_area',
 	];
 	
 	/**
