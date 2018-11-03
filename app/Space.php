@@ -59,6 +59,10 @@ class Space extends Model
 	public function spacePhotos() {
 		return $this->hasMany('App\SpacePhoto');
 	}
+
+	public function plan() {
+		return $this->hasOne(Plan::class);
+	}
 	
 	/**
 	* 選択肢

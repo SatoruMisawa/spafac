@@ -13,7 +13,7 @@ class Plan extends Model
 	use MyModel;
 
 	protected $fillable = [
-		'preorder_deadline_id', 'preorder_period_id',
+		'space_id', 'preorder_deadline_id', 'preorder_period_id',
 		'price_per_hour', 'price_per_day',
 		'need_to_be_approved',
 		'from', 'to',

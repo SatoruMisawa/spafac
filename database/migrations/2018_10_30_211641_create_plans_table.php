@@ -15,6 +15,7 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('space_id')->unsigned();
             $table->bigInteger('preorder_deadline_id')->unsigned();
             $table->bigInteger('preorder_period_id')->unsigned();
             $table->integer('price_per_hour')->unsigned()->nullable();
