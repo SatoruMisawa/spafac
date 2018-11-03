@@ -55,6 +55,10 @@ class User extends Authenticatable
 		return $this->hasMany(Facility::class);
 	}
 
+	public function spaces() {
+		return $this->hasMany(Space::class);
+	}
+
 	public function providers() {
 		return $this->belongsToMany(Provider::class, 'user_provider')->using(UserProvider::class);
 	}

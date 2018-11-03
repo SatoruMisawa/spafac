@@ -18,7 +18,6 @@ class CreateSpacesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->bigInteger('facility_id')->unsigned()->nullable();
             $table->bigInteger('key_delivery_id')->unsigned()->nullable();
-            $table->bigInteger('plan_id')->unsigned()->nullable();
             $table->integer('capacity')->nullable();
             $table->integer('floor_area')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
