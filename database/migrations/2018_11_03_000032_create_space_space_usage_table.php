@@ -13,7 +13,7 @@ class CreateSpaceSpaceUsageTable extends Migration
      */
     public function up()
     {
-        Schema::create('space_space_usage', function (Blueprint $table) {
+        Schema::create('space_manuals', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('space_id')->unsigned();
             $table->bigInteger('space_usage_id')->unsigned();
