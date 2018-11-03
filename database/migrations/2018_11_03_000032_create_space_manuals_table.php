@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSpaceSpaceUsageTable extends Migration
+class CreateSpaceManualsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -27,6 +27,6 @@ class CreateSpaceSpaceUsageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('space_space_usage');
+        Schema::dropIfExists('space_manuals');
     }
 }
