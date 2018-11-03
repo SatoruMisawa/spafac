@@ -9,7 +9,7 @@ class Facility extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'address_id', 'facility_kind_id',
+        'user_id', 'address_id', 'facility_kind_id',
         'name', 'access', 'tel',
     ];
 
