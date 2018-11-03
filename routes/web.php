@@ -142,21 +142,57 @@ Route::group(['prefix' => 'mypage'], function() {
 Route::group(['prefix' => 'host'], function() {
 	Route::group(['middleware' => 'auth'], function () {
 	
-		//トップページ
+		Route::get('/', 'Host\HostController@index')->name('host.index');
 		Route::get('/', '\App\Http\Controllers\Host\IndexController@index')->name('host');
 		
+		Route::group(['prefix' => '/facilities'], function() {
+			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
+			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
+			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
+			Route::get('/{facility}', 'Host\FacilityController@show')->name('host.facility.show');
+			Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
+			Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.delete');
 
-		Route::get('facilities/new', 'Host\FacilityController@new')->name('host.facility.new');
-		Route::post('facilities', 'Host\FacilityController@create')->name('host.facility.create');
+			Route::group(['prefix' => '/{facility}/spaces'], function() {
+				Route::get('/', 'Host\SpaceController@index')->name('host.facility.space.index');
+				Route::get('/new', 'Host\SpaceController@new')->name('host.facility.space.new');
+				Route::post('/', 'Host\SpaceController@create')->name('host.facility.space.create');
+				Route::get('/{space}', 'Host\SpaceController@show')->name('host.facility.space.show');
+				Route::put('/{space}', 'Host\SpaceController@update')->name('host.facility.space.update');
+				Route::delete('/{space}', 'Host\SpaceController@delete')->name('host.facility.space.delete');
 
-		Route::get('spaces/new/{space}', 'Host\SpaceController@new')->name('host.space.new');
-		Route::post('spaces/{space}', 'Host\SpaceController@create')->name('host.space.create');
+				Route::group(['prefix' => '/{space}/images'], function() {
+					Route::get('/', 'Host\ImageController@index')->name('host.facility.space.image.index');
+					Route::get('/new', 'Host\ImageController@new')->name('host.facility.space.image.new');
+					Route::post('/', 'Host\ImageController@create')->name('host.facility.space.image.create');
+					Route::get('/{image}', 'Host\ImageController@show')->name('host.facility.space.image.show');
+					Route::put('/{image}', 'Host\ImageController@update')->name('host.facility.space.image.update');
+					Route::delete('/{image}', 'Host\ImageController@delete')->name('host.facility.space.image.delete');
+				});
 
-		Route::get('spaces/{space}/images/new', 'Host\SpaceImageController@new')->name('host.space.image.new');
-		Route::post('spaces/{space}/images', 'Host\SpaceImageController@create')->name('host.space.image.create');
+				Route::group(['prefix' => '/{space}/plan'], function() {
+					Route::get('/', 'Host\PlanController@index')->name('host.facility.space.plan.index');
+					Route::get('/new', 'Host\PlanController@new')->name('host.facility.space.plan.new');
+					Route::post('/', 'Host\PlanController@create')->name('host.facility.space.plan.create');
+					Route::get('/{plan}', 'Host\PlanController@show')->name('host.facility.space.plan.show');
+					Route::put('/{plan}', 'Host\PlanController@update')->name('host.facility.space.plan.update');
+					Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.facility.space.plan.delete');
+				});
+			});
+		});
+		
 
-		Route::get('plans/new/{space}', 'Host\PlanController@new')->name('host.plan.new');
-		Route::post('plans/{space}', 'Host\PlanController@create')->name('host.plan.create');
+		Route::get('facilities/new', 'Host\FacilityController@new');
+		Route::post('facilities', 'Host\FacilityController@create');
+
+		Route::get('spaces/new/{space}', 'Host\SpaceController@new');
+		Route::post('spaces/{space}', 'Host\SpaceController@create');
+
+		Route::get('spaces/{space}/images/new', 'Host\SpaceImageController@new');
+		Route::post('spaces/{space}/images', 'Host\SpaceImageController@create');
+
+		Route::get('plans/new/{space}', 'Host\PlanController@new');
+		Route::post('plans/{space}', 'Host\PlanController@create');
 
 
 		//施設情報
