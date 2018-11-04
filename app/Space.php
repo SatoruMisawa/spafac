@@ -64,6 +64,9 @@ class Space extends Model
 		return $this->hasOne(Plan::class);
 	}
 	
+	public function images() {
+		return $this->hasMany(SpaceImage::class);
+	}
 	/**
 	* 選択肢
 	*/
