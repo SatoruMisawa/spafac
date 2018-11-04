@@ -19,4 +19,8 @@ class Address extends Model
     public function spaces() {
         return $this->hasMany(Space::class);
     }
+
+    public function facilities() {
+        return $this->hasMany(Facility::class);
+    }
 }

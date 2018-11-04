@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FacilityKind extends Model
+class PreorderPeriod extends Model
 {
     public $timestamps = false;
 

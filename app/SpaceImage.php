@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FacilityKind extends Model
+class SpaceImage extends Model
 {
-    public $timestamps = false;
-
     protected $fillable = [
-        'name',
+        'space_id',
+        'url',
     ];
 }

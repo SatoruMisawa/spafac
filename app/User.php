@@ -39,9 +39,6 @@ class User extends Authenticatable
 		$this->claimant = app()->make(Claimant::class);
 	}
 
-	/**
-	* relations
-	*/
 	public function stripeUser() {
 		return $this->hasOne(StripeUser::class);
 	}
@@ -52,6 +49,14 @@ class User extends Authenticatable
 
 	public function host() {
 		return $this->hasOne('App\Host')->withDefault();
+	}
+
+	public function facilities() {
+		return $this->hasMany(Facility::class);
+	}
+
+	public function spaces() {
+		return $this->hasMany(Space::class);
 	}
 
 	public function providers() {

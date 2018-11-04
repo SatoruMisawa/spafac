@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FacilityKind extends Model
+class Schedule extends Model
 {
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
+        'plan_id', 'day_id',
+        'from', 'to',
     ];
 }

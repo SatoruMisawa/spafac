@@ -15,7 +15,13 @@
 	@include('host.layouts.message', array('errors' => $errors))
 	<div class="row">
 		<div class="col-md-12">
-			<form action="/host/space" method="POST">
+			{{
+				Form::open([
+					'route' => 'host.facility.create',
+					'method' => 'POST',
+					'class' => 'h-adr',
+				])
+			}}
 				@csrf
 				<input type="hidden" class="p-country-name" value="Japan">
 				<div class="box box-info">
@@ -40,7 +46,7 @@
 								{{ App\Helper::error($errors, ['zip']) }}
 								<div class="row">
 									<div class="col-xs-6 col-sm-3">
-										{{ Form::text('zip', null, ['class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
+										{{ Form::text('zip', null, ['id' => 'zip-input', 'class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
 										<input type="hidden" id="address" class="p-region p-locality p-street-address p-extended-address">
 									</div>
 								</div>
@@ -137,9 +143,9 @@
 								<label><small class="label bg-red">必須</small> 施設の種類</label>
 								{{ App\Helper::error($errors, ['institution_kind_id']) }}
 								<div class="row radio">
-									{{-- @foreach ($institutionKinds as $institutionKind)
-										<div class="col-md-3 col-xs-6"><label>{{ Form::radio('institution_kind_id', $institutionKind->id, true, []) }} {{ e($institutionKind->name) }}</label></div>
-									@endforeach --}}
+									@foreach ($facilityKinds as $facilityKind)
+										<div class="col-md-3 col-xs-6"><label>{{ Form::radio('facility_kind_id', $facilityKind->id, true, []) }} {{ e($facilityKind->name) }}</label></div>
+									@endforeach
 								</div>
 							</div>
 						</div>
@@ -148,7 +154,7 @@
 						<button type="submit" class="btn btn-success pull-right">保存して進む</button>
 					</div>
 				</div>
-			</form>
+			{{ Form::close() }}
 		</div>
 	</div>
 </section>
@@ -156,6 +162,7 @@
 @stop
 
 @section('script')
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzq2kSVHGO-_H7Ls1bm7rduFQ4V5Xw9TE"></script>
 
 <script>
@@ -163,20 +170,16 @@ $(function() {
 	var map;
 	var maker;
 	
-	$('.p-postal-code').on('change', function() {
-		
-		var address = $('#address').val();
+	$('#zip-input').change(function() {
+		var address = $(this).val();
 		
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({address: address}, function(results, status) {
-			
 			if (status == google.maps.GeocoderStatus.OK) {
 				map.setCenter(results[0].geometry.location);
 				marker.setPosition(results[0].geometry.location);
 			}
-			
 		});
-		
 	});
 	
 	function initMap() {

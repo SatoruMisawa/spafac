@@ -2,103 +2,119 @@
 
 namespace App\Http\Controllers\Host;
 
-use App\Http\Controllers\Host\Controller as HostController;
-use Illuminate\Http\Request;
-use App\Host;
+use App\Address;
 use App\Facility;
 use App\FacilityKind;
 use App\Prefecture;
+use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Http\Request;
 
-/**
- *
- */
-class FacilityController extends HostController
+class FacilityController extends Controller
 {
-	/**
-	* 施設一覧
-	*/
 	public function index() {
-		
-		//施設一覧
-		$host = $this->loginUser()->host;
-		$facilities = $host->getFacilities();
-		
-		$data = compact('facilities');
-		
-		$view = view('host.facility.index', $data);
-		return $view;
+		return view('host.facility.index', [
+			'facilities' => Auth::user()->facilities()->get(),
+		]);
 	}
 
-	/**
-	* 施設情報
-	*/
-	public function edit(Request $request, $facility = null) {
-		
-		if (!$facility) {
-			$facility = new Facility();
-		}
-		
-		//施設種類
-		$facilityKinds = FacilityKind::get4Select();
-		
-		//都道府県
-		$prefectureList = Prefecture::array4Select();
-		
-		$data = compact('facility', 'facilityKinds', 'prefectureList');
-		
-		$view = view('host.facility.edit', $data);
-		return $view;
+	public function new() {
+		return view('host.facility.new', [
+			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
+				return [$prefecture->id => $prefecture->name];
+			})->toArray(),
+			'facilityKinds' => FacilityKind::all(),
+		]);
 	}
 
-	/**
-	* 施設情報確認
-	*/
-	public function confirm(Request $request, $facility = null) {
-		
-		$host = $this->loginUser()->host;
-		if (!$facility) {
-			$facility = new Facility();
-		}
-		
-		$facility->fillRequestData($request);
-		
-		//バリデート
-		$validateRules = [
+	public function create(Request $request) {
+		$request->validate([
 			'name' => 'required',
 			'zip' => 'required|zip',
 			'prefecture_id' => 'required',
 			'address1' => 'required',
-			'address1_kana' => 'required|zenkaku_kana',
+			'address1_ruby' => 'required',
 			'address2' => 'required',
-			'address2_kana' => 'required|zenkaku_kana',
-			'address3' => 'nullable',
-			'address3_kana' => 'nullable|zenkaku_kana',
+			'address2_ruby' => 'required',
+			'address3_ruby' => 'required_with:address3',
+			'latitude' => 'required',
+			'longitude' => 'required',
 			'access' => 'required',
 			'tel' => 'required|tel',
-			'facility_kind_id' => 'required',
-		];
-		$validateMessages = [
-		];
-		$validator = \Validator::make($request->all(), $validateRules, $validateMessages);
-		$customAttributes = [
-			'name' => '施設名',
-			'address1' => '市区町村',
-			'address1_kana' => '市区町村フリガナ',
-			'address2' => '町名・番地',
-			'address2_kana' => '町名・番地フリガナ',
-			'address3' => 'ビル名・部屋番号',
-			'address3_kana' => 'ビル名・部屋番号フリガナ',
-		];
-		$validator->addCustomAttributes($customAttributes);
-		if ($validator->fails()) {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
+		]);
 		
-		$facility->host()->associate($host);
-		$facility->save();
-		return redirect()->to('host/facility')->with('message', '施設情報を更新しました。');
+		$address = Address::firstOrCreate([
+			'prefecture_id' => $request->get('prefecture_id') + 1,
+			'zip' => $request->get('zip'),
+			'address1' => $request->get('address1'),
+			'address1_ruby' => $request->get('address1_ruby'),
+			'address2' => $request->get('address2'),
+			'address2_ruby' => $request->get('address2_ruby'),
+			'address3' => $request->get('address3'),
+			'address3_ruby' => $request->get('address3_ruby'),
+			'latitude' => $request->get('latitude'),
+			'longitude' => $request->get('longitude'),
+		]);
 		
+		$user = Auth::user();
+		$facility = $user->facilities()->create([
+			'address_id' => $address->id,
+			'facility_kind_id' => $request->get('facility_kind_id'),
+			'name' => $request->get('name'),
+			'access' => $request->get('access'),
+			'tel' => $request->get('tel'),
+		]);
+
+		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 
+	public function edit(Facility $facility) {
+		return view('host.facility.edit', [
+			'facility' => $facility,
+			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
+				return [$prefecture->id => $prefecture->name];
+			})->toArray(),
+			'facilityKinds' => FacilityKind::all(),
+		]);
+	}
+
+	public function update(Request $request, Facility $facility) {
+		$request->validate([
+			'name' => 'required',
+			'zip' => 'required|zip',
+			'prefecture_id' => 'required',
+			'address1' => 'required',
+			'address1_ruby' => 'required',
+			'address2' => 'required',
+			'address2_ruby' => 'required',
+			'address3_ruby' => 'required_with:address3',
+			'latitude' => 'required',
+			'longitude' => 'required',
+			'access' => 'required',
+			'tel' => 'required|tel',
+		]);
+
+		$address = Address::firstOrCreate([
+			'prefecture_id' => $request->get('prefecture_id') + 1,
+			'zip' => $request->get('zip'),
+			'address1' => $request->get('address1'),
+			'address1_ruby' => $request->get('address1_ruby'),
+			'address2' => $request->get('address2'),
+			'address2_ruby' => $request->get('address2_ruby'),
+			'address3' => $request->get('address3'),
+			'address3_ruby' => $request->get('address3_ruby'),
+			'latitude' => $request->get('latitude'),
+			'longitude' => $request->get('longitude'),
+		]);
+
+		$facility->update([
+			'address_id' => $address->id,
+			'facility_kind_id' => $request->get('facility_kind_id'),
+			'name' => $request->get('name'),
+			'access' => $request->get('access'),
+			'tel' => $request->get('tel'),
+		]);
+
+		return redirect()->route('host.facility.index');
+	}
 }

@@ -7,6 +7,12 @@ class DatabaseSeeder extends Seeder
     private $seeders = [
         ProviderSeeder::class,
         PrefectureSeeder::class,
+        FacilityKindSeeder::class,
+        SpaceUsageSeeder::class,
+        KeyDeliverySeeder::class,
+        PreorderDeadlineSeeder::class,
+        PreorderPeriodSeeder::class,
+        DaySeeder::class,
     ];
 
     /**
