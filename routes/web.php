@@ -149,7 +149,7 @@ Route::group(['prefix' => 'host'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
 			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
-			Route::get('/{facility}', 'Host\FacilityController@show')->name('host.facility.show');
+			Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
 			Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
 			Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.delete');
 

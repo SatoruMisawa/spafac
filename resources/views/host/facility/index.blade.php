@@ -33,17 +33,17 @@
 								<th></th>
 							</tr>
 							@foreach ($facilities as $facility)
-							<tr>
-								<td>{{ $facility->facilityKind->name }}</td>
-								<td>{{ $facility->name }}</td>
-								<td>{{ $facility->tel }}</td>
-								<td>{{ $facility->address->zip }}</td>
-								<td>{{ $facility->address->address1 }}</td>
-								<td>
-									<a class="btn btn-warning btn-xs" href="">編集</a>
-									<a class="btn btn-default btn-xs delete-button" href="" data-name="No.{{ $facility->id }}">削除</a>
-								</td>
-							</tr>
+								<tr>
+									<td>{{ $facility->facilityKind->name }}</td>
+									<td>{{ $facility->name }}</td>
+									<td>{{ $facility->tel }}</td>
+									<td>{{ $facility->address->zip }}</td>
+									<td>{{ $facility->address->address1 }}</td>
+									<td>
+										<a class="btn btn-warning btn-xs" href="{{ route('host.facility.edit', $facility->id) }}">編集</a>
+										<a class="btn btn-default btn-xs delete-button" href="" data-name="No.{{ $facility->id }}">削除</a>
+									</td>
+								</tr>
 							@endforeach
 						</tbody>
 					</table>
