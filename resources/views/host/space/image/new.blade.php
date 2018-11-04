@@ -48,14 +48,13 @@
 								または、
 								{{ 
 									Form::file('images[]', [
-										'class' => 'image-upload-button',
+										'id' => 'image-upload-button',
 										'style' => 'display: none;',
 										'multiple' => true,
 									])
 								}}
 								<label for="image-upload-button" class="btn btn-success btn-sm media-button"><i class="fa fa-plus"></i> 新規写真の作成</label>
 							</p>
-							<span class="help-block text-red">※画像は 600 x 800 で作成してください。</span>
 							
 							<!-- 写真テンプレート -->
 							<li class="media-template ui-state-default" style="display: none; width: 135px; height: 180px;">

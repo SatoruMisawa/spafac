@@ -16,9 +16,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			{{ 
-				Form::model([
-					$space,
-					'route' => ['host.facility.space.update', $space->facility->id],
+				Form::model($space, [
+					'route' => ['host.facility.space.update', $space->facility->id, $space->id],
 					'method' => 'PUT',
 				])
 			}}
@@ -36,7 +35,7 @@
 							<div class="row checkbox">
 								@foreach ($spaceUsages as $spaceUsage)
 									<div class="col-md-4 col-sm-6">
-										<label>{{ Form::checkbox('space_usage_ids[]', $spaceUsage->id, false) }} {{ $spaceUsage->name }}</label>
+										<label>{{ Form::checkbox('space_usage_ids[]', $spaceUsage->id, $space->spaceUsages()->wherePivot('space_usage_id', $spaceUsage->id)->exists()) }} {{ $spaceUsage->name }}</label>
 									</div>
 								@endforeach
 							</div>
@@ -72,15 +71,14 @@
 							<div class="row radio">
 								@foreach ($keyDeliveries as $keyDelivery)
 									<div class="col-md-4 col-sm-6">
-										<label>{{ Form::radio('key_delivery_id', $keyDelivery->id) }} {{ $keyDelivery->name }}</label>
+										<label>{{ Form::radio('key_delivery_id', $keyDelivery->id, $space->key_delivery_id == $keyDelivery->id) }} {{ $keyDelivery->name }}</label>
 									</div>
 								@endforeach
 							</div>
 						</div>
 					</div>
 					<div class="box-footer">
-						<button type="submit" class="btn btn-default" disabled>保存して戻る</button>
-						<button type="submit" class="btn btn-success pull-right">保存して進む</button>
+						<button type="submit" class="btn btn-success pull-right">保存</button>
 					</div>
 				</div>
 			{{ Form::close() }}

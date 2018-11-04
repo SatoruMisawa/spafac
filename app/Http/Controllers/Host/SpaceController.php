@@ -42,7 +42,7 @@ class SpaceController extends Controller
 			'floor_area' => $request->get('floor_area'),
 		]);
 		
-		foreach ($request->get('space_usge_ids') as $spaceUsageID) {
+		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
 		}
 
@@ -55,5 +55,28 @@ class SpaceController extends Controller
 			'spaceUsages' => SpaceUsage::all(),
 			'keyDeliveries' => KeyDelivery::all(),
 		]);
+	}
+
+	public function update(Request $request, Facility $facility, Space $space) {
+		$request->validate([
+			'space_usage_ids' => 'required|array',
+			'capacity' => 'required|numeric|min:1',
+			'floor_area' => 'required|numeric|min:1',
+			'key_delivery_id' => 'required',
+		]);
+		
+		$space->update([
+			'facility_id' => $facility->id,
+			'key_delivery_id' => $request->get('key_delivery_id'),
+			'capacity' => $request->get('capacity'),
+			'floor_area' => $request->get('floor_area'),
+		]);
+			
+		$space->spaceUsages()->detach();
+		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
+			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
+		}
+
+		return redirect()->route('host.space.index');
 	}
 }
