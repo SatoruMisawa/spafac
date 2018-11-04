@@ -3,7 +3,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		施設情報
+		施設管理
 		<small></small>
 	</h1>
 	<ol class="breadcrumb">
