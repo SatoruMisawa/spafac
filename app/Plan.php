@@ -21,11 +21,7 @@ class Plan extends Model
 	
 	/**
 	* relations
-	*/
-	public function space() {
-		return $this->hasOne(Space::class);
-	}
-
+	*/	
 	public function user() {
 		return $this->belongsTo(User::class);
 	}
