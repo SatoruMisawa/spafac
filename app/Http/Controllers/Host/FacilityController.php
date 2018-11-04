@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\Host;
 
 use App\Address;
+use App\Facility;
 use App\FacilityKind;
 use App\Prefecture;
-use App\Space;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
 
 class FacilityController extends Controller
 {
+	public function index() {
+		return view('host.facility.index', [
+			'facilities' => Facility::all(),
+		]);
+	}
+
 	public function new() {
 		return view('host.facility.new', [
 			'prefectures' => Prefecture::all()->map(function($prefecture) {

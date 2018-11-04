@@ -16,4 +16,12 @@ class Facility extends Model
     public function spaces() {
         return $this->hasMany(Space::class);
     }
+
+    public function address() {
+        return $this->belongsTo(Address::class);
+    }
+    
+    public function facilityKind() {
+        return $this->belongsTo(FacilityKind::class);
+    }
 }
