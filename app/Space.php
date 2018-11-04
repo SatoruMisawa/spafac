@@ -47,17 +47,8 @@ class Space extends Model
 	/**
 	* relations
 	*/
-	public function institution() {
-		return $this->belongsTo('App\Institution');
-	}
-	public function host() {
-		return $this->belongsTo('App\Host');
-	}
-	public function spacePurposes() {
-		return $this->hasMany('App\SpacePurpose');
-	}
-	public function spacePhotos() {
-		return $this->hasMany('App\SpacePhoto');
+	public function facility() {
+		return $this->belongsTo(Facility::class);
 	}
 
 	public function plan() {

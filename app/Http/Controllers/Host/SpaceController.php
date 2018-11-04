@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class SpaceController extends Controller
 {
+	public function index() {
+		return view('host.space.index', [
+			'spaces' => Auth::user()->spaces()->get(),
+		]);
+	}
+
 	public function new(Facility $facility) {
 		return view('host.space.new', [
 			'facility' => $facility,

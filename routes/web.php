@@ -181,6 +181,7 @@ Route::group(['prefix' => 'host'], function() {
 			});
 		});
 		
+		Route::get('/spaces', 'Host\SpaceController@index')->name('host.space.index');
 
 		//施設情報
 		// Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');

@@ -40,7 +40,7 @@
 			<li class=""><a href="{{ route('host.facility.index') }}"><i class="fa fa-link"></i> <span>施設一覧</span></a></li>
 			<li class=""><a href="{{ route('host.facility.new') }}"><i class="fa fa-link"></i> <span>新規施設の作成</span></a></li>
 			<li class="header">スペース管理</li>
-			<li class=""><a href="{{ url('host/space') }}"><i class="fa fa-link"></i> <span>スペース一覧</span></a></li>
+			<li class=""><a href="{{ route('host.space.index') }}"><i class="fa fa-link"></i> <span>スペース一覧</span></a></li>
 			<li class=""><a href="{{ url('host/space/edit-institution') }}"><i class="fa fa-link"></i> <span>新規スペースの作成</span></a></li>
 			<li class="header">スペースオーナー情報</li>
 			<li class=""><a href="{{ url('host/account/edit-basic') }}"><i class="fa fa-link"></i> <span>基本情報</span></a></li>
