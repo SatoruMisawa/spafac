@@ -15,9 +15,8 @@ use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
-	public function new(Facility $facility, Space $space) {
+	public function new(Space $space) {
 		return view('host.plan.new', [
-			'facility' => $facility,
 			'space' => $space,
 			'days' => Day::all(),
 			'preorderDeadlines' => PreorderDeadline::all()->map(function($deadline) {
@@ -29,7 +28,7 @@ class PlanController extends Controller
 		]);
 	}
 
-	public function create(Request $request, Facility $facility, Space $space) {
+	public function create(Request $request, Space $space) {
 		$request->validate([
 			'name' => 'required',
 			'price_per_hour' => 'nullable|required_with:by_hour|min:1',

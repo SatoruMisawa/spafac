@@ -46,7 +46,7 @@ class SpaceController extends Controller
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
 		}
 
-		return redirect()->route('host.facility.space.image.new', [$facility->id, $space->id]);
+		return redirect()->route('host.space.image.new', $space->id);
 	}
 
 	public function edit(Facility $facility, Space $space) {

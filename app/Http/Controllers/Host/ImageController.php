@@ -11,14 +11,13 @@ use Storage;
 
 class ImageController extends Controller
 {
-    public function new(Facility $facility, Space $space) {
+    public function new(Space $space) {
         return view('host.space.image.new', [
-            'facility' => $facility,
             'space' => $space,
         ]);
     }
 
-    public function create(Request $request, Facility $facility, Space $space) {
+    public function create(Request $request, Space $space) {
         $request->validate([
             'images' => 'required|array',
             'images.*' => 'file|image|mimes:jpeg,jpg,png',
@@ -31,6 +30,6 @@ class ImageController extends Controller
             ]);
         }
 
-        return redirect()->route('host.facility.space.plan.new', [$facility->id, $space->id]);
+        return redirect()->route('host.space.plan.new', $space->id);
     }
 }

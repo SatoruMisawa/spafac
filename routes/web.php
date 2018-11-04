@@ -154,78 +154,35 @@ Route::group(['prefix' => 'host'], function() {
 			Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.delete');
 
 			Route::group(['prefix' => '/{facility}/spaces'], function() {
-				Route::get('/', 'Host\SpaceController@index')->name('host.facility.space.index');
 				Route::get('/new', 'Host\SpaceController@new')->name('host.facility.space.new');
 				Route::post('/', 'Host\SpaceController@create')->name('host.facility.space.create');
 				Route::get('/{space}', 'Host\SpaceController@edit')->name('host.facility.space.edit');
 				Route::put('/{space}', 'Host\SpaceController@update')->name('host.facility.space.update');
 				Route::delete('/{space}', 'Host\SpaceController@delete')->name('host.facility.space.delete');
-
-				Route::group(['prefix' => '/{space}/images'], function() {
-					Route::get('/', 'Host\ImageController@index')->name('host.facility.space.image.index');
-					Route::get('/new', 'Host\ImageController@new')->name('host.facility.space.image.new');
-					Route::post('/', 'Host\ImageController@create')->name('host.facility.space.image.create');
-					Route::get('/{image}', 'Host\ImageController@show')->name('host.facility.space.image.show');
-					Route::put('/{image}', 'Host\ImageController@update')->name('host.facility.space.image.update');
-					Route::delete('/{image}', 'Host\ImageController@delete')->name('host.facility.space.image.delete');
-				});
-
-				Route::group(['prefix' => '/{space}/plan'], function() {
-					Route::get('/', 'Host\PlanController@index')->name('host.facility.space.plan.index');
-					Route::get('/new', 'Host\PlanController@new')->name('host.facility.space.plan.new');
-					Route::post('/', 'Host\PlanController@create')->name('host.facility.space.plan.create');
-					Route::get('/{plan}', 'Host\PlanController@show')->name('host.facility.space.plan.show');
-					Route::put('/{plan}', 'Host\PlanController@update')->name('host.facility.space.plan.update');
-					Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.facility.space.plan.delete');
-				});
 			});
 		});
-		
-		Route::get('/spaces', 'Host\SpaceController@index')->name('host.space.index');
 
-		//施設情報
-		// Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');
-		// Route::post('institution/confirm/{institution?}', '\App\Http\Controllers\Host\InstitutionController@confirm');
-		// Route::get('institution/delete/{institution}', '\App\Http\Controllers\Host\InstitutionController@delete');
-		
-		//スペース情報
-		// Route::get('space', '\App\Http\Controllers\Host\SpaceController@index');
-		// Route::get('space/edit-institution/{space?}', '\App\Http\Controllers\Host\SpaceController@editInstitution');
-		// Route::get('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@editBasic');
-		// Route::post('space/edit-basic/{space}', '\App\Http\Controllers\Host\SpaceController@confirmBasic');
-		// Route::get('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@editExplanation');
-		// Route::post('space/edit-explanation/{space}', '\App\Http\Controllers\Host\SpaceController@confirmExplanation');
-		// Route::get('space/edit-media/{space}', '\App\Http\Controllers\Host\SpaceController@editMedia');
-		// Route::post('space/edit-media/{space}', '\App\Http\Controllers\Host\SpaceController@confirmMedia');
-		//Route::get('space/edit-plan/{space}', '\App\Http\Controllers\Host\SpaceController@editPlan');
-		//Route::post('space/edit-plan/{space}', '\App\Http\Controllers\Host\SpaceController@confirmPlan');
-		//Route::get('space/edit-option/{space}', '\App\Http\Controllers\Host\SpaceController@editOption');
-		//Route::post('space/edit-option/{space}', '\App\Http\Controllers\Host\SpaceController@confirmOption');
-		// Route::get('space/media/{media?}', '\App\Http\Controllers\Host\SpaceController@media');
-		// Route::get('space/delete/{space}', '\App\Http\Controllers\Host\SpaceController@delete');
-		
-		//プラン
-		// Route::get('plan/{space}', '\App\Http\Controllers\Host\PlanController@index');
-		// Route::get('plan/edit/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@edit');
-		// Route::post('plan/edit/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@confirm');
-		// Route::get('plan/edit-option/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@editOption');
-		// Route::post('plan/edit-option/{space}/{plan?}', '\App\Http\Controllers\Host\PlanController@confirmOption');
-		// Route::get('plan/delete/{space}/{plan}', '\App\Http\Controllers\Host\PlanController@delete');
-		
-		//スペースオーナー情報
-		// Route::get('account/edit-basic', '\App\Http\Controllers\Host\AccountController@editBasic');
-		// Route::post('account/edit-basic', '\App\Http\Controllers\Host\AccountController@confirmBasic');
-		// Route::get('account/edit-address', '\App\Http\Controllers\Host\AccountController@editAddress');
-		// Route::post('account/edit-address', '\App\Http\Controllers\Host\AccountController@confirmAddress');
-		// Route::get('account/edit-bank', '\App\Http\Controllers\Host\AccountController@editBank');
-		// Route::post('account/edit-bank', '\App\Http\Controllers\Host\AccountController@confirmBank');
-		
-		//メディア
-		// Route::post('media/upload', '\App\Http\Controllers\Host\MediaController@upload');
-		//Route::post('media/upload-ckeditor', '\App\Http\Controllers\Shop\MediaController@upload4CKEditor');
-		//Route::post('media/upload-ckeditor2', '\App\Http\Controllers\Shop\MediaController@upload4CKEditor2');
-		// Route::get('media/thumbnail/{media?}/{width?}/{height?}/{fit?}', '\App\Http\Controllers\Host\MediaController@thumbnail');
-		
+		Route::group(['prefix' => '/spaces'], function() {
+			Route::get('/', 'Host\SpaceController@index')->name('host.space.index');
+
+			Route::group(['prefix' => '/{space}/images'], function() {
+				Route::get('/', 'Host\ImageController@index')->name('host.space.image.index');
+				Route::get('/new', 'Host\ImageController@new')->name('host.space.image.new');
+				Route::post('/', 'Host\ImageController@create')->name('host.space.image.create');
+				Route::get('/{image}', 'Host\ImageController@show')->name('host.space.image.show');
+				Route::put('/{image}', 'Host\ImageController@update')->name('host.space.image.update');
+				Route::delete('/{image}', 'Host\ImageController@delete')->name('host.space.image.delete');
+			});
+
+			Route::group(['prefix' => '/{space}/plan'], function() {
+				Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
+				Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
+				Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
+				Route::get('/{plan}', 'Host\PlanController@show')->name('host.space.plan.show');
+				Route::put('/{plan}', 'Host\PlanController@update')->name('host.space.plan.update');
+				Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
+			});
+		});
 	});
 });
 

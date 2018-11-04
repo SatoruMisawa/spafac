@@ -11,12 +11,12 @@
 </section>
 <!-- Main content -->
 <section class="content container-fluid">
-	@include('host.layouts.message', array('errors' => $errors))
+	@include('host.layouts.message', ['errors' => $errors])
 	<div class="row">
 		<div class="col-md-12">
 			{{
 				Form::open([
-					'route' => ['host.facility.space.plan.create', $facility->id, $space->id],
+					'route' => ['host.space.plan.create', $space->id],
 					'method' => 'POST'
 				])
 			}}
