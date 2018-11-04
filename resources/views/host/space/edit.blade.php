@@ -12,17 +12,18 @@
 </section>
 <!-- Main content -->
 <section class="content container-fluid">
-	@include('host.layouts.message', array('errors' => $errors))
+	@include('host.layouts.message', ['errors' => $errors])
 	<div class="row">
 		<div class="col-md-12">
 			{{ 
-				Form::open([
-					'route' => ['host.facility.space.create', $facility->id],
-					'method' => 'POST',
+				Form::model([
+					$space,
+					'route' => ['host.facility.space.update', $space->facility->id],
+					'method' => 'PUT',
 				])
 			}}
 				<div class="box box-info">
-					<div class="box-header">,
+					<div class="box-header">
 						<h3 class="box-title">基本情報</h3>
 						<div class="pull-right box-tools">
 						</div>

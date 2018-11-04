@@ -37,4 +37,8 @@ class Space extends Model
 	public function images() {
 		return $this->hasMany(SpaceImage::class);
 	}
+
+	public function spaceUsages() {
+		return $this->belongsToMany(SpaceUsage::class);
+	}
 }

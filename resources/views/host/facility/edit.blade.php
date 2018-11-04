@@ -46,8 +46,7 @@
 								{{ App\Helper::error($errors, ['zip']) }}
 								<div class="row">
 									<div class="col-xs-6 col-sm-3">
-										{{ Form::text('zip', $facility->address->zip, ['class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
-										{{-- <input type="hidden" id="address" class="p-region p-locality p-street-address p-extended-address"> --}}
+										{{ Form::text('zip', $facility->address->zip, ['id' => 'zip-input', 'class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
 									</div>
 								</div>
 							</div>
@@ -169,20 +168,16 @@ $(function() {
 	var map;
 	var maker;
 	
-	$('.p-postal-code').on('change', function() {
-		
-		var address = $('#address').val();
+	$('#zip-input').change(function() {
+		var address = $(this).val();
 		
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({address: address}, function(results, status) {
-			
 			if (status == google.maps.GeocoderStatus.OK) {
 				map.setCenter(results[0].geometry.location);
 				marker.setPosition(results[0].geometry.location);
 			}
-			
 		});
-		
 	});
 	
 	function initMap() {

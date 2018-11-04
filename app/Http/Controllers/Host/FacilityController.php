@@ -20,8 +20,8 @@ class FacilityController extends Controller
 
 	public function new() {
 		return view('host.facility.new', [
-			'prefectures' => Prefecture::all()->map(function($prefecture) {
-				return $prefecture->name;
+			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
+				return [$prefecture->id => $prefecture->name];
 			})->toArray(),
 			'facilityKinds' => FacilityKind::all(),
 		]);

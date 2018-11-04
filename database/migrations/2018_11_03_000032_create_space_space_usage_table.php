@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSpaceManualsTable extends Migration
+class CreateSpaceSpaceUsageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSpaceManualsTable extends Migration
      */
     public function up()
     {
-        Schema::create('space_manuals', function (Blueprint $table) {
+        Schema::create('space_space_usage', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('space_id')->unsigned();
             $table->bigInteger('space_usage_id')->unsigned();

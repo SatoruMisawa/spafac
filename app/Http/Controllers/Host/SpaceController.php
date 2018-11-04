@@ -28,7 +28,7 @@ class SpaceController extends Controller
 
 	public function create(Request $request, Facility $facility) {
 		$request->validate([
-			'space_usage_ids' => 'required',
+			'space_usage_ids' => 'required|array',
 			'capacity' => 'required|numeric|min:1',
 			'floor_area' => 'required|numeric|min:1',
 			'key_delivery_id' => 'required',
@@ -42,6 +42,18 @@ class SpaceController extends Controller
 			'floor_area' => $request->get('floor_area'),
 		]);
 		
+		foreach ($request->get('space_usge_ids') as $spaceUsageID) {
+			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
+		}
+
 		return redirect()->route('host.facility.space.image.new', [$facility->id, $space->id]);
+	}
+
+	public function edit(Facility $facility, Space $space) {
+		return view('host.space.edit', [
+			'space' => $space,
+			'spaceUsages' => SpaceUsage::all(),
+			'keyDeliveries' => KeyDelivery::all(),
+		]);
 	}
 }

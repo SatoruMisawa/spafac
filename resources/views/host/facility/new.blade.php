@@ -18,10 +18,10 @@
 			{{
 				Form::open([
 					'route' => 'host.facility.create',
-					'method' => 'POST'
+					'method' => 'POST',
+					'class' => 'h-adr',
 				])
 			}}
-			{{-- {{ Form::open(['url' => {{ route('host.facility.create') }},'method' => 'POST']) }} --}}
 				@csrf
 				<input type="hidden" class="p-country-name" value="Japan">
 				<div class="box box-info">
@@ -46,7 +46,7 @@
 								{{ App\Helper::error($errors, ['zip']) }}
 								<div class="row">
 									<div class="col-xs-6 col-sm-3">
-										{{ Form::text('zip', null, ['class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
+										{{ Form::text('zip', null, ['id' => 'zip-input', 'class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
 										<input type="hidden" id="address" class="p-region p-locality p-street-address p-extended-address">
 									</div>
 								</div>
@@ -162,6 +162,7 @@
 @stop
 
 @section('script')
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzq2kSVHGO-_H7Ls1bm7rduFQ4V5Xw9TE"></script>
 
 <script>
@@ -169,20 +170,16 @@ $(function() {
 	var map;
 	var maker;
 	
-	$('.p-postal-code').on('change', function() {
-		
-		var address = $('#address').val();
+	$('#zip-input').change(function() {
+		var address = $(this).val();
 		
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({address: address}, function(results, status) {
-			
 			if (status == google.maps.GeocoderStatus.OK) {
 				map.setCenter(results[0].geometry.location);
 				marker.setPosition(results[0].geometry.location);
 			}
-			
 		});
-		
 	});
 	
 	function initMap() {

@@ -41,7 +41,7 @@
 								<td>{{ $space->facility->address->zip }}</td>
 								<td>{{ $space->facility->address->address1 }}</td>
 								<td>
-									<a class="btn btn-warning btn-xs" href="">編集</a>
+									<a class="btn btn-warning btn-xs" href="{{ route('host.facility.space.edit', [$space->facility->id, $space->id]) }}">編集</a>
 									<a class="btn btn-default btn-xs delete-button" href="" data-name="No.{{ $space->id }}">削除</a>
 								</td>
 							</tr>
