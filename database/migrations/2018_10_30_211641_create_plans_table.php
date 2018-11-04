@@ -18,6 +18,7 @@ class CreatePlansTable extends Migration
             $table->bigInteger('space_id')->unsigned();
             $table->bigInteger('preorder_deadline_id')->unsigned();
             $table->bigInteger('preorder_period_id')->unsigned();
+            $table->string('name');
             $table->integer('price_per_hour')->unsigned()->nullable();
             $table->integer('price_per_day')->unsigned()->nullable();
             $table->boolean('need_to_be_approved')->default(false);

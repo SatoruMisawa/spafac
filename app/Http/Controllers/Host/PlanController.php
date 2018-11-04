@@ -44,6 +44,7 @@ class PlanController extends Controller
 		]);
 		
 		$plan = $space->plan()->create([
+			'name' => $request->get('name'),
 			'preorder_deadline_id' => $request->get('preorder_deadline_id'),
 			'preorder_period_id' => $request->get('preorder_period_id'),
 			'price_per_hour' => $request->get('price_per_hour'),
