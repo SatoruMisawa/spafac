@@ -27,9 +27,9 @@
 							<tr>
 								<th>種類</th>
 								<th>施設名</th>
+								<th>電話番号</th>
 								<th>郵便番号</th>
 								<th>住所</th>
-								<th>電話番号</th>
 								<th></th>
 							</tr>
 							@foreach ($facilities as $facility)

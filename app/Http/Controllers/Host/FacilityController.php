@@ -14,7 +14,7 @@ class FacilityController extends Controller
 {
 	public function index() {
 		return view('host.facility.index', [
-			'facilities' => Facility::all(),
+			'facilities' => Auth::user()->facilities()->get(),
 		]);
 	}
 
@@ -71,8 +71,8 @@ class FacilityController extends Controller
 	public function edit(Facility $facility) {
 		return view('host.facility.edit', [
 			'facility' => $facility,
-			'prefectures' => Prefecture::all()->map(function($prefecture) {
-				return $prefecture->name;
+			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
+				return [$prefecture->id => $prefecture->name];
 			})->toArray(),
 			'facilityKinds' => FacilityKind::all(),
 		]);

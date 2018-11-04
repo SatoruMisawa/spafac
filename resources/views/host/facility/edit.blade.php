@@ -18,7 +18,8 @@
 			{{
 				Form::model($facility, [
 					'route' => ['host.facility.update', $facility->id],
-					'method' => 'PUT'
+					'method' => 'PUT',
+					'class' => 'h-adr'
 				])
 			}}
 				@csrf
@@ -46,7 +47,7 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-3">
 										{{ Form::text('zip', $facility->address->zip, ['class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '例）5300001']) }}
-										<input type="hidden" id="address" class="p-region p-locality p-street-address p-extended-address">
+										{{-- <input type="hidden" id="address" class="p-region p-locality p-street-address p-extended-address"> --}}
 									</div>
 								</div>
 							</div>
@@ -160,6 +161,7 @@
 @endsection
 
 @section('script')
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzq2kSVHGO-_H7Ls1bm7rduFQ4V5Xw9TE"></script>
 
 <script>
