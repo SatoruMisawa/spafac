@@ -157,7 +157,7 @@
 	</div>
 </section>
 <!-- /.content -->
-@stop
+@endsection
 
 @section('script')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzq2kSVHGO-_H7Ls1bm7rduFQ4V5Xw9TE"></script>
@@ -220,4 +220,4 @@ $(function() {
 });
 </script>
 
-@stop
+@endsection
