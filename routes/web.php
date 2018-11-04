@@ -182,19 +182,6 @@ Route::group(['prefix' => 'host'], function() {
 		});
 		
 
-		// Route::get('facilities/new', 'Host\FacilityController@new');
-		// Route::post('facilities', 'Host\FacilityController@create');
-
-		// Route::get('spaces/new/{space}', 'Host\SpaceController@new');
-		// Route::post('spaces/{space}', 'Host\SpaceController@create');
-
-		// Route::get('spaces/{space}/images/new', 'Host\SpaceImageController@new');
-		// Route::post('spaces/{space}/images', 'Host\SpaceImageController@create');
-
-		// Route::get('plans/new/{space}', 'Host\PlanController@new');
-		// Route::post('plans/{space}', 'Host\PlanController@create');
-
-
 		//施設情報
 		// Route::get('institution', '\App\Http\Controllers\Host\InstitutionController@index');
 		// Route::post('institution/confirm/{institution?}', '\App\Http\Controllers\Host\InstitutionController@confirm');
