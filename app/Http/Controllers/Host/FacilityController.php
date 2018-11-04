@@ -7,6 +7,7 @@ use App\FacilityKind;
 use App\Prefecture;
 use App\Space;
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
 
 class FacilityController extends Controller
@@ -49,15 +50,15 @@ class FacilityController extends Controller
 			'longitude' => $request->get('longitude'),
 		]);
 		
-		$facility = $address->facilities()->create([
+		$user = Auth::user();
+		$facility = $user->facilities()->create([
+			'address_id' => $address->id,
 			'facility_kind_id' => $request->get('facility_kind_id'),
 			'name' => $request->get('name'),
 			'access' => $request->get('access'),
 			'tel' => $request->get('tel'),
 		]);
 
-		$space = $facility->spaces()->create();
-
-		return redirect('/host/spaces/new/'.$space->id);
+		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 }
