@@ -16,7 +16,7 @@
 		<div class="col-md-12">
 			{{
 				Form::open([
-					'route' => ['host.space.image.create', $space->id],
+					'route' => ['host.facility.space.image.create', $facility->id, $space->id],
 					'method' => 'POST',
 					'files' => true
 				])
@@ -33,9 +33,9 @@
 						<p class="help-block">ゲストが実際に利用するスペース、設備等の画像を最低1枚追加してください。推奨サイズは1260x840です。ドラッグ＆ドロップで入れ替え可。クリックで拡大することができます。最大30枚まで追加できます。</p>
 					</div>
 
-					<div class="form-group {{ App\Helper::errorClass($errors, 'space_photo_id') }}">
+					<div class="form-group {{ App\Helper::errorClass($errors, ['images', 'images.*']) }}">
 						<div id="space-photo-uploader">
-							{{ App\Helper::error($errors, 'space_photo_id') }}
+							{{ App\Helper::error($errors, ['images', 'images.*']) }}
 							<div>
 								<ul class="media-container">
 								</ul>
@@ -47,9 +47,10 @@
 							<p>
 								または、
 								{{ 
-									Form::file('image', [
-										'id' => 'image-upload-button',
+									Form::file('images[]', [
+										'class' => 'image-upload-button',
 										'style' => 'display: none;',
+										'multiple' => true,
 									])
 								}}
 								<label for="image-upload-button" class="btn btn-success btn-sm media-button"><i class="fa fa-plus"></i> 新規写真の作成</label>
@@ -81,18 +82,4 @@
 @stop
 
 @section('script')
-<script>
-{{-- $(function() {
-	
-	//写真
-	var spacePhotoList = {{ App\Media::jsonMulti($spacePhotoList) }};
-	var spacePhoto = new Media({
-		baseName: 'spacePhotoList',
-		mediaList: spacePhotoList,
-		uploader: 'space-photo-uploader',
-		thumbnail: '/host/space/media'
-	});
-	
-}); --}}
-</script>
 @stop

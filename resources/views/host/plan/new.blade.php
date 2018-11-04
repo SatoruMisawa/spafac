@@ -16,7 +16,7 @@
 		<div class="col-md-12">
 			{{
 				Form::open([
-					'route' => ['host.plan.create', $space->id],
+					'route' => ['host.facility.space.plan.create', $facility->id, $space->id],
 					'method' => 'POST'
 				])
 			}}
@@ -44,7 +44,7 @@
 								<tr>
 									<td>
 										<div class="form-group {{ App\Helper::errorClass($errors, ['price_per_hour']) }}">
-											{{ App\Helper::error($errors, ['charge_per_hour']) }}
+											{{ App\Helper::error($errors, ['price_per_hour']) }}
 											<div class="row">
 												<label class="col-sm-2 form-control-static">時間価格</label>
 												<div class="col-sm-2 col-sm-offset-1">

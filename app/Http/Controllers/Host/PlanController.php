@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Host;
 
 use App\Day;
+use App\Facility;
 use App\Plan;
 use App\PreorderDeadline;
 use App\PreorderPeriod;
@@ -14,8 +15,9 @@ use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
-	public function new(Space $space) {
+	public function new(Facility $facility, Space $space) {
 		return view('host.plan.new', [
+			'facility' => $facility,
 			'space' => $space,
 			'days' => Day::all(),
 			'preorderDeadlines' => PreorderDeadline::all()->map(function($deadline) {
@@ -27,7 +29,7 @@ class PlanController extends Controller
 		]);
 	}
 
-	public function create(Request $request, Space $space) {
+	public function create(Request $request, Facility $facility, Space $space) {
 		$request->validate([
 			'name' => 'required',
 			'price_per_hour' => 'nullable|required_with:by_hour|min:1',
@@ -39,10 +41,10 @@ class PlanController extends Controller
 			'preorder_deadline_id' => 'required',
 			'preorder_period_id' => 'required',
 			'period_from' => 'nullable|date',
-			'period_to' => 'required_with:period_from|date|after:period_from',
+			'period_to' => 'nullable|required_with:period_from|date|after:period_from',
 		]);
 		
-		$plan = Plan::create([
+		$plan = $space->plan()->create([
 			'preorder_deadline_id' => $request->get('preorder_deadline_id'),
 			'preorder_period_id' => $request->get('preorder_period_id'),
 			'price_per_hour' => $request->get('price_per_hour'),
@@ -58,7 +60,7 @@ class PlanController extends Controller
 			if ($to <= $from) {
 				return redirect()
 						->back()
-						->withErrors('hour_from', '終了時刻より早い時間にしてください')
+						->withErrors(['hour_from['.$dayID.']' => '終了時刻より早い時間にしてください'])
 						->withInput();
 			}
 
@@ -70,8 +72,6 @@ class PlanController extends Controller
 			]);
 		}
 
-		$plan->space()->save($space);
-
-		return redirect()->route('host.space.image.new', $space->id);
+		return redirect()->route('host');
 	}
 }

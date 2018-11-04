@@ -17,7 +17,7 @@
 		<div class="col-md-12">
 			{{ 
 				Form::open([
-					'route' => ['host.space.create', $space->id],
+					'route' => ['host.facility.space.create', $facility->id],
 					'method' => 'POST',
 				])
 			}}
