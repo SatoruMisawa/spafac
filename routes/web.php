@@ -76,8 +76,8 @@ Route::group(['middleware' => 'tester'], function() {
 	 
 	 
 	 //新規会員登録
-	 Route::get('users/new', 'UserController@new');
-	 Route::post('users', 'UserController@create');
+	 Route::get('users/new', 'UserController@new')->name('user.new');
+	 Route::post('users', 'UserController@create')->name('user.create');
 	 Route::get('registration/send', '\App\Http\Controllers\RegistrationController@send');
 	 Route::get('registration/verify/{token}', '\App\Http\Controllers\RegistrationController@verify');
 	 
