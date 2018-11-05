@@ -8,7 +8,7 @@
 				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
-				<?php if(Auth::check()): ?>
+				<?php if(Auth::guard('users')->check()): ?>
 					<li><a href="<?php echo url('mypage'); ?>">マイページ</a></li>
 					<li><a href="<?php echo url('logout'); ?>">ログアウトaaa</a></li>
 				<?php else: ?>

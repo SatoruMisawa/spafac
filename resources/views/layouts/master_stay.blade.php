@@ -12,7 +12,7 @@
 <body class="home page-template-default page page-id-5 logged-in">
 <div id="page" class="site">
 	<!--<a class="skip-link screen-reader-text" href="#content">Skip to content</a>-->
-	{{--  @include('layouts2.header')  --}}
+	@include('layouts.header_stay')
 	@yield('content')
 		@include('mypage.layouts.footer')
 </div><!-- #page -->

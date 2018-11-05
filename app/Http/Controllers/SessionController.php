@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 class SessionController extends Controller
 {
     public function new() {
-        return view('auth.login');
+        return view('session.new');
     }
 
     public function create(Request $request) {
-        if (!Auth::attempt([
+        if (!$this->guard()->attempt([
             'email' => $request->get('email'),
             'password' => $request->get('password')
         ], true)) {
@@ -25,7 +25,7 @@ class SessionController extends Controller
     }
 
     public function delete() {
-        Auth::logout();
+        $this->guard()->logout();
         return redirect('login');
     }
 
@@ -44,8 +44,12 @@ class SessionController extends Controller
 
         $user = $providedUser->firstOrCreateUser();
 
-        Auth::login($user, true);
+        $this->guard()->login($user, true);
 
         return redirect('/');
+    }
+
+    public function guard() {
+        return Auth::guard('users');
     }
 }

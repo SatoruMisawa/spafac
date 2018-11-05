@@ -36,8 +36,6 @@ Route::group(['middleware' => 'auth:testers'], function() {
 		Route::get('logout', 'SessionController@delete')->name('logout');
 		Route::post('logout', 'SessionController@delete')->name('logout');
 
-		Route::get('verification/{user}/email/{token}', 'EmailVerificationController@verify')->name('verification.email');
-
 		Route::group(['prefix' => 'mypage'], function() {
 			Route::get('/', '\App\Http\Controllers\Mypage\IndexController@index');
 			Route::get('like', '\App\Http\Controllers\Mypage\IndexController@like');
@@ -112,7 +110,14 @@ Route::group(['middleware' => 'auth:testers'], function() {
 			});
 		});
 	});	 
-	 
+	
+
+	Route::group(['prefix' => 'verification/{user}'], function() {
+		Route::group(['prefix' => '/email'], function() {
+			Route::get('/', 'EmailVerificationController@send')->name('verification.email.send');
+			Route::get('/{token}', 'EmailVerificationController@verify')->name('verification.email.verify');
+		});
+	});
 
 	Route::get('/', '\App\Http\Controllers\IndexController@index');
 	Route::get('inquiry', '\App\Http\Controllers\IndexController@inquiry');

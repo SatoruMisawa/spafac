@@ -157,7 +157,7 @@
         </a>
         </li>
         </ul>
-		<?php if (!empty($loginUser)) : ?>
+		<?php if(Auth::guard('users')->check()): ?>
         <p class="red txtC">ログイン中</p>
         <?php endif; ?>
         </div>
