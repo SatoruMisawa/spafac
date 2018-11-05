@@ -24,7 +24,7 @@ class ImageController extends Controller
         ]);
         
         foreach ($request->file('images') as $image) {
-            $filename = $image->store('storage/app');
+            $filename = $image->store('public');
             $space->images()->create([
                 'url' => $filename
             ]);
