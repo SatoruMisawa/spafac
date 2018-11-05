@@ -33,7 +33,6 @@ class RegistrationController extends FrontController
 	* メールアドレスの認証
 	*/
 	public function verify($token) {
-		
 		if (User::verify($token)) {
 			return redirect()->to('login')->with('message', 'メールアドレスの登録確認が終わりました。');
 		}

@@ -45,6 +45,8 @@ Route::post('logout', 'SessionController@delete')->name('logout');
 Route::get('login/{provider}', 'SessionController@redirectToProvider');
 Route::get('login/{provider}/callback', 'SessionController@handleProviderCallback');
 
+Route::get('verification/{user}/email/{token}', 'EmailVerificationController@verify')->name('verification.email');
+
 //MOCK みさわ追加
 Route::get('event_types', '\App\Http\Controllers\IndexController@event_types');//目的から探す
 Route::get('areas', '\App\Http\Controllers\IndexController@areas');//エリアから探す

@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/css/top.css">
 
+<?php echo $__env->make('host.layouts.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <div id="search_box">
 	<div class="search_box_inner search_width">
 		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
