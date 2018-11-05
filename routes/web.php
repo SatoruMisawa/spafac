@@ -43,7 +43,7 @@ Route::group(['middleware' => 'tester'], function() {
 	 
 	 //ログイン
 	 Route::get('login', 'SessionController@new')->name('login');
-	 Route::post('login', 'SessionController@create');
+	 Route::post('login', 'SessionController@create')->name('session.create');
 	 Route::get('logout', 'SessionController@delete')->name('logout');
 	 Route::post('logout', 'SessionController@delete')->name('logout');
 	 
