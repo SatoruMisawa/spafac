@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tester\Auth;
+namespace App\Http\Controllers\Tester;
 
 use App\Tester;
 use Auth;

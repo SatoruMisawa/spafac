@@ -12,14 +12,14 @@
 */
 Route::group(['middleware' => 'guest:testers'], function() {
 	Route::group(['prefix' => '/tester'], function() {
-		Route::get('/login', 'Tester\Auth\SessionController@new')->name('tester.session.new');
-		Route::post('/login', 'Tester\Auth\SessionController@create')->name('tester.session.create');
+		Route::get('/login', 'Tester\SessionController@new')->name('tester.session.new');
+		Route::post('/login', 'Tester\SessionController@create')->name('tester.session.create');
 	});
 });
 
 Route::group(['middleware' => 'auth:testers'], function() {
 	Route::group(['prefix' => 'tester'], function() {
-		Route::get('/logout', 'Tester\Auth\SessionController@delete')->name('tester.session.delete');
+		Route::get('/logout', 'Tester\SessionController@delete')->name('tester.session.delete');
 	});
 
 	Route::group(['middleware' => 'guest:users'], function() {
