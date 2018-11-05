@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
         PreorderDeadlineSeeder::class,
         PreorderPeriodSeeder::class,
         DaySeeder::class,
+        TesterSeeder::class,
     ];
 
     /**
