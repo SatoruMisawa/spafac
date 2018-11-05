@@ -25,8 +25,7 @@ class SessionController extends Controller
             return redirect()->back();
         }
 
-        // todo: change location to redirect properly
-        return redirect('home');
+        return redirect('/');
     }
 
     public function delete() {

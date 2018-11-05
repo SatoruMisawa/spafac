@@ -37,7 +37,7 @@ Route::get('commercial-transaction-law', '\App\Http\Controllers\IndexController@
 
 //ログイン
 Route::get('login', 'SessionController@new')->name('login');
-Route::post('login', 'SessionController@create');
+Route::post('login', 'SessionController@create')->name('session.create');
 Route::get('logout', 'SessionController@delete')->name('logout');
 Route::post('logout', 'SessionController@delete')->name('logout');
 
@@ -70,8 +70,8 @@ Route::get('help/{page?}', '\App\Http\Controllers\IndexController@help');//目�
 
 
 //新規会員登録
-Route::get('users/new', 'UserController@new');
-Route::post('users', 'UserController@create');
+Route::get('users/new', 'UserController@new')->name('user.new');
+Route::post('users', 'UserController@create')->name('user.create');
 Route::get('registration/send', '\App\Http\Controllers\RegistrationController@send');
 Route::get('registration/verify/{token}', '\App\Http\Controllers\RegistrationController@verify');
 
