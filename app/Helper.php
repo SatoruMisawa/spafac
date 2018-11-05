@@ -15,7 +15,8 @@ class Helper {
 		$html = '';
 		foreach ($keys as $key) {
 			if ($errors->has($key)) {
-				$html .= '<p><label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>' . e($errors->first($key)) . '</label><p>';
+				// $html .= '<p><label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>' . e($errors->first($key)) . '</label><p>';
+				$html .= e($errors->first($key));
 			}
 		}
 		return $html;

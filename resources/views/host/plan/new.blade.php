@@ -161,8 +161,9 @@
 						</div>
 					</div>
 					<div class="box-body pad">
-						<div class="form-group">
+						<div class="form-group {{ App\Helper::errorClass($errors, ['period_from', 'period_to']) }}">
 							<label><small class="label bg-blue">任意</small> 貸出可能な期間</label>
+							{{ App\Helper::error($errors, ['period_from', 'period_to']) }}
 							<div class="row">
 								<div class="col-sm-4">
 									{{ Form::text('period_from', null, ['class' => 'form-control datepicker', 'placeholder' => '']) }}

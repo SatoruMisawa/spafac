@@ -40,7 +40,7 @@ class PlanController extends Controller
 			'preorder_deadline_id' => 'required',
 			'preorder_period_id' => 'required',
 			'period_from' => 'nullable|date',
-			'period_to' => 'nullable|required_with:period_from|date|after:period_from',
+			'period_to' => 'nullable|date|after:period_from',
 		]);
 		
 		$plan = $space->plan()->create([
