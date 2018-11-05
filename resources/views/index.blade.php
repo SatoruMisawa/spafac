@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/css/top.css">
 
+@include('host.layouts.message')
 <div id="search_box">
 	<div class="search_box_inner search_width">
 		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>

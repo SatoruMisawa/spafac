@@ -134,6 +134,21 @@ class User extends Authenticatable
 		
 	}
 
+	public function prepareToVerifyEmail() {
+		$this->email_verification_token = str_random(10);
+		$this->save();
+	}
+
+	public function verifyEmail($token) {
+		if ($this->email_verification_token !== $token) {
+			throw new \Exception('メールアドレスの認証に失敗しました');
+		}
+
+		$this->email_verification_token = null;
+		$this->has_verified_email = true;
+		$this->save();
+	}
+
 	public function apply(Plan $plan) {
 		if ($this->id === $plan->user_id) {
 			return;

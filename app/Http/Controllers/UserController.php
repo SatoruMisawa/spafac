@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Prefecture;
 use App\User;
+use App\Mail\EmailVerification;
 use Auth;
+use Mail;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -30,11 +32,9 @@ class UserController extends Controller
 		
 		$user = User::create($request->all());
 		Auth::login($user, true);
-
-		//メール送信
-		// todo: connect email server
-		// $email = new EmailVerification($user);
-		// Mail::to($user->email)->send($email);
+		
+		$user->prepareToVerifyEmail();
+		Mail::to($user->email)->send(new EmailVerification($user));
 		
 		return redirect()->to('registration/send')->with('message', '確認メールを送信しました。');
 	}
