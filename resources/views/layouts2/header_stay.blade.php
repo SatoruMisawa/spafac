@@ -8,12 +8,12 @@
 				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
                 <li><a href="#" class="orangeBt">宿泊スペースをお持ちの方</a></li>
-                <?php if (!empty($loginUser)) : ?>
+                @if (Auth::guard('users')->check())
 					<li><a href="<?php echo url('mypage'); ?>">マイページ</a></li>
 					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-				<?php else : ?>
+				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
-				<?php endif; ?>
+				@endif
 			</ul>
 			</div>
 		</div>
@@ -26,16 +26,16 @@
 				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
                 <li><a href="#" class="orangeBt">宿泊スペースをお持ちの方</a></li>
-				<?php if (!empty($loginUser)) : ?>
+				@if (Auth::guard('users')->check())
                 <li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
 				<li><a><img src="/assets/images/stay/stay_icon_head02.png" width="33" height="33">スズキさん</a></li>
                 	<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-				<?php else : ?>
+				@else
                 <li>
                 <a href="/login"><img src="/assets/images/stay/stay_icon_head01.png" width="33" height="33">ログイン</a>
                 </li>
 			
-				<?php endif; ?>
+				@endif
 			</ul>
 			</nav>
 		</div>

@@ -192,55 +192,55 @@
 			<div class="login_wrap">
 				<div class="login_title"><img src="<?php echo url('assets/mypage/img/icon-02.png'); ?>" alt=""><span>メンバーログイン</span></div>
 				<div class="login_box">
-				<?php if (!empty($loginUser)) : ?>
-					<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
-					<div class="login_form">
-                <ul class="login_chu">
-					<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
-					<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
-					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-				</ul>
-				<?php else : ?>                    
-					<div class="login_form">
-						<?php echo e(Form::open([
-								'route' => 'session.create',
-								'method' => 'POST' 
-							]), false); ?> 	             
-						<table>
-							<tr>
-								<td>ユーザーID:</td>
-								<td>
-									<input type="text" name="email" value="">
-								</td>
-							</tr>
-							<tr>
-								<td>パスワード:</td>
-								<td>
-									<input type="password" name="password" value="">
-								</td>
-							</tr>
-						</table>
-						<a class="forget" href="">ユーザーIDやパスワードをお忘れの場合はこちら &gt;</a>
-						<div class="login_button">
-							<button type="submit">ログイン</button>
-						</div>
-                    <?php echo $__env->make('mypage.layouts.message', array('errors' => $errors), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                    <?php echo e(Form::close(), false); ?>
+					<?php if(Auth::guard('users')->check()): ?>
+						<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
+							<div class="login_form">
+						<ul class="login_chu">
+							<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
+							<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
+							<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
+						</ul>
+					<?php else: ?>
+						<div class="login_form">
+							<?php echo e(Form::open([
+									'route' => 'session.create',
+									'method' => 'POST' 
+								]), false); ?> 	             
+								<table>
+									<tr>
+										<td>ユーザーID:</td>
+										<td>
+											<input type="text" name="email" value="">
+										</td>
+									</tr>
+									<tr>
+										<td>パスワード:</td>
+										<td>
+											<input type="password" name="password" value="">
+										</td>
+									</tr>
+								</table>
+								<a class="forget" href="">ユーザーIDやパスワードをお忘れの場合はこちら &gt;</a>
+								<div class="login_button">
+									<button type="submit">ログイン</button>
+								</div>
+								<?php echo $__env->make('mypage.layouts.message', ['errors' => $errors], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo e(Form::close(), false); ?>
 
-		<div class="sns_login">
-			<ul>
-				<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
-				<li class="ya"><a href="/login/yahoojp"><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
-				<li class="gg"><a href="/login/google"><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
-			</ul>
-			<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
-		</div>
-						<div class="register">
-							<p>無料登録してお今すぐ検索する</p>
-							<a href="<?php echo e(route('user.new'), false); ?>">新規登録</a>
+						<div class="sns_login">
+							<ul>
+								<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
+								<li class="ya"><a href="/login/yahoojp"><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
+								<li class="gg"><a href="/login/google"><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
+							</ul>
+							<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
 						</div>
-            		</div>
-				<?php endif; ?>			
+					</div>
+					<div class="register">
+						<p>無料登録してお今すぐ検索する</p>
+						<a href="<?php echo e(route('user.new'), false); ?>">新規登録</a>
+					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

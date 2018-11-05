@@ -115,9 +115,9 @@
 		h40.625V629.922z"/>
 </svg></a></li>
         <li>mmm
-		<?php if (!empty($loginUser)) : ?>
+		@if (Auth::guard('users')->check())
         <p class="red">ログイン中</p>
-        <?php endif; ?>
+        @endif
         </li>
         </ul>
         </div>
