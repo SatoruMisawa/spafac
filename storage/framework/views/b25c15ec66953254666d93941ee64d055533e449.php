@@ -201,8 +201,11 @@
 					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
 				</ul>
 				<?php else : ?>                    
-					<div class="login_form">                    
-                    <?php echo Form::open(array('route' => 'login')); ?>
+					<div class="login_form">
+						<?php echo e(Form::open([
+								'route' => 'session.create',
+								'method' => 'POST' 
+							]), false); ?> 	             
 						<table>
 							<tr>
 								<td>ユーザーID:</td>
@@ -222,18 +225,19 @@
 							<button type="submit">ログイン</button>
 						</div>
                     <?php echo $__env->make('mypage.layouts.message', array('errors' => $errors), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                    <?php echo Form::close(); ?>   
+                    <?php echo e(Form::close(), false); ?>
+
 		<div class="sns_login">
 			<ul>
-				<li class="fb"><a href=""><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
-				<li class="ya"><a href=""><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
-				<li class="gg"><a href=""><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
+				<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
+				<li class="ya"><a href="/login/yahoojp"><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
+				<li class="gg"><a href="/login/google"><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
 			</ul>
 			<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
 		</div>
 						<div class="register">
 							<p>無料登録してお今すぐ検索する</p>
-							<a href="<?php echo url('registration');?>">新規登録</a>
+							<a href="<?php echo e(route('user.new'), false); ?>">新規登録</a>
 						</div>
             		</div>
 				<?php endif; ?>			
@@ -378,7 +382,7 @@
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
 		<p>８月末までの先行会員様無料登録キャンペーン実施中。<br>スペースレンタル成約時の手数料が８月末まで無料!</p>
-		<a href="<?php echo url('registration');?>">新規登録（無料）</a>
+		<a href="<?php echo e(route('user.new'), false); ?>">新規登録（無料）</a>
 	</div>
 </section>
 <section class="white pattern_1" id="staff">
@@ -431,7 +435,7 @@
 		<h2>今すぐ会員登録して、スペースを貸し借りしてみよう</h2>
 		<span>今なら会員登録した方全員に、すべてのスペースの予約で利用できる2,000円分のポイントをプレゼント。</span>
 	</div>
-	<div class="reg_now_2_button"><a href="<?php echo url('registration');?>">新規登録（無料）</a></div>
+	<div class="reg_now_2_button"><a href="<?php echo e(route('user.new'), false); ?>">新規登録（無料）</a></div>
 </section>
 
 <section class="white pattern_1">
@@ -507,7 +511,7 @@
 		<h2>あなたもスペースオーナーになってみませんか</h2>
 		<span>お持ちのスペースを今すぐ有効活用。あらゆるスペースが登録可能です</span>
 	</div>
-	<div class="reg_now_3_button"><a href="<?php echo url('registration');?>">無料登録をしてすぐスペースオーナーになる</a></div>
+	<div class="reg_now_3_button"><a href="<?php echo e(route('user.new'), false); ?>">無料登録をしてすぐスペースオーナーになる</a></div>
 </section>
 
 <section class="gray pattern_1" id="event">
@@ -718,7 +722,7 @@
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
 		<p>今なら会員登録した方全員に、<br>すべてのスペースの予約で利用できる<br>2,000円分のポイントをプレゼント。</p>
-		<a href="<?php echo url('registration');?>">新規登録（無料）</a>
+		<a href="<?php echo e(route('user.new'), false); ?>">新規登録（無料）</a>
 	</div>
 </section>
 <?php $__env->stopSection(); ?>
