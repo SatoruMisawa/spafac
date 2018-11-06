@@ -30,7 +30,7 @@ class PlanController extends Controller
 
 	public function create(Request $request, Space $space) {
 		$request->validate([
-			'name' => 'required',
+			'name' => 'required|string',
 			'by_hour' => 'required_without:by_day|boolean',
 			'price_per_hour' => 'nullable|required_with:by_hour|integer|min:1',
 			'by_day' => 'required_without:by_hour|boolean',
@@ -62,7 +62,7 @@ class PlanController extends Controller
 			if ($to <= $from) {
 				return redirect()
 						->back()
-						->withErrors(['hour_from['.$dayID.']' => '終了時刻より早い時間にしてください'])
+						->withErrors(['hour_from['.$dayID.']' => '終了時刻より開始時間を前の時間にしてください'])
 						->withInput();
 			}
 

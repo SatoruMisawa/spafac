@@ -9,7 +9,19 @@
         </style>
         <ul>
             @foreach ($errors->get($name) as $error)
-                <li>{{ $error }}</li>
+                <li>
+                    @if (is_array($error))
+                        <ul>
+                            @foreach ($error as $e)
+                                <li>
+                                    {{ $e }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                    {{ $error }}
+                    @endif
+                </li>
             @endforeach
         </ul>
     </div>

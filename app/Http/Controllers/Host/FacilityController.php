@@ -29,22 +29,23 @@ class FacilityController extends Controller
 
 	public function create(Request $request) {
 		$request->validate([
-			'name' => 'required',
+			'name' => 'required|string',
 			'zip' => 'required|zip',
-			'prefecture_id' => 'required',
-			'address1' => 'required',
-			'address1_ruby' => 'required',
-			'address2' => 'required',
-			'address2_ruby' => 'required',
-			'address3_ruby' => 'required_with:address3',
+			'prefecture_id' => 'required|integer',
+			'address1' => 'required|string',
+			'address1_ruby' => 'required|string',
+			'address2' => 'required|string',
+			'address2_ruby' => 'required|string',
+			'address3' => 'nullable|string',
+			'address3_ruby' => 'nullable|required_with:address3|string',
 			'latitude' => 'required',
 			'longitude' => 'required',
-			'access' => 'required',
+			'access' => 'required|string',
 			'tel' => 'required|tel',
 		]);
 		
 		$address = Address::firstOrCreate([
-			'prefecture_id' => $request->get('prefecture_id') + 1,
+			'prefecture_id' => $request->get('prefecture_id'),
 			'zip' => $request->get('zip'),
 			'address1' => $request->get('address1'),
 			'address1_ruby' => $request->get('address1_ruby'),
@@ -80,22 +81,23 @@ class FacilityController extends Controller
 
 	public function update(Request $request, Facility $facility) {
 		$request->validate([
-			'name' => 'required',
+			'name' => 'required|string',
 			'zip' => 'required|zip',
-			'prefecture_id' => 'required',
-			'address1' => 'required',
-			'address1_ruby' => 'required',
-			'address2' => 'required',
-			'address2_ruby' => 'required',
-			'address3_ruby' => 'required_with:address3',
+			'prefecture_id' => 'required|integer',
+			'address1' => 'required|string',
+			'address1_ruby' => 'required|string',
+			'address2' => 'required|string',
+			'address2_ruby' => 'required|string',
+			'address3' => 'nullable|string',
+			'address3_ruby' => 'nullable|required_with:address3|string',
 			'latitude' => 'required',
 			'longitude' => 'required',
-			'access' => 'required',
+			'access' => 'required|string',
 			'tel' => 'required|tel',
 		]);
 
 		$address = Address::firstOrCreate([
-			'prefecture_id' => $request->get('prefecture_id') + 1,
+			'prefecture_id' => $request->get('prefecture_id'),
 			'zip' => $request->get('zip'),
 			'address1' => $request->get('address1'),
 			'address1_ruby' => $request->get('address1_ruby'),

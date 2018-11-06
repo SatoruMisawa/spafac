@@ -81,6 +81,7 @@ return [
 	'zenkaku_kana'		   => ':attributeは全角片仮名のみにしてください。',
 	
 	'password_verify'	   => ':attributeが違います',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines
@@ -93,8 +94,20 @@ return [
 	*/
 
 	'custom' => [
-		'attribute-name' => [
-			'rule-name' => 'custom-message',
+		'by_hour' => [
+			'required_without' => ':values、:attributeの少なくともどちらかを有効にしてください',
+		],
+
+		'price_per_hour' => [
+			'required_with' => ':valuesが有効の場合、:attributeは必須です',
+		],
+
+		'by_day' => [
+			'required_without' => ':values、:attributeの少なくともどちらかを有効にしてください',
+		],
+
+		'price_per_day' => [
+			'required_with' => ':valuesが有効の場合、:attributeは必須です',
 		],
 	],
 
@@ -110,22 +123,42 @@ return [
 	*/
 
 	'attributes' => [
-		'tel' => '電話番号',
+		'name' => '名前',
 		'zip' => '郵便番号',
 		'prefecture_id' => '都道府県',
+		'address1' => '市区町村',
+		'address1_ruby' => '市区町村(かな)',
+		'address2' => '町名・番地',
+		'address2_ruby' => '町名・番地(かな)',
+		'address3' => 'ビル名・部屋番号',
+		'address3_ruby' => 'ビル名・部屋番号(かな)',
+		'latitude' => '経度',
+		'longitude' => '緯度',
+		'access' => 'アクセス',
+		'tel' => '電話番号',
+		'space_usage_ids' => '使用可能用途',
+		'capacity' => '最大収容人数',
+		'floor_area' => '床面積',
+		'key_delivery_id' => '鍵の受け渡し',
+		'images' => '写真',
+		'images.*' => '写真',
+		'by_hour' => '時間価格',
+		'price_per_hour' => '価格(時間)',
+		'by_day' => '一日価格',
+		'price_per_day' => '価格(日)',
+		'day_ids' => '貸出可能な曜日・時間帯',
+		'need_to_be_approved' => '予約の承認方法',
+		'preorder_deadline_id' => '予約の締切',
+		'preorder_period_id' => '予約の受付期間',
+		'period_from' => '開始期間',
+		'period_to' => '終了期間',
 		'bank_name' => '銀行名',
 		'bank_code' => '銀行コード',
 		'bank_branch_name' => '支店名',
 		'bank_branch_code' => '支店コード',
 		'bank_account_number' => '口座番号',
 		'bank_account_name' => '口座名義',
-		'access' => 'アクセス',
-		'institution_id' => '施設',
-		'capacity' => '最大収容人数',
-		'floor_space' => '床面積',
-		'key_delivery_id' => '鍵の受け渡し',
-		'reservation_deadline' => '予約の締切',
-		'reservation_acceptance' => '予約の受付期間',
+		'password_confirmation' => 'パスワード(確認)',
 		'old_password' => '現在のパスワード',
 		'new_password' => '新しいパスワード',
 		'new_password_confirmation' => '新しいパスワード(確認)',
