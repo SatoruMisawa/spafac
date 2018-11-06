@@ -31,7 +31,8 @@ class SessionController extends Controller
         ], true)) {
             return redirect()
                     ->back()
-                    ->withInput();
+                    ->withInput()
+                    ->withErrors('invalid name/password combination');
         }
 
         return redirect($this->redirectTo);

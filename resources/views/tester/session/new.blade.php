@@ -25,7 +25,7 @@
 <body class="hold-transition login-page" >
 <div class="login-box">
   <div class="login-logo">
-    <a href="/admin/"><b>Space Factory Tester</b></a>
+    <a href="/tester"><b>Space Factory Tester</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -44,10 +44,11 @@
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback 1">
-
-        
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group">
+        @include('layouts.error')
       </div>
       <div class="row">
 
