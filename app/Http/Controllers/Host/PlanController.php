@@ -31,8 +31,10 @@ class PlanController extends Controller
 	public function create(Request $request, Space $space) {
 		$request->validate([
 			'name' => 'required',
-			'price_per_hour' => 'nullable|required_with:by_hour|min:1',
-			'price_per_day' => 'nullable|required_with:by_day|min:1',
+			'by_hour' => 'required_without:by_day|boolean',
+			'price_per_hour' => 'nullable|required_with:by_hour|integer|min:1',
+			'by_day' => 'required_without:by_hour|boolean',
+			'price_per_day' => 'nullable|required_with:by_day|integer|min:1',
 			'day_ids' => 'required|array',
 			'hour_from' => 'required|array',
 			'hour_to' => 'required|array',
