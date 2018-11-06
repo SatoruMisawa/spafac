@@ -41,7 +41,7 @@
 
         
         <input type="input" class="form-control" placeholder="Name" name="name" value="">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback 1">
         <input type="password" class="form-control" placeholder="Password" name="password">
