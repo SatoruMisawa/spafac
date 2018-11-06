@@ -21,7 +21,7 @@ class SessionController extends Controller
             return redirect()->back();
         }
 
-        return redirect('/');
+        return redirect()->route('index');
     }
 
     public function delete() {
@@ -46,7 +46,7 @@ class SessionController extends Controller
 
         $this->guard()->login($user, true);
 
-        return redirect('/');
+        return redirect()->route('index');
     }
 
     public function guard() {

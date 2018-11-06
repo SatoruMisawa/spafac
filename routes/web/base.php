@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
 	Route::group(['prefix' => 'mypage'], function() {
-		Route::get('/', '\App\Http\Controllers\Mypage\IndexController@index');
+		Route::get('/', '\App\Http\Controllers\Mypage\IndexController@index')->name('index');
 		Route::get('like', '\App\Http\Controllers\Mypage\IndexController@like');
 		Route::get('like-new', '\App\Http\Controllers\Mypage\IndexController@likeNew');
 		Route::get('login', '\App\Http\Controllers\Mypage\IndexController@login');
