@@ -8,7 +8,7 @@ use App\Space;
 use App\SpaceUsage;
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateSpaceRequest;
 
 class SpaceController extends Controller
 {
@@ -26,14 +26,7 @@ class SpaceController extends Controller
 		]);
 	}
 
-	public function create(Request $request, Facility $facility) {
-		$request->validate([
-			'space_usage_ids' => 'required|array',
-			'capacity' => 'required|numeric|min:1',
-			'floor_area' => 'required|numeric|min:1',
-			'key_delivery_id' => 'required',
-		]);
-		
+	public function create(CreateSpaceRequest $request, Facility $facility) {		
 		$user = Auth::user();
 		$space = $user->spaces()->create([
 			'facility_id' => $facility->id,
@@ -57,14 +50,7 @@ class SpaceController extends Controller
 		]);
 	}
 
-	public function update(Request $request, Facility $facility, Space $space) {
-		$request->validate([
-			'space_usage_ids' => 'required|array',
-			'capacity' => 'required|numeric|min:1',
-			'floor_area' => 'required|numeric|min:1',
-			'key_delivery_id' => 'required',
-		]);
-		
+	public function update(CreateSpaceRequest $request, Facility $facility, Space $space) {
 		$space->update([
 			'facility_id' => $facility->id,
 			'key_delivery_id' => $request->get('key_delivery_id'),
