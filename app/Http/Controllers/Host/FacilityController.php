@@ -8,7 +8,7 @@ use App\FacilityKind;
 use App\Prefecture;
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateFacilityRequest;
 
 class FacilityController extends Controller
 {
@@ -27,23 +27,7 @@ class FacilityController extends Controller
 		]);
 	}
 
-	public function create(Request $request) {
-		$request->validate([
-			'name' => 'required|string',
-			'zip' => 'required|zip',
-			'prefecture_id' => 'required|integer',
-			'address1' => 'required|string',
-			'address1_ruby' => 'required|string',
-			'address2' => 'required|string',
-			'address2_ruby' => 'required|string',
-			'address3' => 'nullable|string',
-			'address3_ruby' => 'nullable|required_with:address3|string',
-			'latitude' => 'required',
-			'longitude' => 'required',
-			'access' => 'required|string',
-			'tel' => 'required|tel',
-		]);
-		
+	public function create(CreateFacilityRequest $request) {
 		$address = Address::firstOrCreate([
 			'prefecture_id' => $request->get('prefecture_id'),
 			'zip' => $request->get('zip'),
@@ -79,23 +63,7 @@ class FacilityController extends Controller
 		]);
 	}
 
-	public function update(Request $request, Facility $facility) {
-		$request->validate([
-			'name' => 'required|string',
-			'zip' => 'required|zip',
-			'prefecture_id' => 'required|integer',
-			'address1' => 'required|string',
-			'address1_ruby' => 'required|string',
-			'address2' => 'required|string',
-			'address2_ruby' => 'required|string',
-			'address3' => 'nullable|string',
-			'address3_ruby' => 'nullable|required_with:address3|string',
-			'latitude' => 'required',
-			'longitude' => 'required',
-			'access' => 'required|string',
-			'tel' => 'required|tel',
-		]);
-
+	public function update(CreateFacilityRequest $request, Facility $facility) {
 		$address = Address::firstOrCreate([
 			'prefecture_id' => $request->get('prefecture_id'),
 			'zip' => $request->get('zip'),
