@@ -48,23 +48,17 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group">
-        @include('layouts.error')
+        @include('layouts.errors')
       </div>
       <div class="row">
-
-        <!-- /.col -->
         <div class="col-xs-4 col-md-offset-4">
             @csrf
             <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
         </div>
-        <!-- /.col -->
       </div>
     </form>
-
   </div>
-  <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
 
 <!-- jQuery 2.1.4 -->
 <script src="https://test.spafac.com/vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js "></script>
