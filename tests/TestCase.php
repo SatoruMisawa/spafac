@@ -3,6 +3,7 @@
 namespace Tests;
 
 use App\Tester;
+use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -16,5 +17,10 @@ abstract class TestCase extends BaseTestCase
         
         $tester = factory(Tester::class)->create();
         return $this->be($tester, 'testers');
+    }
+
+    public function loginWithUser() {
+        $user = factory(User::class)->create();
+        return $this->be($user, 'users');
     }
 }
