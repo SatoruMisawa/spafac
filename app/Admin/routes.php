@@ -12,4 +12,26 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+    $router->resource('addresses', AddressController::class);
+    $router->resource('applies', ApplyController::class);
+    $router->resource('days', DayController::class);
+    $router->resource('facilities', FacilityController::class);
+    $router->resource('facility_kinds', FacilityKindController::class);
+    $router->resource('key_deliveries', KeyDeliveryController::class);
+    $router->resource('plans', PlanController::class);
+    $router->resource('prefectures', PrefectureController::class);
+    $router->resource('preorder_deadlines', PreorderDeadlineController::class);
+    $router->resource('preorder_periods', PreorderPeriodController::class);
+    $router->resource('providers', ProviderController::class);
+    $router->resource('reservations', ReservationController::class);
+    $router->resource('schedules', ScheduleController::class);
+    $router->resource('spaces', SpaceController::class);
+    $router->resource('space_images', SpaceImageController::class);
+    $router->resource('space_usages', SpaceUsageController::class);
+    $router->resource('stripe_charges', StripeChargeController::class);
+    $router->resource('stripe_users', StripeUserController::class);
+    $router->resource('testers', TesterController::class);
+    $router->resource('users', UsersController::class);
+    $router->resource('user_provider', UserProviderController::class);
+
 });
