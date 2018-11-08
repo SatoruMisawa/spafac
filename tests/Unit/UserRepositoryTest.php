@@ -12,6 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserRepositoryTest extends TestCase
 {
+    use WithFaker;
     use RefreshDatabase;
     /**
      * A basic test example.
@@ -21,12 +22,11 @@ class UserRepositoryTest extends TestCase
     public function testCreate()
     {
         $data = [
-            'name' => 'aiueo',
-            'nickname' => 'aiueo',
-            'email' => 'aiueo@aiueo.com',
-            'tel' => '00000000000',
-            'password' => 'aaaaaaaaaaaaa',
-            'password_confirmation' => 'aaaaaaaaaaaaa',
+            'name' => $this->faker->userName(),
+            'nickname' => $this->faker->userName(),
+            'email' => $this->faker->email(),
+            'tel' => $this->faker->phoneNumber(),
+            'password' => $this->faker->password(),
         ];
         $repo = new UserRepository(new User);
         $user = $repo->create($data);

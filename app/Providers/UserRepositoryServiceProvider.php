@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\User;
+use App\Repositories\Repository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +26,7 @@ class UserRepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(UserRepository::class, function() {
+        $this->app->singleton(Repository::class, function() {
             return new UserRepository(new User);
         });
     }

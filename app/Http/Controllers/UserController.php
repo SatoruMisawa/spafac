@@ -17,13 +17,13 @@ class UserController extends Controller
     }
 
     public function new() {
-    return view('user.new');
+        return view('user.new');
     }
-    
-    public function create(CreateUserRequest $request) {		
-    $user = $this->repo->create($request->all());
-    Auth::login($user, true);
         
-    return redirect()->route('verification.email.send', $user->id);
-  }
+    public function create(CreateUserRequest $request) {		
+        $user = $this->repo->create($request->all());
+        Auth::login($user, true);
+            
+        return redirect()->route('verification.email.send', $user->id);
+    }
 }
