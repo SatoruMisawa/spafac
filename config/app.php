@@ -166,6 +166,7 @@ return [
         App\Providers\SocialiteServiceProvider::class,
         App\Providers\ClaimantServiceProvider::class, 
         App\Providers\UserRepositoryServiceProvider::class,
+        App\Providers\AddressRepositoryServiceProvider::class,
     ],
 
     /*
