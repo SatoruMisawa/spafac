@@ -163,9 +163,9 @@ return [
         App\Providers\ValidatorServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
-        // Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\SocialiteServiceProvider::class,
-        App\Providers\ClaimantServiceProvider::class,
+        App\Providers\ClaimantServiceProvider::class, 
+        App\Providers\UserRepositoryServiceProvider::class,
     ],
 
     /*
