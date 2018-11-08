@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Prefecture;
 use App\User;
 use Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {
@@ -13,17 +13,7 @@ class UserController extends Controller
 		return view('user.new');
     }
     
-    public function create(Request $request) {
-		$request->validate([
-			'name' => 'required',
-			'nickname' => 'required',
-			'email' => 'required|email|unique:users,email',
-			'tel' => 'required|tel',
-			'password' => 'required|between:8,20|confirmed',
-			'password_confirmation' => 'required',
-		]);
-
-		
+    public function create(CreateUserRequest $request) {		
 		$user = User::create($request->all());
 		Auth::login($user, true);
 				

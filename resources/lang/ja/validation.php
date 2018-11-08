@@ -124,6 +124,10 @@ return [
 
 	'attributes' => [
 		'name' => '名前',
+		'nickname' => 'ニックネイム',
+		'email' => 'メールアドレス',
+		'password' => 'パスワード',
+		'password_confirmation' => 'パスワード(確認)',
 		'zip' => '郵便番号',
 		'prefecture_id' => '都道府県',
 		'address1' => '市区町村',
@@ -158,10 +162,6 @@ return [
 		'bank_branch_code' => '支店コード',
 		'bank_account_number' => '口座番号',
 		'bank_account_name' => '口座名義',
-		'password_confirmation' => 'パスワード(確認)',
-		'old_password' => '現在のパスワード',
-		'new_password' => '新しいパスワード',
-		'new_password_confirmation' => '新しいパスワード(確認)',
 	],
 
 ];

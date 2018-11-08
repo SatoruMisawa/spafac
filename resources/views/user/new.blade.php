@@ -16,44 +16,44 @@
 						<table class="form__table01">
 							<tr>
 								<td><span>姓名</span></td>
+								@include('layouts.error', ['name' => 'name'])
 								<td>
 									{{ Form::text('name', null, ['maxlength' => '20']) }}
-									{{ App\Helper::error($errors, ['name']) }}
 								</td>
 							</tr>
 							<tr>
 								<td><span>ニックネーム</span></td>
+								@include('layouts.error', ['name' => 'nickname'])
 								<td>
 										{{ Form::text('nickname', null, ['maxlength' => '20']) }}
-										{{ App\Helper::error($errors, ['nickname']) }}
 								</td>
 							</tr>
 							<tr>
 								<td><span>メールアドレス</span><br /><i>（メールアドレスがログインID）</i></td>
+								@include('layouts.error', ['name' => 'email'])
 								<td>
 									{{ Form::text('email', null, ['maxlength' => '100']) }}
-									{{ App\Helper::error($errors, ['email']) }}
 								</td>
 							</tr>
 							<tr>
 								<td><span>電話番号</span></td>
+								@include('layouts.error', ['name' => 'tel'])
 								<td>
 									{{ Form::text('tel', null, ['maxlength' => '20']) }}
-									{{ App\Helper::error($errors, ['tel']) }}
 								</td>
 							</tr>
 							<tr>
 								<td><span>パスワード</span></td>
+								@include('layouts.error', ['name' => 'password'])
 								<td>
 									{{ Form::password('password', ['maxlength' => '20']) }}
-									{{ App\Helper::error($errors, ['password']) }}
 								</td>
 							</tr>
 							<tr>
 								<td><span>パスワードの確認</span></td>
+								@include('layouts.error', ['name' => 'password_confirmation'])
 								<td>
-									{{ Form::password('password_confirmation', ['maxlength' => '20']) }}
-									{{ App\Helper::error($errors, ['password_confirmation']) }}
+									{{ Form::password('password_confirmation', ['maxlength' => '20']) }}									
 								</td>
 							</tr>
 						</table>
