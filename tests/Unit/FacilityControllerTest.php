@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Artisan;
+use App\Facility;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -11,12 +12,6 @@ class FacilityControllerTest extends TestCase
 {
     use WithFaker;
     use RefreshDatabase;
-
-    // public function setUp() {
-    //     parent::setUp();
-
-    //     Artisan::call('db:seed');
-    // }
 
     public function testNew() {
         $response = $this->loginWithTesterIfDebug()
@@ -48,5 +43,16 @@ class FacilityControllerTest extends TestCase
                             'facility_kind_id' => 1,
                         ])
                         ->assertRedirect(route('host.facility.space.new', 1));
+    }
+
+    public function testEdit() {
+        $this->refreshAndSeedDatabase();
+        $facility = factory(Facility::class)->create();
+        $response = $this->loginWithTesterIfDebug()
+                        ->loginWithUser()
+                        ->get(route('host.facility.edit', $facility->id));
+
+        $response->assertStatus(200)
+                 ->assertSee('施設編集');
     }
 }

@@ -49,13 +49,17 @@ class FacilityController extends Controller
 	}
 
 	public function edit(Facility $facility) {
-		return view('host.facility.edit', [
-			'facility' => $facility,
-			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
-				return [$prefecture->id => $prefecture->name];
-			})->toArray(),
-			'facilityKinds' => FacilityKind::all(),
-		]);
+		try {
+			return view('host.facility.edit', [
+				'facility' => $facility,
+				'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
+					return [$prefecture->id => $prefecture->name];
+				})->toArray(),
+				'facilityKinds' => FacilityKind::all(),
+			]);
+		} catch (\Exception $e) {
+			dd($e->getMessage());
+		}
 	}
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
