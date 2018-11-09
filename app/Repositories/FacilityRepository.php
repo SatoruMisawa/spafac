@@ -18,4 +18,10 @@ class FacilityRepository {
     public function find($id) {
         return $this->model->find($id);
     }
+
+    public function update($id, array $data) {
+        $facility = $this->find($id);
+        $facility->update($data);
+        return $this->find($facility->id);
+    }
 }

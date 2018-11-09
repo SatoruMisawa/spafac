@@ -25,7 +25,14 @@ class FacilityRepositoryTest extends TestCase
         $expect = Facility::create($this->data());
         $actual = $this->repository()->find($expect->id);
         $this->assert($expect->toArray(), $actual);
-    } 
+    }
+
+    public function testUpdate() {
+        $facility = Facility::create($this->data());
+        $updatedData = ['id' => $facility->id] + $this->data();
+        $updatedFacility = $this->repository()->update($facility->id, $updatedData);
+        $this->assert($updatedData, $updatedFacility);
+    }
 
     private function assert(array $expect, $actual) {
         $this->assertInstanceOf(Facility::class, $actual);
