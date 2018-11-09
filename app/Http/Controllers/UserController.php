@@ -10,10 +10,10 @@ use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {
-    private $repo;
+    private $userRepository;
 
-    public function __construct(UserRepository $repo) {
-        $this->repo = $repo;
+    public function __construct(UserRepository $userRepository) {
+        $this->userRepository = $userRepository;
     }
 
     public function new() {
@@ -21,9 +21,19 @@ class UserController extends Controller
     }
         
     public function create(CreateUserRequest $request) {		
-        $user = $this->repo->create($request->all());
+        $user = $this->createUserFrom($request);
         Auth::login($user, true);
             
         return redirect()->route('verification.email.send', $user->id);
+    }
+
+    private function createUserFrom(CreateUserRequest $request) {
+        return $this->userRepository->create(
+            $request->only([
+                'name', 'nickname',
+                'email', 'tel',
+                'password',
+            ])
+        );
     }
 }
