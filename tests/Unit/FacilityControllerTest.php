@@ -46,7 +46,6 @@ class FacilityControllerTest extends TestCase
     }
 
     public function testEdit() {
-        $this->refreshAndSeedDatabase();
         $facility = factory(Facility::class)->create();
         $response = $this->loginWithTesterIfDebug()
                         ->loginWithUser()
@@ -54,5 +53,29 @@ class FacilityControllerTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertSee('施設編集');
+    }
+
+    public function testUpdate() {
+        $facility = factory(Facility::class)->create();
+        $updatedFacility = factory(Facility::class)->create();
+        $response = $this->loginWithTesterIfDebug()
+                        ->loginWithUser()
+                        ->put(route('host.facility.update', $facility->id), [
+                            'name' => $updatedFacility->name,
+                            'zip' => '0000000',
+                            'prefecture_id' => $updatedFacility->address->prefecture_id,
+                            'address1' => $updatedFacility->address->address1,
+                            'address1_ruby' => $updatedFacility->address->address1_ruby,
+                            'address2' => $updatedFacility->address->address2,
+                            'address2_ruby' => $updatedFacility->address->address2_ruby,
+                            'address3' => $updatedFacility->address->address3,
+                            'address3_ruby' => $updatedFacility->address->address3_ruby,
+                            'latitude' => $updatedFacility->address->latitude,
+                            'longitude' => $updatedFacility->address->longitude,
+                            'access' => $updatedFacility->access,
+                            'tel' => '00000000000',
+                            'facility_kind_id' => $updatedFacility->facility_kind_id,
+                        ])
+                        ->assertRedirect(route('host.facility.index'));
     }
 }
