@@ -168,6 +168,7 @@ return [
         App\Providers\FacilityRepositoryServiceProvider::class,
         App\Providers\SocialiteServiceProvider::class,
         App\Providers\UserRepositoryServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
