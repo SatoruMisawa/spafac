@@ -14,28 +14,34 @@ class UserRepositoryTest extends TestCase
 {
     use WithFaker;
     use RefreshDatabase;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+    
     public function testCreate()
     {
-        $data = [
+        $data = $this->data();
+        $user = $this->repository()->create($data);
+        $this->assert($data, $user);
+    }
+
+    private function assert(array $expect, $actual) {
+        $this->assertInstanceOf(User::class, $actual);
+        $this->assertEquals($expect['name'], $actual->name);
+        $this->assertEquals($expect['nickname'], $actual->nickname);
+        $this->assertEquals($expect['email'], $actual->email);
+        $this->assertEquals($expect['tel'], $actual->tel);
+        $this->assertTrue(Hash::check($expect['password'], $actual->password));
+    }
+
+    private function repository() {
+        return app()->make(UserRepository::class);
+    }
+
+    private function data() {
+        return [
             'name' => $this->faker->userName(),
             'nickname' => $this->faker->userName(),
             'email' => $this->faker->email(),
             'tel' => $this->faker->phoneNumber(),
             'password' => $this->faker->password(),
         ];
-        $repo = new UserRepository(new User);
-        $user = $repo->create($data);
-
-        $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals($data['name'], $user->name);
-        $this->assertEquals($data['nickname'], $user->nickname);
-        $this->assertEquals($data['email'], $user->email);
-        $this->assertEquals($data['tel'], $user->tel);
-        $this->assertTrue(Hash::check($data['password'], $user->password));
     }
 }
