@@ -19,6 +19,7 @@ class UserControllerTest extends TestCase
     }
 
     public function testCreate() {
+        $this->refreshAndSeedDatabase();
         $response = $this->loginWithTesterIfDebug()
                          ->post(route('user.create'), [
                              'name' => 'aiueo',
