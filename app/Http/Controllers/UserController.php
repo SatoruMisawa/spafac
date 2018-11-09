@@ -21,19 +21,15 @@ class UserController extends Controller
     }
         
     public function create(CreateUserRequest $request) {		
-        $user = $this->createUserFrom($request);
-        Auth::login($user, true);
-            
-        return redirect()->route('verification.email.send', $user->id);
-    }
-
-    private function createUserFrom(CreateUserRequest $request) {
-        return $this->userRepository->create(
+        $user = $this->userRepository->create(
             $request->only([
                 'name', 'nickname',
                 'email', 'tel',
                 'password',
             ])
         );
+        Auth::login($user, true);
+            
+        return redirect()->route('verification.email.send', $user->id);
     }
 }

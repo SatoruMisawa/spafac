@@ -42,9 +42,22 @@ class FacilityController extends Controller
 	}
 
 	public function create(CreateFacilityRequest $request) {
-		$address = $this->firstOrCreateAddressFrom($request);
-		$user = Auth::user();
-		$facility = $user->facilities()->save($this->newFacilityFrom($request, $address->id));
+		$address = $this->addressRepository->firstOrCreate(
+			$request->only([
+				'zip', 'prefecture_id',
+				'address1', 'address1_ruby',
+				'address2', 'address2_ruby',
+				'address3', 'address3_ruby',
+				'latitude', 'longitude',
+			])
+		);
+
+		$data = ['address_id' => $address->id] + $request->only([
+			'facility_kind_id', 'name', 'access', 'tel',
+		]);
+		$facility = Auth::user()->facilities()->save(
+			$this->facilityRepository->new($data)
+		);
 		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 
@@ -59,13 +72,7 @@ class FacilityController extends Controller
 	}
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
-		$address = $this->firstOrCreateAddressFrom($request);
-		$this->updateFacilityFrom($facility->id, $request, $address->id);
-		return redirect()->route('host.facility.index');
-	}
-
-	private function firstOrCreateAddressFrom(CreateFacilityRequest $request) {
-		return $this->addressRepository->firstOrCreate(
+		$address = $this->addressRepository->firstOrCreate(
 			$request->only([
 				'zip', 'prefecture_id',
 				'address1', 'address1_ruby',
@@ -74,19 +81,11 @@ class FacilityController extends Controller
 				'latitude', 'longitude',
 			])
 		);
-	}
 
-	private function newFacilityFrom(CreateFacilityRequest $request, $addressID) {
-		$data = ['address_id' => $addressID] + $request->only([
+		$data = ['address_id' => $address->id] + $request->only([
 			'facility_kind_id', 'name', 'access', 'tel',
 		]);
-		return $this->facilityRepository->new($data);
-	}
-
-	private function updateFacilityFrom($facilityID, CreateFacilityRequest $request, $addressID) {
-		$data = ['address_id' => $addressID] + $request->only([
-			'facility_kind_id', 'name', 'access', 'tel',
-		]);
-		return $this->facilityRepository->update($facilityID, $data);
+		$this->facilityRepository->update($facility->id, $data);
+		return redirect()->route('host.facility.index');
 	}
 }
