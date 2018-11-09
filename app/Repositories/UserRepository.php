@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Requests\CreateUserRequest;
 use Hash;
 
-class UserRepository implements Repository{
+class UserRepository {
     private $model;
 
     public function __construct(User $user) {

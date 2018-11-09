@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Address;
 
-class AddressRepository implements Repository {
+class AddressRepository {
     private $model;
 
     public function __construct(Address $address) {
