@@ -4,15 +4,11 @@ namespace App;
 
 use DB;
 use Storage;
-use App\MyModel;
 use App\Plan;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Space extends Model
 {
-	use MyModel;
-	
 	//入力状況
 	const INPUT_STATUS_NONE = 0;
 	const INPUT_STATUS_INSTITUTION = 1;
@@ -21,8 +17,8 @@ class Space extends Model
 	const INPUT_STATUS_COMPLETE = 4;
 	
 	protected $fillable = [
-		'user_id', 'facility_id', 'space_usage_id',
-		'key_delivery_id', 'plan_id',
+		'user_id', 'facility_id',
+		'key_delivery_id',
 		'capacity', 'floor_area',
 	];
 	
