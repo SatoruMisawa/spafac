@@ -58,6 +58,7 @@ class FacilityController extends Controller
 		$facility = Auth::user()->facilities()->save(
 			$this->facilityRepository->new($data)
 		);
+		
 		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 

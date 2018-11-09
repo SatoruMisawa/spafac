@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Space;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\SpaceRepository;
-use App\Space;
 use App\Validators\SpaceValidator;
 
 /**
@@ -36,8 +36,7 @@ class SpaceRepositoryEloquent extends BaseRepository implements SpaceRepository
     }
     
     public function new(array $data) {
-        $model = $this->model();
-        return new $model($data);
+        return new Space($data);
     }
 
 }
