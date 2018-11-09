@@ -14,12 +14,6 @@ class UserRepository implements Repository{
     }
 
     public function create(array $data) {
-        return $this->model->create([
-            'name' => $data['name'],
-            'nickname' => $data['nickname'],
-            'email' => $data['email'],
-            'tel' => $data['tel'],
-            'password' => $data['password'],
-        ]);
+        return $this->model->create($data);
     }
 }
