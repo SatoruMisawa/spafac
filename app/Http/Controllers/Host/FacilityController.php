@@ -60,15 +60,7 @@ class FacilityController extends Controller
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
 		$address = $this->firstOrCreateAddressFrom($request);
-		
-		$facility->update([
-			'address_id' => $address->id,
-			'facility_kind_id' => $request->get('facility_kind_id'),
-			'name' => $request->get('name'),
-			'access' => $request->get('access'),
-			'tel' => $request->get('tel'),
-		]);
-
+		$this->updateFacilityFrom($facility->id, $request, $address->id);
 		return redirect()->route('host.facility.index');
 	}
 
@@ -89,5 +81,12 @@ class FacilityController extends Controller
 			'facility_kind_id', 'name', 'access', 'tel',
 		]);
 		return $this->facilityRepository->new($data);
+	}
+
+	private function updateFacilityFrom($facilityID, CreateFacilityRequest $request, $addressID) {
+		$data = ['address_id' => $addressID] + $request->only([
+			'facility_kind_id', 'name', 'access', 'tel',
+		]);
+		return $this->facilityRepository->update($facilityID, $data);
 	}
 }
