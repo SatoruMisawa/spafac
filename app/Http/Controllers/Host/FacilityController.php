@@ -7,6 +7,7 @@ use App\Facility;
 use App\FacilityKind;
 use App\Prefecture;
 use App\Repositories\AddressRepository;
+use App\Repositories\FacilityRepository;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Requests\CreateFacilityRequest;
@@ -15,8 +16,14 @@ class FacilityController extends Controller
 {
 	private $addressRepository;
 
-	public function __construct(AddressRepository $addressRepository) {
+	private $facilityRepository;
+
+	public function __construct(
+		AddressRepository $addressRepository,
+		FacilityRepository $facilityRepository
+	) {
 		$this->addressRepository = $addressRepository;
+		$this->facilityRepository = $facilityRepository;
 	}
 
 	public function index() {
@@ -36,15 +43,8 @@ class FacilityController extends Controller
 
 	public function create(CreateFacilityRequest $request) {
 		$address = $this->firstOrCreateAddressFrom($request);
-			
 		$user = Auth::user();
-		$facility = $user->facilities()->create([
-			'address_id' => $address->id,
-			'facility_kind_id' => $request->get('facility_kind_id'),
-			'name' => $request->get('name'),
-			'access' => $request->get('access'),
-			'tel' => $request->get('tel'),
-		]);
+		$facility = $user->facilities()->save($this->newFacilityFrom($request, $address->id));
 		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 
@@ -60,7 +60,7 @@ class FacilityController extends Controller
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
 		$address = $this->firstOrCreateAddressFrom($request);
-
+		
 		$facility->update([
 			'address_id' => $address->id,
 			'facility_kind_id' => $request->get('facility_kind_id'),
@@ -82,5 +82,12 @@ class FacilityController extends Controller
 				'latitude', 'longitude',
 			])
 		);
+	}
+
+	private function newFacilityFrom(CreateFacilityRequest $request, $addressID) {
+		$data = ['address_id' => $addressID] + $request->only([
+			'facility_kind_id', 'name', 'access', 'tel',
+		]);
+		return $this->facilityRepository->new($data);
 	}
 }
