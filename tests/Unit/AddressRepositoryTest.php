@@ -12,14 +12,67 @@ class AddressRepositoryTest extends TestCase
 {
     use WithFaker;
     use RefreshDatabase;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testCreate()
-    {
-        $data = [
+    
+    public function testFirst() {
+        $address = factory(Address::class)->create();
+        $address2 = $this->repository()->first([
+            'id' => $address->id,
+        ]);
+        
+        $this->assert($address->toArray(), $address2);
+    }
+
+    public function testFirstNull() {
+        $address = $this->repository()->first([
+            'id' => 0,
+        ]);
+
+        $this->assertEquals(null, $address);
+    }
+
+    public function testCreate() {
+        $data = $this->data();
+        $address = $this->repository()->create($data);
+
+        $this->assert($data, $address);
+    }
+
+    public function testFirstOfFirstOrCreate() {
+        $address = factory(Address::class)->create();
+        $address2 = $this->repository()->firstOrCreate([
+            'id' => $address->id,
+        ]);
+
+        $this->assert($address->toArray(), $address2);
+    }
+
+    public function testCreateOfFirstOrCreate() {
+        $data = $this->data();
+        $address = $this->repository()->firstOrCreate($data);
+
+        $this->assert($data, $address);
+    }
+
+    private function assert(array $expect, $actual) {
+        $this->assertInstanceOf(Address::class, $actual);
+        $this->assertEquals($expect['prefecture_id'], $actual->prefecture_id);
+        $this->assertEquals($expect['zip'], $actual->zip);
+        $this->assertEquals($expect['address1'], $actual->address1);
+        $this->assertEquals($expect['address1_ruby'], $actual->address1_ruby);
+        $this->assertEquals($expect['address2'], $actual->address2);
+        $this->assertEquals($expect['address2_ruby'], $actual->address2_ruby);
+        $this->assertEquals($expect['address3'], $actual->address3);
+        $this->assertEquals($expect['address3_ruby'], $actual->address3_ruby);
+        $this->assertEquals($expect['latitude'], $actual->latitude);
+        $this->assertEquals($expect['longitude'], $actual->longitude);
+    }
+
+    private function repository() {
+        return app()->make(AddressRepository::class);
+    }
+
+    private function data() {
+        return [
             'prefecture_id' => $this->faker->randomDigitNotNull(),
 			'zip' => $this->faker->postcode(),
 			'address1' => $this->faker->city(),
@@ -31,20 +84,5 @@ class AddressRepositoryTest extends TestCase
 			'latitude' => $this->faker->latitude,
 			'longitude' => $this->faker->longitude,
         ];
-
-        $repo = new AddressRepository(new Address);
-        $address = $repo->create($data);
-
-        $this->assertInstanceOf(Address::class, $address);
-        $this->assertEquals($data['prefecture_id'], $address->prefecture_id);
-        $this->assertEquals($data['zip'], $address->zip);
-        $this->assertEquals($data['address1'], $address->address1);
-        $this->assertEquals($data['address1_ruby'], $address->address1_ruby);
-        $this->assertEquals($data['address2'], $address->address2);
-        $this->assertEquals($data['address2_ruby'], $address->address2_ruby);
-        $this->assertEquals($data['address3'], $address->address3);
-        $this->assertEquals($data['address3_ruby'], $address->address3_ruby);
-        $this->assertEquals($data['latitude'], $address->latitude);
-        $this->assertEquals($data['longitude'], $address->longitude);
     }
 }

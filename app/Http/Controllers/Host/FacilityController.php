@@ -6,12 +6,19 @@ use App\Address;
 use App\Facility;
 use App\FacilityKind;
 use App\Prefecture;
+use App\Repositories\AddressRepository;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Requests\CreateFacilityRequest;
 
 class FacilityController extends Controller
 {
+	private $addressRepository;
+
+	public function __construct(AddressRepository $addressRepository) {
+		$this->addressRepository = $addressRepository;
+	}
+
 	public function index() {
 		return view('host.facility.index', [
 			'facilities' => Auth::user()->facilities()->get(),
@@ -28,19 +35,8 @@ class FacilityController extends Controller
 	}
 
 	public function create(CreateFacilityRequest $request) {
-		$address = Address::firstOrCreate([
-			'prefecture_id' => $request->get('prefecture_id'),
-			'zip' => $request->get('zip'),
-			'address1' => $request->get('address1'),
-			'address1_ruby' => $request->get('address1_ruby'),
-			'address2' => $request->get('address2'),
-			'address2_ruby' => $request->get('address2_ruby'),
-			'address3' => $request->get('address3'),
-			'address3_ruby' => $request->get('address3_ruby'),
-			'latitude' => $request->get('latitude'),
-			'longitude' => $request->get('longitude'),
-		]);
-		
+		$address = $this->firstOrCreateAddressFrom($request);
+			
 		$user = Auth::user();
 		$facility = $user->facilities()->create([
 			'address_id' => $address->id,
@@ -49,7 +45,6 @@ class FacilityController extends Controller
 			'access' => $request->get('access'),
 			'tel' => $request->get('tel'),
 		]);
-
 		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 
@@ -64,18 +59,7 @@ class FacilityController extends Controller
 	}
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
-		$address = Address::firstOrCreate([
-			'prefecture_id' => $request->get('prefecture_id'),
-			'zip' => $request->get('zip'),
-			'address1' => $request->get('address1'),
-			'address1_ruby' => $request->get('address1_ruby'),
-			'address2' => $request->get('address2'),
-			'address2_ruby' => $request->get('address2_ruby'),
-			'address3' => $request->get('address3'),
-			'address3_ruby' => $request->get('address3_ruby'),
-			'latitude' => $request->get('latitude'),
-			'longitude' => $request->get('longitude'),
-		]);
+		$address = $this->firstOrCreateAddressFrom($request);
 
 		$facility->update([
 			'address_id' => $address->id,
@@ -86,5 +70,17 @@ class FacilityController extends Controller
 		]);
 
 		return redirect()->route('host.facility.index');
+	}
+
+	private function firstOrCreateAddressFrom(CreateFacilityRequest $request) {
+		return $this->addressRepository->firstOrCreate(
+			$request->only([
+				'zip', 'prefecture_id',
+				'address1', 'address1_ruby',
+				'address2', 'address2_ruby',
+				'address3', 'address3_ruby',
+				'latitude', 'longitude',
+			])
+		);
 	}
 }
