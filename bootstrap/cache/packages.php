@@ -28,13 +28,6 @@
       'Image' => 'Intervention\\Image\\Facades\\Image',
     ),
   ),
-  'laravel/dusk' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Dusk\\DuskServiceProvider',
-    ),
-  ),
   'laravel/socialite' => 
   array (
     'providers' => 
@@ -70,6 +63,13 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    ),
+  ),
+  'prettus/l5-repository' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Prettus\\Repository\\Providers\\RepositoryServiceProvider',
     ),
   ),
 );
