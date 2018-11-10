@@ -9,7 +9,7 @@ use App\Http\Requests\CreateSpaceImageRequest;
 use Intervention\Image\Facades\Image;
 use Storage;
 
-class ImageController extends Controller
+class SpaceImageController extends Controller
 {
     public function new(Space $space) {
         return view('host.space.image.new', [
