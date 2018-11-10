@@ -24,6 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\App\Repositories\SpaceRepository::class, \App\Repositories\SpaceRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\SpaceImageRepository::class, \App\Repositories\SpaceImageRepositoryEloquent::class);
         //:end-bindings:
     }
 }
