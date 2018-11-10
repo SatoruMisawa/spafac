@@ -163,8 +163,7 @@ return [
         App\Providers\ValidatorServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
-        App\Providers\ClaimantServiceProvider::class, 
-        App\Providers\FacilityRepositoryServiceProvider::class,
+        App\Providers\ClaimantServiceProvider::class,
         App\Providers\SocialiteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
     ],

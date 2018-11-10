@@ -86,7 +86,7 @@ class FacilityController extends Controller
 		$data = ['address_id' => $address->id] + $request->only([
 			'facility_kind_id', 'name', 'access', 'tel',
 		]);
-		$this->facilityRepository->update($facility->id, $data);
+		$this->facilityRepository->update($data, $facility->id);
 		return redirect()->route('host.facility.index');
 	}
 }
