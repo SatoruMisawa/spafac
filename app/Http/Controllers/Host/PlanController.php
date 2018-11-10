@@ -58,6 +58,6 @@ class PlanController extends Controller
 			]);
 		}
 
-		return redirect()->route('host');
+		return redirect()->route('host.index');
 	}
 }
