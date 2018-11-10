@@ -38,11 +38,10 @@
     34 => 'App\\Providers\\RouteServiceProvider',
     35 => 'App\\Providers\\ValidatorServiceProvider',
     36 => 'Intervention\\Image\\ImageServiceProvider',
-    37 => 'App\\Providers\\AddressRepositoryServiceProvider',
-    38 => 'App\\Providers\\ClaimantServiceProvider',
-    39 => 'App\\Providers\\FacilityRepositoryServiceProvider',
-    40 => 'App\\Providers\\SocialiteServiceProvider',
-    41 => 'App\\Providers\\RepositoryServiceProvider',
+    37 => 'App\\Providers\\ClaimantServiceProvider',
+    38 => 'App\\Providers\\FacilityRepositoryServiceProvider',
+    39 => 'App\\Providers\\SocialiteServiceProvider',
+    40 => 'App\\Providers\\RepositoryServiceProvider',
   ),
   'eager' => 
   array (
@@ -66,10 +65,9 @@
     17 => 'App\\Providers\\RouteServiceProvider',
     18 => 'App\\Providers\\ValidatorServiceProvider',
     19 => 'Intervention\\Image\\ImageServiceProvider',
-    20 => 'App\\Providers\\AddressRepositoryServiceProvider',
-    21 => 'App\\Providers\\ClaimantServiceProvider',
-    22 => 'App\\Providers\\FacilityRepositoryServiceProvider',
-    23 => 'App\\Providers\\RepositoryServiceProvider',
+    20 => 'App\\Providers\\ClaimantServiceProvider',
+    21 => 'App\\Providers\\FacilityRepositoryServiceProvider',
+    22 => 'App\\Providers\\RepositoryServiceProvider',
   ),
   'deferred' => 
   array (
