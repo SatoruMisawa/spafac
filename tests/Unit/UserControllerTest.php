@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserControllerTest extends TestCase
 {
+    use WithFaker;
     use RefreshDatabase;
 
     public function testNew() {
@@ -22,9 +23,9 @@ class UserControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $response = $this->loginWithTesterIfDebug()
                          ->post(route('user.create'), [
-                             'name' => 'aiueo',
-                             'nickname' => 'aiueo',
-                             'email' => 'aiueo@aiueo.com',
+                             'name' => $this->faker->name(),
+                             'nickname' => $this->faker->name(),
+                             'email' => $this->faker->email(),
                              'tel' => '000000000',
                              'password' => 'aaaaaaaaaaaaaaa',
                              'password_confirmation' => 'aaaaaaaaaaaaaaa',
