@@ -44,7 +44,7 @@ class SpaceControllerTest extends TestCase
         $space = factory(Space::class)->create();
         $response = $this->loginWithTesterIfDebug()
                         ->loginWithUser()
-                        ->get(route('host.facility.edit', $space->id));
+                        ->get(route('host.facility.space.edit', [$space->facility_id, $space->id]));
 
         $response->assertStatus(200)
                  ->assertSee('スペース編集');
