@@ -11,5 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface SpaceImageRepository extends RepositoryInterface
 {
-    //
+    public function new(array $data);
 }
