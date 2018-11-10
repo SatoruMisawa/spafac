@@ -1,4 +1,4 @@
-@extends('layouts2.master')
+@extends('layouts.master')
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="/assets/css/whats_about.css">

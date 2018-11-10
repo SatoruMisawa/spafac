@@ -10,7 +10,7 @@ use App\PreorderPeriod;
 use App\Schedule;
 use App\Space;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreatePlanRequest;
 
 
 class PlanController extends Controller
@@ -28,21 +28,7 @@ class PlanController extends Controller
 		]);
 	}
 
-	public function create(Request $request, Space $space) {
-		$request->validate([
-			'name' => 'required',
-			'price_per_hour' => 'nullable|required_with:by_hour|min:1',
-			'price_per_day' => 'nullable|required_with:by_day|min:1',
-			'day_ids' => 'required|array',
-			'hour_from' => 'required|array',
-			'hour_to' => 'required|array',
-			'need_to_be_approved' => 'required|boolean',
-			'preorder_deadline_id' => 'required',
-			'preorder_period_id' => 'required',
-			'period_from' => 'nullable|date',
-			'period_to' => 'nullable|date|after:period_from',
-		]);
-		
+	public function create(CreatePlanRequest $request, Space $space) {
 		$plan = $space->plan()->create([
 			'name' => $request->get('name'),
 			'preorder_deadline_id' => $request->get('preorder_deadline_id'),
@@ -60,7 +46,7 @@ class PlanController extends Controller
 			if ($to <= $from) {
 				return redirect()
 						->back()
-						->withErrors(['hour_from['.$dayID.']' => '終了時刻より早い時間にしてください'])
+						->withErrors(['hour_from['.$dayID.']' => '終了時刻より開始時間を前の時間にしてください'])
 						->withInput();
 			}
 

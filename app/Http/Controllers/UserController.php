@@ -4,38 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Prefecture;
 use App\User;
-use App\Mail\EmailVerification;
+use App\Repositories\UserRepository;
 use Auth;
-use Mail;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {
-    public function __construct() {
-        $this->middleware('guest');
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository) {
+        $this->userRepository = $userRepository;
     }
 
     public function new() {
-		return view('registration.new');
+        return view('user.new');
     }
-    
-    public function create(Request $request) {
-		$request->validate([
-			'name' => 'required',
-			'nickname' => 'required',
-			'email' => 'required|email|unique:users,email',
-			'tel' => 'required|tel',
-			'password' => 'required|between:8,20|confirmed',
-			'password_confirmation' => 'required',
-		]);
-
-		
-		$user = User::create($request->all());
-		Auth::login($user, true);
-		
-		$user->prepareToVerifyEmail();
-		Mail::to($user->email)->send(new EmailVerification($user));
-		
-		return redirect()->to('registration/send')->with('message', '確認メールを送信しました。');
-	}
+        
+    public function create(CreateUserRequest $request) {		
+        $user = $this->userRepository->create(
+            $request->only([
+                'name', 'nickname',
+                'email', 'tel',
+                'password',
+            ])
+        );
+        Auth::login($user, true);
+            
+        return redirect()->route('verification.email.send', $user->id);
+    }
 }

@@ -6,12 +6,26 @@ use App\Address;
 use App\Facility;
 use App\FacilityKind;
 use App\Prefecture;
+use App\Repositories\AddressRepository;
+use App\Repositories\FacilityRepository;
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateFacilityRequest;
 
 class FacilityController extends Controller
 {
+	private $addressRepository;
+
+	private $facilityRepository;
+
+	public function __construct(
+		AddressRepository $addressRepository,
+		FacilityRepository $facilityRepository
+	) {
+		$this->addressRepository = $addressRepository;
+		$this->facilityRepository = $facilityRepository;
+	}
+
 	public function index() {
 		return view('host.facility.index', [
 			'facilities' => Auth::user()->facilities()->get(),
@@ -27,44 +41,24 @@ class FacilityController extends Controller
 		]);
 	}
 
-	public function create(Request $request) {
-		$request->validate([
-			'name' => 'required',
-			'zip' => 'required|zip',
-			'prefecture_id' => 'required',
-			'address1' => 'required',
-			'address1_ruby' => 'required',
-			'address2' => 'required',
-			'address2_ruby' => 'required',
-			'address3_ruby' => 'required_with:address3',
-			'latitude' => 'required',
-			'longitude' => 'required',
-			'access' => 'required',
-			'tel' => 'required|tel',
-		]);
-		
-		$address = Address::firstOrCreate([
-			'prefecture_id' => $request->get('prefecture_id') + 1,
-			'zip' => $request->get('zip'),
-			'address1' => $request->get('address1'),
-			'address1_ruby' => $request->get('address1_ruby'),
-			'address2' => $request->get('address2'),
-			'address2_ruby' => $request->get('address2_ruby'),
-			'address3' => $request->get('address3'),
-			'address3_ruby' => $request->get('address3_ruby'),
-			'latitude' => $request->get('latitude'),
-			'longitude' => $request->get('longitude'),
-		]);
-		
-		$user = Auth::user();
-		$facility = $user->facilities()->create([
-			'address_id' => $address->id,
-			'facility_kind_id' => $request->get('facility_kind_id'),
-			'name' => $request->get('name'),
-			'access' => $request->get('access'),
-			'tel' => $request->get('tel'),
-		]);
+	public function create(CreateFacilityRequest $request) {
+		$address = $this->addressRepository->firstOrCreate(
+			$request->only([
+				'zip', 'prefecture_id',
+				'address1', 'address1_ruby',
+				'address2', 'address2_ruby',
+				'address3', 'address3_ruby',
+				'latitude', 'longitude',
+			])
+		);
 
+		$data = ['address_id' => $address->id] + $request->only([
+			'facility_kind_id', 'name', 'access', 'tel',
+		]);
+		$facility = Auth::user()->facilities()->save(
+			$this->facilityRepository->new($data)
+		);
+		
 		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 
@@ -78,43 +72,21 @@ class FacilityController extends Controller
 		]);
 	}
 
-	public function update(Request $request, Facility $facility) {
-		$request->validate([
-			'name' => 'required',
-			'zip' => 'required|zip',
-			'prefecture_id' => 'required',
-			'address1' => 'required',
-			'address1_ruby' => 'required',
-			'address2' => 'required',
-			'address2_ruby' => 'required',
-			'address3_ruby' => 'required_with:address3',
-			'latitude' => 'required',
-			'longitude' => 'required',
-			'access' => 'required',
-			'tel' => 'required|tel',
-		]);
+	public function update(CreateFacilityRequest $request, Facility $facility) {
+		$address = $this->addressRepository->firstOrCreate(
+			$request->only([
+				'zip', 'prefecture_id',
+				'address1', 'address1_ruby',
+				'address2', 'address2_ruby',
+				'address3', 'address3_ruby',
+				'latitude', 'longitude',
+			])
+		);
 
-		$address = Address::firstOrCreate([
-			'prefecture_id' => $request->get('prefecture_id') + 1,
-			'zip' => $request->get('zip'),
-			'address1' => $request->get('address1'),
-			'address1_ruby' => $request->get('address1_ruby'),
-			'address2' => $request->get('address2'),
-			'address2_ruby' => $request->get('address2_ruby'),
-			'address3' => $request->get('address3'),
-			'address3_ruby' => $request->get('address3_ruby'),
-			'latitude' => $request->get('latitude'),
-			'longitude' => $request->get('longitude'),
+		$data = ['address_id' => $address->id] + $request->only([
+			'facility_kind_id', 'name', 'access', 'tel',
 		]);
-
-		$facility->update([
-			'address_id' => $address->id,
-			'facility_kind_id' => $request->get('facility_kind_id'),
-			'name' => $request->get('name'),
-			'access' => $request->get('access'),
-			'tel' => $request->get('tel'),
-		]);
-
+		$this->facilityRepository->update($facility->id, $data);
 		return redirect()->route('host.facility.index');
 	}
 }

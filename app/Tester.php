@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Tester extends Model
+class Tester extends Authenticatable
 {
     public function login() {
         $this->remembered();

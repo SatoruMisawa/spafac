@@ -1,4 +1,4 @@
-@extends('layouts2.master_stay')
+@extends('layouts.master_stay')
 
 @section('content')
 <label class="search-icon" for="search-ck">

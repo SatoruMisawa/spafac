@@ -9,27 +9,23 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    public function __construct() {
-        $this->middleware('guest')->except('delete');
-    }
-
     public function new() {
-        return view('auth.login');
+        return view('session.new');
     }
 
     public function create(Request $request) {
-        if (!Auth::attempt([
+        if (!$this->guard()->attempt([
             'email' => $request->get('email'),
             'password' => $request->get('password')
         ], true)) {
             return redirect()->back();
         }
 
-        return redirect('/');
+        return redirect()->route('index');
     }
 
     public function delete() {
-        Auth::logout();
+        $this->guard()->logout();
         return redirect('login');
     }
 
@@ -48,8 +44,12 @@ class SessionController extends Controller
 
         $user = $providedUser->firstOrCreateUser();
 
-        Auth::login($user, true);
+        $this->guard()->login($user, true);
 
-        return redirect('/');
+        return redirect()->route('index');
+    }
+
+    public function guard() {
+        return Auth::guard('users');
     }
 }

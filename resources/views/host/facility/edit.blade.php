@@ -3,7 +3,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		施設
+		施設編集
 		<small></small>
 	</h1>
 	<ol class="breadcrumb">

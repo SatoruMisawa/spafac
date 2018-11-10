@@ -6,12 +6,19 @@ use App\Facility;
 use App\KeyDelivery;
 use App\Space;
 use App\SpaceUsage;
+use App\Repositories\SpaceRepository;
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateSpaceRequest;
 
 class SpaceController extends Controller
 {
+	private $spaceRepository;
+
+	public function __construct(SpaceRepository $spaceRepository) {
+		$this->spaceRepository = $spaceRepository;
+	}
+
 	public function index() {
 		return view('host.space.index', [
 			'spaces' => Auth::user()->spaces()->get(),
@@ -26,21 +33,13 @@ class SpaceController extends Controller
 		]);
 	}
 
-	public function create(Request $request, Facility $facility) {
-		$request->validate([
-			'space_usage_ids' => 'required|array',
-			'capacity' => 'required|numeric|min:1',
-			'floor_area' => 'required|numeric|min:1',
-			'key_delivery_id' => 'required',
+	public function create(CreateSpaceRequest $request, Facility $facility) {
+		$data = ['facility_id' => $facility->id] + $request->only([
+			'key_delivery_id', 'capacity', 'floor_area',
 		]);
-		
-		$user = Auth::user();
-		$space = $user->spaces()->create([
-			'facility_id' => $facility->id,
-			'key_delivery_id' => $request->get('key_delivery_id'),
-			'capacity' => $request->get('capacity'),
-			'floor_area' => $request->get('floor_area'),
-		]);
+		$space = Auth::user()->spaces()->save(
+			$this->spaceRepository->new($data)
+		);
 		
 		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
@@ -57,20 +56,11 @@ class SpaceController extends Controller
 		]);
 	}
 
-	public function update(Request $request, Facility $facility, Space $space) {
-		$request->validate([
-			'space_usage_ids' => 'required|array',
-			'capacity' => 'required|numeric|min:1',
-			'floor_area' => 'required|numeric|min:1',
-			'key_delivery_id' => 'required',
+	public function update(CreateSpaceRequest $request, Facility $facility, Space $space) {
+		$data = ['facility_id' => $facility->id] + $request->only([
+			'key_delivery_id', 'capacity', 'floor_area',
 		]);
-		
-		$space->update([
-			'facility_id' => $facility->id,
-			'key_delivery_id' => $request->get('key_delivery_id'),
-			'capacity' => $request->get('capacity'),
-			'floor_area' => $request->get('floor_area'),
-		]);
+		$space = $this->spaceRepository->update($data, $space->id);
 			
 		$space->spaceUsages()->detach();
 		foreach ($request->get('space_usage_ids') as $spaceUsageID) {

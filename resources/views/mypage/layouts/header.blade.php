@@ -8,12 +8,12 @@
 				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
-				<?php if (!empty($loginUser)) : ?>
+				@if (Auth::guard('users')->check())
 					<li><a href="<?php echo url('mypage'); ?>">マイページ</a></li>
-					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-				<?php else : ?>
+					<li><a href="<?php echo url('logout'); ?>">ログアウトaaa</a></li>
+				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
-				<?php endif; ?>
+				@endif
 			</ul>
 			</div>
 		</div>
@@ -26,12 +26,12 @@
 				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
-				<?php if (!empty($loginUser)) : ?>
+				@if (Auth::guard('users')->check())
 					<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
 					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-				<?php else : ?>
+				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
-				<?php endif; ?>
+				@endif
 			</ul>
 			</nav>
 		</div>

@@ -25,7 +25,7 @@
 <body class="hold-transition login-page" >
 <div class="login-box">
   <div class="login-logo">
-    <a href="/admin/"><b>Space Factory Tester</b></a>
+    <a href="/tester"><b>Space Factory Tester</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -41,29 +41,24 @@
 
         
         <input type="input" class="form-control" placeholder="Name" name="name" value="">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback 1">
-
-        
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="form-group">
+        @include('layouts.errors')
+      </div>
       <div class="row">
-
-        <!-- /.col -->
         <div class="col-xs-4 col-md-offset-4">
             @csrf
             <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
         </div>
-        <!-- /.col -->
       </div>
     </form>
-
   </div>
-  <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
 
 <!-- jQuery 2.1.4 -->
 <script src="https://test.spafac.com/vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js "></script>
