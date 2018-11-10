@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Facility;
+use App\Space;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -37,5 +38,15 @@ class SpaceControllerTest extends TestCase
                             'key_delivery_id' => $this->faker->randomDigitNotNull(),
                         ])
                         ->assertRedirect(route('host.space.image.new', 1));
+    }
+
+    public function testEdit() {
+        $space = factory(Space::class)->create();
+        $response = $this->loginWithTesterIfDebug()
+                        ->loginWithUser()
+                        ->get(route('host.facility.edit', $space->id));
+
+        $response->assertStatus(200)
+                 ->assertSee('スペース編集');
     }
 }
