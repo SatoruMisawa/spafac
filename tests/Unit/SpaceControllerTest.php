@@ -49,4 +49,18 @@ class SpaceControllerTest extends TestCase
         $response->assertStatus(200)
                  ->assertSee('スペース編集');
     }
+
+    public function testUpdate() {
+        $space = factory(Space::class)->create();
+        $updatedSpace = factory(Space::class)->create();
+        $response = $this->loginWithTesterIfDebug()
+                        ->loginWithUser()
+                        ->put(route('host.facility.space.update', [$space->facility_id, $space->id]), [
+                            'key_delivery_id' => $updatedSpace->key_delivery_id,
+                            'space_usage_ids' => [1,2],
+                            'capacity' => $updatedSpace->capacity,
+                            'floor_area' => $updatedSpace->floor_area,
+                        ])
+                        ->assertRedirect(route('host.space.index'));
+    }
 }
