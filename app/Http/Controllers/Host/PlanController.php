@@ -36,16 +36,16 @@ class PlanController extends Controller
 	}
 
 	public function create(CreatePlanRequest $request, Space $space) {
-		$plan = $space->plan()->create([
-			'name' => $request->get('name'),
-			'preorder_deadline_id' => $request->get('preorder_deadline_id'),
-			'preorder_period_id' => $request->get('preorder_period_id'),
-			'price_per_hour' => $request->get('price_per_hour'),
-			'price_per_day' => $request->get('price_per_day'),
-			'need_to_be_approved' => $request->get('need_to_be_approved'),
-			'from' => $request->get('period_from'),
-			'to' => $request->get('period_to'),
+		$data = $request->only([
+			'name',
+			'preorder_deadline_id', 'preorder_period_id',
+			'price_per_hour', 'price_per_day',
+			'need_to_be_approved',
+			'from', 'to',
 		]);
+		$plan = $space->plan()->save(
+			$this->planRepository->new($data)
+		);
 		
 		foreach ($request->get('day_ids') as $dayID) {
 			$from = $request->get('hour_from')[$dayID];
