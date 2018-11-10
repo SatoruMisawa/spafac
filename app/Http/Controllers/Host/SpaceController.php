@@ -57,12 +57,10 @@ class SpaceController extends Controller
 	}
 
 	public function update(CreateSpaceRequest $request, Facility $facility, Space $space) {
-		$space->update([
-			'facility_id' => $facility->id,
-			'key_delivery_id' => $request->get('key_delivery_id'),
-			'capacity' => $request->get('capacity'),
-			'floor_area' => $request->get('floor_area'),
+		$data = ['facility_id' => $facility->id] + $request->only([
+			'key_delivery_id', 'capacity', 'floor_area',
 		]);
+		$space = $this->spaceRepository->update($data, $space->id);
 			
 		$space->spaceUsages()->detach();
 		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
