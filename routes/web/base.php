@@ -55,8 +55,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 	});
 
 	Route::group(['prefix' => 'host'], function() {
-		Route::get('/', 'Host\HostController@index')->name('host.index');
-		// Route::get('/', '\App\Http\Controllers\Host\IndexController@index')->name('host');
+		Route::get('/', '\App\Http\Controllers\Host\IndexController@index')->name('host.index');
 			 
 		Route::group(['prefix' => '/facilities'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');

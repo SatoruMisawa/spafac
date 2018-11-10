@@ -10,6 +10,7 @@ use App\PreorderPeriod;
 use App\Schedule;
 use App\Space;
 use App\Repositories\PlanRepository;
+use App\Repositories\ScheduleRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlanRequest;
 
@@ -18,8 +19,14 @@ class PlanController extends Controller
 {
 	private $planRepository;
 
-	public function __construct(PlanRepository $planRepository) {
+	private $scheduleRepository;
+
+	public function __construct(
+		PlanRepository $planRepository,
+		ScheduleRepository $scheduleRepository
+	) {
 		$this->planRepository = $planRepository;
+		$this->scheduleRepository = $scheduleRepository;
 	}
 
 	public function new(Space $space) {
@@ -57,7 +64,7 @@ class PlanController extends Controller
 						->withInput();
 			}
 
-			Schedule::create([
+			$this->scheduleRepository->create([
 				'plan_id' => $plan->id,
 				'day_id' => $dayID,
 				'from' => $from,
