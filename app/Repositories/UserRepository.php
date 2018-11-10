@@ -2,18 +2,14 @@
 
 namespace App\Repositories;
 
-use App\User;
-use App\Http\Requests\CreateUserRequest;
-use Hash;
+use Prettus\Repository\Contracts\RepositoryInterface;
 
-class UserRepository {
-    private $model;
-
-    public function __construct(User $user) {
-        $this->model = $user;
-    }
-
-    public function create(array $data) {
-        return $this->model->create($data);
-    }
+/**
+ * Interface UserRepository.
+ *
+ * @package namespace App\Repositories;
+ */
+interface UserRepository extends RepositoryInterface
+{
+    //
 }

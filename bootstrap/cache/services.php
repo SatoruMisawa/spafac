@@ -42,8 +42,7 @@
     38 => 'App\\Providers\\ClaimantServiceProvider',
     39 => 'App\\Providers\\FacilityRepositoryServiceProvider',
     40 => 'App\\Providers\\SocialiteServiceProvider',
-    41 => 'App\\Providers\\UserRepositoryServiceProvider',
-    42 => 'App\\Providers\\RepositoryServiceProvider',
+    41 => 'App\\Providers\\RepositoryServiceProvider',
   ),
   'eager' => 
   array (
@@ -70,8 +69,7 @@
     20 => 'App\\Providers\\AddressRepositoryServiceProvider',
     21 => 'App\\Providers\\ClaimantServiceProvider',
     22 => 'App\\Providers\\FacilityRepositoryServiceProvider',
-    23 => 'App\\Providers\\UserRepositoryServiceProvider',
-    24 => 'App\\Providers\\RepositoryServiceProvider',
+    23 => 'App\\Providers\\RepositoryServiceProvider',
   ),
   'deferred' => 
   array (
