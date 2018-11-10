@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\PlanRepository;
-use App\\Plan;
+use App\Plan;
 use App\Validators\PlanValidator;
 
 /**
@@ -35,4 +35,8 @@ class PlanRepositoryEloquent extends BaseRepository implements PlanRepository
         $this->pushCriteria(app(RequestCriteria::class));
     }
     
+    public function new(array $data) {
+        $model = $this->model();
+        return new $model($data);
+    }
 }
