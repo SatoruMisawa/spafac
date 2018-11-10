@@ -9,12 +9,19 @@ use App\PreorderDeadline;
 use App\PreorderPeriod;
 use App\Schedule;
 use App\Space;
+use App\Repositories\PlanRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlanRequest;
 
 
 class PlanController extends Controller
 {
+	private $planRepository;
+
+	public function __construct(PlanRepository $planRepository) {
+		$this->planRepository = $planRepository;
+	}
+
 	public function new(Space $space) {
 		return view('host.plan.new', [
 			'space' => $space,
