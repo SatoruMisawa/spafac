@@ -10,13 +10,10 @@
   {{--  <link rel="stylesheet" href="https://test.spafac.com/vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css"> --}}
   <link rel="stylesheet" href="{{ asset('vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
-  {{--  <link rel="stylesheet" href="https://test.spafac.com/vendor/laravel-admin/font-awesome/css/font-awesome.min.css"> --}}
   <link rel="stylesheet" href="{{ asset('vendor/laravel-admin/font-awesome/css/font-awesome.min.css') }}">
   <!-- Theme style -->
-  {{--  <link rel="stylesheet" href="https://test.spafac.com/vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css">  --}}
   <link rel="stylesheet" href="{{ asset('vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css') }}">
   <!-- iCheck -->
-  {{--  <link rel="stylesheet" href="https://test.spafac.com/vendor/laravel-admin/AdminLTE/plugins/iCheck/square/blue.css"> --}}
   <link rel="stylesheet" href="{{ asset('vendor/laravel-admin/AdminLTE/plugins/iCheck/square/blue.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
