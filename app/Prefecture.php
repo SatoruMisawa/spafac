@@ -4,13 +4,10 @@ namespace App;
 
 use DB;
 use Storage;
-use App\MyModel;
 use Illuminate\Database\Eloquent\Model;
 
 class Prefecture extends Model
 {
-	use MyModel;
-	
 	public $timestamps = false;
 
 	protected $fillable = [

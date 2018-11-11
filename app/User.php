@@ -2,14 +2,12 @@
 
 namespace App;
 
-use App\MyModel;
 use App\Service\Claimant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-	use MyModel;
 	use Notifiable;
 
 	/**

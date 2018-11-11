@@ -25,37 +25,37 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
 	Route::group(['prefix' => 'mypage'], function() {
-		Route::get('/', '\App\Http\Controllers\Mypage\IndexController@index')->name('index');
-		Route::get('like', '\App\Http\Controllers\Mypage\IndexController@like');
-		Route::get('like-new', '\App\Http\Controllers\Mypage\IndexController@likeNew');
-		Route::get('login', '\App\Http\Controllers\Mypage\IndexController@login');
-		Route::get('management', '\App\Http\Controllers\Mypage\IndexController@management');
-		Route::get('pass', '\App\Http\Controllers\Mypage\IndexController@pass');
-		Route::get('profile', '\App\Http\Controllers\Mypage\ProfileController@index');
+		Route::get('/', 'Mypage\IndexController@index')->name('index');
+		Route::get('like', 'Mypage\IndexController@like');
+		Route::get('like-new', 'Mypage\IndexController@likeNew');
+		Route::get('login', 'Mypage\IndexController@login');
+		Route::get('management', 'Mypage\IndexController@management');
+		Route::get('pass', 'Mypage\IndexController@pass');
+		Route::get('profile', 'Mypage\ProfileController@index');
 	 
-		Route::get('profile/edit-account', '\App\Http\Controllers\Mypage\ProfileController@editAccount');
-		Route::post('profile/edit-account', '\App\Http\Controllers\Mypage\ProfileController@confirmAccount');
+		Route::get('profile/edit-account', 'Mypage\ProfileController@editAccount');
+		Route::post('profile/edit-account', 'Mypage\ProfileController@confirmAccount');
 	 
-		Route::get('profile/edit-contact', '\App\Http\Controllers\Mypage\ProfileController@editContact');
-		Route::post('profile/edit-contact', '\App\Http\Controllers\Mypage\ProfileController@confirmContact');
+		Route::get('profile/edit-contact', 'Mypage\ProfileController@editContact');
+		Route::post('profile/edit-contact', 'Mypage\ProfileController@confirmContact');
 			 
-		Route::get('profile/edit-mail', '\App\Http\Controllers\Mypage\ProfileController@editMail');
-		Route::post('profile/edit-mail', '\App\Http\Controllers\Mypage\ProfileController@confirmMail');
+		Route::get('profile/edit-mail', 'Mypage\ProfileController@editMail');
+		Route::post('profile/edit-mail', 'Mypage\ProfileController@confirmMail');
 			
-		Route::get('profile/edit-password', '\App\Http\Controllers\Mypage\ProfileController@editPassword');
-		Route::post('profile/edit-password', '\App\Http\Controllers\Mypage\ProfileController@confirmPassword');
+		Route::get('profile/edit-password', 'Mypage\ProfileController@editPassword');
+		Route::post('profile/edit-password', 'Mypage\ProfileController@confirmPassword');
 			 
-		Route::get('register', '\App\Http\Controllers\Mypage\IndexController@register');
-		Route::get('review', '\App\Http\Controllers\Mypage\IndexController@review');
-		Route::get('topics', '\App\Http\Controllers\Mypage\IndexController@topics');
+		Route::get('register', 'Mypage\IndexController@register');
+		Route::get('review', 'Mypage\IndexController@review');
+		Route::get('topics', 'Mypage\IndexController@topics');
 	 
-		Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList');
+		Route::get('mail-list', 'Mypage\IndexController@mailList');
 			 
-		Route::get('profile/avatar', '\App\Http\Controllers\Mypage\ProfileController@avatar');
+		Route::get('profile/avatar', 'Mypage\ProfileController@avatar');
 	});
 
 	Route::group(['prefix' => 'host'], function() {
-		Route::get('/', '\App\Http\Controllers\Host\IndexController@index')->name('host.index');
+		Route::get('/', 'Host\HostController@index')->name('host.index');
 			 
 		Route::group(['prefix' => '/facilities'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
@@ -105,38 +105,38 @@ Route::group(['prefix' => 'verification/{user}'], function() {
 	});
 });
 
-Route::get('/', '\App\Http\Controllers\IndexController@index');
-Route::get('inquiry', '\App\Http\Controllers\IndexController@inquiry');
-Route::get('guide', '\App\Http\Controllers\IndexController@guide');
-Route::get('terms-of-service', '\App\Http\Controllers\IndexController@termsOfService');
-Route::get('recommendation', '\App\Http\Controllers\IndexController@recommendation');
-Route::get('registration-contract', '\App\Http\Controllers\IndexController@registrationContract');
-Route::get('company-profile', '\App\Http\Controllers\IndexController@companyProfile');
-Route::get('privacy-policy', '\App\Http\Controllers\IndexController@privacyPolicy');
-Route::get('commercial-transaction-law', '\App\Http\Controllers\IndexController@commercialTransactionLaw');
-Route::get('event_types', '\App\Http\Controllers\IndexController@event_types');//目的から探す
-Route::get('areas', '\App\Http\Controllers\IndexController@areas');//エリアから探す
-Route::get('capacities', '\App\Http\Controllers\IndexController@capacities');//収容人数から探す
-Route::get('space_types', '\App\Http\Controllers\IndexController@space_types');//会場タイプから探す
-Route::get('amenities', '\App\Http\Controllers\IndexController@amenities');//設備で探す
-Route::get('category', '\App\Http\Controllers\IndexController@category');//カテゴリで探す
-Route::get('keywords', '\App\Http\Controllers\IndexController@keywords');//キーワードで探す
-Route::get('whats_about', '\App\Http\Controllers\IndexController@whats_about');//予約詳細
-Route::get('request_done', '\App\Http\Controllers\IndexController@request_done');//予約完了
-Route::get('request_chk', '\App\Http\Controllers\IndexController@request_chk');//予約確認
-Route::get('stay', '\App\Http\Controllers\IndexController@stay');//宿泊・民泊
-Route::get('stay/details', '\App\Http\Controllers\IndexController@stay_details');//宿泊・民泊詳細
-//Route::get('party', '\App\Http\Controllers\IndexController@party');//パーティページ（つかわなくなった）
-Route::get('purpose/{page?}', '\App\Http\Controllers\IndexController@purpose');//目的別ページ
-Route::get('lodging_agreement', '\App\Http\Controllers\IndexController@lodging_agreement');//宿泊規約
-Route::get('lodging_agreement_guests', '\App\Http\Controllers\IndexController@lodging_agreement_guests');//宿泊規約ゲスト
-Route::get('flow_of_settlement', '\App\Http\Controllers\IndexController@flow_of_settlement');//決済の流れ
-Route::get('mailmaga_done', '\App\Http\Controllers\IndexController@mailmaga_done');//メルマガ購読完了
-Route::get('help/{page?}', '\App\Http\Controllers\IndexController@help');//目的別ページ
+Route::get('/', 'IndexController@index');
+Route::get('inquiry', 'IndexController@inquiry');
+Route::get('guide', 'IndexController@guide');
+Route::get('terms-of-service', 'IndexController@termsOfService');
+Route::get('recommendation', 'IndexController@recommendation');
+Route::get('registration-contract', 'IndexController@registrationContract');
+Route::get('company-profile', 'IndexController@companyProfile');
+Route::get('privacy-policy', 'IndexController@privacyPolicy');
+Route::get('commercial-transaction-law', 'IndexController@commercialTransactionLaw');
+Route::get('event_types', 'IndexController@event_types');//目的から探す
+Route::get('areas', 'IndexController@areas');//エリアから探す
+Route::get('capacities', 'IndexController@capacities');//収容人数から探す
+Route::get('space_types', 'IndexController@space_types');//会場タイプから探す
+Route::get('amenities', 'IndexController@amenities');//設備で探す
+Route::get('category', 'IndexController@category');//カテゴリで探す
+Route::get('keywords', 'IndexController@keywords');//キーワードで探す
+Route::get('whats_about', 'IndexController@whats_about');//予約詳細
+Route::get('request_done', 'IndexController@request_done');//予約完了
+Route::get('request_chk', 'IndexController@request_chk');//予約確認
+Route::get('stay', 'IndexController@stay');//宿泊・民泊
+Route::get('stay/details', 'IndexController@stay_details');//宿泊・民泊詳細
+//Route::get('party', 'IndexController@party');//パーティページ（つかわなくなった）
+Route::get('purpose/{page?}', 'IndexController@purpose');//目的別ページ
+Route::get('lodging_agreement', 'IndexController@lodging_agreement');//宿泊規約
+Route::get('lodging_agreement_guests', 'IndexController@lodging_agreement_guests');//宿泊規約ゲスト
+Route::get('flow_of_settlement', 'IndexController@flow_of_settlement');//決済の流れ
+Route::get('mailmaga_done', 'IndexController@mailmaga_done');//メルマガ購読完了
+Route::get('help/{page?}', 'IndexController@help');//目的別ページ
  
-Route::get('search', '\App\Http\Controllers\SearchController@index');
-Route::get('space/media/{media}/{width?}/{height?}/{fit?}', '\App\Http\Controllers\SpaceController@media');
+Route::get('search', 'SearchController@index');
+Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@media');
  
-Route::get('space/{space}', '\App\Http\Controllers\SpaceController@index');
+Route::get('space/{space}', 'SpaceController@index');
   
-Route::get('coming-soon', '\App\Http\Controllers\IndexController@comingSoon');
+Route::get('coming-soon', 'IndexController@comingSoon');
