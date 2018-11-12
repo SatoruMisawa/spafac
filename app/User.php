@@ -77,11 +77,11 @@ class User extends Authenticatable
 	}
 
 	public function apply(Plan $plan) {
-		if ($this->isSame($plan->planner())) {
+		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
 
-		if (Apply::where('plan_id', $plan->id)->exists()) {
+		if ($plan->isAlreadyApplied()) {
 			return;
 		}
 
@@ -90,7 +90,7 @@ class User extends Authenticatable
 		]);
 	}
 
-	public function isSame(User $user) {
+	public function isSameAs(User $user) {
 		return $this->id === $user->id;
 	}
 

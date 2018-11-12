@@ -24,4 +24,8 @@ class Plan extends Model
 	public function planner() {
 		return $this->space->user;
 	}
+
+	public function isAlreadyApplied() {
+		return Apply::where('plan_id', $this->id)->exists();
+	}
 }

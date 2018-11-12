@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
 {
+    use RefreshDatabase;
+    
     public function testApply() {
         $user = factory(User::class)->create();
         $plan = factory(Plan::class)->create();
