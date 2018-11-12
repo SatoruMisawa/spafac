@@ -45,7 +45,7 @@
 			<li class="header">スペースオーナー情報</li>
 			<li class=""><a href="{{ url('host/account/edit-basic') }}"><i class="fa fa-link"></i> <span>基本情報</span></a></li>
 			<li class=""><a href="{{ url('host/account/edit-address') }}"><i class="fa fa-link"></i> <span>住所</span></a></li>
-			<li class=""><a href="{{ url('host/account/edit-bank') }}"><i class="fa fa-link"></i> <span>振込口座</span></a></li>
+			<li class=""><a href="{{ route('host.bankaccount.new') }}"><i class="fa fa-link"></i> <span>振込口座</span></a></li>
 			<li class="header"></li>
 			<li class=""><a href="javascript:void(0)" onClick="opener.location.href='/';window.open('about:blank','_self').close();"><i class="fa fa-link"></i> <span>サイトトップに戻る</span></a></li>
 			<li class=""><a href="{{ url('mypage') }}"><i class="fa fa-link"></i> <span>マイページに戻る</span></a></li>

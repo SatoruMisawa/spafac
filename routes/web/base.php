@@ -95,6 +95,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 				Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
 			});
 		});
+
+		Route::group(['prefix' => 'bankaccounts'], function() {
+			Route::get('/new', 'Host\BankAccountController@new')->name('host.bankaccount.new');
+			Route::post('/', 'Host\BanckAccountController@create')->name('host.bankaccount.create');
+		});
 	});
 });	 
 
