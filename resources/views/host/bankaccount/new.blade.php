@@ -49,39 +49,39 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group <?php echo App\Helper::errorClass($errors, ['bank_branch_name']); ?>">
+						<div class="form-group <?php echo App\Helper::errorClass($errors, ['branch_name']); ?>">
 							<label><small class="label bg-red">必須</small> 支店名</label>
-							@include('layouts.error', ['name' => 'bank_branch_name'])
+							@include('layouts.error', ['name' => 'branch_name'])
 							<div class="row">
 								<div class="col-sm-6">
-									<?php echo Form::text('bank_branch_name', null, ['class' => 'form-control', 'maxlength' => '100', 'placeholder' => '例）渋谷支店']); ?>
+									<?php echo Form::text('branch_name', null, ['class' => 'form-control', 'maxlength' => '100', 'placeholder' => '例）渋谷支店']); ?>
 								</div>
 							</div>
 						</div>
-						<div class="form-group <?php echo App\Helper::errorClass($errors, ['bank_branch_code']); ?>">
+						<div class="form-group <?php echo App\Helper::errorClass($errors, ['branch_code']); ?>">
 							<label><small class="label bg-red">必須</small> 支店コード</label>
-							@include('layouts.error', ['name' => 'bank_branch_code'])
+							@include('layouts.error', ['name' => 'branch_code'])
 							<div class="row">
 								<div class="col-sm-3">
-									<?php echo Form::text('bank_branch_code', null, ['class' => 'form-control', 'maxlength' => '3', 'placeholder' => '例）010']); ?>
+									<?php echo Form::text('branch_code', null, ['class' => 'form-control', 'maxlength' => '3', 'placeholder' => '例）010']); ?>
 								</div>
 							</div>
 						</div>
-						<div class="form-group <?php echo App\Helper::errorClass($errors, ['bank_account_number']); ?>">
+						<div class="form-group <?php echo App\Helper::errorClass($errors, ['account_number']); ?>">
 							<label><small class="label bg-red">必須</small> 口座番号</label>
-							@include('layouts.error', ['name' => 'bank_account_number'])
+							@include('layouts.error', ['name' => 'account_number'])
 							<div class="row">
 								<div class="col-sm-3">
-									<?php echo Form::text('bank_account_number', null, ['class' => 'form-control', 'maxlength' => '7', 'placeholder' => '例）00012345']); ?>
+									<?php echo Form::text('account_number', null, ['class' => 'form-control', 'maxlength' => '7', 'placeholder' => '例）00012345']); ?>
 								</div>
 							</div>
 						</div>
-						<div class="form-group <?php echo App\Helper::errorClass($errors, ['bank_account_name']); ?>">
+						<div class="form-group <?php echo App\Helper::errorClass($errors, ['account_holder']); ?>">
 							<label><small class="label bg-red">必須</small> 口座名義</label>
-							@include('layouts.error', ['name' => 'bank_account_name'])
+							@include('layouts.error', ['name' => 'account_holder'])
 							<div class="row">
 								<div class="col-sm-6">
-									<?php echo Form::text('bank_account_name', null, ['class' => 'form-control', 'maxlength' => '100', 'placeholder' => '例）スペースファクトリー']); ?>
+									<?php echo Form::text('account_holder', null, ['class' => 'form-control', 'maxlength' => '100', 'placeholder' => '例）スペースファクトリー']); ?>
 								</div>
 							</div>
 						</div>
