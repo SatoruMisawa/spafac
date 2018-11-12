@@ -20,7 +20,7 @@ class BankAccountController extends Controller
     }  
 
     public function create(CreateBankAccountRequest $request) {
-        Auth::user()->bankAccounts()->save(
+        $bankAccount = Auth::user()->bankAccounts()->save(
             $this->bankAccountRepository->new(
                 $request->only([
                     'bank_name', 'bank_code',
@@ -28,6 +28,10 @@ class BankAccountController extends Controller
                     'account_number', 'account_holder',
                 ])
             )
+        );
+
+        $bankAccount->stripeBankAccount()->create(
+            $request->only(['stripe_bank_account_id'])
         );
 
         return redirect()->route('host.index');
