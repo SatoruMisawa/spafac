@@ -20,7 +20,7 @@ class CreateBankAccountsTable extends Migration
             $table->string('bank_code');
             $table->string('branch_name');
             $table->string('branch_code');
-            $table->string('accuont_number');
+            $table->string('account_number');
             $table->string('account_holder');
         });
     }
