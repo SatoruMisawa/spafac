@@ -59,4 +59,27 @@ class Stripe implements Claimant {
 
         return true;
     }
+
+    public function connectBankAccountWithAccount($params = []) {
+        if (!$this->validateToConnectBankAccountWithAccount($params)) {
+            return;
+        }
+
+        $account = Account::retrieve($params['account_id']);
+        $account->external_accounts->create([
+            'external_account' => $params['bank_account_id'],
+        ]);
+    }
+
+    private function validateToConnectBankAccountWithAccount($params) {
+        if ($params['account_id'] === '') {
+            return false;
+        }
+
+        if ($params['bank_account_id'] === '') {
+            return false;
+        }
+
+        return true;
+    }
 }
