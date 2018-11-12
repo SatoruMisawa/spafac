@@ -43,11 +43,7 @@ class User extends Authenticatable
 
 	public function stripeCharges() {
 		return $this->hasMany(StripeCharge::class);
-	}
-
-	public function host() {
-		return $this->hasOne('App\Host')->withDefault();
-	}
+	}	
 
 	public function facilities() {
 		return $this->hasMany(Facility::class);
@@ -64,74 +60,7 @@ class User extends Authenticatable
 	public function applies() {
 		return $this->hasMany(Apply::class);
 	}
-
-	/**
-	* password
-	*/
-	public function setPasswordAttribute($value) {
-		
-		//パスワードハッシュ
-		$this->attributes['password'] = password_hash($value, PASSWORD_BCRYPT);
-		
-	}
-	
-	/**
-	* メール認証完了
-	*/
-	public function verified() {
-		$this->email_token = null;
-		$this->verified = 1;
-		$this->status = 1;
-		$this->save();
-	}
-	
-	/**
-	* メール認証
-	*/
-	public static function verify($emailToken) {
-		
-		$query = static::query()
-			->where('email_token', '=', $emailToken)
-			;
-		
-		$user = $query->first();
-		if ($user) {
-			$user->verified();
-			return true;
-		}
-		
-		return false;
-	}
-	
-	/**
-	* スペースオーナー
-	*/
-	public function getHost() {
-		$host = $this->host;
-		if (!$host->id) {
-			//作成
-			$host->user()->associate($this);
-			$host->save();
-		}
-		return $host;
-	}
-	
-	/**
-	* メールアドレスで検索
-	*/
-	public static function find4Email($email) {
-		
-		$query = static::query()
-			->where('email', '=', $email)
-			->withTrashed()
-			;
-		
-		$user = $query->first();
-		
-		return $user;
-		
-	}
-
+			
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(10);
 		$this->save();
@@ -148,7 +77,7 @@ class User extends Authenticatable
 	}
 
 	public function apply(Plan $plan) {
-		if ($this->id === $plan->user_id) {
+		if ($this->isSame($plan->planner())) {
 			return;
 		}
 
@@ -159,6 +88,10 @@ class User extends Authenticatable
 		$this->applies()->create([
 			'plan_id' => $plan->id,
 		]);
+	}
+
+	public function isSame(User $user) {
+		return $this->id === $user->id;
 	}
 
 	public function approve(Apply $apply) {

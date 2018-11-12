@@ -22,6 +22,10 @@ class Space extends Model
 		'capacity', 'floor_area',
 	];
 	
+	public function user() {
+		return $this->belongsTo(User::class);
+	}
+
 	public function facility() {
 		return $this->belongsTo(Facility::class);
 	}

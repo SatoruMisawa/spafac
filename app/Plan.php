@@ -16,10 +16,12 @@ class Plan extends Model
 		'from', 'to',
 	];
 	
-	/**
-	* relations
-	*/	
-	public function user() {
-		return $this->belongsTo(User::class);
-	}	
+	
+	public function space() {
+		return $this->belongsTo(Space::class);
+	}
+
+	public function planner() {
+		return $this->space->user;
+	}
 }
