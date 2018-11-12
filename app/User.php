@@ -64,6 +64,10 @@ class User extends Authenticatable
 	public function reservations() {
 		return $this->hasMany(Reservation::class);
 	}
+
+	public function bankAccounts() {
+		return $this->hasMany(BankAccount::class);
+	}
 			
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(10);
