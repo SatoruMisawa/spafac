@@ -107,8 +107,7 @@ class User extends Authenticatable
 			return;
 		}
 
-		Reservation::create([
-			'user_id' => $apply->user_id,
+		$apply->user->reservations()->create([
 			'plan_id' => $apply->plan_id,
 		]);
 	}
