@@ -60,6 +60,10 @@ class User extends Authenticatable
 	public function applies() {
 		return $this->hasMany(Apply::class);
 	}
+
+	public function reservations() {
+		return $this->hasMany(Reservation::class);
+	}
 			
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(10);
@@ -95,7 +99,7 @@ class User extends Authenticatable
 	}
 
 	public function approve(Apply $apply) {
-		if ($this->id !== $apply->plan->user->id) {
+		if (!$this->isSameAs($apply->plan->planner())) {
 			return;
 		}
 
