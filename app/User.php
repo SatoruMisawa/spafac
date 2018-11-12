@@ -125,4 +125,15 @@ class User extends Authenticatable
 			'stripe_charge_id' => $charge->id,
 		]);
 	}
+
+	public function createAndConnectWithStripeAccount() {
+		$stripeAccount = $this->claimant->createAccount([
+			'country' => 'JP',
+			'type' => 'custom',
+		]);
+		
+		$this->stripeUser()->create([
+			'stripe_account_id' => $stripeAccount->id,
+		]);
+	}
 }

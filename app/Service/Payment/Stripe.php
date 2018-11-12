@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Stripe\Account;
 use Stripe\Charge;
 
 class Stripe implements Claimant {
@@ -30,6 +31,29 @@ class Stripe implements Claimant {
         }
 
         if ($params['dst_account_id'] === '') {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function createAccount($params = []) {
+        if (!$this->validateToCreateAccount($params)) {
+            return;
+        }
+        
+        return Account::create([
+            'country' => $params['country'],
+            'type' => $params['type'],
+        ]);
+    }
+
+    private function validateToCreateAccount($params) {
+        if ($params['country'] === '') {
+            return false;
+        }
+
+        if ($params['type'] === '') {
             return false;
         }
 
