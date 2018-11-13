@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         DaySeeder::class,
         TesterSeeder::class,
         AdminTablesSeeder::class,
+        AmenitySeeder::class,
     ];
 
     /**
