@@ -34,9 +34,4 @@ class SpaceImageRepositoryEloquent extends BaseRepository implements SpaceImageR
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
-    public function new(array $data) {
-        $model = $this->model();
-        return new $model($data);
-    }
 }

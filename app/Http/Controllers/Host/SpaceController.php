@@ -37,9 +37,7 @@ class SpaceController extends Controller
 		$data = ['facility_id' => $facility->id] + $request->only([
 			'key_delivery_id', 'capacity', 'floor_area',
 		]);
-		$space = Auth::user()->spaces()->save(
-			$this->spaceRepository->new($data)
-		);
+		$space = Auth::user()->spaces()->create($data);
 		
 		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));

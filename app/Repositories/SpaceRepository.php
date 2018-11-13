@@ -11,5 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface SpaceRepository extends RepositoryInterface
 {
-    public function new(array $data);
+    
 }

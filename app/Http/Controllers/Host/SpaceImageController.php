@@ -27,9 +27,9 @@ class SpaceImageController extends Controller
     public function create(CreateSpaceImageRequest $request, Space $space) {
         foreach ($request->file('images') as $image) {
             $filename = $image->store('public');
-            $space->images()->save($this->spaceImageRepository->new([
+            $space->images()->create([
                 'url' => $filename
-            ]));
+            ]);
         }
 
         return redirect()->route('host.space.plan.new', $space->id);

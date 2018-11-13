@@ -35,8 +35,4 @@ class FacilityRepositoryEloquent extends BaseRepository implements FacilityRepos
         $this->pushCriteria(app(RequestCriteria::class));
     }
     
-    public function new(array $data) {
-        $model = $this->model();
-        return new $model($data);
-    }
 }
