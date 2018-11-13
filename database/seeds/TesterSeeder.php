@@ -1,16 +1,15 @@
 <?php
 
+use App\Tester;
 use Illuminate\Database\Seeder;
 
 class TesterSeeder extends Seeder
 {
-    private $table = 'testers';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        Tester::truncate();
 
-        DB::table($this->table)->insert([
+        Tester::insert([
             'name' => 'tester',
             'password' => Hash::make('IahOeuwyo7FcBytY'),
         ]);

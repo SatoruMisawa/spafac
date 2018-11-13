@@ -1,16 +1,15 @@
 <?php
 
+use App\Day;
 use Illuminate\Database\Seeder;
 
 class DaySeeder extends Seeder
 {
-    private $table = 'days';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        Day::truncate();
 
-        DB::table($this->table)->insert([
+        Day::insert([
             ['name' => '日'],
             ['name' => '月'],
             ['name' => '火'],
