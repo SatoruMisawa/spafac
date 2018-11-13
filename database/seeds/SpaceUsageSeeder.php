@@ -1,16 +1,15 @@
 <?php
 
+use App\SpaceUsage;
 use Illuminate\Database\Seeder;
 
 class SpaceUsageSeeder extends Seeder
 {
-    private $table = 'space_usages';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        SpaceUsage::truncate();
 
-        DB::table($this->table)->insert([
+        SpaceUsage::insert([
             ['name' => '物販'],
             ['name' => '飲食・パーティ'],
             ['name' => '催事・展示会'],

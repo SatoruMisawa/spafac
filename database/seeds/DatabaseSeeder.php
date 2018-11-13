@@ -5,17 +5,17 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     private $seeders = [
-        ProviderSeeder::class,
-        PrefectureSeeder::class,
-        FacilityKindSeeder::class,
-        SpaceUsageSeeder::class,
-        KeyDeliverySeeder::class,
-        PreorderDeadlineSeeder::class,
-        PreorderPeriodSeeder::class,
-        DaySeeder::class,
-        TesterSeeder::class,
         AdminTablesSeeder::class,
         AmenitySeeder::class,
+        DaySeeder::class,
+        FacilityKindSeeder::class,
+        KeyDeliverySeeder::class,
+        PrefectureSeeder::class,
+        PreorderDeadlineSeeder::class,
+        PreorderPeriodSeeder::class,
+        ProviderSeeder::class,
+        SpaceUsageSeeder::class,
+        TesterSeeder::class,
     ];
 
     /**

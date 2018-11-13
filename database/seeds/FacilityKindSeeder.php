@@ -1,16 +1,15 @@
 <?php
 
+use App\FacilityKind;
 use Illuminate\Database\Seeder;
 
 class FacilityKindSeeder extends Seeder
 {
-    private $table = 'facility_kinds';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        FacilityKind::truncate();
         
-        DB::table($this->table)->insert([
+        FacilityKind::insert([
             ['name' => 'イベントスペース'],
             ['name' => '結婚式場'],
             ['name' => 'オフィススペース'],
