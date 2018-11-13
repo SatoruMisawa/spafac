@@ -24,10 +24,18 @@ class CreateSpaceRequest extends FormRequest
     public function rules()
     {
         return [
-			'space_usage_ids' => 'required|array',
-			'capacity' => 'required|numeric|min:1',
+            'key_delivery_id' => 'required',
+            'title' => 'required|string',
+            'about' => 'required|string',
+            'capacity' => 'required|numeric|min:1',
 			'floor_area' => 'required|numeric|min:1',
-			'key_delivery_id' => 'required',
+            'about_amenity' => 'required|string',
+            'about_food_drink' => 'required|string',
+            'about_cleanup' => 'required|string',
+            'cancellation_policy' => 'required|string',
+            'terms_of_use' => 'required|string',
+            'space_usage_ids' => 'required|array',
+            'amenity_ids' => 'required|array',
 		];
     }
 }
