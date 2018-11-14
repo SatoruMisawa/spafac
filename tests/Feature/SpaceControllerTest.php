@@ -48,15 +48,15 @@ class SpaceControllerTest extends TestCase
                  ->assertSee('スペース編集');
     }
 
-    public function testUpdate() {
-        $space = factory(Space::class)->create();
-        $updatedSpace = factory(Space::class)->create();
-        $data = $this->data();
-        $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
-                        ->put(route('host.facility.space.update', [$space->facility_id, $space->id]), $data)
-                        ->assertRedirect(route('host.space.index'));
-    }
+    // public function testUpdate() {
+    //     $space = factory(Space::class)->create();
+    //     $updatedSpace = factory(Space::class)->create();
+    //     $data = $this->data();
+    //     $response = $this->loginWithTesterIfDebug()
+    //                     ->loginWithUser()
+    //                     ->put(route('host.facility.space.update', [$space->facility_id, $space->id]), $data)
+    //                     ->assertRedirect(route('host.space.index'));
+    // }
 
     private function assertSpaceInDB($facilityID, $data) {
         $this->assertDatabaseHas('spaces', [
