@@ -137,20 +137,20 @@
 						@include('layouts.error', ['name' => 'amenity_ids'])
 						<p class="help-block">このスペースにあるアメニティーを選択してください。複数選択可能。</p>
 						<div class="row checkbox">
-							{{--  @foreach ($spaceUsages as $spaceUsage)
+							@foreach ($amenities as $amenity)
 							<div class="col-md-4 col-sm-6">
 								<label>
 									{{
 									Form::checkbox(
-									'space_usage_ids[]',
-									$spaceUsage->id,
+									'amenity_ids[]',
+									$amenity->id,
 									false
 									)
 									}}
-									{{ $spaceUsage->name }}
+									{{ $amenity->name }}
 								</label>
 							</div>
-							@endforeach  --}}
+							@endforeach
 						</div>
 					</div>
 

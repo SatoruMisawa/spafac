@@ -6,6 +6,7 @@ use App\Facility;
 use App\KeyDelivery;
 use App\Space;
 use App\SpaceUsage;
+use App\Repositories\AmenityRepository;
 use App\Repositories\SpaceRepository;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -15,8 +16,14 @@ class SpaceController extends Controller
 {
 	private $spaceRepository;
 
-	public function __construct(SpaceRepository $spaceRepository) {
+	private $amenityRepository;
+
+	public function __construct(
+		SpaceRepository $spaceRepository,
+		AmenityRepository $amenityRepository
+	) {
 		$this->spaceRepository = $spaceRepository;
+		$this->amenityRepository = $amenityRepository;
 	}
 
 	public function index() {
@@ -29,6 +36,7 @@ class SpaceController extends Controller
 		return view('host.space.new', [
 			'facility' => $facility,
 			'spaceUsages' => SpaceUsage::all(),
+			'amenities' => $this->amenityRepository->all(),
 			'keyDeliveries' => KeyDelivery::all(),
 		]);
 	}
