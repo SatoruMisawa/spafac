@@ -15,8 +15,8 @@ class CreateAmenitySpaceTable extends Migration
     {
         Schema::create('amenity_space', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('amenity_id')->unique();
-            $table->bigInteger('space_id')->unique();
+            $table->bigInteger('amenity_id');
+            $table->bigInteger('space_id');
         });
     }
 

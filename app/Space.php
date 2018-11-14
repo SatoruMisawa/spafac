@@ -18,7 +18,7 @@ class Space extends Model
 	
 	protected $fillable = [
 		'user_id', 'facility_id', 'key_delivery_id',
-		'title', 'about', 'capacity', 'floor_area',
+		'name', 'about', 'capacity', 'floor_area',
 		'about_amenity', 'about_food_drink', 'about_cleanup',
 		'cancellation_policy', 'terms_of_use'
 	];
@@ -29,6 +29,10 @@ class Space extends Model
 
 	public function facility() {
 		return $this->belongsTo(Facility::class);
+	}
+
+	public function amenities() {
+		return $this->belongsToMany(Amenity::class);
 	}
 
 	public function plan() {

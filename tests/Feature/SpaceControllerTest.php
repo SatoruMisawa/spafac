@@ -61,7 +61,7 @@ class SpaceControllerTest extends TestCase
     private function assertSpaceInDB($facilityID, $data) {
         $this->assertDatabaseHas('spaces', [
             'facility_id' => $facilityID,
-            'title' => $data['title'],
+            'name' => $data['name'],
             'about' => $data['about'],
             'key_delivery_id' => $data['key_delivery_id'],
             'capacity' => $data['capacity'],
@@ -76,7 +76,7 @@ class SpaceControllerTest extends TestCase
 
     private function data() {
         return [
-            'title' => $this->faker->name(),
+            'name' => $this->faker->name(),
             'about' => $this->faker->sentence(),
             'space_usage_ids' => [
                 $this->faker->randomDigitNotNull(),
