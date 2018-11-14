@@ -18,7 +18,7 @@ class CreateSpacesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('facility_id')->unsigned();
             $table->bigInteger('key_delivery_id')->unsigned();
-            $table->string('title');
+            $table->string('name');
             $table->string('about');
             $table->integer('capacity');
             $table->integer('floor_area');

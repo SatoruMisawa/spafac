@@ -36,7 +36,7 @@ class SpaceController extends Controller
 	public function create(CreateSpaceRequest $request, Facility $facility) {
 		$data = ['facility_id' => $facility->id] + $request->only([
 			'key_delivery_id',
-			'title', 'about', 'capacity', 'floor_area',
+			'name', 'about', 'capacity', 'floor_area',
 			'about_amenity', 'about_food_drink','about_cleanup',
 			'cancellation_policy', 'terms_of_use',
 		]);

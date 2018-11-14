@@ -25,7 +25,7 @@ class CreateSpaceRequest extends FormRequest
     {
         return [
             'key_delivery_id' => 'required',
-            'title' => 'required|string',
+            'name' => 'required|string',
             'about' => 'required|string',
             'capacity' => 'required|numeric|min:1',
 			'floor_area' => 'required|numeric|min:1',

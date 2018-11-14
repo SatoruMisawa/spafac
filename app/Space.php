@@ -18,7 +18,7 @@ class Space extends Model
 	
 	protected $fillable = [
 		'user_id', 'facility_id', 'key_delivery_id',
-		'title', 'about', 'capacity', 'floor_area',
+		'name', 'about', 'capacity', 'floor_area',
 		'about_amenity', 'about_food_drink', 'about_cleanup',
 		'cancellation_policy', 'terms_of_use'
 	];
