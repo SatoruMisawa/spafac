@@ -64,14 +64,13 @@ class MyValidator extends \Illuminate\Validation\Validator {
 		return preg_match($regex, $value, $match);
 	}
 	
-	/**
-	* パスワードベリファイ
-	*/
-	public function validatePasswordVerify($attribute, $value, $parameters) {
+	// /**
+	// * パスワードベリファイ
+	// */
+	// public function validatePasswordVerify($attribute, $value, $parameters) {
 		
-		$hash = $parameters[0];
-		return password_verify($value, $hash);
-	}
+	// 	$hash = $parameters[0];
+	// 	return password_verify($value, $hash);
+	// }
 	
 }
-

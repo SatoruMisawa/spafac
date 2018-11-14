@@ -55,9 +55,7 @@ class FacilityController extends Controller
 		$data = ['address_id' => $address->id] + $request->only([
 			'facility_kind_id', 'name', 'access', 'tel',
 		]);
-		$facility = Auth::user()->facilities()->save(
-			$this->facilityRepository->new($data)
-		);
+		$facility = Auth::user()->facilities()->create($data);
 		
 		return redirect()->route('host.facility.space.new', $facility->id);
 	}
@@ -86,7 +84,7 @@ class FacilityController extends Controller
 		$data = ['address_id' => $address->id] + $request->only([
 			'facility_kind_id', 'name', 'access', 'tel',
 		]);
-		$this->facilityRepository->update($facility->id, $data);
+		$this->facilityRepository->update($data, $facility->id);
 		return redirect()->route('host.facility.index');
 	}
 }

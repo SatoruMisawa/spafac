@@ -1,16 +1,15 @@
 <?php
 
+use App\KeyDelivery;
 use Illuminate\Database\Seeder;
 
 class KeyDeliverySeeder extends Seeder
 {
-    private $table = 'key_deliveries';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        KeyDelivery::truncate();
 
-        DB::table($this->table)->insert([
+        KeyDelivery::insert([
             ['name' => '対面'],
             ['name' => 'キーボックス'],
             ['name' => 'スマートロック'],

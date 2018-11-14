@@ -3,7 +3,7 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			スペース編集
+			新規プラン
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="{{ url('host') }}"><i class="fa fa-dashboard"></i> ホーム</a></li>

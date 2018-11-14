@@ -9,12 +9,26 @@ use App\PreorderDeadline;
 use App\PreorderPeriod;
 use App\Schedule;
 use App\Space;
+use App\Repositories\PlanRepository;
+use App\Repositories\ScheduleRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlanRequest;
 
 
 class PlanController extends Controller
 {
+	private $planRepository;
+
+	private $scheduleRepository;
+
+	public function __construct(
+		PlanRepository $planRepository,
+		ScheduleRepository $scheduleRepository
+	) {
+		$this->planRepository = $planRepository;
+		$this->scheduleRepository = $scheduleRepository;
+	}
+
 	public function new(Space $space) {
 		return view('host.plan.new', [
 			'space' => $space,
@@ -29,16 +43,15 @@ class PlanController extends Controller
 	}
 
 	public function create(CreatePlanRequest $request, Space $space) {
-		$plan = $space->plan()->create([
-			'name' => $request->get('name'),
-			'preorder_deadline_id' => $request->get('preorder_deadline_id'),
-			'preorder_period_id' => $request->get('preorder_period_id'),
-			'price_per_hour' => $request->get('price_per_hour'),
-			'price_per_day' => $request->get('price_per_day'),
-			'need_to_be_approved' => $request->get('need_to_be_approved'),
-			'from' => $request->get('period_from'),
-			'to' => $request->get('period_to'),
-		]);
+		$plan = $space->plan()->create(
+			$request->only([
+				'name',
+				'preorder_deadline_id', 'preorder_period_id',
+				'price_per_hour', 'price_per_day',
+				'need_to_be_approved',
+				'from', 'to',
+			])
+		);
 		
 		foreach ($request->get('day_ids') as $dayID) {
 			$from = $request->get('hour_from')[$dayID];
@@ -50,7 +63,7 @@ class PlanController extends Controller
 						->withInput();
 			}
 
-			Schedule::create([
+			$this->scheduleRepository->create([
 				'plan_id' => $plan->id,
 				'day_id' => $dayID,
 				'from' => $from,
@@ -58,6 +71,6 @@ class PlanController extends Controller
 			]);
 		}
 
-		return redirect()->route('host');
+		return redirect()->route('host.index');
 	}
 }
