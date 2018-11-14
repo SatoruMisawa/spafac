@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Host;
 
+use App\Amenity;
 use App\Facility;
 use App\KeyDelivery;
 use App\Space;
@@ -49,6 +50,10 @@ class SpaceController extends Controller
 			'cancellation_policy', 'terms_of_use',
 		]);
 		$space = Auth::user()->spaces()->create($data);
+
+		foreach ($request->get('amenity_ids') as $amenityID) {
+			$space->amenities()->save(Amenity::find($amenityID));
+		}
 		
 		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));

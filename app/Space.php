@@ -31,6 +31,10 @@ class Space extends Model
 		return $this->belongsTo(Facility::class);
 	}
 
+	public function amenities() {
+		return $this->belongsToMany(Amenity::class);
+	}
+
 	public function plan() {
 		return $this->hasOne(Plan::class);
 	}
