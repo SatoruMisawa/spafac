@@ -25,7 +25,8 @@ class CreateSpaceImageRequest extends FormRequest
     {
         return [
             'images' => 'required|array',
-            'images.*' => 'file|image|mimes:jpeg,jpg,png',
+            'images.*' => 'file|image|mimes:jpeg,jpg,png,pdf',
+            'video_url' => 'required|url',
         ];
     }
 }
