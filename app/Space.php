@@ -43,6 +43,10 @@ class Space extends Model
 		return $this->hasMany(SpaceImage::class);
 	}
 
+	public function spaceAttachments() {
+		return $this->hasMany(SpaceAttachment::class);
+	}
+
 	public function spaceUsages() {
 		return $this->belongsToMany(SpaceUsage::class);
 	}
