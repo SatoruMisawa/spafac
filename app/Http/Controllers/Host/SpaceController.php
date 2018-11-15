@@ -43,12 +43,7 @@ class SpaceController extends Controller
 	}
 
 	public function create(CreateSpaceRequest $request, Facility $facility) {
-		$data = ['facility_id' => $facility->id] + $request->only([
-			'key_delivery_id',
-			'name', 'about', 'capacity', 'floor_area',
-			'about_amenity', 'about_food_drink','about_cleanup',
-			'cancellation_policy', 'terms_of_use',
-		]);
+		$data = $this->data($request, $facility->id);
 		$space = Auth::user()->spaces()->create($data);
 
 		foreach ($request->get('amenity_ids') as $amenityID) {
@@ -71,9 +66,7 @@ class SpaceController extends Controller
 	}
 
 	public function update(CreateSpaceRequest $request, Facility $facility, Space $space) {
-		$data = ['facility_id' => $facility->id] + $request->only([
-			'key_delivery_id', 'capacity', 'floor_area',
-		]);
+		$data = $this->data($request, $facility->id);
 		$space = $this->spaceRepository->update($data, $space->id);
 			
 		$space->spaceUsages()->detach();
@@ -82,5 +75,14 @@ class SpaceController extends Controller
 		}
 
 		return redirect()->route('host.space.index');
+	}
+
+	private function data(CreateSpaceRequest $request, $facilityID) {
+		return $request->only([
+			'key_delivery_id',
+			'name', 'about', 'capacity', 'floor_area',
+			'about_amenity', 'about_food_drink','about_cleanup',
+			'cancellation_policy', 'terms_of_use',
+		]) + ['facility_id' => $facilityID];
 	}
 }

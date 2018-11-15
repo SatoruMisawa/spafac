@@ -27,11 +27,11 @@ class SpaceControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $facility = factory(Facility::class)->create();
         $data = $this->data();
-        $this->assertPostCreateSpaceRequest($facility->id, $data);
+        $this->assertPostRequestToCreateSpace($facility->id, $data);
         $this->assertSpaceInDB($facility->id, $data);
     }
 
-    private function assertPostCreateSpaceRequest($facilityID, $data) {
+    private function assertPostRequestToCreateSpace($facilityID, $data) {
         return $this->loginWithTesterIfDebug()
                         ->loginWithUser()
                         ->post(route('host.facility.space.create', $facilityID), $data)
@@ -48,15 +48,19 @@ class SpaceControllerTest extends TestCase
                  ->assertSee('スペース編集');
     }
 
-    // public function testUpdate() {
-    //     $space = factory(Space::class)->create();
-    //     $updatedSpace = factory(Space::class)->create();
-    //     $data = $this->data();
-    //     $response = $this->loginWithTesterIfDebug()
-    //                     ->loginWithUser()
-    //                     ->put(route('host.facility.space.update', [$space->facility_id, $space->id]), $data)
-    //                     ->assertRedirect(route('host.space.index'));
-    // }
+    public function testUpdate() {
+        $space = factory(Space::class)->create();
+        $data = $this->data();
+        $this->assertPutRequestToUpdateSpace($space->facility_id, $space->id, $data);
+        $this->assertSpaceInDB($space->facility_id, $data);
+    }
+
+    private function assertPutRequestToUpdateSpace($facilityID, $spaceID, $data) {
+        $this->loginWithTesterIfDebug()
+            ->loginWithUser()
+            ->put(route('host.facility.space.update', [$facilityID, $spaceID]), $data)
+            ->assertRedirect(route('host.space.index'));
+    }
 
     private function assertSpaceInDB($facilityID, $data) {
         $this->assertDatabaseHas('spaces', [
