@@ -78,12 +78,12 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('/', 'Host\SpaceController@index')->name('host.space.index');
 	 
 			Route::group(['prefix' => '/{space}/images'], function() {
-				Route::get('/', 'Host\SpaceImageController@index')->name('host.space.image.index');
-				Route::get('/new', 'Host\SpaceImageController@new')->name('host.space.image.new');
-				Route::post('/', 'Host\SpaceImageController@create')->name('host.space.image.create');
-				Route::get('/{image}', 'Host\SpaceImageController@show')->name('host.space.image.show');
-				Route::put('/{image}', 'Host\SpaceImageController@update')->name('host.space.image.update');
-				Route::delete('/{image}', 'Host\SpaceImageController@delete')->name('host.space.image.delete');
+				Route::get('/', 'Host\SpaceAttachmentController@index')->name('host.space.image.index');
+				Route::get('/new', 'Host\SpaceAttachmentController@new')->name('host.space.image.new');
+				Route::post('/', 'Host\SpaceAttachmentController@create')->name('host.space.image.create');
+				Route::get('/{image}', 'Host\SpaceAttachmentController@show')->name('host.space.image.show');
+				Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
+				Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
 			});
 	 
 			Route::group(['prefix' => '/{space}/plan'], function() {
