@@ -5,11 +5,11 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface SpaceImageRepository.
+ * Interface SpaceAttachmentRepository.
  *
  * @package namespace App\Repositories;
  */
-interface SpaceImageRepository extends RepositoryInterface
+interface SpaceAttachmentRepository extends RepositoryInterface
 {
-    
+    //
 }
