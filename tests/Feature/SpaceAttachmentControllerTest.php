@@ -36,6 +36,9 @@ class SpaceAttachmentControllerTest extends TestCase
         return [
             'images' => [
                 UploadedFile::fake()->image('test.png'),
+                UploadedFile::fake()->image('test.jpeg'),
+                UploadedFile::fake()->image('test.jpg'),
+                UploadedFile::fake()->image('test.pdf'),
             ],
             'video_url' => $this->faker->url(),
         ];
@@ -44,8 +47,8 @@ class SpaceAttachmentControllerTest extends TestCase
     private function assertPostRequestToCreateSpaceImage($spaceID, $data) {
         return $this->loginWithTesterIfDebug()
                     ->loginWithUser()
-                    ->post(route('host.space.image.create', $spaceID), $data);
-                    // ->assertRedirect(route('host.space.plan.new', $spaceID));
+                    ->post(route('host.space.image.create', $spaceID), $data)
+                    ->assertRedirect(route('host.space.plan.new', $spaceID));
     }
 
     private function assertSpaceImageInDB($spaceID, $data) {

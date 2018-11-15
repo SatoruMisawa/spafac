@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSpaceImageRequest extends FormRequest
+class CreateSpaceAttachmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class CreateSpaceImageRequest extends FormRequest
     {
         return [
             'images' => 'required|array',
-            'images.*' => 'file|image|mimes:jpeg,jpg,png,pdf',
-            'video_url' => 'required|url',
+            'images.*' => 'file|mimes:jpeg,jpg,png,pdf',
+            'video_url' => 'nullable|url',
         ];
     }
 }

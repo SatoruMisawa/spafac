@@ -7,7 +7,7 @@ use App\Space;
 use App\SpaceAttachment;
 use App\Repositories\SpaceAttachmentRepository;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateSpaceImageRequest;
+use App\Http\Requests\CreateSpaceAttachmentRequest;
 use Intervention\Image\Facades\Image;
 use Storage;
 
@@ -25,9 +25,11 @@ class SpaceAttachmentController extends Controller
         ]);
     }
 
-    public function create(CreateSpaceImageRequest $request, Space $space) {
+    public function create(CreateSpaceAttachmentRequest $request, Space $space) {
         $this->createImages($request->file('images'), $space->id);
-        $this->createVideo($request->get('video_url'), $space->id);
+        if ($request->has('video_url')) {
+            $this->createVideo($request->get('video_url'), $space->id);
+        }
 
         return redirect()->route('host.space.plan.new', $space->id);
     }
