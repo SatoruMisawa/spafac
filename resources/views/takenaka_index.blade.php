@@ -2,9 +2,11 @@
 
 @section('content')
 
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/css/top.css">
+
 
 @include('host.layouts.message')
 <div id="search_box">
@@ -257,7 +259,7 @@
 	<div class="col-xs-4 staff-box">
 		<div class="staff-linkbox">
 			<div class="staff-top-area unit-st">
-			<img  class="staffichioshi000" src="<?php echo url('assets/mypage/img/image_photo/sampleimage91.png'); ?>" alt="" class="sp-top-ranking__image-pict">
+			<img src="<?php echo url('assets/mypage/img/photo-9.png'); ?>" alt="">
 			<h3 class="staff-title" style="background-color: #fa8b9f;">
 				<span class="star">★★★★☆</span><br>
 				<span>白を基調としたスタイリッシュでオシャレな空間は物件の室内に大きなキッチンは使い勝手も便利でお料理教室や、お菓子などのワークシ…</span>
@@ -268,7 +270,7 @@
 	<div class="col-xs-4 staff-box">
 		<div class="staff-linkbox">
 			<div class="staff-top-area unit-st">
-			<img  class="staffichioshi000" src="<?php echo url('assets/mypage/img/image_photo/sampleimage90.png'); ?>" alt="" class="sp-top-ranking__image-pict">
+			<img src="<?php echo url('assets/mypage/img/photo-1.png'); ?>" alt="">
 			<h3 class="staff-title" style="background-color: #fa8b9f;">
 				<span class="star">★★★★☆</span><br>
 				<span>結婚式場のテラスを使って女子会を行いました。オシャレなアンティーク調の雰囲気の中で友人のサプライズ誕生日を行い、本人もとって…</span>
@@ -279,7 +281,7 @@
 	<div class="col-xs-4 staff-box">
 		<div class="staff-linkbox">
 			<div class="staff-top-area unit-st">
-			<img  class="staffichioshi000" src="<?php echo url('assets/mypage/img/image_photo/sampleimage92.png'); ?>" alt="">
+			<img src="<?php echo url('assets/mypage/img/photo-9.png'); ?>" alt="">
 			<h3 class="staff-title" style="background-color: #fa8b9f;">
 				<span class="star">★★★★★</span><br>
 				<span>結婚式場のチャペルで大切な人からサプライズでプロポーズされました。ほんの少しの時間でこんな大きな幸せを一生の宝物にしたいと思…</span>
@@ -306,9 +308,9 @@
 			<div class="news_card">
 				<ul>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/news02/">
+						<a href="http://spafac.sa-m.net/wp/news/%e3%83%af%e3%83%bc%e3%83%ab%e3%83%89%e3%82%ab%e3%83%83%e3%83%97%e6%97%a5%e6%9c%ac%e6%95%97%e9%80%80/">
 						<div class="img">
-							<img src="assets/mypage/img/image_photo/sampleimage93.jpg" alt="">
+							<img src="https://s3-ap-northeast-1.amazonaws.com/spafac-storage/system/developimage/top-topics/work-731198_1920.jpg" alt="">
 						</div>
 						</a>
 						<div class="text">
@@ -321,7 +323,7 @@
 					<li>
 						<a href="http://spafac.sa-m.net/wp/news/news02/">
 							<div class="img">
-								<img src="assets/mypage/img/image_photo/sampleimage95.jpg" alt="">
+								<img src="https://s3-ap-northeast-1.amazonaws.com/spafac-storage/system/developimage/top-topics/original-1-1-768x489.jpg" alt="">
 							</div>
 						</a>
 							<div class="text">
@@ -334,7 +336,7 @@
 					<li>
 						<a href="http://spafac.sa-m.net/wp/news/18070501/">
 							<div class="img">
-								<img src="assets/mypage/img/image_photo/sampleimage94.png" alt="">
+								<img src="https://s3-ap-northeast-1.amazonaws.com/spafac-storage/system/developimage/top-topics/25e9beb6-9600-11e8-aecb-06326e701dd4.png" alt="">
 							</div>
 						</a>
 						<div class="text">
@@ -351,6 +353,8 @@
 	</div>
 </section>
 
+<section class="white" id="news">
+	<h2>Topics &amp; News</h2>
 	<?php /*<ul class="news">
 		<?php global $post; ?>
 		<?php $query = my_topics_query(3); ?>
@@ -409,7 +413,10 @@
 
 		</ul>	
 	</div> */?>
-
+<div class="wrap txtR">
+<a class="archive_link" href="<?php /*echo $news_list*/?>">News一覧を見る &raquo;</a>
+</div>
+</section>
 
 <section class="gray" id="welcome">
 	<div class="welcome_title">
@@ -494,7 +501,7 @@
 		<div class="col-xs-4 staff-box">
 				<div class="staff-linkbox">
 					<div class="staff-top-area unit-st">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage130.jpg'); ?>" alt="">
+						<img src="<?php echo url('assets/mypage/img/photo-8.png'); ?>" alt="">
 						<h3 class="staff-title" style="background-color: #fa8b9f;">
 						<span>12月末までのスペース登録弊社代行無料キャンペーン実施中！スペースを借りる方必見！スペースレンタル成約時の手数料が12月末まで無料！</span>
 						</h3>
@@ -504,7 +511,7 @@
 		<div class="col-xs-4 staff-box">
 				<div class="staff-linkbox">
 					<div class="staff-top-area unit-st">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage131.jpg'); ?>" alt="">
+						<img src="<?php echo url('assets/mypage/img/photo-12.png'); ?>" alt="">
 						<h3 class="staff-title" style="background-color: #fa8b9f;">
 						<span>Campfire×SPACE FACTORY 大阪心斎橋近くの多目的ルームをいち早くお届け！ただいまキャンペーン中につきレンタル料金期間限定大幅割引！</span>
 						</h3>
@@ -514,7 +521,7 @@
 		<div class="col-xs-4 staff-box">
 				<div class="staff-linkbox">
 					<div class="staff-top-area unit-st">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage132.jpg'); ?>" alt="">
+						<img src="<?php echo url('assets/mypage/img/photo-13.png'); ?>" alt="">
 						<h3 class="staff-title" style="background-color: #fa8b9f;">
 						<span>スペースをお持ちの方。只今利用用途の拡大中につきご紹介キャンペーン実施中！スペースをお持ちの方をご紹介のご紹介で素敵な特典をゲット！</span>
 						</h3>
@@ -638,10 +645,10 @@
 	<div class="pattern_box">
     <div class="pac">
 		<div class="col-xs-4">
-		<a href="{{ action('SpaceController@index', 1 ) }}">
+			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage136.jpg'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -670,7 +677,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage135.jpg'); ?>" alt="大阪上位上位獲得 ✨1,500円～【なんば 徒歩７分】移動販売車など物販スペース/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-22.png'); ?>" alt="大阪上位上位獲得 ✨1,500円～【なんば 徒歩７分】移動販売車など物販スペース/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,500<span class="sp-top-ranking__item-different">〜</span>￥2,250<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -699,7 +706,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage134.jpg'); ?>" alt="神戸上位獲得 ✨950円～【三宮 徒歩9分】大人の隠れ家/～15名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-17.png'); ?>" alt="神戸上位獲得 ✨950円～【三宮 徒歩9分】大人の隠れ家/～15名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥950<span class="sp-top-ranking__item-different">〜</span>￥4,250<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -738,7 +745,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage103.jpg'); ?>" alt="関西上位獲得 ✨1,980円～【淀屋橋 徒歩6分】駅から徒歩圏内の会議室は設備充実/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-27.png'); ?>" alt="関西上位獲得 ✨1,980円～【淀屋橋 徒歩6分】駅から徒歩圏内の会議室は設備充実/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,980<span class="sp-top-ranking__item-different">〜</span>￥2,500<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -767,7 +774,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage104.jpg'); ?>" alt="関西上位上位獲得 ✨1,100円～【心斎橋 徒歩3分】地下鉄をおりてすぐのミーティングスペース/～15名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-10.png'); ?>" alt="関西上位上位獲得 ✨1,100円～【心斎橋 徒歩3分】地下鉄をおりてすぐのミーティングスペース/～15名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,100<span class="sp-top-ranking__item-different">〜</span>￥1,980<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -796,7 +803,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage105.jpg'); ?>" alt="関西上位獲得 ✨650円～【元町 徒歩9分】24時間のご利用可能です。深夜の打ち合わせにも最適/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-91.png'); ?>" alt="関西上位獲得 ✨650円～【元町 徒歩9分】24時間のご利用可能です。深夜の打ち合わせにも最適/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥650<span class="sp-top-ranking__item-different">〜</span>￥1,600<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -843,7 +850,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage106.jpg'); ?>" alt="関西上位獲得 ✨1520円～【北新地 徒歩4分】アジアンティストの店内はおしゃれな雰囲気/～15名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-5.png'); ?>" alt="関西上位獲得 ✨1520円～【北新地 徒歩4分】アジアンティストの店内はおしゃれな雰囲気/～15名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,520<span class="sp-top-ranking__item-different">〜</span>￥5,400<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -872,7 +879,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage107.jpg'); ?>" alt="関西上位獲得 ✨1,500円～【長堀橋 徒歩3分】多目的用スペース心斎橋のアクセスも良好/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-16.png'); ?>" alt="関西上位獲得 ✨1,500円～【長堀橋 徒歩3分】多目的用スペース心斎橋のアクセスも良好/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥11,500<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -901,7 +908,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage108.jpg'); ?>" alt="関西上位獲得 ✨2,000円～【梅田 徒歩7分】大阪を一望できる高層階でのプライベートな空間を/～50名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-15.png'); ?>" alt="関西上位獲得 ✨2,000円～【梅田 徒歩7分】大阪を一望できる高層階でのプライベートな空間を/～50名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,000<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -940,7 +947,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage109.jpg'); ?>" alt="関西上位獲得 ✨2,100円～【梅田 徒歩7分】大人数のパーティも可能50名以上の収容可/～60名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-21.png'); ?>" alt="関西上位獲得 ✨2,100円～【梅田 徒歩7分】大人数のパーティも可能50名以上の収容可/～60名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,100<span class="sp-top-ranking__item-different">〜</span>￥12,000<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -969,7 +976,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage110.jpg'); ?>" alt="関西上位獲得 ✨1,500円～【梅田 徒歩7分】多目的ブースも完備。10名以上の収容可/～15名/ごろごろ/Netflix/24h可/ホムパ" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-18.png'); ?>" alt="関西上位獲得 ✨1,500円～【梅田 徒歩7分】多目的ブースも完備。10名以上の収容可/～15名/ごろごろ/Netflix/24h可/ホムパ" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,500<span class="sp-top-ranking__item-different">〜</span>￥3,300<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -998,7 +1005,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage111.jpg'); ?>" alt="大阪上位獲得 ✨2,500円～【南船場 徒歩6分】インスタ映えのCafeで素敵な空間を提供します/～30名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-36.png'); ?>" alt="大阪上位獲得 ✨2,500円～【南船場 徒歩6分】インスタ映えのCafeで素敵な空間を提供します/～30名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,500<span class="sp-top-ranking__item-different">〜</span>￥5,500<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1038,7 +1045,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage112.jpg'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-32.png'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥3,300<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1067,7 +1074,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage113.jpg'); ?>" alt="大阪市上位獲得獲得 ✨2,100円～【心斎橋 徒歩4分】大人の隠れ家的雰囲気。地下のこだわり空間/～12名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-6.png'); ?>" alt="大阪市上位獲得獲得 ✨2,100円～【心斎橋 徒歩4分】大人の隠れ家的雰囲気。地下のこだわり空間/～12名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,100<span class="sp-top-ranking__item-different">〜</span>￥5,500<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1096,7 +1103,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage114.jpg'); ?>" alt="全国1位獲得 ✨2,980円～【神戸 徒歩6分】交通の便良好です。古民家風な空間/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-24.png'); ?>" alt="全国1位獲得 ✨2,980円～【神戸 徒歩6分】交通の便良好です。古民家風な空間/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,980<span class="sp-top-ranking__item-different">〜</span>￥5,230<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1135,7 +1142,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage115.jpg'); ?>" alt="大阪上位獲得 ✨3,250円～【中崎町 徒歩4分】設備充実のフォトスタジオ/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-43.png'); ?>" alt="大阪上位獲得 ✨3,250円～【中崎町 徒歩4分】設備充実のフォトスタジオ/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥3,250<span class="sp-top-ranking__item-different">〜</span>￥6,100<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1164,7 +1171,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage116.jpg'); ?>" alt="関西上位獲得 ✨3,500円～【谷町６丁目 徒歩2分】多目的な空間として利用可能です。/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-20.png'); ?>" alt="関西上位獲得 ✨3,500円～【谷町６丁目 徒歩2分】多目的な空間として利用可能です。/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥3,500<span class="sp-top-ranking__item-different">〜</span>￥4,300<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1193,7 +1200,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage117.jpg'); ?>" alt="関西上位獲得 ✨3,500円～【新大阪 徒歩4分】フォト撮影や女子会などに人気/～9名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-39.png'); ?>" alt="関西上位獲得 ✨3,500円～【新大阪 徒歩4分】フォト撮影や女子会などに人気/～9名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥3,500<span class="sp-top-ranking__item-different">〜</span>￥4,200<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1243,7 +1250,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage118.jpg'); ?>" alt="大阪上位獲得 ✨5,600円～【本町 徒歩8分】中央に水辺がありインスタ映え間違いなしの空間/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-40.png'); ?>" alt="大阪上位獲得 ✨5,600円～【本町 徒歩8分】中央に水辺がありインスタ映え間違いなしの空間/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥5,600<span class="sp-top-ranking__item-different">〜</span>￥9,800<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1272,7 +1279,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage119.jpg'); ?>" alt="関西上位獲得 ✨12,000円～【梅田 徒歩4分】チャペルを使ってお祝いやプロポーズを/～30名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-7.png'); ?>" alt="関西上位獲得 ✨12,000円～【梅田 徒歩4分】チャペルを使ってお祝いやプロポーズを/～30名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥12,000<span class="sp-top-ranking__item-different">〜</span>￥16,500<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1301,7 +1308,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage120.jpg'); ?>" alt="関西1位獲得 ✨12,000円～梅田 徒歩4分】大宴会場の空間を多目的利用/～50名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-11.png'); ?>" alt="関西1位獲得 ✨12,000円～梅田 徒歩4分】大宴会場の空間を多目的利用/～50名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥12,000<span class="sp-top-ranking__item-different">〜</span>￥15,000<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1340,7 +1347,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage121.jpeg'); ?>" alt="関西上位獲得 ✨300円～【都島 徒歩10分】1時間から予約可能なパーキング/～1名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-45.png'); ?>" alt="関西上位獲得 ✨300円～【都島 徒歩10分】1時間から予約可能なパーキング/～1名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥300<span class="sp-top-ranking__item-different">〜</span>￥600<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1369,7 +1376,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage121.jpg'); ?>" alt="関西上位獲得 ✨600円～【福島 徒歩12分】福島駅も利用できるパーキングスペース/～1名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-45.png'); ?>" alt="関西上位獲得 ✨600円～【福島 徒歩12分】福島駅も利用できるパーキングスペース/～1名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥600<span class="sp-top-ranking__item-different">〜</span1,200<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1398,7 +1405,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage122.jpg'); ?>" alt="関西上位獲得 ✨300円～【福島 徒歩13分】大人の隠れ家/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-45.png'); ?>" alt="関西上位獲得 ✨300円～【福島 徒歩13分】大人の隠れ家/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥300<span class="sp-top-ranking__item-different">〜</span>￥600<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1437,7 +1444,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage123.jpg'); ?>" alt="関西上位獲得 ✨2,100円～【なんば 徒歩5分】人目を気にせずボディメイクができる/～3名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-37.png'); ?>" alt="関西上位獲得 ✨2,100円～【なんば 徒歩5分】人目を気にせずボディメイクができる/～3名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,100<span class="sp-top-ranking__item-different">〜</span>￥3,000<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1466,7 +1473,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage124.jpg'); ?>" alt="関西上位獲得 ✨16,900円～【梅田 徒歩4分】グループで楽しく汗を流せる空間/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-41.png'); ?>" alt="関西上位獲得 ✨16,900円～【梅田 徒歩4分】グループで楽しく汗を流せる空間/～20名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥16,900<span class="sp-top-ranking__item-different">〜</span>￥19,800<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1495,7 +1502,7 @@
 			<a href="#" class="a__top-box">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage125.jpg'); ?>" alt="関西上位獲得 ✨2,200円～【阿倍野 徒歩4分】マシン充実使い放題のプラン/～22名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="<?php echo url('assets/mypage/img/photo-19.png'); ?>" alt="関西上位獲得 ✨2,200円～【阿倍野 徒歩4分】マシン充実使い放題のプラン/～22名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥2,200<span class="sp-top-ranking__item-different">〜</span>￥8,900<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -1523,119 +1530,6 @@
 	</div>
 	</div>
 </section>
-
-<section class="gray pattern_1" id="parking">
-	<div class="pattern_title">
-		<h2>その他</h2>
-	</div>
-	<div class="pattern_box">
-    <div class="pac">
-		<div class="col-xs-4">
-			<a href="#" class="a__top-box">
-			<div class="sp-top-rakinbox sp-topbox-area">
-				<div class="sp-top-rakinbox__image">
-					<div class="top-sp-ranking sp-ranking_no1 sp-ranking sp-ranking__icon">
-						<div class="sp-ranking__icon-body">
-							<span class="sp-ranking__icon-number">1</span>
-						</div>
-					</div>
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage126.jpg'); ?>" alt="大阪上位獲得  3500円～【なんば 徒歩3分】産婦人科で助産師セミナー開催/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-						<p class="sp-top-ranking__item-price">￥3,500<span class="sp-top-ranking__item-different">〜</span>￥3,500<span class="sp-top-ranking__item-different">/時間</span>
-						<span class="sp-top-ranking__price-icon">
-							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-							<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-							<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-						</span>
-						</p>
-				</div>
-					<div class="sp-top-ranking__body">
-						<div class="sp-top-ranking__body-inner">
-							<h3 class="sp-top-ranking__body-title">大阪上位獲得 3,500円～【なんば 徒歩3分】産婦人科で助産師セミナー開催/～5名/ごろごろ/Netflix/24h可/ホムパ</h3>
-						</div>
-						<ul class="sp-top-ranking__body-info">
-							<li><i class="fa fa-user mr5"></i>〜10人</li>
-							<li><i class="fa fa-map-marker mr5"></i>大阪市中央区</li>
-						</ul>
-					</div>
-			</div>
-			</a>
-						<h3 class="staff-title" style="background-color: #4abfe6;">
-						<span class="star">★★★★★</span><br/>
-						<span>赤ちゃんの出産に備えて今後の生活における様々な事例を助産師さんから直接アドバイスをいただくことができました...</span>
-						</h3>
-		</div>
-		<div class="col-xs-4">
-			<a href="#" class="a__top-box">
-			<div class="sp-top-rakinbox sp-topbox-area">
-				<div class="sp-top-rakinbox__image">
-					<div class="top-units-ranking sp-ranking_no2 sp-ranking sp-ranking__icon">
-						<div class="sp-ranking__icon-body">
-							<span class="sp-ranking__icon-number">1</span>
-						</div>
-					</div>
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage127.jpg'); ?>" alt="関西上位獲得  2,500円～【三宮 徒歩8分】三宮センター街も近くカフェの一角ででアクセサリワークショップ/～5名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-						<p class="sp-top-ranking__item-price">￥2,500<span class="sp-top-ranking__item-different">〜</span>￥2,500<span class="sp-top-ranking__item-different">/時間</span>
-						<span class="sp-top-ranking__price-icon">
-							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-							<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-							<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-						</span>
-						</p>
-				</div>
-					<div class="sp-top-ranking__body">
-						<div class="sp-top-ranking__body-inner">
-							<h3 class="sp-top-ranking__body-title">神戸上位獲得  2,500円～【三宮 徒歩8分】三宮センター街も近くカフェの一角ででアクセサリワークショップ/～5名/ごろごろ/Netflix/24h可/ホムパ</h3>
-						</div>
-						<ul class="sp-top-ranking__body-info">
-							<li><i class="fa fa-user mr5"></i>〜5人</li>
-							<li><i class="fa fa-map-marker mr5"></i>神戸市中央区</li>
-						</ul>
-					</div>
-			</div>
-			</a>
-						<h3 class="staff-title" style="background-color: #4abfe6;">
-						<span class="star">★★★★★</span><br/>
-						<span>アクセサリのワークショップで素敵なアクセサリ作りを体験させていただきました。今後もまた子供と一緒に...</span>
-						</h3>
-		</div>
-		<div class="col-xs-4">
-			<a href="#" class="a__top-box">
-			<div class="sp-top-rakinbox sp-topbox-area">
-				<div class="sp-top-rakinbox__image">
-					<div class="top-units-ranking sp-ranking_no3 sp-ranking sp-ranking__icon">
-						<div class="sp-ranking__icon-body">
-							<span class="sp-ranking__icon-number">1</span>
-						</div>
-					</div>
-						<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage128.jpg'); ?>" alt="和歌山上位獲得  10,000円～【京奈和自動車道 紀ノ川 徒歩10分】大地の恵み 畑の一角をレンタル/～3名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-						<p class="sp-top-ranking__item-price">￥10,000<span class="sp-top-ranking__item-different">〜</span>￥25,000<span class="sp-top-ranking__item-different">/時間</span>
-						<span class="sp-top-ranking__price-icon">
-							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-							<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-							<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-						</span>
-						</p>
-				</div>
-					<div class="sp-top-ranking__body">
-						<div class="sp-top-ranking__body-inner">
-							<h3 class="sp-top-ranking__body-title">和歌山上位獲得  5,320円～【京奈和自動車道 紀ノ川 徒歩10分】大地の恵み 畑の一角をレンタル/～3名/ごろごろ/Netflix/24h可/ホムパ </h3>
-						</div>
-						<ul class="sp-top-ranking__body-info">
-							<li><i class="fa fa-user mr5"></i>〜9人</li>
-							<li><i class="fa fa-map-marker mr5"></i>和歌山県紀の川市</li>
-						</ul>
-					</div>
-			</div>
-			</a>
-						<h3 class="staff-title" style="background-color: #4abfe6;">
-						<span class="star">★★★★★</span><br/>
-						<span>とっても親切にしていただき、子供の学校の課題行事などでも使わせていただいております。こんごはとれたての野菜を使って...</span>
-						</h3>
-		</div>
-	</div>
-	</div>
-</section>
-
 
 <div class="sp-zzz spafaclogo100">
 	<div class="sp-Agr splog101">
