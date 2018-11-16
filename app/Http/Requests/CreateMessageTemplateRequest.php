@@ -25,7 +25,7 @@ class CreateMessageTemplateRequest extends FormRequest
     {
         return [
             'on_apply_approved' => 'nullable|string',
-            'on_apply_rejected' => 'nulable|string',
+            'on_apply_rejected' => 'nullable|string',
             'reminder' => 'nullable|string',
         ];
     }
