@@ -49,6 +49,42 @@ class SearchController extends FrontController
 
 	}
 
+	public function areasearchindex($area){
+
+
+		$query = new Facility;
+		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+										->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+										->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id');
+		$query->leftjoin('plans', 'plans.space_id', '=', 'spaces.id');//プラン、費用
+		$query->join('schedules', 'schedules.plan_id', '=', 'plans.id');
+
+
+						//エリア条件
+		if(isset($area)){
+				//都道府県サーチ
+				//$prefectures = new Prefecture;
+				$prefectures = Prefecture::select('id','name')->where('name', 'like', "%$area%")->first();
+							//存在した場合
+				if(isset($prefectures)){
+					$query->where('addresses.prefecture_id', '=', $prefectures->id);
+								//存在しない場合
+				}else{
+									 //市町村サーチ
+					$query->where('addresses.address1', 'like', "%$area%")->orwhere('addresses.address2', 'like', "%$area%");
+				}
+		}
+
+
+
+		$data = compact('space_usage_id', 'room');
+		$view = view('search', $data);
+		return $view;
+
+	}
+
+
+
 
 	public function searchindex(Request $request){
 

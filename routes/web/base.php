@@ -145,6 +145,7 @@ Route::get('help/{page?}', 'IndexController@help');//目的別ページ
 //検索
 //Route::get('search', 'SearchController@index');
 Route::get('search/{space_usage_id}', '\App\Http\Controllers\SearchController@spaceusageindex');
+Route::get('search/{area}', '\App\Http\Controllers\SearchController@areasearchindex');
 Route::get('search/', '\App\Http\Controllers\SearchController@searchindex');
 
 Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@media');
