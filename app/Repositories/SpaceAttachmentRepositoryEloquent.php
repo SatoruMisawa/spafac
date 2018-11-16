@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\SpaceImageRepository;
-use App\SpaceImage;
-use App\Validators\SpaceImageValidator;
+use App\Repositories\SpaceAttachmentRepository;
+use App\SpaceAttachment;
+use App\Validators\SpaceAttachmentValidator;
 
 /**
- * Class SpaceImageRepositoryEloquent.
+ * Class SpaceAttachmentRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class SpaceImageRepositoryEloquent extends BaseRepository implements SpaceImageRepository
+class SpaceAttachmentRepositoryEloquent extends BaseRepository implements SpaceAttachmentRepository
 {
     /**
      * Specify Model class name
@@ -22,7 +22,7 @@ class SpaceImageRepositoryEloquent extends BaseRepository implements SpaceImageR
      */
     public function model()
     {
-        return SpaceImage::class;
+        return SpaceAttachment::class;
     }
 
     
@@ -34,4 +34,5 @@ class SpaceImageRepositoryEloquent extends BaseRepository implements SpaceImageR
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    
 }
