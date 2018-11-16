@@ -6,13 +6,12 @@
 <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/css/top.css">
 
-@include('host.layouts.message')
 <div id="search_box">
 	<div class="search_box_inner search_width">
 		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
 
         @include('mid-nav')
-        
+
 </div>
 </div>
 <div class="search_button gray">
@@ -151,7 +150,7 @@
 						<h3>カテゴリーから探す</h3>
 					</div>
 					<div class="category_text_menu">
-<ul>                        
+<ul>
 
 <li><a href="/search">イベント</a></li>
 <li><a href="/search">結婚式場</a></li>
@@ -187,133 +186,64 @@
 
 
 </ul>
-                        
+
 					</div>
 				</div>
 			</div>
 			<div class="login_wrap">
 				<div class="login_title"><img src="<?php echo url('assets/mypage/img/icon-02.png'); ?>" alt=""><span>メンバーログイン</span></div>
 				<div class="login_box">
-					@if (Auth::guard('users')->check())
-						<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
-							<div class="login_form">
-						<ul class="login_chu">
-							<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
-							<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
-							<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-						</ul>
-					@else
-						<div class="login_form">
-							{{
-								Form::open([
-									'route' => 'session.create',
-									'method' => 'POST' 
-								])
-							}} 	             
-								<table>
-									<tr>
-										<td>ユーザーID:</td>
-										<td>
-											<input type="text" name="email" value="">
-										</td>
-									</tr>
-									<tr>
-										<td>パスワード:</td>
-										<td>
-											<input type="password" name="password" value="">
-										</td>
-									</tr>
-								</table>
-								<a class="forget" href="">ユーザーIDやパスワードをお忘れの場合はこちら &gt;</a>
-								<div class="login_button">
-									<button type="submit">ログイン</button>
-								</div>
-								@include('mypage.layouts.message', ['errors' => $errors])
-						{{ Form::close() }}
-						<div class="sns_login">
-							<ul>
-								<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
-								<li class="ya"><a href="/login/yahoojp"><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
-								<li class="gg"><a href="/login/google"><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
-							</ul>
-							<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
+				<?php if (!empty($loginUser)) : ?>
+					<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
+					<div class="login_form">
+                <ul class="login_chu">
+					<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
+					<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
+					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
+				</ul>
+				<?php else : ?>
+					<div class="login_form">
+                    <?php echo Form::open(array('route' => 'login')); ?>
+						<table>
+							<tr>
+								<td>ユーザーID:</td>
+								<td>
+									<input type="text" name="email" value="">
+								</td>
+							</tr>
+							<tr>
+								<td>パスワード:</td>
+								<td>
+									<input type="password" name="password" value="">
+								</td>
+							</tr>
+						</table>
+						<a class="forget" href="">ユーザーIDやパスワードをお忘れの場合はこちら &gt;</a>
+						<div class="login_button">
+							<button type="submit">ログイン</button>
 						</div>
-					</div>
-					<div class="register">
-						<p>無料登録してお今すぐ検索する</p>
-						<a href="{{ route('user.new') }}">新規登録</a>
-					</div>
-					@endif
+                    @include('mypage.layouts.message', array('errors' => $errors))
+                    <?php echo Form::close(); ?>
+		<div class="sns_login">
+			<ul>
+				<li class="fb"><a href=""><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
+				<li class="ya"><a href=""><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
+				<li class="gg"><a href=""><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
+			</ul>
+			<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
+		</div>
+						<div class="register">
+							<p>無料登録してお今すぐ検索する</p>
+							<a href="<?php echo url('registration');?>">新規登録</a>
+						</div>
+            		</div>
+				<?php endif; ?>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<section class="white" id="news">
-	<h2>Topics &amp; News</h2>
-	<?php /*<ul class="news">
-		<?php global $post; ?>
-		<?php $query = my_topics_query(3); ?>
-		<?php if ($query->have_posts()) : ?>
-			<div class="case_study_wrap">
-				<?php while ($query->have_posts()) : $query->the_post(); // ループ処理 ?>
-					<li>
-						<span><?php echo the_time('Y.m.d'); ?></span>
-						<?php if (my_is_new($post)) : ?>
-							<span class="new">NEW</span>
-						<?php endif; ?>
-						<a href="<?php the_permalink(); ?>"><?php echo get_the_title($post->ID); ?></a>
-					</li>
-				<?php endwhile; ?>
-			</div>
-		<?php wp_reset_postdata(); ?>
-		<?php endif; ?>
-	</ul>
-	<div class="news_card">
-		<ul>
-			<?php global $post; ?>
-			<?php $query = my_news_query(3); ?>
-			<?php if ($query->have_posts()) : ?>
-				<?php while ($query->have_posts()) : $query->the_post(); // ループ処理 ?>
-					<li>
 
-						<a href="<?php the_permalink(); ?>">
-							<div class="img">
-                            	<?php $image = get_field('main_image');	
-								if($image){					
-								 ?>
-								<img src="<?php echo $image['sizes']['medium']; ?>" alt="">
-
-                            	<?php
-								}else{
-								echo '<img src="'.catch_that_image().'">';	
-								}
-								
-								 if (my_is_new($post)) : ?>
-									<span class="card_new"><span>NEW</span></span>
-								<?php endif; ?>
-							</div>
-						</a>
-						<div class="text">
-							<span class="date"><?php echo the_time('Y.m.d'); ?></span>
-							<p class="bold"><?php echo get_the_title($post->ID); ?></p>
-                            <p><?php echo get_the_excerpt($post->ID); ?></p>
-							<a class="readmore" href="<?php the_permalink(); ?>">続きを読む</a>
-						</div>
-					</li>
-				<?php
-				$news_list=get_post_type_archive_link( get_post_type() );
-				 endwhile; ?>
-			<?php wp_reset_postdata(); ?>
-			<?php endif; ?>
-
-		</ul>	
-	</div> */?>
-<div class="wrap txtR">
-
-<a class="archive_link" href="<?php /*echo $news_list*/?>">News一覧を見る &raquo;</a>
-</div>
-</section>
 
 <section class="gray" id="welcome">
 	<div class="welcome_title">
@@ -353,7 +283,7 @@
                 <h4>契約金等初期費用は不要。<br>スペース使用料のみでコスト削減</h4>
                 <p>何かにチャレンジする際にスペースの契約として敷金・礼金など契約金がかかるとどうしても初期費用がかかるもの。<br><br>意外とあれこれ費用はかかるものです。場所を借りる契約金は単価も高く悩みがちになるものです。　当サイトでは１時間から１日から借りれる様、コスト削減を実現いたしました。</p>
             </div>
-        </div>    
+        </div>
 	</div>
 </section>
 <section class="white" id="flow">
@@ -385,7 +315,7 @@
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
 		<p>８月末までの先行会員様無料登録キャンペーン実施中。<br>スペースレンタル成約時の手数料が８月末まで無料!</p>
-		<a href="{{ route('user.new') }}">新規登録（無料）</a>
+		<a href="<?php echo url('registration');?>">新規登録（無料）</a>
 	</div>
 </section>
 <section class="white pattern_1" id="staff">
@@ -438,7 +368,7 @@
 		<h2>今すぐ会員登録して、スペースを貸し借りしてみよう</h2>
 		<span>今なら会員登録した方全員に、すべてのスペースの予約で利用できる2,000円分のポイントをプレゼント。</span>
 	</div>
-	<div class="reg_now_2_button"><a href="{{ route('user.new') }}">新規登録（無料）</a></div>
+	<div class="reg_now_2_button"><a href="<?php echo url('registration');?>">新規登録（無料）</a></div>
 </section>
 
 <section class="white pattern_1">
@@ -447,18 +377,15 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-44.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-29.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-42.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+		@foreach($goods as $data)
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+ 			</div>
+		@endforeach
+
 	</div>
 	</div>
 	<a class="detail" href="/purpose/sales">物販で利用できるスペースをもっと見る &raquo;</a>
@@ -470,18 +397,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
+		@foreach($party as $data)
 		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			<a href="{{ action('SpaceController@index', $data->id ) }}">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</a>
 		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-22.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-17.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+		@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/party">飲食・パーティで利用できるスペースをもっと見る &raquo;</a>
@@ -492,18 +415,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-27.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-10.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-91.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($office as $data)
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/office">オフィス・会議で利用できるスペースをもっと見る &raquo;</a>
@@ -514,7 +433,7 @@
 		<h2>あなたもスペースオーナーになってみませんか</h2>
 		<span>お持ちのスペースを今すぐ有効活用。あらゆるスペースが登録可能です</span>
 	</div>
-	<div class="reg_now_3_button"><a href="{{ route('user.new') }}">無料登録をしてすぐスペースオーナーになる</a></div>
+	<div class="reg_now_3_button"><a href="<?php echo url('registration');?>">無料登録をしてすぐスペースオーナーになる</a></div>
 </section>
 
 <section class="gray pattern_1" id="event">
@@ -523,18 +442,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-5.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-16.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-15.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+		@foreach($promotion as $data)
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
+		@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/event">イベントプロモーション・広告で利用できるスペースをもっと見る &raquo;</a>
@@ -546,18 +461,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-21.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-18.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-36.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($event as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/exhibitionhall">催事・展示会で利用できるスペースをもっと見る &raquo;</a>
@@ -569,18 +480,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-32.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-6.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-24.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($performance as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/performance">演奏で利用できるスペースをもっと見る &raquo;</a>
@@ -592,24 +499,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-	    <a href="/stay_details">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-25.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</a>
-		</div>
-		<div class="pattern_boxs">
-	    <a href="/stay_details">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-23.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</a>
-		</div>
-		<div class="pattern_boxs">
-	    <a href="/stay_details">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-38.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</a>
-		</div>
+			@foreach($stay as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/stay">宿泊・民泊で利用できるスペースをもっと見る &raquo;</a>
@@ -620,18 +517,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-43.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-20.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-39.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($location as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/location">ロケ撮影･写真･動画で利用できるスペースをもっと見る &raquo;</a>
@@ -656,18 +549,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-40.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-7.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-11.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($weddinghall as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/wedding">結婚式・お祝いシーンで利用できるスペースをもっと見る &raquo;</a>
@@ -679,18 +568,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-45.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-45.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-45.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($parking as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/parking">オフィスで利用できるスペースをもっと見る &raquo;</a>
@@ -703,18 +588,14 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-37.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-41.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-19.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
+			@foreach($sports as $data)
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
+			@endforeach
 	</div>
 	</div>
 	<a class="detail" href="/purpose/sports">スポーツで利用できるスペースをもっと見る &raquo;</a>
@@ -725,7 +606,7 @@
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
 		<p>今なら会員登録した方全員に、<br>すべてのスペースの予約で利用できる<br>2,000円分のポイントをプレゼント。</p>
-		<a href="{{ route('user.new') }}">新規登録（無料）</a>
+		<a href="<?php echo url('registration');?>">新規登録（無料）</a>
 	</div>
 </section>
 @stop
