@@ -46,4 +46,8 @@ class Space extends Model
 	public function spaceUsages() {
 		return $this->belongsToMany(SpaceUsage::class);
 	}
+
+	public function messageTemplates() {
+		return $this->hasOne(MessageTemplate::class);
+	}
 }
