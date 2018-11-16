@@ -8,11 +8,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/php:7.1-browsers
-        environment:
-            - DB_HOST=127.0.0.1
-            - DB_PORT=3306
-            - DB_DATABASE=circle_test
-            - DB_USERNAME=root
       - image: circleci/mysql:5.7
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
       
@@ -21,6 +16,13 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mysql:9.4
 
+    environment:
+      - APP_DEBUG: true
+      - APP_ENV: testing
+      - APP_KEY: base64:yaTD5HjEbltL3Vuub33/ZKSzQGxu/8IQ+BLZZgLr4g0=
+      - DB_CONNECTION: circle_test
+      - MYSQL_ALLOW_EMPTY_PASSWORD: true
+    
     working_directory: ~/repo
 
     steps:
@@ -44,7 +46,8 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
       
-      - run: php -r "phpinfo();" | grep -i pdo
+      - run: php artisan migrate --seed
+      
       # run tests!
       - run: ./vendor/bin/phpunit
 
