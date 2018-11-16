@@ -8,16 +8,13 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/php:7.1-browsers
-      - image: circleci/mysql:5.7
         environment:
-          - DB_HOST=127.0.0.1
-          - DB_PORT=3306
-          - DB_DATABASE=circle_test
-          - DB_USERNAME=root
-          - DB_PASSWORD=
-          - MYSQL_DATABASE=circle_test
+            - DB_HOST=127.0.0.1
+            - DB_PORT=3306
+            - DB_DATABASE=circle_test
+            - DB_USERNAME=root
+      - image: circleci/mysql:5.7
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
-          - MYSQL_USER=root
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
