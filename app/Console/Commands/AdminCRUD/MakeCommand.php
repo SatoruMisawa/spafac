@@ -26,7 +26,7 @@ class MakeCommand extends Command
     private $config;
 
     private $parentMenu;
-    
+
     public function setUp() {
         $this->config = config('admincrud');
         $this->parentMenu = $this->firstOrInsertParentMenu();
@@ -55,7 +55,7 @@ class MakeCommand extends Command
      */
     public function handle()
     {
-        $this->setUp();
+        // $this->setUp();
         $tableNames = $this->tableNames();
         foreach ($tableNames as $tableName) {
             $modelName = $this->modelName($tableName);
