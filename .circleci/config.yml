@@ -9,7 +9,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-browsers
       - image: circleci/mysql:5.7
-          - MYSQL_ALLOW_EMPTY_PASSWORD=true
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -47,7 +46,7 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
       
       - run: php artisan migrate --seed
-      
+
       # run tests!
       - run: ./vendor/bin/phpunit
 
