@@ -29,12 +29,9 @@ jobs:
 
       - run: sudo apt install -y mysql-client
 
-      - run:
-        name: Install PHP Extensions
-        command: |
-            sudo docker-php-ext-install gd
-            sudo docker-php-ext-install pdo_mysql
-            sudo docker-php-ext-enable pdo_mysql
+      - run: sudo docker-php-ext-install gd
+      - run: sudo docker-php-ext-install pdo_mysql
+      - run: sudo docker-php-ext-enable pdo_mysql
 
       # Download and cache dependencies
       - restore_cache:
