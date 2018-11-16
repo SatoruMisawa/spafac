@@ -8,7 +8,8 @@ class MessageTemplate extends Model
 {
     public $timestamps = false;
 
-    protected $filalble = [
-        'space_id', 'content',
+    protected $fillable = [
+        'space_id',
+        'on_apply_approved', 'on_apply_rejected', 'reminder',
     ];
 }
