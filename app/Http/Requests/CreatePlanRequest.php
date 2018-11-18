@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Schedule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePlanRequest extends FormRequest
@@ -29,9 +30,13 @@ class CreatePlanRequest extends FormRequest
 			'price_per_hour' => 'nullable|required_with:by_hour|integer|min:1',
 			'by_day' => 'required_without:by_hour|boolean',
 			'price_per_day' => 'nullable|required_with:by_day|integer|min:1',
-			'day_ids' => 'required|array',
-			'hour_from' => 'required|array',
-			'hour_to' => 'required|array',
+			'day_ids' => [
+                'required',
+                'array',
+                new Schedule($this->get('hour_from'), $this->get('hour_to'))
+            ],
+            'hour_from' => 'required|array',
+            'hour_to' => 'required|array',
 			'need_to_be_approved' => 'required|boolean',
 			'preorder_deadline_id' => 'required',
 			'preorder_period_id' => 'required',
