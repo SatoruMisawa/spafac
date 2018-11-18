@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
 			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
+			
 			Route::group(['middleware' => 'owner.facility'], function() {
 				Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
 				Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
@@ -82,32 +83,34 @@ Route::group(['middleware' => 'auth:users'], function() {
 		Route::group(['prefix' => '/spaces'], function() {
 			Route::get('/', 'Host\SpaceController@index')->name('host.space.index');
 
-			Route::group(['prefix' => '/{space}/images'], function() {
-				Route::get('/', 'Host\SpaceAttachmentController@index')->name('host.space.image.index');
-				Route::get('/new', 'Host\SpaceAttachmentController@new')->name('host.space.image.new');
-				Route::post('/', 'Host\SpaceAttachmentController@create')->name('host.space.image.create');
-				Route::get('/{image}', 'Host\SpaceAttachmentController@show')->name('host.space.image.show');
-				Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
-				Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
-			});
+			Route::group(['prefix' => '/{space}', 'middleware' => 'owner.space'], function() {
+				Route::group(['prefix' => '/images'], function() {
+					Route::get('/', 'Host\SpaceAttachmentController@index')->name('host.space.image.index');
+					Route::get('/new', 'Host\SpaceAttachmentController@new')->name('host.space.image.new');
+					Route::post('/', 'Host\SpaceAttachmentController@create')->name('host.space.image.create');
+					Route::get('/{image}', 'Host\SpaceAttachmentController@show')->name('host.space.image.show');
+					Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
+					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
+				});
+	
+				Route::group(['prefix' => '/plan'], function() {
+					Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
+					Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
+					Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
+					Route::get('/{plan}', 'Host\PlanController@show')->name('host.space.plan.show');
+					Route::put('/{plan}', 'Host\PlanController@update')->name('host.space.plan.update');
+					Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
+				});
 
-			Route::group(['prefix' => '/{space}/messagetemplate'], function() {
-				Route::get('/new', 'Host\MessageTemplateController@new')->name('host.space.messagetemplate.new');
-				Route::post('/', 'Host\MessageTemplateController@create')->name('host.space.messagetemplate.create');
-			});
+				Route::group(['prefix' => '/options'], function() {
+					Route::get('/new', 'Host\OptionController@new')->name('host.space.option.new');
+					Route::post('/', 'Host\OptionController@create')->name('host.space.option.create');
+				});
 
-			Route::group(['prefix' => '/{space}/options'], function() {
-				Route::get('/new', 'Host\OptionController@new')->name('host.space.option.new');
-				Route::post('/', 'Host\OptionController@create')->name('host.space.option.create');
-			});
-
-			Route::group(['prefix' => '/{space}/plan'], function() {
-				Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
-				Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
-				Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
-				Route::get('/{plan}', 'Host\PlanController@show')->name('host.space.plan.show');
-				Route::put('/{plan}', 'Host\PlanController@update')->name('host.space.plan.update');
-				Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
+				Route::group(['prefix' => '/messagetemplate'], function() {
+					Route::get('/new', 'Host\MessageTemplateController@new')->name('host.space.messagetemplate.new');
+					Route::post('/', 'Host\MessageTemplateController@create')->name('host.space.messagetemplate.create');
+				});
 			});
 		});
 

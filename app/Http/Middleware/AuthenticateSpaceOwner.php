@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthenticateFacilityOwner
+class AuthenticateSpaceOwner
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,8 @@ class AuthenticateFacilityOwner
      */
     public function handle($request, Closure $next)
     {
-        $facility = $request->route()->parameter('facility');
-        if (!$request->user()->ownFacility($facility)) {
+        $space = $request->route()->parameter('space');
+        if (!$request->user()->ownSpace($space)) {
             abort(404);
         }
         

@@ -140,4 +140,8 @@ class User extends Authenticatable
 	public function ownFacility(Facility $facility) {
 		return $this->id === $facility->user_id;
 	}
+
+	public function ownSpace(Space $space) {
+		return $this->id === $space->user_id;
+	}
 }
