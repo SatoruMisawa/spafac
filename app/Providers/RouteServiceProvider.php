@@ -39,7 +39,9 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapWebTesterRoutes();
+        if (env('APP_DEBUG')) {
+            $this->mapWebTesterRoutes();
+        }
     }
 
     /**
