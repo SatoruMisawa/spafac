@@ -27,15 +27,17 @@ class SpaceControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $facility = factory(Facility::class)->create();
         $data = $this->data();
-        $this->assertPostRequestToCreateSpace($facility->id, $data);
-        $this->assertSpaceInDB($facility->id, $data);
+        $this->assertPostRequestToCreateSpace($data, $facility->id);
+        $this->assertSpaceInDB($data, $facility->id);
+        $this->assertAmenitiesInDB($data);
+        $this->assertSpaceUsagesInDB($data);
     }
 
-    private function assertPostRequestToCreateSpace($facilityID, $data) {
+    private function assertPostRequestToCreateSpace($data, $facilityID) {
         return $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
-                        ->post(route('host.facility.space.create', $facilityID), $data)
-                        ->assertRedirect(route('host.space.image.new', 1));
+        ->loginWithUser()
+        ->post(route('host.facility.space.create', $facilityID), $data)
+        ->assertRedirect(route('host.space.image.new', 1));
     }
 
     public function testEdit() {
@@ -49,20 +51,23 @@ class SpaceControllerTest extends TestCase
     }
 
     public function testUpdate() {
+        $this->refreshAndSeedDatabase();
         $space = factory(Space::class)->create();
         $data = $this->data();
-        $this->assertPutRequestToUpdateSpace($space->facility_id, $space->id, $data);
-        $this->assertSpaceInDB($space->facility_id, $data);
+        $this->assertPutRequestToUpdateSpace($data, $space->facility_id, $space->id);
+        $this->assertSpaceInDB($data, $space->facility_id);
+        $this->assertAmenitiesInDB($data);
+        $this->assertSpaceUsagesInDB($data);
     }
 
-    private function assertPutRequestToUpdateSpace($facilityID, $spaceID, $data) {
-        $this->loginWithTesterIfDebug()
-            ->loginWithUser()
-            ->put(route('host.facility.space.update', [$facilityID, $spaceID]), $data)
-            ->assertRedirect(route('host.space.index'));
+    private function assertPutRequestToUpdateSpace($data, $facilityID, $spaceID) {
+        return $this->loginWithTesterIfDebug()
+        ->loginWithUser()
+        ->put(route('host.facility.space.update', [$facilityID, $spaceID]), $data)
+        ->assertRedirect(route('host.space.index'));
     }
 
-    private function assertSpaceInDB($facilityID, $data) {
+    private function assertSpaceInDB($data, $facilityID) {
         $this->assertDatabaseHas('spaces', [
             'facility_id' => $facilityID,
             'name' => $data['name'],
@@ -78,20 +83,38 @@ class SpaceControllerTest extends TestCase
         ]);
     }
 
+    private function assertAmenitiesInDB($data) {
+        foreach ($data['amenity_ids'] as $amenityID) {
+            $this->assertDatabaseHas('amenity_space', [
+                'space_id' => 1,
+                'amenity_id' => $amenityID,
+            ]);
+        }
+    }
+
+    private function assertSpaceUsagesInDB($data) {
+        foreach ($data['space_usage_ids'] as $spaceUsageID) {
+            $this->assertDatabaseHas('space_space_usage', [
+                'space_id' => 1,
+                'space_usage_id' => $spaceUsageID,
+            ]);
+        }
+    }
+
     private function data() {
         return [
             'name' => $this->faker->name(),
             'about' => $this->faker->sentence(),
             'space_usage_ids' => [
-                $this->faker->randomDigitNotNull(),
-                $this->faker->randomDigitNotNull(),
+                $this->faker->numberBetween(1, 3),
+                $this->faker->numberBetween(1, 3),
             ],
             'capacity' => $this->faker->randomDigitNotNull(),
             'floor_area' => $this->faker->randomDigitNotNull(),
-            'key_delivery_id' => $this->faker->randomDigitNotNull(),
+            'key_delivery_id' => $this->faker->numberBetween(1, 3),
             'amenity_ids' => [
-                $this->faker->randomDigitNotNull(),
-                $this->faker->randomDigitNotNull(),
+                $this->faker->numberBetween(1, 5),
+                $this->faker->numberBetween(1, 5),
             ],
             'about_amenity' => $this->faker->sentence(),
             'about_food_drink' => $this->faker->sentence(),
