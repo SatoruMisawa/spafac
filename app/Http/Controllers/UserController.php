@@ -18,15 +18,29 @@ class UserController extends Controller
     }
 
     public function new() {
-        return view('user.new');
+        try {
+            return view('user.new');   
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }
         
     public function create(CreateUserRequest $request) {
-        $data = $this->data($request);
-        $user = $this->userRepository->create($data);
-        Auth::login($user, true);
-            
-        return redirect()->route('verification.email.send', $user->id);
+        try {
+            $data = $this->data($request);
+            $user = $this->userRepository->create($data);
+            Auth::login($user, true);
+                
+            return redirect()->route('verification.email.send', $user->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }
 
     private function data(CreateUserRequest $request) {
