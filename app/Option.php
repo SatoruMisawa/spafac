@@ -9,6 +9,6 @@ class Option extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'price', 'limit',
+        'space_id', 'name', 'price', 'limit',
     ];
 }

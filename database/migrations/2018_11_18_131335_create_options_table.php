@@ -15,6 +15,7 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('space_id')->unsigned();
             $table->string('name');
             $table->integer('price')->unsigned();
             $table->integer('limit')->unsigned()->nullable();
