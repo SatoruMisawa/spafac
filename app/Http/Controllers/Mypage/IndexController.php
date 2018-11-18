@@ -131,6 +131,7 @@ class IndexController extends MypageController
 		return $view;
 	}
 
+
 	/**
 	* mailList
 	*/
