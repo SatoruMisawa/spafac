@@ -2,11 +2,9 @@
 
 namespace App;
 
-use Laravel\Socialite\Contracts\User;
+use Laravel\Socialite\Contracts\User as SocialiteUser;
 
 class ProvidedUser {
-    private $id;
-
     private $name;
 
     private $email;
@@ -18,14 +16,13 @@ class ProvidedUser {
     }
 
     public function __construct($params = []) {
-        $this->id = $params['id'];
         $this->name = $params['name'];
         $this->email = $params['email'];
         $this->provider = Provider::where('name', $params['provider'])->first();
     }
 
     public function firstOrCreateUser() {
-        $user = $this->provider->usersWithProvidedUserID($this->id)->first();
+        $user = User::where('email', $this->email)->first();
         if ($user !== null) {
             return $user;
         }
@@ -33,8 +30,6 @@ class ProvidedUser {
         return $this->provider->users()->create([
             'name' => $this->name,
             'email' => $this->email,
-        ], [
-            'provided_user_id' => $this->id,
         ]);
     }
 }
