@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Artisan;
 use App\Facility;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -40,7 +41,7 @@ class FacilityControllerTest extends TestCase
     public function testEdit() {
         $facility = factory(Facility::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
+                        ->loginWithUser(User::find($facility->user_id))
                         ->get(route('host.facility.edit', $facility->id));
 
         $response->assertStatus(200)
@@ -50,15 +51,15 @@ class FacilityControllerTest extends TestCase
     public function testUpdate() {
         $facility = factory(Facility::class)->create();
         $data = $this->data();
-        $this->assertPutRequestToUpdateFacility($data, $facility->id);
+        $this->assertPutRequestToUpdateFacility($data, $facility);
         $this->assertAddressInDB($data);
         $this->assertFacilityInDB($data);
     }
 
-    private function assertPutRequestToUpdateFacility($data, $facilityID) {
+    private function assertPutRequestToUpdateFacility($data, Facility $facility) {
         return $this->loginWithTesterIfDebug()
-        ->loginWithUser()
-        ->put(route('host.facility.update', $facilityID), $data)
+        ->loginWithUser(User::find($facility->user_id))
+        ->put(route('host.facility.update', $facility->id), $data)
         ->assertRedirect(route('host.facility.index'));
     }
 
