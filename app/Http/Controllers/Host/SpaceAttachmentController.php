@@ -56,7 +56,7 @@ class SpaceAttachmentController extends Controller
     }
 
     private function createVideo(CreateSpaceAttachmentRequest $request, Space $space) {
-        if (!$request->has('video_url')) {
+        if ($request->get('video_url') === null) {
             return;
         }
         $this->spaceAttachmentRepository->create([

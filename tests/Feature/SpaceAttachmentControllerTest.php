@@ -40,7 +40,8 @@ class SpaceAttachmentControllerTest extends TestCase
                 UploadedFile::fake()->image('test.jpg'),
                 UploadedFile::fake()->image('test.pdf'),
             ],
-            'video_url' => $this->faker->url(),
+            // 'video_url' => $this->faker->url(),
+            'video_url' => null,
         ];
     }
 
@@ -67,6 +68,9 @@ class SpaceAttachmentControllerTest extends TestCase
     }
 
     private function assertVideoInDB($spaceID, $videoURL) {
+        if ($videoURL === null) {
+            return;
+        }
         $this->assertDatabaseHas('space_attachments', [
             'space_id' => $spaceID,
             'url' => $videoURL,
