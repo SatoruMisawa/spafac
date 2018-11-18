@@ -8,23 +8,33 @@ use App\KeyDelivery;
 use App\Space;
 use App\SpaceUsage;
 use App\Repositories\AmenityRepository;
+use App\Repositories\KeyDeliveryRepository;
 use App\Repositories\SpaceRepository;
+use App\Repositories\SpaceUsageRepository;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Requests\CreateSpaceRequest;
 
 class SpaceController extends Controller
 {
-	private $spaceRepository;
-
 	private $amenityRepository;
 
+	private $keyDeliveryRepository;
+
+	private $spaceRepository;
+
+	private $spaceUsageRepository;
+
 	public function __construct(
+		AmenityRepository $amenityRepository,
+		KeyDeliveryRepository $keyDeliveryRepository,
 		SpaceRepository $spaceRepository,
-		AmenityRepository $amenityRepository
+		SpaceUsageRepository $spaceUsageRepository
 	) {
-		$this->spaceRepository = $spaceRepository;
 		$this->amenityRepository = $amenityRepository;
+		$this->keyDeliveryRepository = $keyDeliveryRepository;
+		$this->spaceRepository = $spaceRepository;
+		$this->spaceUsageRepository = $spaceUsageRepository;
 	}
 
 	public function index() {
@@ -34,47 +44,98 @@ class SpaceController extends Controller
 	}
 
 	public function new(Facility $facility) {
-		return view('host.space.new', [
-			'facility' => $facility,
-			'spaceUsages' => SpaceUsage::all(),
-			'amenities' => $this->amenityRepository->all(),
-			'keyDeliveries' => KeyDelivery::all(),
-		]);
+		try {
+            return view('host.space.new', [
+				'facility' => $facility,
+				'spaceUsages' => $this->spaceUsageRepository->all(),
+				'amenities' => $this->amenityRepository->all(),
+				'keyDeliveries' => $this->keyDeliveryRepository->all(),
+			]);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function create(CreateSpaceRequest $request, Facility $facility) {
-		$data = $this->data($request, $facility->id);
-		$space = Auth::user()->spaces()->create($data);
+		try {
+			$space = $this->createSpace($request, $facility);
 
-		foreach ($request->get('amenity_ids') as $amenityID) {
-			$space->amenities()->save(Amenity::find($amenityID));
-		}
-		
-		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
-			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
-		}
+			$this->createAmenities($request, $space);
+			$this->createSpaceUsages($request, $space);
 
-		return redirect()->route('host.space.image.new', $space->id);
+			return redirect()->route('host.space.image.new', $space->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function edit(Facility $facility, Space $space) {
-		return view('host.space.edit', [
-			'space' => $space,
-			'spaceUsages' => SpaceUsage::all(),
-			'keyDeliveries' => KeyDelivery::all(),
-		]);
+		try {
+            return view('host.space.edit', [
+				'space' => $space,
+				'spaceUsages' => $this->spaceUsageRepository->all(),
+				'keyDeliveries' => $this->keyDeliveryRepository->all(),
+			]);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function update(CreateSpaceRequest $request, Facility $facility, Space $space) {
+		try {
+			$space = $this->updateSpace($request, $facility, $space);
+				
+			$this->recreateAmenities($request, $space);
+			$this->recreateSpaceUsages($request, $space);
+
+			return redirect()->route('host.space.index');
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
+	}
+
+	private function createSpace(CreateSpaceRequest $request, Facility $facility) {
 		$data = $this->data($request, $facility->id);
-		$space = $this->spaceRepository->update($data, $space->id);
-			
+		return $space = Auth::user()->spaces()->create($data);
+	}
+
+	private function updateSpace(CreateSpaceRequest $request, Facility $facility, Space $space) {
+		$data = $this->data($request, $facility->id);
+		return $space = $this->spaceRepository->update($data, $space->id);
+	}
+
+	private function recreateAmenities(CreateSpaceRequest $request, Space $space) {
+		$space->amenities()->detach();
+		$this->createAmenities($request, $space);
+	}
+
+	private function createAmenities(CreateSpaceRequest $request, Space $space) {
+		foreach ($request->get('amenity_ids') as $amenityID) {
+			$space->amenities()->save(Amenity::find($amenityID));
+		}
+	}
+
+	private function recreateSpaceUsages(CreateSpaceRequest $request, Space $space) {
 		$space->spaceUsages()->detach();
+		$this->createSpaceUsages($request, $space);
+	}
+
+	private function createSpaceUsages(CreateSpaceRequest $request, Space $space) {
 		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
 		}
-
-		return redirect()->route('host.space.index');
 	}
 
 	private function data(CreateSpaceRequest $request, $facilityID) {

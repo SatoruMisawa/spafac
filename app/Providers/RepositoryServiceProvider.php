@@ -32,6 +32,14 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\BankAccountRepository::class, \App\Repositories\BankAccountRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\AmenityRepository::class, \App\Repositories\AmenityRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\SpaceAttachmentRepository::class, \App\Repositories\SpaceAttachmentRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\MessageTemplateRepository::class, \App\Repositories\MessageTemplateRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\OptionRepository::class, \App\Repositories\OptionRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PreorderPeriodRepository::class, \App\Repositories\PreorderPeriodRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PreorderDeadlineRepository::class, \App\Repositories\PreorderDeadlineRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PrefectureRepository::class, \App\Repositories\PrefectureRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\FacilityKindRepository::class, \App\Repositories\FacilityKindRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\SpaceUsageRepository::class, \App\Repositories\SpaceUsageRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\KeyDeliveryRepository::class, \App\Repositories\KeyDeliveryRepositoryEloquent::class);
         //:end-bindings:
     }
 }

@@ -36,9 +36,8 @@ class SessionController extends Controller
     public function handleProviderCallback(Socialite $socialite, $provider) {
         $socialiteUser = $socialite->driver($provider)->user();
         $providedUser = ProvidedUser::create([
-            'id' => $socialiteUser->id,
-            'name' => $socialiteUser->name,
-            'email' => $socialiteUser->email,
+            'name' => $socialiteUser->getName(),
+            'email' => $socialiteUser->getEmail(),
             'provider' => $provider,
         ]);
 

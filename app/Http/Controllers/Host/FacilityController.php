@@ -8,9 +8,12 @@ use App\FacilityKind;
 use App\Prefecture;
 use App\Repositories\AddressRepository;
 use App\Repositories\FacilityRepository;
+use App\Repositories\FacilityKindRepository;
+use App\Repositories\PrefectureRepository;
 use App\Http\Controllers\Controller;
-use Auth;
 use App\Http\Requests\CreateFacilityRequest;
+use Auth;
+use Exception;
 
 class FacilityController extends Controller
 {
@@ -20,58 +23,88 @@ class FacilityController extends Controller
 
 	public function __construct(
 		AddressRepository $addressRepository,
-		FacilityRepository $facilityRepository
+		FacilityRepository $facilityRepository,
+		FacilityKindRepository $facilityKindRepository,
+		PrefectureRepository $prefectureRepository
 	) {
 		$this->addressRepository = $addressRepository;
 		$this->facilityRepository = $facilityRepository;
+		$this->facilityKindRepository = $facilityKindRepository;
+		$this->prefectureRepository = $prefectureRepository;
 	}
 
 	public function index() {
-		return view('host.facility.index', [
-			'facilities' => Auth::user()->facilities()->get(),
-		]);
+		try {
+            return view('host.facility.index', [
+				'facilities' => Auth::user()->facilities()->get(),
+			]);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function new() {
-		return view('host.facility.new', [
-			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
-				return [$prefecture->id => $prefecture->name];
-			})->toArray(),
-			'facilityKinds' => FacilityKind::all(),
-		]);
+		try {
+            return view('host.facility.new', [
+				'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
+				'facilityKinds' => $this->facilityKindRepository->all(),
+			]);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function create(CreateFacilityRequest $request) {
-		$address = $this->addressRepository->firstOrCreate(
-			$request->only([
-				'zip', 'prefecture_id',
-				'address1', 'address1_ruby',
-				'address2', 'address2_ruby',
-				'address3', 'address3_ruby',
-				'latitude', 'longitude',
-			])
-		);
-
-		$data = ['address_id' => $address->id] + $request->only([
-			'facility_kind_id', 'name', 'access', 'tel',
-		]);
-		$facility = Auth::user()->facilities()->create($data);
+		try {
+            $address = $this->firstOrCreateAddress($request);
+			$facility = $this->createFacility($request, $address);
 		
-		return redirect()->route('host.facility.space.new', $facility->id);
+			return redirect()->route('host.facility.space.new', $facility->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function edit(Facility $facility) {
-		return view('host.facility.edit', [
-			'facility' => $facility,
-			'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
-				return [$prefecture->id => $prefecture->name];
-			})->toArray(),
-			'facilityKinds' => FacilityKind::all(),
-		]);
+		try {
+            return view('host.facility.edit', [
+				'facility' => $facility,
+				'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
+				'facilityKinds' => $this->facilityKindRepository->all(),
+			]);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
-		$address = $this->addressRepository->firstOrCreate(
+		try {
+            $address = $this->firstOrCreateAddress($request);
+			$this->updateFacility($request, $facility, $address);
+
+			return redirect()->route('host.facility.index');
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
+	}
+
+	private function firstOrCreateAddress(CreateFacilityRequest $request) {
+		return $this->addressRepository->firstOrCreate(
 			$request->only([
 				'zip', 'prefecture_id',
 				'address1', 'address1_ruby',
@@ -80,11 +113,21 @@ class FacilityController extends Controller
 				'latitude', 'longitude',
 			])
 		);
+	}
 
-		$data = ['address_id' => $address->id] + $request->only([
+	private function createFacility(CreateFacilityRequest $request, Address $address) {
+		$data = $this->data($request, $address->id);
+		return Auth::user()->facilities()->create($data);
+	}
+
+	private function updateFacility(CreateFacilityRequest $request, Facility $facility, Address $address) {
+		$data = $this->data($request, $address->id);
+		return $this->facilityRepository->update($data, $facility->id);
+	}
+
+	private function data(CreateFacilityRequest $request, $addressID) {
+		return $request->only([
 			'facility_kind_id', 'name', 'access', 'tel',
-		]);
-		$this->facilityRepository->update($data, $facility->id);
-		return redirect()->route('host.facility.index');
+		]) + ['address_id' => $addressID];
 	}
 }
