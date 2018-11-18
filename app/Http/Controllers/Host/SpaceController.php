@@ -46,13 +46,9 @@ class SpaceController extends Controller
 		$data = $this->data($request, $facility->id);
 		$space = Auth::user()->spaces()->create($data);
 
-		foreach ($request->get('amenity_ids') as $amenityID) {
-			$space->amenities()->save(Amenity::find($amenityID));
-		}
+		$this->createAmenities($request->get('amenity_ids'), $space);
 		
-		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
-			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
-		}
+		$this->createSpaceUsages($request->get('space_usage_ids'), $space);
 
 		return redirect()->route('host.space.image.new', $space->id);
 	}
@@ -69,12 +65,33 @@ class SpaceController extends Controller
 		$data = $this->data($request, $facility->id);
 		$space = $this->spaceRepository->update($data, $space->id);
 			
-		$space->spaceUsages()->detach();
-		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
-			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
-		}
+		$this->recreateAmenities($request->get('amenity_ids'), $space);
+		
+		$this->recreateSpaceUsages($request->get('space_usage_ids'), $space);
 
 		return redirect()->route('host.space.index');
+	}
+
+	private function recreateAmenities($amenityIDs, Space $space) {
+		$space->amenities()->detach();
+		$this->createAmenities($amenityIDs, $space);
+	}
+
+	private function createAmenities($amenityIDs, Space $space) {
+		foreach ($amenityIDs as $amenityID) {
+			$space->amenities()->save(Amenity::find($amenityID));
+		}
+	}
+
+	private function recreateSpaceUsages($spaceUsageIDs, Space $space) {
+		$space->spaceUsages()->detach();
+		$this->createSpaceUsages($spaceUsageIDs, $space);
+	}
+
+	private function createSpaceUsages($spaceUsageIDs, Space $space) {
+		foreach ($spaceUsageIDs as $spaceUsageID) {
+			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
+		}
 	}
 
 	private function data(CreateSpaceRequest $request, $facilityID) {
