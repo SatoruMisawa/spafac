@@ -30,47 +30,61 @@ class PlanController extends Controller
 	}
 
 	public function new(Space $space) {
-		return view('host.plan.new', [
-			'space' => $space,
-			'days' => Day::all(),
-			'preorderDeadlines' => PreorderDeadline::all()->map(function($deadline) {
-				return $deadline->name;
-			})->toArray(),
-			'preorderPeriods' => PreorderPeriod::all()->map(function($period) {
-				return $period->name;
-			})->toArray(),
-		]);
+		try {
+            return view('host.plan.new', [
+				'space' => $space,
+				'days' => Day::all(),
+				'preorderDeadlines' => PreorderDeadline::all()->map(function($deadline) {
+					return $deadline->name;
+				})->toArray(),
+				'preorderPeriods' => PreorderPeriod::all()->map(function($period) {
+					return $period->name;
+				})->toArray(),
+			]);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 
 	public function create(CreatePlanRequest $request, Space $space) {
-		$plan = $space->plan()->create(
-			$request->only([
-				'name',
-				'preorder_deadline_id', 'preorder_period_id',
-				'price_per_hour', 'price_per_day',
-				'need_to_be_approved',
-				'from', 'to',
-			])
-		);
-		
-		foreach ($request->get('day_ids') as $dayID) {
-			$from = $request->get('hour_from')[$dayID];
-			$to = $request->get('hour_to')[$dayID];
-			if ($to <= $from) {
-				return redirect()
-						->back()
-						->withErrors(['hour_from['.$dayID.']' => '終了時刻より開始時間を前の時間にしてください'])
-						->withInput();
+		try {
+            $plan = $space->plan()->create(
+				$request->only([
+					'name',
+					'preorder_deadline_id', 'preorder_period_id',
+					'price_per_hour', 'price_per_day',
+					'need_to_be_approved',
+					'from', 'to',
+				])
+			);
+			
+			foreach ($request->get('day_ids') as $dayID) {
+				$from = $request->get('hour_from')[$dayID];
+				$to = $request->get('hour_to')[$dayID];
+				if ($to <= $from) {
+					return redirect()
+							->back()
+							->withErrors(['hour_from['.$dayID.']' => '終了時刻より開始時間を前の時間にしてください'])
+							->withInput();
+				}
+	
+				$this->scheduleRepository->create([
+					'plan_id' => $plan->id,
+					'day_id' => $dayID,
+					'from' => $from,
+					'to' => $to,
+				]);
 			}
-
-			$this->scheduleRepository->create([
-				'plan_id' => $plan->id,
-				'day_id' => $dayID,
-				'from' => $from,
-				'to' => $to,
-			]);
-		}
-
-		return redirect()->route('host.index');
+	
+			return redirect()->route('host.space.option.new', $space->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
 	}
 }

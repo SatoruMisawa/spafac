@@ -16,14 +16,28 @@ class MessageTemplateController extends Controller
     }
 
     public function new(Space $space) {
-        return view('host.space.messagetemplate.new', compact('space'));
+        try {
+            return view('host.space.messagetemplate.new', compact('space'));
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }
 
     public function create(CreateMessageTemplateRequest $request, Space $space) {
-        $data = $this->data($request, $space->id);
-        $this->messageTemplateRepository->create($data);
+        try {
+            $data = $this->data($request, $space->id);
+            $this->messageTemplateRepository->create($data);
 
-        return redirect()->route('host.space.plan.new', $space->id);
+            return redirect()->route('host.space.plan.new', $space->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }
 
     private function data(CreateMessageTemplateRequest $request, $spaceID) {
