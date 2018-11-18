@@ -7,8 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      # - image: circleci/php:7.1-browsers
-      - image: circleci/php@sha256:71a84bc196b532daf310bd51456ad2687c28557c98f325aa971e3f74235154eb
+      - image: circleci/php:7.1-browsers
       - image: circleci/mysql:5.7
       
       # Specify service dependencies here if necessary
@@ -30,10 +29,17 @@ jobs:
 
       - run: sudo apt install -y mysql-client
 
-      - run: sudo apt-get install -y libpng-dev libjpeg-dev
+      # - run: sudo apt-get install -y libpng-dev libjpeg-dev
 
-      - run: sudo docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
-      - run: sudo docker-php-ext-install gd
+      # - run: sudo docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
+      # - run: sudo docker-php-ext-install gd
+      -run: apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        && docker-php-ext-install -j$(nproc) iconv \
+        && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+        && docker-php-ext-install -j$(nproc) gd
       - run: sudo docker-php-ext-install pdo_mysql
       - run: sudo docker-php-ext-enable pdo_mysql
 
