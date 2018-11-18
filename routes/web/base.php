@@ -96,7 +96,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 
 			Route::group(['prefix' => '/{space}/options'], function() {
 				Route::get('/new', 'Host\OptionController@new')->name('host.space.option.new');
-				Route::pos('/', 'Host\OptionController@create')->name('host.space.option.create');
+				Route::post('/', 'Host\OptionController@create')->name('host.space.option.create');
 			});
 
 			Route::group(['prefix' => '/{space}/plan'], function() {
