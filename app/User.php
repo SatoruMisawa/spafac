@@ -136,4 +136,8 @@ class User extends Authenticatable
 			'stripe_account_id' => $stripeAccount->id,
 		]);
 	}
+
+	public function ownFacility(Facility $facility) {
+		return $this->id === $facility->user_id;
+	}
 }

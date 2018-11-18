@@ -64,9 +64,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
 			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
-			Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
-			Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
-			Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.delete');
+			Route::group(['middleware' => 'owner.facility'], function() {
+				Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.facility.edit');
+				Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.facility.update');
+				Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.facility.delete');
+			});
 
 			Route::group(['prefix' => '/{facility}/spaces'], function() {
 				Route::get('/new', 'Host\SpaceController@new')->name('host.facility.space.new');
