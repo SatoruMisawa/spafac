@@ -36,7 +36,7 @@ Route::group([
     $router->resource('stripe_charges', StripeChargeController::class);
     $router->resource('stripe_users', StripeUserController::class);
     $router->resource('testers', TesterController::class);
-    $router->resource('users', UsersController::class);
+    $router->resource('users', UserController::class);
     $router->resource('user_provider', UserProviderController::class);
 
 });
