@@ -10,17 +10,25 @@ use Illuminate\Http\Request;
 class EmailVerificationController extends Controller
 {
     public function send(User $user) {
-        $user->prepareToVerifyEmail();
-        Mail::to($user->email)->send(new EmailVerification($user));
-        
-        return view('verification.email.send');
+        try {
+            $user->prepareToVerifyEmail();
+            Mail::to($user->email)->send(new EmailVerification($user));
+            
+            return view('verification.email.send');
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->route('index')->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }
 
     public function verify(User $user, $token) {
         try {
             $user->verifyEmail($token);
             return redirect()->route('index')->with('message', 'メールアドレスの登録確認が終わりました。');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            report($e);
             return redirect()->route('index')->with('message', $e->getMessage());
         }
     }

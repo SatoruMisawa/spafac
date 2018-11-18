@@ -6,10 +6,10 @@
 
 <section class="party_page">
 	<div class="party_page_mv {{$page}}">
-    
+
     <div class="party_page_mv_box">
 @if(!array_key_exists($page,$page_name))
-   <h1>飲食・パーティー</h1>  
+   <h1>飲食・パーティー</h1>
 <p>ホームパーティ貸切や個室の１室のみなど、人数やエリアを検索してお好みのスペースを検索しよう。<br>
 女子会やコンパ、同窓会など様々なプランに応じて提供いたします。<br>
 インスタ映えやフォトジェニックな空間など<br>
@@ -53,7 +53,7 @@
 思いついたらすぐ活用してみましょう！
 </p>
     @break
-    
+
     @case("meeting")
 <p>
 様々な人とコミュニケーションが取れるコアワーキングスペースのを１日レンタル。<br>
@@ -157,7 +157,7 @@
 関西地域密着で豊富な写真と空きスペース情報で1時間から１日からの利用可能！<br>
 スマホやパソコンでいつでもどこでも登録検索。</p>
     @break
-    
+
     @case("servicepack")
 <p>
 貸す人も借りる人も様々なビジネスシーンや「ワクワク ドキドキ」のあれやこれやをお手伝いできる、<br>
@@ -181,16 +181,16 @@
 
 
 
-@endif    
+@endif
    </div>
-   
+
     </div>
         @include('mid-nav')
 
    <div class="three_list party_lank">
         @include('ranking')
    </div>
-    
+
 
    <div class="three_list new_review">
    <h2>新着レビュー</h2>
@@ -249,7 +249,7 @@
 <p>【緊急応援企画】日本代表のベルギー・テキストテキストテキストテキストテキスト</p>
            </li>
        </ul>
-</div>       
+</div>
 <p class="more_lank"><a href="/search">関連するまとめをもっと見る</a></p>
    </div>
 
@@ -258,26 +258,26 @@
    <ul>
    <li><a href="/search">
    <span><img src="/assets/images/party/umeda.png"></span><br>梅田</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/shinsaibashi.png"></span><br>心斎橋</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/nanba.png"></span><br>なんば</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/kitahama.png"></span><br>北浜</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/yodoyabashi.png"></span><br>淀屋橋</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/honcho.png"></span><br>本町</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/minamihunaba.png"></span><br>南船場</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/shinmachi.png"></span><br>新町</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/kitahorie.png"></span><br>北堀江</a></li>   
-   <li><a href="/search"><span><img src="/assets/images/party/minamihorie.png"></span><br>南堀江</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/tannoji.png"></span><br>天王寺</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/abeno.png"></span><br>阿倍野</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/kamihoncho.png"></span><br>上本町</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/kyoto.png"></span><br>京都</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/motomachi.png"></span><br>三宮・元町</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/kobe.png"></span><br>神戸・ハーバーランド</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/amagasaki.png"></span><br>尼崎</a></li>
-   <li><a href="/search"><span><img src="/assets/images/party/nishinomiya.png"></span><br>西宮</a></li>   
-   <li><a href="/search"><span><img src="/assets/images/party/ashiya.png"></span><br>芦屋</a></li>   
-   <li><a href="/search"><span><img src="/assets/images/party/akashi.png"></span><br>明石</a></li>   
-   <li><a href="/search"><span><img src="/assets/images/party/awajishima.png"></span><br>淡路島</a></li>   
+   <li><a href="{{ action('SearchController@areasearchindex', '心斎橋' ) }}"><span><img src="/assets/images/party/shinsaibashi.png"></span><br>心斎橋</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '難波' ) }}"><span><img src="/assets/images/party/nanba.png"></span><br>なんば</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '北浜' ) }}"><span><img src="/assets/images/party/kitahama.png"></span><br>北浜</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '淀屋橋' ) }}"><span><img src="/assets/images/party/yodoyabashi.png"></span><br>淀屋橋</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '本町' ) }}"><span><img src="/assets/images/party/honcho.png"></span><br>本町</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '南船場' ) }}"><span><img src="/assets/images/party/minamihunaba.png"></span><br>南船場</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '新町' ) }}"><span><img src="/assets/images/party/shinmachi.png"></span><br>新町</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '北堀江' ) }}"><span><img src="/assets/images/party/kitahorie.png"></span><br>北堀江</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '南堀江' ) }}"><span><img src="/assets/images/party/minamihorie.png"></span><br>南堀江</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '天王寺' ) }}"><span><img src="/assets/images/party/tannoji.png"></span><br>天王寺</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '阿倍野' ) }}"><span><img src="/assets/images/party/abeno.png"></span><br>阿倍野</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '上本町' ) }}"><span><img src="/assets/images/party/kamihoncho.png"></span><br>上本町</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '京都' ) }}"><span><img src="/assets/images/party/kyoto.png"></span><br>京都</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '三宮' ) }}"><span><img src="/assets/images/party/motomachi.png"></span><br>三宮・元町</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '神戸' ) }}"><span><img src="/assets/images/party/kobe.png"></span><br>神戸・ハーバーランド</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '神戸' ) }}"><span><img src="/assets/images/party/amagasaki.png"></span><br>神戸</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '西宮' ) }}"><span><img src="/assets/images/party/nishinomiya.png"></span><br>西宮</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '芦屋' ) }}"><span><img src="/assets/images/party/ashiya.png"></span><br>芦屋</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '明石' ) }}"><span><img src="/assets/images/party/akashi.png"></span><br>明石</a></li>
+   <li><a href="{{ action('SearchController@areasearchindex', '淡路島' ) }}"><span><img src="/assets/images/party/awajishima.png"></span><br>淡路島</a></li>
    </ul>
     </div>
 
@@ -304,7 +304,7 @@
    <div class="wrap party_abt">
 
 <p><a href="/search">イベント</a><a href="/search">結婚式場</a><a href="/search">オフィス</a><a href="/search">ホール</a><a href="/search">貸会議室</a><a href="/search">スタジオ</a><a href="/search">カフェ</a><a href="/search">レストラン</a><a href="/search">映画館</a>
-<a href="/search">ギャラリー</a><a href="/search">バー</a><a href="/search">スポーツ施設</a><a href="/search">娯楽施設</a><a href="/search">ホテル</a><a href="/search">住宅</a><a href="/search">倉庫</a><a href="/search">ワイナリー</a><a href="/search">蔵</a><a href="/search">百貨店</a><a href="/search">オフィス街</a><a href="/search">商店街</a><a href="/search">アーケード</a><a href="/search">ロードサイド</a><a href="/search">駅近</a><a href="/search">ロータリー</a><a href="/search">軒先</a><a href="/search">駅地下</a></p> 
+<a href="/search">ギャラリー</a><a href="/search">バー</a><a href="/search">スポーツ施設</a><a href="/search">娯楽施設</a><a href="/search">ホテル</a><a href="/search">住宅</a><a href="/search">倉庫</a><a href="/search">ワイナリー</a><a href="/search">蔵</a><a href="/search">百貨店</a><a href="/search">オフィス街</a><a href="/search">商店街</a><a href="/search">アーケード</a><a href="/search">ロードサイド</a><a href="/search">駅近</a><a href="/search">ロータリー</a><a href="/search">軒先</a><a href="/search">駅地下</a></p>
    </div>
 
     </div>

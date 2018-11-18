@@ -16,28 +16,45 @@
 		c4.837-3.787,8.011-6.289,10.249-8.071v18.125H619.688z M660.313,629.922c-2.189,1.783-5.681,4.556-13.144,10.399
 		c-1.645,1.293-4.902,4.401-7.169,4.366c-2.267,0.036-5.525-3.072-7.169-4.366c-7.461-5.843-10.953-8.616-13.143-10.399v-3.985
 		h40.625V629.922z"/>
-</svg>メール受信一覧</h2>
+</svg>メール受信内容</h2>
     <p>以下メールが届いております。内容を見るには件名をクリックしてください。</p>
 
     <ul class="m-list-box">
+            @isset($mailtable[0]->content)
+                @foreach ($mailtable as $maillist_this)
+                    <li>
+                      <p class="m-title"><span>件名：</span><span>受信日時：{{$maillist_this->send_date}}</span></label></p><input type="checkbox" >
+                      <ul >
+                        <li><strong>姓名：{{$name}}</strong>様</li>
+                        <li><strong>内容：</strong>
+                        <div class="m-contents">
+                        {!!nl2br($maillist_this->content)!!}
+                        </div>
+                        </li>
+                      </ul>
 
+                    </li>
+                @endforeach
+            @else
+            	<li><h3>現在メールは届いていません。</h3></li>
+            @endif
+						<br><br><br><br>
+						<ul class="">
+								<li><strong>メールフォーム：</strong>
+								<?php echo Form::open(array('action' => array('Mypage\IndexController@sendmail', $id), 'class' => 'h-adr')); ?>
+								<div class="m-contents">
+								<?php echo Form::text('zip', null, ['class' => 'form-control p-postal-code', 'maxlength' => '7', 'placeholder' => '件名']); ?><br>
+								<?php echo Form::textarea('content', null, ['class' => 'form-control', 'rows' => '4', 'placeholder' => 'メッセージを入れてください。']); ?>
+								<input type="hidden" name="send_to" value="{{ $id }}"></input>
 
-			                @foreach ($maillist as $maillist_this)
-			                    <li>
-														<a href="{{ route('mailtable', $maillist_this['id']) }}">
-			                      <p class="m-title"><label for="mid[{{$maillist_this['id']}}]"><span>件名：</span><span>受信日時：</span></label></p><input type="checkbox" id="mid[{{$maillist_this['id']}}]">
-			                      <ul class="m-list-box-ce">
-			                        <li><strong>姓名：</strong>{{$maillist_this['name']}}様</li>
-			                        <li><strong>内容：</strong>
-			                        <div class="m-contents">
-			                        {!!nl2br($maillist_this['content']->content)!!}
-			                        </div>
-			                        </li>
-			                      </ul>
-													</a>
-			                    </li>
-			                @endforeach
+								<div class="box-footer">
+									<button type="submit" class="btn btn-success pull-right">メールを送信する</button>
+								</div>
+								<?php echo Form::close(); ?>
 
+								</div>
+								</li>
+						</ul>
     </ul>
 
     <p class="pager"><a href="">＜＜前へ</a><a href="">次へ＞＞</a></p>

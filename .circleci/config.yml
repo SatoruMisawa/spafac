@@ -9,23 +9,33 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-browsers
       - image: circleci/mysql:5.7
-        environment:
-          - MYSQL_DATABASE=circle_test
-          - MYSQL_ALLOW_EMPTY_PASSWORD=true
-          - MYSQL_USER=root
-          - MYSQL_PASSWORD=
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mysql:9.4
 
+    environment:
+      - APP_DEBUG: true
+      - APP_ENV: testing
+      - APP_KEY: base64:yaTD5HjEbltL3Vuub33/ZKSzQGxu/8IQ+BLZZgLr4g0=
+      - DB_CONNECTION: circle_test
+      - MYSQL_ALLOW_EMPTY_PASSWORD: true
+    
     working_directory: ~/repo
 
     steps:
       - checkout
 
       - run: sudo apt install -y mysql-client
+
+      - run: sudo apt-get install -y libpng-dev libjpeg-dev
+
+      - run: sudo -E docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
+      - run: sudo -E docker-php-ext-install gd
+
+      - run: sudo -E docker-php-ext-install pdo_mysql
+      - run: sudo -E docker-php-ext-enable pdo_mysql
 
       # Download and cache dependencies
       - restore_cache:
@@ -40,11 +50,8 @@ jobs:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
-        
+      
+      - run: php artisan migrate --seed
+
       # run tests!
       - run: ./vendor/bin/phpunit
-
-    branches:
-        only:
-          - master
-          - test
