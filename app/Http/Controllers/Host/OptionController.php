@@ -16,22 +16,36 @@ class OptionController extends Controller
     }
 
     public function new(Space $space) {
-        return view('host.space.option.new', compact('space'));
+        try {
+            return view('host.space.option.new', compact('space'));
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }
 
     public function create(CreateOptionRequest $request, Space $space) {
-        foreach ($request->get('options') as $option) {
-            if (!isset($option['name'])) {
-                continue;
+        try {
+            foreach ($request->get('options') as $option) {
+                if (!isset($option['name'])) {
+                    continue;
+                }
+                $this->optionRepository->create([
+                    'space_id' => $space->id,
+                    'name' => $option['name'],
+                    'price' => $option['price'],
+                    'limit' => $option['limit'],
+                ]);
             }
-            $this->optionRepository->create([
-                'space_id' => $space->id,
-                'name' => $option['name'],
-                'price' => $option['price'],
-                'limit' => $option['limit'],
+    
+            return redirect()->route('host.space.messagetemplate.new', $space->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
             ]);
         }
-
-        return redirect()->route('host.space.messagetemplate.new', $space->id);
     }
 }
