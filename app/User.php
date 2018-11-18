@@ -70,7 +70,7 @@ class User extends Authenticatable
 	}
 			
 	public function prepareToVerifyEmail() {
-		$this->email_verification_token = str_random(10);
+		$this->email_verification_token = str_random(30);
 		$this->save();
 	}
 

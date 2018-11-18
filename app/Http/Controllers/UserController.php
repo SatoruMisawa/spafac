@@ -32,7 +32,7 @@ class UserController extends Controller
         try {
             $data = $this->data($request);
             $user = $this->userRepository->create($data);
-            Auth::login($user, true);
+            Auth::guard('users')->login($user, true);
                 
             return redirect()->route('verification.email.send', $user->id);
         } catch (Exception $e) {
