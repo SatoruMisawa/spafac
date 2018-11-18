@@ -23,51 +23,69 @@
             }}
             <div class="box box-info">
                 <div class="box-body pad">
-                    <div class="form-group {{ App\Helper::errorClass($errors, ['options[]']) }}">
+                    <div class="{{ App\Helper::errorClass($errors, ['options[]']) }}">
                         <label><small class="label bg-blue">任意</small> オプション</label>
-                        @include('layouts.error', ['name' => 'options[]'])
-                        <div class="row">
-                            <label>名前</label>
-                            <div class="col-sm-9">
-                                {{
-                                Form::text(
-                                'options[][name]',
-                                null,
-                                [
-                                'class' => 'form-control',
-                                ]
-                                )
-                                }}
+                        {{-- @if ($errors->any())
+                        {{ dd($errors->all()) }}
+                        @endif --}}
+                        @for ($i = 0; $i < 2; $i++)
+                            <div>
+                                <div class="form-group">
+                                    <label>名前</label>
+                                    @include('layouts.error', ['name' => 'options.'.$i.'.name'])
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            {{
+                                            Form::text(
+                                            'options['.$i.'][name]',
+                                            null,
+                                            [
+                                            'class' => 'form-control',
+                                            ]
+                                            )
+                                            }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>値段</label>
+                                    @include('layouts.error', ['name' => 'options.'.$i.'.price'])
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            {{
+                                            Form::text(
+                                            'options['.$i.'][price]',
+                                            null,
+                                            [
+                                            'class' => 'form-control',
+                                            ]
+                                            )
+                                            }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>回数制限</label>
+                                    @include('layouts.error', ['name' => 'options.'.$i.'.limit'])
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            {{
+                                            Form::text(
+                                            'options['.$i.'][limit]',
+                                            null,
+                                            [
+                                            'class' => 'form-control',
+                                            ]
+                                            )
+                                            }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
                             </div>
-                        </div>
-                        <div class="row">
-                            <label>値段</label>
-                            <div class="col-sm-9">
-                                {{
-                                Form::text(
-                                'options[][price]',
-                                null,
-                                [
-                                'class' => 'form-control',
-                                ]
-                                )
-                                }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label>回数制限</label>
-                            <div class="col-sm-9">
-                                {{
-                                Form::text(
-                                'options[][limit]',
-                                null,
-                                [
-                                'class' => 'form-control',
-                                ]
-                                )
-                                }}
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                 </div>
                 <div class="box-footer">
