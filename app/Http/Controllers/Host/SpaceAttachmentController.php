@@ -21,9 +21,7 @@ class SpaceAttachmentController extends Controller
 
     public function new(Space $space) {
         try {
-            return view('host.space.image.new', [
-                'space' => $space,
-            ]);
+            return view('host.space.image.new', compact('space'));
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([
@@ -34,10 +32,8 @@ class SpaceAttachmentController extends Controller
 
     public function create(CreateSpaceAttachmentRequest $request, Space $space) {
         try {
-            $this->createImages($request->file('images'), $space->id);
-            if ($request->has('video_url')) {
-                $this->createVideo($request->get('video_url'), $space->id);
-            }
+            $this->createImages($request, $space);
+            $this->createVideo($request, $space);
 
             return redirect()->route('host.space.plan.new', $space->id);
         } catch (Exception $e) {
@@ -48,21 +44,24 @@ class SpaceAttachmentController extends Controller
         }
     }
 
-    private function createImages($images, $spaceID) {
-        foreach ($images as $image) {
+    private function createImages(CreateSpaceAttachmentRequest $request, Space $space) {
+        foreach ($request->file('images') as $image) {
             $filename = $image->store('public');
             $this->spaceAttachmentRepository->create([
-                'space_id' => $spaceID,
+                'space_id' => $space->id,
                 'url' => config('app.url').'/'.$filename,
                 'type' => SpaceAttachment::TYPE_IMAGE,
             ]);
         }
     }
 
-    private function createVideo($videoURL, $spaceID) {
+    private function createVideo(CreateSpaceAttachmentRequest $request, Space $space) {
+        if (!$request->has('video_url')) {
+            return;
+        }
         $this->spaceAttachmentRepository->create([
-            'space_id' => $spaceID,
-            'url' => $videoURL,
+            'space_id' => $space->id,
+            'url' => $request->get('video_url'),
             'type' => SpaceAttachment::TYPE_VIDEO,
         ]);
     }

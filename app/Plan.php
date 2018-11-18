@@ -21,6 +21,10 @@ class Plan extends Model
 		return $this->belongsTo(Space::class);
 	}
 
+	public function schedules() {
+		return $this->belongsToMany(Day::class, 'schedules');
+	}
+
 	public function planner() {
 		return $this->space->user;
 	}
