@@ -20,8 +20,10 @@ abstract class TestCase extends BaseTestCase
         return $this->be($tester, 'testers');
     }
 
-    protected function loginWithUser() {
-        $user = factory(User::class)->create();
+    protected function loginWithUser($user = null) {
+        if ($user === null) {
+            $user = factory(User::class)->create();
+        }
         return $this->be($user, 'users');
     }
 

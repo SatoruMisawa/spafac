@@ -30,7 +30,7 @@ class MessageTemplateController extends Controller
         try {
             $this->createMessageTemplate($request, $space);
 
-            return redirect()->route('host.space.plan.new', $space->id);
+            return redirect()->route('host.index');
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([
