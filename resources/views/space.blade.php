@@ -15,10 +15,10 @@
 	<div class="inner">
 		<ol>
 			<li><a href="<?php echo url(''); ?>">ホーム</a></li>
-			<li><a href="#"><?php echo e($space->institution->prefecture->name); ?></a></li>
-			<li><a href="#"><?php echo e($space->institution->address1); ?></a></li>
-			<li><a href="#"><?php echo e($space->institution->institutionKind->name); ?></a></li>
-			<li><?php echo e($space->title); ?></li>
+			<li><a href="#"><?php //echo e($space->institution->prefecture->name); ?></a></li>
+			<li><a href="#"><?php //echo e($space->institution->address1); ?></a></li>
+			<li><a href="#"><?php //echo e($space->institution->institutionKind->name); ?></a></li>
+			<li><?php // echo e($space->title); ?></li>
 		</ol>
 	</div>
 </div>
@@ -26,10 +26,10 @@
 <section>
 
 	<div class="main_img_box">
-		<?php foreach ($space->getSpacePhotos() as $spacePhoto) : ?>
-			<img src="<?php echo url('space/media', [$spacePhoto->media_id, 1579, 479, true]); ?>" alt="写真">
-			<?php break; ?>
-		<?php endforeach; ?>
+		<?php //foreach ($space->getSpacePhotos() as $spacePhoto) : ?>
+			<img src="<?php //echo url('space/media', [$spacePhoto->media_id, 1579, 479, true]); ?>" alt="写真">
+			<?php // break; ?>
+		<?php // endforeach; ?>
 		<div class="main-look">
 			<div class="look_btn"> <a href="">
 				写真を見る</a>
@@ -43,13 +43,13 @@
 
 		<div id="overview" class="main_wrapper cf">
 			<div class="ttl_box">
-				<div class="main_ttl"> <?php echo e($space->title); ?></div>
-				<div class="star_box"> <img src="<?php echo url('assets/mypage/img/star.jpg'); ?>" alt="写真"> 000件 </div>
+				<div class="main_ttl"> <?php // echo e($space->title); ?></div>
+				<div class="star_box"> <img src="<?php // echo url('assets/mypage/img/star.jpg'); ?>" alt="写真"> 000件 </div>
 				<div class="service-box cf">
-					<div class="sub-ttl_box"> <span class="gray_txt">&#9632;</span> <?php echo e($space->institution->name); ?></div>
-					<div class="spec_box"><img src="<?php echo url('assets/mypage/img/man.png'); ?>" alt="写真"> ～<?php echo e($space->capacity); ?>人</div>
-					<div class="eria_box"><img src="<?php echo url('assets/mypage/img/pin.png'); ?>" alt="写真"> <?php echo e($space->institution->getShortAddress()); ?></div>
-					<div class="use_box"><span class="gray_txt">&#9632;</span> <?php echo e($space->institution->institutionKind->name); ?></div>
+					<div class="sub-ttl_box"> <span class="gray_txt">&#9632;</span> <?php // echo e($space->institution->name); ?></div>
+					<div class="spec_box"><img src="<?php echo url('assets/mypage/img/man.png'); ?>" alt="写真"> ～<?php //echo e($space->capacity); ?>人</div>
+					<div class="eria_box"><img src="<?php echo url('assets/mypage/img/pin.png'); ?>" alt="写真"> <?php //echo e($space->institution->getShortAddress()); ?></div>
+					<div class="use_box"><span class="gray_txt">&#9632;</span> <?php // echo e($space->institution->institutionKind->name); ?></div>
 				</div>
 			</div>
 			<!-- floating-menu　-->
@@ -60,14 +60,14 @@
 			<li><a href="#map">アクセス</a></li>
 			<li><a href="#relation">関連</a></li>
             <li id="w_close">×</li>
-		</ul>            
+		</ul>
 				<div class="box_01 cf">
                 	<div class="host-detail_wrap cf">
 						<div class="main__host-detail">
-							<h3><?php echo $space->getPriceRange(); ?></h3>
+							<h3><?php //echo $space->getPriceRange(); ?></h3>
 							<span class="fm_ttl">今すぐ予約可能なプランあり</span>
 							<div class="yoyaku_btn">
-								<a href="/whats_about">空き状況の確認／予約リクエスト</a> 
+								<a href="/whats_about">空き状況の確認／予約リクエスト</a>
 							</div>
 						</div>
 						<!-- /main__host-detail　-->
@@ -89,8 +89,8 @@
 						<!-- /main__host-logo　-->
 						<div class="main__host-detail">
 							<h3 class="sub_discrpt">このスペースの管理者</h3>
-							<h2 class="host_name"><?php echo e($space->host->getName()); ?></h2>
-							<a class="blue_txt" href="">メッセージを送る</a> 
+							<h2 class="host_name"><?php //echo e($space->host->getName()); ?></h2>
+							<a class="blue_txt" href="">メッセージを送る</a>
 						</div>
 						<!-- /main__host-detail　-->
 					</div>
@@ -131,7 +131,9 @@
 					<div class="ttl_box2">
 						<h3>会場について</h3>
 					</div>
-					<div class="txt"><?php echo nl2br(e($space->explanation)); ?></div>
+					<div class="txt">
+						{{$space}}
+						<?php //echo nl2br(e($space->explanation)); ?></div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -140,7 +142,7 @@
 					<div class="ttl_box2">
 						<h3>設備・サービス</h3>
 					</div>
-					<div class="txt"><?php echo nl2br(e($space->facility)); ?></div>
+					<div class="txt"><?php //echo nl2br(e($space->facility)); ?></div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -150,9 +152,9 @@
 						<h3>利用可能な用途</h3>
 					</div>
 					<div class="txt">
-						<?php foreach ($space->getSpacePurposes() as $spacePurpose) : ?>
-							<span class="use blue"><?php echo e($spacePurpose->purpose->name); ?></span>
-						<?php endforeach; ?>
+						<?php // foreach ($space->getSpacePurposes() as $spacePurpose) : ?>
+							<span class="use blue"><?php //echo e($spacePurpose->purpose->name); ?></span>
+						<?php // endforeach; ?>
 					</div>
 				</div>
 				<!-- /col_wrapper　-->
@@ -162,7 +164,7 @@
 					<div class="ttl_box2">
 						<h3>広さ</h3>
 					</div>
-					<div class="txt"><?php echo e(number_format($space->floor_space)); ?>m&#178;</div>
+					<div class="txt"><?php //echo e(number_format($space->floor_space)); ?>m&#178;</div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -171,7 +173,7 @@
 					<div class="ttl_box2">
 						<h3>収容人数</h3>
 					</div>
-					<div class="txt">&#8764;<?php echo e(number_format($space->capacity)); ?>人</div>
+					<div class="txt">&#8764;<?php // echo e(number_format($space->capacity)); ?>人</div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -237,9 +239,9 @@
 						<h3>写真一覧</h3>
 					</div>
 					<div class="txt pic_box">
-						<?php foreach ($space->getSpacePhotos() as $spacePhoto) : ?>
-							<div class="pic"><img src="<?php echo url('space/media', [$spacePhoto->media_id, 210, 210, true]); ?>" alt="写真"></div>
-						<?php endforeach; ?>
+						<?php // foreach ($space->getSpacePhotos() as $spacePhoto) : ?>
+							<div class="pic"><img src="<?php // echo url('space/media', [$spacePhoto->media_id, 210, 210, true]); ?>" alt="写真"></div>
+						<?php //endforeach; ?>
 					</div>
 				</div>
 				<!-- /col_wrapper　-->
@@ -252,23 +254,23 @@
 						<h3>価格</h3>
 					</div>
 					<div class="txt">
-						<?php foreach ($space->getPlans() as $plan) : ?>
+						<?php //foreach ($space->getPlans() as $plan) : ?>
 							<div class="plan_ttl_box cf">
-								<h3><?php echo e($plan->name); ?>　<span><i class="fa fa-flash fa-lg"></i> 今すぐ予約</span></h3>
-							
+								<h3><?php //echo e($plan->name); ?>　<span><i class="fa fa-flash fa-lg"></i> 今すぐ予約</span></h3>
+
 								<div class="button-box_wrap cf">
 									<div class="plan-button-box">
-										<?php if ($plan->by_hour) : ?>
-											<a href="" class="button-blue"><?php echo $plan->getChargePerHour(); ?></a>
-										<?php endif; ?>
-										<?php if ($plan->by_day) : ?>
-											<a href="" class="button-blue"><?php echo $plan->getChargePerDay(); ?></a>
-										<?php endif; ?>
+										<?php //if ($plan->by_hour) : ?>
+											<a href="" class="button-blue"><?php //echo $plan->getChargePerHour(); ?></a>
+										<?php //endif; ?>
+										<?php //if ($plan->by_day) : ?>
+											<a href="" class="button-blue"><?php //echo $plan->getChargePerDay(); ?></a>
+										<?php //endif; ?>
 									</div>
 								</div>
 							</div>
-							<div class="plan_txt"><?php echo e($plan->explanation); ?></div>
-						<?php endforeach; ?>
+							<div class="plan_txt"><?php //echo e($plan->explanation); ?></div>
+						<?php // endforeach; ?>
 					</div>
 				</div>
 				<!-- /col_wrapper　-->
@@ -381,7 +383,7 @@
 						<div class="main__host-logo"> <img src="<?php echo url('assets/mypage/img/logppink.png'); ?>" alt="写真"> <span class="small_txt day">登録日 2017／４／８</span> </div>
 						<!-- /main__host-logo　-->
 						<div class="main__host-detail">
-							<h2 class="host_name"><?php echo e($space->host->getName()); ?></h2>
+							<h2 class="host_name"><?php //echo e($space->host->getName()); ?></h2>
 					<div class="col3">
 						<ul>
 							<li>予約のしやすさ</li>
@@ -428,9 +430,9 @@
 		</div>
 		<!-- このスペースの管理者  -->
 		<div id="map" style="height: 400px;"></div>
-		<input type="hidden" id="latitude" value="<?php echo e($space->institution->latitude); ?>">
-		<input type="hidden" id="longitude" value="<?php echo e($space->institution->longitude); ?>">
-		
+		<input type="hidden" id="latitude" value="<?php //echo e($space->institution->latitude); ?>">
+		<input type="hidden" id="longitude" value="<?php //echo e($space->institution->longitude); ?>">
+
 		<!-- map  -->
 		<!-- 所在地  -->
 		<div class="map_adress cf">
@@ -438,16 +440,16 @@
 				<div class="adress_wrap">
 					<div class="adress_box cf">
 						<h3 class="access-title">住所</h3>
-						<p class="access-content"><?php echo e($space->institution->getAddress()); ?></p>
+						<p class="access-content"><?php //echo e($space->institution->getAddress()); ?></p>
 					</div>
 					<!-- /adress_box　-->
 					<div class="adress_box cf">
 						<h3 class="access-title">アクセス</h3>
-						<p class="access-content"><?php echo nl2br(e($space->institution->access)); ?></p>
+						<p class="access-content"><?php //echo nl2br(e($space->institution->access)); ?></p>
 					</div>
 				</div>
 				<!-- /adress_wrap　-->
-				<div class="gm_btn"> <a target="_blank" href="https://www.google.co.jp/maps/?q=<?php echo e($space->institution->latitude); ?>,<?php echo e($space->institution->longitude); ?>">Google Mapで見る</a> </div>
+				<div class="gm_btn"> <a target="_blank" href="https://www.google.co.jp/maps/?q=<?php //echo e($space->institution->latitude); ?>,<?php //echo e($space->institution->longitude); ?>">Google Mapで見る</a> </div>
 				<!-- /gm_btn　-->
 			</div>
 			<!-- /main_wrapper　-->
@@ -520,7 +522,7 @@ $(window).load(function() {
 	var head=565;
     var menu = $('#floating-menu');
 	if(w<1200){
-		menu.hide(); 	
+		menu.hide();
 	}
 	$(window).resize(function() {
 		w = $(window).width();
@@ -531,17 +533,17 @@ $(window).load(function() {
 			if(ht>head){
 			menu.css({'position':'fixed','top':"0px"});
 			}else{
-			menu.css({'position':'absolute','top':'0px'});	
-			}		
+			menu.css({'position':'absolute','top':'0px'});
+			}
 		}else{
 			menu.hide();
-			menu.css({'position':'fixed','top':"0px",'right':"0px"}); 
-		}	
+			menu.css({'position':'fixed','top':"0px",'right':"0px"});
+		}
 	});
 	if($('#floating-menu').length && w>=1200){
 			var offset = menu.offset().top;
 			var h = $(window).height();
-			menu.css({'position':'absolute','top':'0px'});    
+			menu.css({'position':'absolute','top':'0px'});
 			var position =head;
 			var foot =$("#colophon").offset().top;
 			$(window).scroll(function(){
@@ -551,7 +553,7 @@ $(window).load(function() {
 					if(scrollAmount > position && scrollAmount<(foot-h)){
 					menu.css({'position':'fixed','top':"0px"})
 					}else{
-					menu.css({'position':'absolute','top':'0px'});				
+					menu.css({'position':'absolute','top':'0px'});
 					}
 			});
 	}
@@ -571,18 +573,18 @@ $(window).load(function() {
 $(function() {
 	var map;
 	var maker;
-	
+
 	function initMap() {
-		
+
 		var lat = $('#latitude').val();
 		var lng = $('#longitude').val();
 		var latlng = new google.maps.LatLng(lat, lng);
-		
+
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: latlng,
 			zoom: 14
 		});
-		
+
 		marker = new google.maps.Marker({
 			map: map,
 			position: latlng

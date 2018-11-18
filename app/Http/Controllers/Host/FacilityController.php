@@ -8,6 +8,8 @@ use App\FacilityKind;
 use App\Prefecture;
 use App\Repositories\AddressRepository;
 use App\Repositories\FacilityRepository;
+use App\Repositories\FacilityKindRepository;
+use App\Repositories\PrefectureRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateFacilityRequest;
 use Auth;
@@ -21,10 +23,14 @@ class FacilityController extends Controller
 
 	public function __construct(
 		AddressRepository $addressRepository,
-		FacilityRepository $facilityRepository
+		FacilityRepository $facilityRepository,
+		FacilityKindRepository $facilityKindRepository,
+		PrefectureRepository $prefectureRepository
 	) {
 		$this->addressRepository = $addressRepository;
 		$this->facilityRepository = $facilityRepository;
+		$this->facilityKindRepository = $facilityKindRepository;
+		$this->prefectureRepository = $prefectureRepository;
 	}
 
 	public function index() {
@@ -43,10 +49,8 @@ class FacilityController extends Controller
 	public function new() {
 		try {
             return view('host.facility.new', [
-				'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
-					return [$prefecture->id => $prefecture->name];
-				})->toArray(),
-				'facilityKinds' => FacilityKind::all(),
+				'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
+				'facilityKinds' => $this->facilityKindRepository->all(),
 			]);
         } catch (Exception $e) {
             report($e);
@@ -58,10 +62,8 @@ class FacilityController extends Controller
 
 	public function create(CreateFacilityRequest $request) {
 		try {
-            $address = $this->firstOrCreateAddressFrom($request);
-
-			$data = $this->data($request, $address->id);
-			$facility = Auth::user()->facilities()->create($data);
+            $address = $this->firstOrCreateAddress($request);
+			$facility = $this->createFacility($request, $address);
 		
 			return redirect()->route('host.facility.space.new', $facility->id);
         } catch (Exception $e) {
@@ -76,10 +78,8 @@ class FacilityController extends Controller
 		try {
             return view('host.facility.edit', [
 				'facility' => $facility,
-				'prefectures' => Prefecture::all()->mapWithKeys(function($prefecture) {
-					return [$prefecture->id => $prefecture->name];
-				})->toArray(),
-				'facilityKinds' => FacilityKind::all(),
+				'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
+				'facilityKinds' => $this->facilityKindRepository->all(),
 			]);
         } catch (Exception $e) {
             report($e);
@@ -91,11 +91,9 @@ class FacilityController extends Controller
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
 		try {
-            $address = $this->firstOrCreateAddressFrom($request);
+            $address = $this->firstOrCreateAddress($request);
+			$this->updateFacility($request, $facility, $address);
 
-			$data = $this->data($request, $address->id);
-			$this->facilityRepository->update($data, $facility->id);
-		
 			return redirect()->route('host.facility.index');
         } catch (Exception $e) {
             report($e);
@@ -105,7 +103,7 @@ class FacilityController extends Controller
         }
 	}
 
-	private function firstOrCreateAddressFrom(CreateFacilityRequest $request) {
+	private function firstOrCreateAddress(CreateFacilityRequest $request) {
 		return $this->addressRepository->firstOrCreate(
 			$request->only([
 				'zip', 'prefecture_id',
@@ -115,6 +113,16 @@ class FacilityController extends Controller
 				'latitude', 'longitude',
 			])
 		);
+	}
+
+	private function createFacility(CreateFacilityRequest $request, Address $address) {
+		$data = $this->data($request, $address->id);
+		return Auth::user()->facilities()->create($data);
+	}
+
+	private function updateFacility(CreateFacilityRequest $request, Facility $facility, Address $address) {
+		$data = $this->data($request, $address->id);
+		return $this->facilityRepository->update($data, $facility->id);
 	}
 
 	private function data(CreateFacilityRequest $request, $addressID) {

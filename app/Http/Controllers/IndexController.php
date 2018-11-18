@@ -7,6 +7,7 @@ use App\Plans;
 use App\Space;
 use App\Facility;
 use App\Prefecture;
+
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -19,38 +20,24 @@ class IndexController extends FrontController
 	*/
 	public function index() {
 
-				$query = new Facility;
-				$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
+				$query = [];
+				for ($i=1; $i <13 ; $i++) {
+
+				$query[$i] = new Facility;
+				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
 								->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
 								->join('spaces', 'spaces.facility_id', '=', 'facilities.id')
 								->leftjoin('plans', 'plans.space_id', '=', 'spaces.id')
-								->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id');
-								//->where('space_space_usage.space_usage_id', '=', 1)->limit(3)->get();
-				//物販
-				$goods = $query->where('space_space_usage.space_usage_id', '=', 1)->limit(3)->get();
-				//飲食・パーティ
-				$party = $query->where('space_space_usage.space_usage_id', '=', 2)->limit(3)->get();
-				//オフィス
-				$office = $query->where('space_space_usage.space_usage_id', '=', 5)->limit(3)->get();
-				//イベントプロモーション・広告
-				$promotion = $query->where('space_space_usage.space_usage_id', '=', 4)->limit(3)->get();
-				//催事・展示会
-				$event = $query->where('space_space_usage.space_usage_id', '=', 3)->limit(3)->get();
-				//演奏
-				$performance = $query->where('space_space_usage.space_usage_id', '=', 8)->limit(3)->get();
-				//宿泊・民泊
-				$stay = $query->where('space_space_usage.space_usage_id', '=', 6)->limit(3)->get();
-				//ロケ撮影・写真・動画
-				$location = $query->where('space_space_usage.space_usage_id', '=', 9)->limit(3)->get();
-				//結婚式・お祝いシーン
-				$weddinghall = $query->where('space_space_usage.space_usage_id', '=', 7)->limit(3)->get();
-				//駐車場
-				$parking = $query->where('space_space_usage.space_usage_id', '=', 10)->limit(3)->get();
-				//スポーツ
-				$sports = $query->where('space_space_usage.space_usage_id', '=', 11)->limit(3)->get();
-				//dd($goods);
+								->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
+								->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();
+
+				}
+
+
+				//dd($query[1]);
 				//$view = view('coming-soon', $data);
-				$data = compact('goods','party','office','promotion','event','performance','stay','location','weddinghall','parking','sports');
+				//$data = compact('goods','party','office','promotion','event','performance','stay','location','weddinghall','parking','sports');
+				$data = compact('query');
 				$view = view('index', $data);
 				return $view;
 	}

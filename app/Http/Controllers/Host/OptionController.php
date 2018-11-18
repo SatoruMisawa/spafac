@@ -28,23 +28,27 @@ class OptionController extends Controller
 
     public function create(CreateOptionRequest $request, Space $space) {
         try {
-            foreach ($request->get('options') as $option) {
-                if (!isset($option['name'])) {
-                    continue;
-                }
-                $this->optionRepository->create([
-                    'space_id' => $space->id,
-                    'name' => $option['name'],
-                    'price' => $option['price'],
-                    'limit' => $option['limit'],
-                ]);
-            }
+            $this->createOptions($request, $space);
     
             return redirect()->route('host.space.messagetemplate.new', $space->id);
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([
                 'message' => 'something went wrong',
+            ]);
+        }
+    }
+
+    private function createOptions(CreateOptionRequest $request, Space $space) {
+        foreach ($request->get('options') as $option) {
+            if (!isset($option['name'])) {
+                continue;
+            }
+            $this->optionRepository->create([
+                'space_id' => $space->id,
+                'name' => $option['name'],
+                'price' => $option['price'],
+                'limit' => $option['limit'],
             ]);
         }
     }
