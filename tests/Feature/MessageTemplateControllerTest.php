@@ -41,7 +41,7 @@ class MessageTemplateControllerTest extends TestCase
         return $this->loginWithTesterIfDebug()
                     ->loginWithUser()
                     ->post(route('host.space.messagetemplate.create', $spaceID), $data)
-                    ->assertRedirect(route('host.space.plan.new', $spaceID));
+                    ->assertRedirect(route('host.index'));
     }
 
     private function assertMessageTemplateInDB($spaceID, $data) {
