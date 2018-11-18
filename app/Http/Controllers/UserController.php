@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Prefecture;
 use App\User;
 use App\Repositories\UserRepository;
-use Auth;
 use App\Http\Requests\CreateUserRequest;
+use Auth;
+use Hash;
 
 class UserController extends Controller
 {
@@ -20,16 +21,18 @@ class UserController extends Controller
         return view('user.new');
     }
         
-    public function create(CreateUserRequest $request) {		
-        $user = $this->userRepository->create(
-            $request->only([
-                'name', 'nickname',
-                'email', 'tel',
-                'password',
-            ])
-        );
+    public function create(CreateUserRequest $request) {
+        $data = $this->data($request);
+        $user = $this->userRepository->create($data);
         Auth::login($user, true);
             
         return redirect()->route('verification.email.send', $user->id);
+    }
+
+    private function data(CreateUserRequest $request) {
+        return $request->only([
+            'name', 'nickname',
+            'email', 'tel',
+        ]) + ['password' => Hash::make($request->get('password'))];
     }
 }
