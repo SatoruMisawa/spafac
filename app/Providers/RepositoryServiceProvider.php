@@ -38,6 +38,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\PreorderDeadlineRepository::class, \App\Repositories\PreorderDeadlineRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\PrefectureRepository::class, \App\Repositories\PrefectureRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\FacilityKindRepository::class, \App\Repositories\FacilityKindRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\SpaceUsageRepository::class, \App\Repositories\SpaceUsageRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\KeyDeliveryRepository::class, \App\Repositories\KeyDeliveryRepositoryEloquent::class);
         //:end-bindings:
     }
 }
