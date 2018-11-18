@@ -88,7 +88,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 				Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
 				Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
 			});
-			
+
 			Route::group(['prefix' => '/{space}/messagetemplate'], function() {
 				Route::get('/new', 'Host\MessageTemplateController@new')->name('host.space.messagetemplate.new');
 				Route::post('/', 'Host\MessageTemplateController@create')->name('host.space.messagetemplate.create');
@@ -151,6 +151,7 @@ Route::get('lodging_agreement_guests', 'IndexController@lodging_agreement_guests
 Route::get('flow_of_settlement', 'IndexController@flow_of_settlement');//決済の流れ
 Route::get('mailmaga_done', 'IndexController@mailmaga_done');//メルマガ購読完了
 Route::get('help/{page?}', 'IndexController@help');//目的別ページ
+
 
 //検索
 //Route::get('search', 'SearchController@index');

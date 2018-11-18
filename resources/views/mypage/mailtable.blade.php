@@ -19,6 +19,8 @@
 </svg>メール受信内容</h2>
     <p>以下メールが届いております。内容を見るには件名をクリックしてください。</p>
 
+
+
     <ul class="m-list-box">
             @isset($mailtable[0]->content)
                 @foreach ($mailtable as $maillist_this)
