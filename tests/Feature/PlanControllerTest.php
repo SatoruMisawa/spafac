@@ -40,6 +40,6 @@ class PlanControllerTest extends TestCase
 			                'from' => $this->faker->dateTime(),
 			                'to' => $this->faker->dateTime(),
                         ])
-                        ->assertRedirect(route('host.index'));
+                        ->assertRedirect(route('host.space.option.new', $space->id));
     }
 }

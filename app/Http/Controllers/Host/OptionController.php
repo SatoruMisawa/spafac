@@ -32,6 +32,6 @@ class OptionController extends Controller
             ]);
         }
 
-        return redirect()->route('host.space.plan.new', $space->id);
+        return redirect()->route('host.space.messagetemplate.new', $space->id);
     }
 }

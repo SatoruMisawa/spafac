@@ -53,7 +53,7 @@ class OptionControllerTest extends TestCase
         return $this->loginWithTesterIfDebug()
                     ->loginWithUser()
                     ->post(route('host.space.option.create', $spaceID), $data)
-                    ->assertRedirect(route('host.space.plan.new', $spaceID));
+                    ->assertRedirect(route('host.space.messagetemplate.new', $spaceID));
     }
 
     private function assertOptionsInDB($spaceID, $data) {

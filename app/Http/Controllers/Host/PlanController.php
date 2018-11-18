@@ -71,6 +71,6 @@ class PlanController extends Controller
 			]);
 		}
 
-		return redirect()->route('host.index');
+		return redirect()->route('host.space.option.new', $space->id);
 	}
 }
