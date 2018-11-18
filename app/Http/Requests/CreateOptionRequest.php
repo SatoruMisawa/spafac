@@ -25,8 +25,8 @@ class CreateOptionRequest extends FormRequest
     {
         return [
             'options' => 'nullable|array',
-            'options.*.name' => 'nullable|required_with:options.*.price|string',
-            'options.*.price' => 'nullable|required_with:options.*.name|integer',
+            'options.*.name' => 'nullable|required_with:options.*.price,options.*.limit|string',
+            'options.*.price' => 'nullable|required_with:options.*.name,options.*.limit|integer',
             'options.*.limit' =>'nullable|integer',
         ];
     }
