@@ -32,6 +32,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\BankAccountRepository::class, \App\Repositories\BankAccountRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\AmenityRepository::class, \App\Repositories\AmenityRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\SpaceAttachmentRepository::class, \App\Repositories\SpaceAttachmentRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\MessageTemplateRepository::class, \App\Repositories\MessageTemplateRepositoryEloquent::class);
         //:end-bindings:
     }
 }

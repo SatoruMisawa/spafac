@@ -88,6 +88,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 				Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
 				Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
 			});
+			
+			Route::group(['prefix' => '/{space}/messagetemplate'], function() {
+				Route::get('/new', 'Host\MessageTemplateController@new')->name('host.space.messagetemplate.new');
+				Route::post('/', 'Host\MessageTemplateController@create')->name('host.space.messagetemplate.create');
+			});
 
 			Route::group(['prefix' => '/{space}/plan'], function() {
 				Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
