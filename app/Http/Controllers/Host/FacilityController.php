@@ -42,19 +42,9 @@ class FacilityController extends Controller
 	}
 
 	public function create(CreateFacilityRequest $request) {
-		$address = $this->addressRepository->firstOrCreate(
-			$request->only([
-				'zip', 'prefecture_id',
-				'address1', 'address1_ruby',
-				'address2', 'address2_ruby',
-				'address3', 'address3_ruby',
-				'latitude', 'longitude',
-			])
-		);
+		$address = $this->firstOrCreateAddressFrom($request);
 
-		$data = ['address_id' => $address->id] + $request->only([
-			'facility_kind_id', 'name', 'access', 'tel',
-		]);
+		$data = $this->data($request, $address->id);
 		$facility = Auth::user()->facilities()->create($data);
 		
 		return redirect()->route('host.facility.space.new', $facility->id);
@@ -71,7 +61,16 @@ class FacilityController extends Controller
 	}
 
 	public function update(CreateFacilityRequest $request, Facility $facility) {
-		$address = $this->addressRepository->firstOrCreate(
+		$address = $this->firstOrCreateAddressFrom($request);
+
+		$data = $this->data($request, $address->id);
+		$this->facilityRepository->update($data, $facility->id);
+		
+		return redirect()->route('host.facility.index');
+	}
+
+	private function firstOrCreateAddressFrom(CreateFacilityRequest $request) {
+		return $this->addressRepository->firstOrCreate(
 			$request->only([
 				'zip', 'prefecture_id',
 				'address1', 'address1_ruby',
@@ -80,11 +79,11 @@ class FacilityController extends Controller
 				'latitude', 'longitude',
 			])
 		);
+	}
 
-		$data = ['address_id' => $address->id] + $request->only([
+	private function data(CreateFacilityRequest $request, $addressID) {
+		return $request->only([
 			'facility_kind_id', 'name', 'access', 'tel',
-		]);
-		$this->facilityRepository->update($data, $facility->id);
-		return redirect()->route('host.facility.index');
+		]) + ['address_id' => $addressID];
 	}
 }
