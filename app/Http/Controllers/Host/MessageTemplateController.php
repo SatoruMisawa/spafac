@@ -16,11 +16,7 @@ class MessageTemplateController extends Controller
     }
 
     public function new(Space $space) {
-        try {
-            return view('host.space.messagetemplate.new', compact('space'));
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
+        return view('host.space.messagetemplate.new', compact('space'));
     }
 
     public function create(CreateMessageTemplateRequest $request, Space $space) {
