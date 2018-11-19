@@ -30,7 +30,7 @@ class BankAccountControllerTest extends TestCase
                             'branch_code' => $this->faker->numberBetween(100, 999),
                             'account_number' => $this->faker->bankAccountNumber(),
                             'account_holder' => $this->faker->name(),
-                            'stripe_bank_account_id' => $this->faker->numberBetween(10000, 99999),
+                            'claimant_bank_account_id' => $this->faker->numberBetween(10000, 99999),
                         ]))
                         ->assertRedirect(route('host.index'));
     }

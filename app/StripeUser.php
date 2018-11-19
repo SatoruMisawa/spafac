@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class StripeUser extends Model
 {
     protected $fillable = [
-        'stripe_source_id', 'stripe_account_id',
+        'claimant_source_id', 'claimant_account_id',
     ];
 }

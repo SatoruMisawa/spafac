@@ -37,7 +37,7 @@ class User extends Authenticatable
 		$this->claimant = app()->make(Claimant::class);
 	}
 
-	public function stripeUser() {
+	public function claimantUser() {
 		return $this->hasOne(StripeUser::class);
 	}
 
@@ -65,8 +65,8 @@ class User extends Authenticatable
 		return $this->hasMany(Reservation::class);
 	}
 
-	public function bankAccounts() {
-		return $this->hasMany(BankAccount::class);
+	public function bankAccount() {
+		return $this->hasOne(BankAccount::class);
 	}
 			
 	public function prepareToVerifyEmail() {
@@ -126,14 +126,21 @@ class User extends Authenticatable
 		]);
 	}
 
-	public function createAndConnectWithStripeAccount() {
-		$stripeAccount = $this->claimant->createAccount([
+	public function connectClaimantAccount() {
+		$claimantAccount = $this->claimant->connectAccount([
 			'country' => 'JP',
 			'type' => 'custom',
 		]);
 		
-		$this->stripeUser()->create([
-			'stripe_account_id' => $stripeAccount->id,
+		$this->claimantUser()->create([
+			'claimant_account_id' => $claimantAccount->id,
+		]);
+	}
+
+	public function connectClaimantBankAccount() {
+		$this->claimant->connectBankAccount([
+			'account_id' => $this->claimantUser->claimant_account_id,
+			'bank_account_id' => $this->bankAccount->claimantBankAccount->claimant_bank_account_id,
 		]);
 	}
 

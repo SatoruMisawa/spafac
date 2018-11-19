@@ -37,8 +37,8 @@ class Stripe implements Claimant {
         return true;
     }
 
-    public function createAccount($params = []) {
-        if (!$this->validateToCreateAccount($params)) {
+    public function connectAccount($params = []) {
+        if (!$this->validateToConnectAccount($params)) {
             return;
         }
         
@@ -48,7 +48,7 @@ class Stripe implements Claimant {
         ]);
     }
 
-    private function validateToCreateAccount($params) {
+    private function validateToConnectAccount($params) {
         if ($params['country'] === '') {
             return false;
         }
@@ -60,18 +60,18 @@ class Stripe implements Claimant {
         return true;
     }
 
-    public function connectBankAccountWithAccount($params = []) {
-        if (!$this->validateToConnectBankAccountWithAccount($params)) {
+    public function connectBankAccount($params = []) {
+        if (!$this->validateToConnectBankAccount($params)) {
             return;
         }
-
+        
         $account = Account::retrieve($params['account_id']);
         $account->external_accounts->create([
             'external_account' => $params['bank_account_id'],
         ]);
     }
 
-    private function validateToConnectBankAccountWithAccount($params) {
+    private function validateToConnectBankAccount($params) {
         if ($params['account_id'] === '') {
             return false;
         }

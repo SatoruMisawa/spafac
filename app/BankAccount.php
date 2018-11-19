@@ -15,7 +15,7 @@ class BankAccount extends Model
         'account_number', 'account_holder',
     ];
 
-    public function stripeBankAccount() {
+    public function claimantBankAccount() {
         return $this->hasOne(StripeBankAccount::class);
     }
 }

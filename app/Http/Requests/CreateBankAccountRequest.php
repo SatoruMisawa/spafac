@@ -30,7 +30,7 @@ class CreateBankAccountRequest extends FormRequest
             'branch_code' => 'required|string',
             'account_number' => 'required|string',
             'account_holder' => 'required|string',
-            'stripe_bank_account_id' => 'required|string',
+            'claimant_bank_account_id' => 'required|string',
         ];
     }
 }
