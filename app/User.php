@@ -70,7 +70,7 @@ class User extends Authenticatable
 	}
 			
 	public function prepareToVerifyEmail() {
-		$this->email_verification_token = str_random(10);
+		$this->email_verification_token = str_random(30);
 		$this->save();
 	}
 
@@ -142,5 +142,13 @@ class User extends Authenticatable
 			'account_id' => $this->claimantUser->claimant_account_id,
 			'bank_account_id' => $this->bankAccount->claimantBankAccount->claimant_bank_account_id,
 		]);
+	}
+
+	public function ownFacility(Facility $facility) {
+		return $this->id === $facility->user_id;
+	}
+
+	public function ownSpace(Space $space) {
+		return $this->id === $space->user_id;
 	}
 }

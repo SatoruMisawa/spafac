@@ -18,32 +18,31 @@
 		h40.625V629.922z"/>
 </svg>メール受信一覧</h2>
     <p>以下メールが届いております。内容を見るには件名をクリックしてください。</p>
-    
+
+
     <ul class="m-list-box">
 
-            @if(count($maillist) > 0)
-                @foreach ($maillist as $maillist_this)                
-                    <li>
-                      <p class="m-title"><label for="mid[{{$maillist_this['id']}}]"><span>件名：{{$maillist_this['subject']}}</span><span>受信日時：{{$maillist_this['date']}}</span></label></p><input type="checkbox" id="mid[{{$maillist_this['id']}}]">
-                      <ul class="m-list-box-ce">
-                        <li><strong>差出元アドレス：</strong><a href="tomail:{{$maillist_this['email']}}">{{$maillist_this['email']}}</a></li>
-                        <li><strong>姓名：</strong>{{$maillist_this['name']}}様</li>
-                        <li><strong>内容：</strong>
-                        <div class="m-contents">
-                        {!!nl2br($maillist_this['text'])!!}
-                        </div>
-                        </li>
-                      </ul>
-                    </li>
-                @endforeach
-            @else
-            	<li><h3>現在メールは届いていません。</h3></li>        
-            @endif
+
+			                @foreach ($maillist as $maillist_this)
+			                    <li>
+														<a href="{{ route('mailtable', $maillist_this['id']) }}">
+			                      <p class="m-title"><label for="mid[{{$maillist_this['id']}}]"><span>件名：</span><span>受信日時：</span></label></p><input type="checkbox" id="mid[{{$maillist_this['id']}}]">
+			                      <ul class="m-list-box-ce">
+			                        <li><strong>姓名：</strong>{{$maillist_this['name']}}様</li>
+			                        <li><strong>内容：</strong>
+			                        <div class="m-contents">
+			                        {!!nl2br($maillist_this['content']->content)!!}
+			                        </div>
+			                        </li>
+			                      </ul>
+													</a>
+			                    </li>
+			                @endforeach
 
     </ul>
-    
+
     <p class="pager"><a href="">＜＜前へ</a><a href="">次へ＞＞</a></p>
-    
+
 	</div>
 </div>
 @stop

@@ -32,67 +32,85 @@ Route::group(['middleware' => 'auth:users'], function() {
 		Route::get('management', 'Mypage\IndexController@management');
 		Route::get('pass', 'Mypage\IndexController@pass');
 		Route::get('profile', 'Mypage\ProfileController@index');
-	 
+
 		Route::get('profile/edit-account', 'Mypage\ProfileController@editAccount');
 		Route::post('profile/edit-account', 'Mypage\ProfileController@confirmAccount');
-	 
+
 		Route::get('profile/edit-contact', 'Mypage\ProfileController@editContact');
 		Route::post('profile/edit-contact', 'Mypage\ProfileController@confirmContact');
-			 
+
 		Route::get('profile/edit-mail', 'Mypage\ProfileController@editMail');
 		Route::post('profile/edit-mail', 'Mypage\ProfileController@confirmMail');
-			
+
 		Route::get('profile/edit-password', 'Mypage\ProfileController@editPassword');
 		Route::post('profile/edit-password', 'Mypage\ProfileController@confirmPassword');
-			 
+
 		Route::get('register', 'Mypage\IndexController@register');
 		Route::get('review', 'Mypage\IndexController@review');
 		Route::get('topics', 'Mypage\IndexController@topics');
-	 
-		Route::get('mail-list', 'Mypage\IndexController@mailList');
-			 
+
+		//-メール一覧
+		Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList');
+		Route::get('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@mailtable')->name('mailtable');
+		Route::post('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@sendmail')->name('send_mail');
+
 		Route::get('profile/avatar', 'Mypage\ProfileController@avatar');
 	});
 
 	Route::group(['prefix' => 'host'], function() {
 		Route::get('/', 'Host\HostController@index')->name('host.index');
-			 
+
 		Route::group(['prefix' => '/facilities'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
 			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
-			Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
-			Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
-			Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.delete');
-	 
-			Route::group(['prefix' => '/{facility}/spaces'], function() {
-				Route::get('/new', 'Host\SpaceController@new')->name('host.facility.space.new');
-				Route::post('/', 'Host\SpaceController@create')->name('host.facility.space.create');
-				Route::get('/{space}', 'Host\SpaceController@edit')->name('host.facility.space.edit');
-				Route::put('/{space}', 'Host\SpaceController@update')->name('host.facility.space.update');
-				Route::delete('/{space}', 'Host\SpaceController@delete')->name('host.facility.space.delete');
+			
+			Route::group(['middleware' => 'owner.facility'], function() {
+				Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
+				Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
+				Route::delete('/{facility}', 'Host\FacilityController@delete')->name('host.facility.delete');
+
+				Route::group(['prefix' => '/{facility}/spaces'], function() {
+					Route::get('/new', 'Host\SpaceController@new')->name('host.facility.space.new');
+					Route::post('/', 'Host\SpaceController@create')->name('host.facility.space.create');
+					Route::get('/{space}', 'Host\SpaceController@edit')->name('host.facility.space.edit');
+					Route::put('/{space}', 'Host\SpaceController@update')->name('host.facility.space.update');
+					Route::delete('/{space}', 'Host\SpaceController@delete')->name('host.facility.space.delete');
+				});
 			});
 		});
-	 
+
 		Route::group(['prefix' => '/spaces'], function() {
 			Route::get('/', 'Host\SpaceController@index')->name('host.space.index');
-	 
-			Route::group(['prefix' => '/{space}/images'], function() {
-				Route::get('/', 'Host\SpaceImageController@index')->name('host.space.image.index');
-				Route::get('/new', 'Host\SpaceImageController@new')->name('host.space.image.new');
-				Route::post('/', 'Host\SpaceImageController@create')->name('host.space.image.create');
-				Route::get('/{image}', 'Host\SpaceImageController@show')->name('host.space.image.show');
-				Route::put('/{image}', 'Host\SpaceImageController@update')->name('host.space.image.update');
-				Route::delete('/{image}', 'Host\SpaceImageController@delete')->name('host.space.image.delete');
-			});
-	 
-			Route::group(['prefix' => '/{space}/plan'], function() {
-				Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
-				Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
-				Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
-				Route::get('/{plan}', 'Host\PlanController@show')->name('host.space.plan.show');
-				Route::put('/{plan}', 'Host\PlanController@update')->name('host.space.plan.update');
-				Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
+
+			Route::group(['prefix' => '/{space}', 'middleware' => 'owner.space'], function() {
+				Route::group(['prefix' => '/images'], function() {
+					Route::get('/', 'Host\SpaceAttachmentController@index')->name('host.space.image.index');
+					Route::get('/new', 'Host\SpaceAttachmentController@new')->name('host.space.image.new');
+					Route::post('/', 'Host\SpaceAttachmentController@create')->name('host.space.image.create');
+					Route::get('/{image}', 'Host\SpaceAttachmentController@show')->name('host.space.image.show');
+					Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
+					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
+				});
+	
+				Route::group(['prefix' => '/plan'], function() {
+					Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
+					Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
+					Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
+					Route::get('/{plan}', 'Host\PlanController@show')->name('host.space.plan.show');
+					Route::put('/{plan}', 'Host\PlanController@update')->name('host.space.plan.update');
+					Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
+				});
+
+				Route::group(['prefix' => '/options'], function() {
+					Route::get('/new', 'Host\OptionController@new')->name('host.space.option.new');
+					Route::post('/', 'Host\OptionController@create')->name('host.space.option.create');
+				});
+
+				Route::group(['prefix' => '/messagetemplate'], function() {
+					Route::get('/new', 'Host\MessageTemplateController@new')->name('host.space.messagetemplate.new');
+					Route::post('/', 'Host\MessageTemplateController@create')->name('host.space.messagetemplate.create');
+				});
 			});
 		});
 
@@ -101,7 +119,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::post('/', 'Host\BankAccountController@create')->name('host.bankaccount.create');
 		});
 	});
-});	 
+});
 
 Route::group(['prefix' => 'verification/{user}'], function() {
 	Route::group(['prefix' => '/email'], function() {
@@ -138,10 +156,16 @@ Route::get('lodging_agreement_guests', 'IndexController@lodging_agreement_guests
 Route::get('flow_of_settlement', 'IndexController@flow_of_settlement');//決済の流れ
 Route::get('mailmaga_done', 'IndexController@mailmaga_done');//メルマガ購読完了
 Route::get('help/{page?}', 'IndexController@help');//目的別ページ
- 
-Route::get('search', 'SearchController@index');
+
+
+//検索
+//Route::get('search', 'SearchController@index');
+Route::get('search/{space_usage_id}', '\App\Http\Controllers\SearchController@spaceusageindex');
+Route::get('search/{area}', '\App\Http\Controllers\SearchController@areasearchindex');
+Route::get('search/', '\App\Http\Controllers\SearchController@searchindex');
+
 Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@media');
- 
+
 Route::get('space/{space}', 'SpaceController@index');
-  
+
 Route::get('coming-soon', 'IndexController@comingSoon');

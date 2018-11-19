@@ -17,7 +17,14 @@ class BankAccountController extends Controller
     }
 
     public function new() {
-        return view('host.bankaccount.new');
+        try {
+            return view('host.bankaccount.new');
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
     }  
 
     public function create(CreateBankAccountRequest $request) {

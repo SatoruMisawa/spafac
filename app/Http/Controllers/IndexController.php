@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Purpose;
+use App\Plans;
 use App\Space;
+use App\Facility;
+use App\Prefecture;
+
+use Illuminate\Support\Facades\DB;
 
 /**
  *
@@ -14,24 +19,36 @@ class IndexController extends FrontController
 	* トップページ
 	*/
 	public function index() {
-		
-		$data = array(
-		);		
 
-		// $view = view('coming-soon', $data);
-		$view = view('index', $data);
-		
-		return $view;
+				$query = [];
+				for ($i=1; $i <13 ; $i++) {
+				$query[$i] = new Facility;
+				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
+								->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
+								->join('spaces', 'spaces.facility_id', '=', 'facilities.id')
+								->leftjoin('plans', 'plans.space_id', '=', 'spaces.id')
+								->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
+								->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();
+
+				}
+
+
+				//dd($query[1]);
+				//$view = view('coming-soon', $data);
+				//$data = compact('goods','party','office','promotion','event','performance','stay','location','weddinghall','parking','sports');
+				$data = compact('query');
+				$view = view('index', $data);
+				return $view;
 	}
 
 	/**
 	* お問い合わせ
 	*/
 	public function inquiry() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('inquiry', $data);
 		return $view;
 	}
@@ -40,10 +57,10 @@ class IndexController extends FrontController
 	* ご利用ガイド
 	*/
 	public function guide() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('guide', $data);
 		return $view;
 	}
@@ -52,10 +69,10 @@ class IndexController extends FrontController
 	* サービスの利用規約
 	*/
 	public function termsOfservice() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('terms-of-service', $data);
 		return $view;
 	}
@@ -64,10 +81,10 @@ class IndexController extends FrontController
 	* スタッフのイチオシスペース
 	*/
 	public function recommendation() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('recommendation', $data);
 		return $view;
 	}
@@ -76,55 +93,55 @@ class IndexController extends FrontController
 	* スペース登録規約
 	*/
 	public function registrationContract() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('registration-contract', $data);
 		return $view;
 	}
 
 	public function privacyPolicy() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('privacy-policy', $data);
 		return $view;
 	}
 
 	public function companyProfile() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('company-profile', $data);
 		return $view;
 	}
 
 	public function commercialTransactionLaw() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('commercial-transaction-law', $data);
 		return $view;
 	}
 
 	public function login() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('login', $data);
 		return $view;
 	}
 
 	public function comingSoon() {
-		
+
 		$data = array(
 		);
-		
+
 		$view = view('coming-soon', $data);
 		return $view;
 	}
@@ -132,7 +149,7 @@ class IndexController extends FrontController
 
 	/**
 	* MOCK用　みさわ追加
-	*/	
+	*/
 	public function event_types() {//目的別ページ
 		$data = array(
 		);
@@ -168,20 +185,20 @@ class IndexController extends FrontController
 		);
 		$view = view('category', $data);
 		return $view;
-	}	
+	}
 	public function keywords() {//キーワードで探す
 		$data = array(
 		);
 		$view = view('keywords', $data);
 		return $view;
-	}	
+	}
 	public function party() {//パーティページ（つかわなくなった）
 		$data = array(
 		);
 		$view = view('party', $data);
 		return $view;
-	}	
-	
+	}
+
 	//--目的別ページスイッチ
 	public function purpose($page=""){
 
@@ -191,9 +208,9 @@ class IndexController extends FrontController
 		if($page!==""&&$slashParams["page"]){
 		$page=htmlspecialchars($slashParams["page"],ENT_QUOTES,'UTF-8');
 		}
-		$page_name=array("party"=>"飲食・パーティー","meeting"=>"オフィス・会議","lodging"=>"宿泊","location"=>"ロケ撮影･写真･動画","specialevent"=>"イベント","performance"=>"演奏","exhibitionhall"=>"展示会","sports"=>"スポーツ","office"=>"オフィス","parking"=>"駐車場","wedding"=>"結婚式･お祝いシーン","other"=>"その他","food"=>"飲食","sales"=>"物販","exhibition"=>"催事･展示会","event"=>"イベントプロモーション・広告","ad"=>"広告・宿泊","servicepack"=>"プレミアムサービスパック");	
-		//$page_name = Purpose::array5Select();//purposes TABLEからならapp/Purposeに書いた		
-			
+		$page_name=array("party"=>"飲食・パーティー","meeting"=>"オフィス・会議","lodging"=>"宿泊","location"=>"ロケ撮影･写真･動画","specialevent"=>"イベント","performance"=>"演奏","exhibitionhall"=>"展示会","sports"=>"スポーツ","office"=>"オフィス","parking"=>"駐車場","wedding"=>"結婚式･お祝いシーン","other"=>"その他","food"=>"飲食","sales"=>"物販","exhibition"=>"催事･展示会","event"=>"イベントプロモーション・広告","ad"=>"広告・宿泊","servicepack"=>"プレミアムサービスパック");
+		//$page_name = Purpose::array5Select();//purposes TABLEからならapp/Purposeに書いた
+
 		$data = array(
 			"page"=>$page,
 			"page_name"=>$page_name
@@ -214,7 +231,7 @@ class IndexController extends FrontController
 		);
 		$view = view('request_chk', $data);
 		return $view;
-	}				
+	}
 	//--　予約完了
 	public function request_done() {
 		$data = array(
@@ -234,34 +251,34 @@ class IndexController extends FrontController
 		);
 		$view = view('stay_details', $data);
 		return $view;
-	}	
+	}
 	//--宿泊規約系
 	public function lodging_agreement() {
 		$data = array(
 		);
 		$view = view('lodging_agreement', $data);
 		return $view;
-	}	
+	}
 	public function lodging_agreement_guests () {
 		$data = array(
 		);
 		$view = view('lodging_agreement_guests', $data);
 		return $view;
-	}	
+	}
 	//決済の流れ
 	public function flow_of_settlement() {
 		$data = array(
 		);
 		$view = view('flow_of_settlement', $data);
 		return $view;
-	}	
+	}
 	//メルマガ購読手続き完了
 	public function mailmaga_done() {
 		$data = array(
 		);
 		$view = view('mailmaga_done', $data);
 		return $view;
-	}	
+	}
 
 	//
 	public function help() {
@@ -269,6 +286,6 @@ class IndexController extends FrontController
 		);
 		$view = view('help', $data);
 		return $view;
-	}	
+	}
 
 }
