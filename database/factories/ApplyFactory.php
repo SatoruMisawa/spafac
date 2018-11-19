@@ -9,5 +9,6 @@ $factory->define(Apply::class, function (Faker $faker) {
     return [
         'user_id' => factory(User::class)->create()->id,
         'plan_id' => factory(Plan::class)->create()->id,
+        'price' => $faker->numberBetween(1000, 99999),
     ];
 });
