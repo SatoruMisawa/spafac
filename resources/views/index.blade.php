@@ -377,7 +377,6 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-			{{$query[1]}}
 		@foreach($query[1] as $data)
 			<div class="pattern_boxs">
 				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
@@ -397,7 +396,6 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
-			{{$query[2]}}
 			@foreach($query[2] as $data)
 				<div class="pattern_boxs">
 					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
