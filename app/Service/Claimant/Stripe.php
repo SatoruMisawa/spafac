@@ -20,9 +20,7 @@ class Stripe implements Claimant {
                 'amount' => $params['amount'],
                 'currency' => "JPY",
                 'source' => $params['source'],
-                'destination' => [
-                  'account' => $params['dst_account_id'],
-                ],
+                'destination' => $params['destination'],
             ]);
         } catch (StripeValidationException $e) {
             report($e);
@@ -56,6 +54,10 @@ class Stripe implements Claimant {
     public function fillRequirements($params = []) {
         try {
             $this->validator->validateToFillRequirements($params);
+            $account = Account::retrieve($params['account_id']);
+            $account->legal_entity = $params['legal_entity'];
+            $account->tos_acceptance = $params['tos_acceptance'];
+            $account->save();
         } catch (StripeValidationException $e) {
             report($e);
         }

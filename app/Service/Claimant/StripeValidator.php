@@ -15,8 +15,8 @@ class StripeValidator {
         if (!isset($params['source'])) {
             throw new StripeValidationException("parameter 'source' is not set");
         }
-        if (!isset($params['destination']['account_id'])) {
-            throw new StripeValidationException("parameter 'desitination.account_id' is not set");
+        if (!isset($params['destination'])) {
+            throw new StripeValidationException("parameter 'desitination' is not set");
         }
     }
 
