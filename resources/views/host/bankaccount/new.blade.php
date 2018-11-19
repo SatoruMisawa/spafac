@@ -86,7 +86,7 @@
 								</div>
 							</div>
 						</div>
-						{{ Form::hidden('stripe_bank_account_id', null, ['id' => 'stripe-bank-account-id-input']) }}
+						{{ Form::hidden('claimant_bank_account_id', null, ['id' => 'claimant-bank-account-id-input']) }}
 					</div>
 					<div class="box-footer">
 						<button type="submit" name="prevButton" class="btn btn-default" disabled>保存して戻る</button>
@@ -107,7 +107,7 @@
 			var stripe = Stripe('pk_test_sWtuOvxNqVcnwv1xAGmDlcpB');
 			var $form = $('#bank-account-form')
 			var $submitButton = $('#submit-button')
-			var $stripeBankAccountIDInput = $('#stripe-bank-account-id-input')
+			var $claimantBankAccountIDInput = $('#claimant-bank-account-id-input')
 			$submitButton.click(function(e) {
 				e.preventDefault()
 				stripe.createToken('bank_account', {
@@ -122,7 +122,7 @@
 						return
 					  }
 					  
-					  $stripeBankAccountIDInput.val(result.token.id)
+					  $claimantBankAccountIDInput.val(result.token.id)
 					  $form.submit()
 				  });
 			});

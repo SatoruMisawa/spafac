@@ -37,8 +37,8 @@ class Stripe implements Claimant {
         return true;
     }
 
-    public function createAccount($params = []) {
-        if (!$this->validateToCreateAccount($params)) {
+    public function connectAccount($params = []) {
+        if (!$this->validateToConnectAccount($params)) {
             return;
         }
         
@@ -48,7 +48,7 @@ class Stripe implements Claimant {
         ]);
     }
 
-    private function validateToCreateAccount($params) {
+    private function validateToConnectAccount($params) {
         if ($params['country'] === '') {
             return false;
         }

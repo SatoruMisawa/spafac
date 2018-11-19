@@ -23,13 +23,13 @@ class BankAccountController extends Controller
     public function create(CreateBankAccountRequest $request) {
         $bankAccount = $this->createBankAccount($request);
 
-        $this->createStripeBankAccount($request, $bankAccount);
+        $this->createClaimantBankAccount($request, $bankAccount);
 
         return redirect()->route('host.index');
     }
 
     private function createBankAccount(CreateBankAccountRequest $request) {
-        return Auth::user()->bankAccounts()->save(
+        return Auth::user()->bankAccount()->save(
             $this->bankAccountRepository->new(
                 $request->only([
                     'bank_name', 'bank_code',
@@ -40,9 +40,9 @@ class BankAccountController extends Controller
         );
     }
 
-    private function createStripeBankAccount(CreateBankAccountRequest $request, BankAccount $bankAccount) {
-        return $bankAccount->stripeBankAccount()->create(
-            $request->only(['stripe_bank_account_id'])
+    private function createClaimantBankAccount(CreateBankAccountRequest $request, BankAccount $bankAccount) {
+        return $bankAccount->claimantBankAccount()->create(
+            $request->only(['claimant_bank_account_id'])
         );
     }    
 }
