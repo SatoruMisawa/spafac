@@ -380,6 +380,7 @@
 			{{$query[1]}}
 		@foreach($query[1] as $data)
 			<div class="pattern_boxs">
+
 				<a href="{{ action('SpaceController@index', $data->id ) }}">
 					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
 					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
