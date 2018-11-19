@@ -41,6 +41,7 @@
     37 => 'App\\Providers\\ClaimantServiceProvider',
     38 => 'App\\Providers\\SocialiteServiceProvider',
     39 => 'App\\Providers\\RepositoryServiceProvider',
+    40 => 'App\\Providers\\StripeValidationServiceProvider',
   ),
   'eager' => 
   array (
@@ -66,6 +67,7 @@
     19 => 'Intervention\\Image\\ImageServiceProvider',
     20 => 'App\\Providers\\ClaimantServiceProvider',
     21 => 'App\\Providers\\RepositoryServiceProvider',
+    22 => 'App\\Providers\\StripeValidationServiceProvider',
   ),
   'deferred' => 
   array (

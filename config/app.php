@@ -166,6 +166,7 @@ return [
         App\Providers\ClaimantServiceProvider::class,
         App\Providers\SocialiteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\StripeValidationServiceProvider::class,
     ],
 
     /*
