@@ -94,7 +94,6 @@ class SearchController extends FrontController
 		$plan =$request->plan;
 		$price =$request->price;
 		$day =$request->day;
-		$day =$request->space_usage_id;
 		//dateofuse($day);//4月14日の場合
 		$starttime =$request->starttime;
 		$endtime =$request->endtime;
@@ -104,18 +103,19 @@ class SearchController extends FrontController
 
 		$query = new Facility;
 		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
-										->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+										->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
 										->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id');
-		$query->leftjoin('plans', 'plans.space_id', '=', 'spaces.id');//プラン、費用
-		$query->join('schedules', 'schedules.plan_id', '=', 'plans.id');//開始時間、終了時間
+		//$query->join('plans', 'plans.space_id', '=', 'spaces.id');//プラン、費用
+		//$query->join('schedules', 'schedules.plan_id', '=', 'plans.id');//開始時間、終了時間
 		//エリア条件
 		if(isset($area)){
 			//都道府県サーチ
-			//$prefectures = new Prefecture;
+			$prefectures = new Prefecture;
 			$prefectures = Prefecture::select('id','name')->where('name', 'like', "%$area%")->first();
 			//存在した場合
 			if(isset($prefectures)){
-					$query->where('addresses.prefecture_id', '=', $prefectures->id);
+
+					$query->where('addresses.prefecture_id','=',$prefectures->id);
 			//存在しない場合
 			}else{
 				 //市町村サーチ
@@ -123,6 +123,9 @@ class SearchController extends FrontController
 			}
 
 		}
+
+		//$room = $query->where('addresses.address1', 'like', "%$area%")->orwhere('addresses.address2', 'like', "%$area%")->get();
+		//dd($room);
 		//目的条件
 		if(isset($space_usage_id)){
 
@@ -131,6 +134,7 @@ class SearchController extends FrontController
 
 		//spaces条件
 		//キャパシティー
+		//dd($men);
 		if(isset($men)){
 
 					$query->where('spaces.capacity', '>=', $men);
@@ -139,9 +143,15 @@ class SearchController extends FrontController
 
 		//plan条件
 		//利用日
+		//dd($day);
 		if(isset($day)){
+			//利用日
+		/*	$planday = new Plans;
+			$planday = Plans::select('space_id')->where('plans.from','<=',$day)->where('plans.to','>=',$day)->get();*/
+
 			$query->where('plans.from','<=',$day)->where('plans.to','>=',$day);
 		}
+
 		//費用
 		if(isset($price)){
 
@@ -152,13 +162,13 @@ class SearchController extends FrontController
 
 		//開始時間、終了時間
 		if(isset($starttime)&&isset($endtime)){
-
 			$query->where('schedules.from','<=',$starttime);
 			$query->where('schedules.to','<=',$endtime);
 		}
 
 		//結合した条件でサーチ
 		$room = $query->get();
+		//dd($room);
 
 		$data = compact('space_usage_id', 'room');
 

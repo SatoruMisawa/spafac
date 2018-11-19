@@ -2,17 +2,17 @@
 
 @section('content')
 
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 <link rel="stylesheet" type="text/css" href="/assets/css/top.css">
 
 <div id="search_box">
 	<div class="search_box_inner search_width">
 		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
 
-        @include('mid-nav')
+		@include('mid-nav')
 
-</div>
+	</div>
 </div>
 <div class="search_button gray">
 	<div class="search_width">
@@ -150,42 +150,42 @@
 						<h3>カテゴリーから探す</h3>
 					</div>
 					<div class="category_text_menu">
-<ul>
+						<ul>
 
-<li><a href="/search">イベント</a></li>
-<li><a href="/search">結婚式場</a></li>
-<li><a href="/search">オフィス</a></li>
-<li><a href="/search">ホール</a></li>
-<li><a href="/search">貸し会議室</a></li>
-<li><a href="/search">スタジオ</a></li>
-<li><a href="/search">カフェ</a></li>
-<li><a href="/search">レストラン</a></li>
-<li><a href="/search">映画館</a></li>
-<li><a href="/search">ギャラリー</a></li>
-<li><a href="/search">バー</a></li>
-<li><a href="/search">スポーツ施設</a></li>
-<li><a href="/search">娯楽施設</a></li>
-<li><a href="/search">ホテル</a></li>
-<li><a href="/search">住宅</a></li>
-<li><a href="/search">倉庫</a></li>
-<li><a href="/search">ワイナリ・蔵</a></li>
-<li><a href="/search">百貨店</a></li>
-<li><a href="/search">オフィス街</a></li>
-<li><a href="/search">商店街アーケード</a></li>
-<li><a href="/search">ロードサイド</a></li>
-<li><a href="/search">駅近　ロータリー</a></li>
-<li><a href="/search">軒先き</a></li>
-<li><a href="/search">移動販売車設置</a></li>
-<li><a href="/search">駅地下</a></li>
-<li><a href="/search">一戸建て</a></li>
-<li><a href="/search">テラス</a></li>
-<li><a href="/search">看板</a></li>
-<li><a href="/search">掲示スペース</a></li>
-<li><a href="/search">駐車場</a></li>
-<li><a href="/search">その他</a></li>
+							<li><a href="/search">イベント</a></li>
+							<li><a href="/search">結婚式場</a></li>
+							<li><a href="/search">オフィス</a></li>
+							<li><a href="/search">ホール</a></li>
+							<li><a href="/search">貸し会議室</a></li>
+							<li><a href="/search">スタジオ</a></li>
+							<li><a href="/search">カフェ</a></li>
+							<li><a href="/search">レストラン</a></li>
+							<li><a href="/search">映画館</a></li>
+							<li><a href="/search">ギャラリー</a></li>
+							<li><a href="/search">バー</a></li>
+							<li><a href="/search">スポーツ施設</a></li>
+							<li><a href="/search">娯楽施設</a></li>
+							<li><a href="/search">ホテル</a></li>
+							<li><a href="/search">住宅</a></li>
+							<li><a href="/search">倉庫</a></li>
+							<li><a href="/search">ワイナリ・蔵</a></li>
+							<li><a href="/search">百貨店</a></li>
+							<li><a href="/search">オフィス街</a></li>
+							<li><a href="/search">商店街アーケード</a></li>
+							<li><a href="/search">ロードサイド</a></li>
+							<li><a href="/search">駅近　ロータリー</a></li>
+							<li><a href="/search">軒先き</a></li>
+							<li><a href="/search">移動販売車設置</a></li>
+							<li><a href="/search">駅地下</a></li>
+							<li><a href="/search">一戸建て</a></li>
+							<li><a href="/search">テラス</a></li>
+							<li><a href="/search">看板</a></li>
+							<li><a href="/search">掲示スペース</a></li>
+							<li><a href="/search">駐車場</a></li>
+							<li><a href="/search">その他</a></li>
 
 
-</ul>
+						</ul>
 
 					</div>
 				</div>
@@ -193,17 +193,18 @@
 			<div class="login_wrap">
 				<div class="login_title"><img src="<?php echo url('assets/mypage/img/icon-02.png'); ?>" alt=""><span>メンバーログイン</span></div>
 				<div class="login_box">
-				<?php if (!empty($loginUser)) : ?>
-					<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
+					@if (Auth::guard('users')->check())
+					<div class="avatar"><img src="" alt="">
+						<spa>　メンバーログイン中</span>
+					</div>
+					<ul class="login_chu">
+						<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
+						<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
+						<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
+					</ul>
+					@else
 					<div class="login_form">
-                <ul class="login_chu">
-					<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
-					<li><a href="<?php echo url('mypage'); ?>" onclick="window.open(this.href, 'mypage', 'width=1100, height=640, menubar=no, toolbar=no, scrollbars=yes'); return false;">マイページ</a></li>
-					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
-				</ul>
-				<?php else : ?>
-					<div class="login_form">
-                    <?php echo Form::open(array('route' => 'login')); ?>
+						<?php echo Form::open(array('route' => 'login')); ?>
 						<table>
 							<tr>
 								<td>ユーザーID:</td>
@@ -222,22 +223,22 @@
 						<div class="login_button">
 							<button type="submit">ログイン</button>
 						</div>
-                    @include('mypage.layouts.message', array('errors' => $errors))
-                    <?php echo Form::close(); ?>
-		<div class="sns_login">
-			<ul>
-				<li class="fb"><a href=""><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
-				<li class="ya"><a href=""><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
-				<li class="gg"><a href=""><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
-			</ul>
-			<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
-		</div>
+						@include('mypage.layouts.message', array('errors' => $errors))
+						<?php echo Form::close(); ?>
+						<div class="sns_login">
+							<ul>
+								<li class="fb"><a href=""><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
+								<li class="ya"><a href=""><img src="/assets/common/img/icon_yahoo.png"><span>Yahoo!でログイン</span></a></li>
+								<li class="gg"><a href=""><img src="/assets/common/img/icon_google.png"><span>Googleでログイン</span></a></li>
+							</ul>
+							<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
+						</div>
 						<div class="register">
 							<p>無料登録してお今すぐ検索する</p>
 							<a href="<?php echo url('registration');?>">新規登録</a>
 						</div>
-            		</div>
-				<?php endif; ?>
+					</div>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -248,8 +249,8 @@
 <section class="gray" id="welcome">
 	<div class="welcome_title">
 		<h2>関西エリアを地域密着でサポートいたします。<br>
-様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>
-空間・スペースシェアリング検索・予約サイトへようこそ</h2>
+			様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>
+			空間・スペースシェアリング検索・予約サイトへようこそ</h2>
 		<p>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップでフルサポート致します。</p>
 	</div>
 	<div class="welcome_figure_1">
@@ -267,23 +268,23 @@
 		<h2>ビジネスの3つの特徴</h2>
 	</div>
 	<div class="welcome_figure_2">
-        <div class="pac">
-            <div class="figure_box_2">
-                <span class="icon"><img src="<?php echo url('assets/mypage/img/icon-12.png'); ?>" alt=""></span>
-                <h4>いつでも誰でも<br>カンタン登録</h4>
-                <p>パソコンやスマホで利用できるクラウド型サービス。思いついたらすぐに登録してみよう。登録料・掲載料はもちろん無料です。スペースのレンタスが始まるまで費用はかかりません。<br><br>弊社手数料は業界水準を下回る良心的なプランでお届け致します。</p>
-            </div>
-            <div class="figure_box_2">
-                <span class="icon"><img src="<?php echo url('assets/mypage/img/icon-13.png'); ?>" alt=""></span>
-                <h4>関西地域密着型でコアな<br>スペースまで検索可能です</h4>
-                <p>関西地域に密着した理由は私たちスタッフが数十年培ったスタッフの経験値を最高のパフォーマンスで提供したいという希望。<br><br>不動産業界・飲食業界・物販担当者から様々な情報産業の経験等を活かしスタッフ全員でフルサポートいたします。<br>もちろんその他地域もお問い合わせください。</p>
-            </div>
-            <div class="figure_box_2">
-                <span class="icon"><img src="<?php echo url('assets/mypage/img/icon-14.png'); ?>" alt=""></span>
-                <h4>契約金等初期費用は不要。<br>スペース使用料のみでコスト削減</h4>
-                <p>何かにチャレンジする際にスペースの契約として敷金・礼金など契約金がかかるとどうしても初期費用がかかるもの。<br><br>意外とあれこれ費用はかかるものです。場所を借りる契約金は単価も高く悩みがちになるものです。　当サイトでは１時間から１日から借りれる様、コスト削減を実現いたしました。</p>
-            </div>
-        </div>
+		<div class="pac">
+			<div class="figure_box_2">
+				<span class="icon"><img src="<?php echo url('assets/mypage/img/icon-12.png'); ?>" alt=""></span>
+				<h4>いつでも誰でも<br>カンタン登録</h4>
+				<p>パソコンやスマホで利用できるクラウド型サービス。思いついたらすぐに登録してみよう。登録料・掲載料はもちろん無料です。スペースのレンタスが始まるまで費用はかかりません。<br><br>弊社手数料は業界水準を下回る良心的なプランでお届け致します。</p>
+			</div>
+			<div class="figure_box_2">
+				<span class="icon"><img src="<?php echo url('assets/mypage/img/icon-13.png'); ?>" alt=""></span>
+				<h4>関西地域密着型でコアな<br>スペースまで検索可能です</h4>
+				<p>関西地域に密着した理由は私たちスタッフが数十年培ったスタッフの経験値を最高のパフォーマンスで提供したいという希望。<br><br>不動産業界・飲食業界・物販担当者から様々な情報産業の経験等を活かしスタッフ全員でフルサポートいたします。<br>もちろんその他地域もお問い合わせください。</p>
+			</div>
+			<div class="figure_box_2">
+				<span class="icon"><img src="<?php echo url('assets/mypage/img/icon-14.png'); ?>" alt=""></span>
+				<h4>契約金等初期費用は不要。<br>スペース使用料のみでコスト削減</h4>
+				<p>何かにチャレンジする際にスペースの契約として敷金・礼金など契約金がかかるとどうしても初期費用がかかるもの。<br><br>意外とあれこれ費用はかかるものです。場所を借りる契約金は単価も高く悩みがちになるものです。　当サイトでは１時間から１日から借りれる様、コスト削減を実現いたしました。</p>
+			</div>
+		</div>
 	</div>
 </section>
 <section class="white" id="flow">
@@ -324,20 +325,20 @@
 		<span>Staff Recommended</span>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-9.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+		<div class="pac">
+			<div class="pattern_boxs">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-9.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</div>
+			<div class="pattern_boxs">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-1.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</div>
+			<div class="pattern_boxs">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-2.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</div>
 		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-1.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-2.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-	</div>
 	</div>
 	<a class="detail" href="/recommendation">スタッフのイチオシスペース &raquo;</a>
 </section>
@@ -346,20 +347,20 @@
 		<h2>開催中のキャンペーン</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
-    	<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-8.png'); ?>" alt=""></div>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+		<div class="pac">
+			<div class="pattern_boxs">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-8.png'); ?>" alt=""></div>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</div>
+			<div class="pattern_boxs">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-12.png'); ?>" alt=""></div>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</div>
+			<div class="pattern_boxs">
+				<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-13.png'); ?>" alt=""></div>
+				<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+			</div>
 		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-12.png'); ?>" alt=""></div>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-		<div class="pattern_boxs">
-			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-13.png'); ?>" alt=""></div>
-			<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-		</div>
-	</div>
 	</div>
 	<a class="detail" href="/campaign">その他のキャンペーンをもっと見る &raquo;</a>
 </section>
@@ -376,18 +377,19 @@
 		<h2>物販</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			{{$query[1]}}
-		@foreach($query[1] as $data)
+			@foreach($query[1] as $data)
 			<div class="pattern_boxs">
+
 				<a href="{{ action('SpaceController@index', $data->id ) }}">
 					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
 					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
 				</a>
- 			</div>
-		@endforeach
+			</div>
+			@endforeach
 
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/sales">物販で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -397,16 +399,16 @@
 		<h2>飲食・パーティ</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[2] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/party">飲食・パーティで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -415,16 +417,16 @@
 		<h2>オフィス・会議</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[5] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-	 			</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/office">オフィス・会議で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -442,16 +444,16 @@
 		<h2>イベントプロモーション・広告</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[4] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/event">イベントプロモーション・広告で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -461,16 +463,16 @@
 		<h2>催事・展示会</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[3] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/exhibitionhall">催事・展示会で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -480,16 +482,16 @@
 		<h2>演奏</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[8] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/performance">演奏で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -499,16 +501,16 @@
 		<h2>宿泊・民泊</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[6] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/stay">宿泊・民泊で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -517,16 +519,16 @@
 		<h2>ロケ撮影・写真・動画</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[9] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/location">ロケ撮影･写真･動画で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -536,10 +538,10 @@
 	<div class="reg_now_4_title">
 		<h2>スペファクプレミアムサービスパック</h2>
 		<span>
- 貸す人も借りる人も様々なビジネスシーンや「ワクワク ドキドキ」のあれやこれやをお手伝いできる、<br>
-提携パートナーとのスペファクプレミアムサービスパックを<br>
-会員登録（無料）を頂きました皆様へご用意致しております。思う存分有効活用してみてください！
-        </span>
+			貸す人も借りる人も様々なビジネスシーンや「ワクワク ドキドキ」のあれやこれやをお手伝いできる、<br>
+			提携パートナーとのスペファクプレミアムサービスパックを<br>
+			会員登録（無料）を頂きました皆様へご用意致しております。思う存分有効活用してみてください！
+		</span>
 	</div>
 	<div class="reg_now_4_button"><a href="/purpose/servicepack">詳しくはコチラ</a></div>
 </section>
@@ -549,16 +551,16 @@
 		<h2>結婚式・お祝いシーン</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[7] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/wedding">結婚式・お祝いシーンで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -568,16 +570,16 @@
 		<h2>駐車場</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[10] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/parking">オフィスで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -588,16 +590,16 @@
 		<h2>スポーツ</h2>
 	</div>
 	<div class="pattern_box">
-    <div class="pac">
+		<div class="pac">
 			@foreach($query[11] as $data)
-				<div class="pattern_boxs">
-					<a href="{{ action('SpaceController@index', $data->id ) }}">
-						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-					</a>
-				</div>
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->id ) }}">
+					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+				</a>
+			</div>
 			@endforeach
-	</div>
+		</div>
 	</div>
 	<a class="detail" href="/purpose/sports">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>

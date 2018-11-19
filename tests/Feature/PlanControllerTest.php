@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Space;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,7 @@ class PlanControllerTest extends TestCase
     public function  testNew() {
         $space = factory(Space::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
+                        ->loginWithUser(User::find($space->user_id))
                         ->get(route('host.space.plan.new', $space->id));
         $response->assertStatus(200)
                 ->assertSee('新規プラン');
@@ -25,16 +26,16 @@ class PlanControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $space = factory(Space::class)->create();
         $data = $this->data();
-        $this->assertPostRequestToCreatePlan($data, $space->id);
+        $this->assertPostRequestToCreatePlan($data, $space);
         $this->assertPlanInDB($data, $space->id);
         $this->assertSchedulesInDB($data, $space->id);
     }
 
-    private function assertPostRequestToCreatePlan($data, $spaceID) {
+    private function assertPostRequestToCreatePlan($data, Space $space) {
         return $this->loginWithTesterIfDebug()
-        ->loginWithUser()
-        ->post(route('host.space.plan.create', $spaceID), $data)
-        ->assertRedirect(route('host.space.option.new', $spaceID));
+        ->loginWithUser(User::find($space->user_id))
+        ->post(route('host.space.plan.create', $space->id), $data)
+        ->assertRedirect(route('host.space.option.new', $space->id));
     }
 
     private function assertPlanInDB($data, $spaceID) {

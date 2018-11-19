@@ -15,6 +15,7 @@ return [
         'admin_roles',
         'admin_user_permissions',
         'admin_users',
+        'amenity_space',
         'migrations',
         'messages',
         'password_resets',
@@ -24,6 +25,8 @@ return [
         'space_space_usage',
         'user_provider',
         'user_room',
+        'stripe_bank_accounts',
+        'stripe_charges',
         'stripe_users',
     ],
 ];

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Space;
 use App\SpaceAttachment;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -18,7 +19,7 @@ class SpaceAttachmentControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $space = factory(Space::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
+                        ->loginWithUser(User::find($space->user_id))
                         ->get(route('host.space.image.new', $space->id));
         $response->assertStatus(200)
                 ->assertSee('新規スペース画像・動画');
@@ -28,8 +29,8 @@ class SpaceAttachmentControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $space = factory(Space::class)->create();
         $data = $this->data();
-        $this->assertPostRequestToCreateSpaceImage($space->id, $data);
-        $this->assertSpaceImageInDB($space->id, $data);
+        $this->assertPostRequestToCreateSpaceImage($data, $space);
+        $this->assertSpaceImageInDB($data, $space->id);
     }
 
     private function data() {
@@ -44,19 +45,19 @@ class SpaceAttachmentControllerTest extends TestCase
         ];
     }
 
-    private function assertPostRequestToCreateSpaceImage($spaceID, $data) {
+    private function assertPostRequestToCreateSpaceImage($data, Space $space) {
         return $this->loginWithTesterIfDebug()
-                    ->loginWithUser()
-                    ->post(route('host.space.image.create', $spaceID), $data)
-                    ->assertRedirect(route('host.space.plan.new', $spaceID));
+                    ->loginWithUser(User::find($space->user_id))
+                    ->post(route('host.space.image.create', $space->id), $data)
+                    ->assertRedirect(route('host.space.plan.new', $space->id));
     }
 
-    private function assertSpaceImageInDB($spaceID, $data) {
-        $this->assertImageInDB($spaceID, $data['images']);
-        $this->assertVideoInDB($spaceID, $data['video_url']);
+    private function assertSpaceImageInDB($data, $spaceID) {
+        $this->assertImageInDB($data['images'], $spaceID);
+        $this->assertVideoInDB($data['video_url'], $spaceID);
     }
 
-    private function assertImageInDB($spaceID, $images) {
+    private function assertImageInDB($images, $spaceID) {
         foreach ($images as $image) {
             $this->assertDatabaseHas('space_attachments', [
                 'space_id' => $spaceID,
@@ -66,7 +67,10 @@ class SpaceAttachmentControllerTest extends TestCase
         }
     }
 
-    private function assertVideoInDB($spaceID, $videoURL) {
+    private function assertVideoInDB($videoURL, $spaceID) {
+        if ($videoURL === null) {
+            return;
+        }
         $this->assertDatabaseHas('space_attachments', [
             'space_id' => $spaceID,
             'url' => $videoURL,

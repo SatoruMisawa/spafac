@@ -15,14 +15,15 @@ class SpaceController extends FrontController
 
 		//用途
 		 //$spacはFacility_id
+		 //space情報
 			$space = Facility::find(1)->spaces()->where('id','=',$space)->get();
+		//address情報
 			$address = Facility::find(1)->address()->where('id','=',$space)->get();
-			//$facilityKind = Facility::facilityKind()->where('id','=',$space)->get();
+		//
 
+		//dd($space);
 
-			//dd($space);
-			//dd(Auth::user()->spaces()->where('id','=',$space)->get());
-	$data = compact('space', 'address');
+		$data = compact('space', 'address');
 
 		$view = view('space', $data);
 		return $view;

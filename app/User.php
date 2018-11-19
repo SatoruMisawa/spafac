@@ -70,7 +70,7 @@ class User extends Authenticatable
 	}
 			
 	public function prepareToVerifyEmail() {
-		$this->email_verification_token = str_random(10);
+		$this->email_verification_token = str_random(30);
 		$this->save();
 	}
 
@@ -135,5 +135,13 @@ class User extends Authenticatable
 		$this->stripeUser()->create([
 			'stripe_account_id' => $stripeAccount->id,
 		]);
+	}
+
+	public function ownFacility(Facility $facility) {
+		return $this->id === $facility->user_id;
+	}
+
+	public function ownSpace(Space $space) {
+		return $this->id === $space->user_id;
 	}
 }

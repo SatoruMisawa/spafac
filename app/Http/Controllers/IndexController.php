@@ -22,7 +22,6 @@ class IndexController extends FrontController
 
 				$query = [];
 				for ($i=1; $i <13 ; $i++) {
-
 				$query[$i] = new Facility;
 				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
 								->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
