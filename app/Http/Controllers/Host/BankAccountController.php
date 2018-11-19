@@ -28,11 +28,18 @@ class BankAccountController extends Controller
     }  
 
     public function create(CreateBankAccountRequest $request) {
-        $bankAccount = $this->createBankAccount($request);
+        try {
+            $bankAccount = $this->createBankAccount($request);
 
-        $this->createClaimantBankAccount($request, $bankAccount);
+            $this->createClaimantBankAccount($request, $bankAccount);
 
-        return redirect()->route('host.index');
+            return redirect()->route('host.index');
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => "something went wrong",
+            ]);
+        }
     }
 
     private function createBankAccount(CreateBankAccountRequest $request) {
