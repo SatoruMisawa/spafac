@@ -136,4 +136,11 @@ class User extends Authenticatable
 			'stripe_account_id' => $stripeAccount->id,
 		]);
 	}
+
+	public function connectStripeBankAccount() {
+		$this->claimant->connectBankAccount([
+			'account_id' => $this->stripeUser->stripe_account_id,
+			'bank_account_id' => $this->bankAccounts()->first()->stripeBankAccount->stripe_bank_account_id,
+		]);
+	}
 }

@@ -7,5 +7,5 @@ interface Claimant {
 
     public function createAccount($params = []);
 
-    public function connectBankAccountWithAccount($params = []);
+    public function connectBankAccount($params = []);
 }

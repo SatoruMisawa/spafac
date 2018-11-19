@@ -18,7 +18,8 @@
 			{{
 				Form::open([
 					'route' => 'host.bankaccount.create',
-					'method' => 'POST'
+					'method' => 'POST',
+					'id' => 'bank-account-form',
 				])
 			}}
 				<div class="box box-info">
@@ -85,10 +86,11 @@
 								</div>
 							</div>
 						</div>
+						{{ Form::hidden('stripe_bank_account_id', null, ['id' => 'stripe-bank-account-id-input']) }}
 					</div>
 					<div class="box-footer">
 						<button type="submit" name="prevButton" class="btn btn-default" disabled>保存して戻る</button>
-						<button type="submit" name="nextButton" class="btn btn-success pull-right">保存して進む</button>
+						<button type="submit" name="nextButton" id="submit-button" class="btn btn-success pull-right">保存して進む</button>
 					</div>
 				</div>
 			{{ Form::close() }}
@@ -97,3 +99,33 @@
 </section>
 <!-- /.content -->
 @stop
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+	$(function() {
+		!(function() {
+			var stripe = Stripe('pk_test_sWtuOvxNqVcnwv1xAGmDlcpB');
+			var $form = $('#bank-account-form')
+			var $submitButton = $('#submit-button')
+			var $stripeBankAccountIDInput = $('#stripe-bank-account-id-input')
+			$submitButton.click(function(e) {
+				e.preventDefault()
+				stripe.createToken('bank_account', {
+					country: 'JP',
+					currency: 'JPY',
+					routing_number: '1100000',
+					account_number: '00012345',
+					account_holder_name: 'tomocy',
+					account_holder_type: 'individual',
+				  }).then(function(result) {
+					  if (typeof result.error !== 'undefined') {
+						return
+					  }
+					  
+					  $stripeBankAccountIDInput.val(result.token.id)
+					  $form.submit()
+				  });
+			});
+		} ())
+	})
+</script>
