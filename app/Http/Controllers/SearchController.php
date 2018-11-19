@@ -36,13 +36,24 @@ class SearchController extends FrontController
 	public function spaceusageindex($space_usage_id){
 
 
-		$room = new Facility;
+		/*$room = new Facility;
 		$room = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
 						->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
 						->join('spaces', 'spaces.facility_id', '=', 'facilities.id')
 						//->leftjoin('plans', 'plans.space_id', '=', 'spaces.id')
 						->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
-						->where('space_space_usage.space_usage_id', '=', $space_usage_id)->get();
+						->where('space_space_usage.space_usage_id', '=', $space_usage_id)->get();*/
+		$query = new Facility;
+		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+									   ->join('spaces', 'spaces.facility_id', '=', 'facilities.id');//キャパシティー
+
+		$spaces_id_space_usage = DB::table('space_space_usage')->select('space_id')->where('space_usage_id', '=', $space_usage_id)->distinct()->get();
+				foreach ($spaces_id_space_usage as $value) {
+							$query->where('spaces.id', $value->space_id);
+						}
+				}
+
+		$room = $query->get();
 
 		$data = compact('space_usage_id', 'room');
 		$view = view('search', $data);
