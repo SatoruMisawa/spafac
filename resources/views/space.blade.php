@@ -132,7 +132,14 @@
 						<h3>会場について</h3>
 					</div>
 					<div class="txt">
+
 						{{$space}}
+
+						<a href="{{ route('mailtable',$space[0]->user_id) }}">
+							{{$space[0]->user_id}}
+						</a>
+
+
 						<?php //echo nl2br(e($space->explanation)); ?></div>
 				</div>
 				<!-- /col_wrapper　-->

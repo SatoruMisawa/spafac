@@ -8,9 +8,7 @@
 <div class="inner cf select_wrap" >
 	<div class="eria">
 		<label for="select_2" class="select-1">
-			<select name="select_2" id="select_2">
 					<input type="text" name="area" value="" placeholder = "エリア"></input>
-			</select>
 		</label>
 	</div>
 	<div class="time">
@@ -36,7 +34,6 @@
 	<div class="day">
 		<label for="select_5" class="select-1">利用日
 			<input type="date" name="day">
-
 		</label>
 	</div>
 	<div class="start">
@@ -54,19 +51,19 @@
 		<label for="select_8" class="select-1">
 			<select name="men" id="select_8">
 				<option value='' disabled selected style='display:none;'>人数</option>
-				<option value="選択肢2">10</option>
-				<option value="選択肢2">20</option>
-				<option value="選択肢3">30</option>
-				<option value="選択肢3">40</option>
-				<option value="選択肢3">50</option>
-				<option value="選択肢3">75</option>
-				<option value="選択肢3">100</option>
-				<option value="選択肢3">150</option>
-				<option value="選択肢3">200</option>
-				<option value="選択肢3">300</option>
-				<option value="選択肢3">400</option>
-				<option value="選択肢3">500</option>
-				<option value="選択肢3">1000</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">30</option>
+				<option value="40">40</option>
+				<option value="50">50</option>
+				<option value="60">75</option>
+				<option value="100">100</option>
+				<option value="150">150</option>
+				<option value="200">200</option>
+				<option value="300">300</option>
+				<option value="400">400</option>
+				<option value="500">500</option>
+				<option value="1000">1000</option>
 			</select>
 		</label>
 	</div>
@@ -132,20 +129,21 @@
 	 	<div class="pattern_box">
 	     <div class="pac">
 			@foreach($room as $data)
-
+			<a href="{{ action('SpaceController@index', $data->id ) }}">
 	 		<div class="pattern_boxs">
 	 			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
 	 			<p>{{$data->name}}</p>
 				<p>{{$data->address1}}</p>
 				<p>{{$data->capacity}}人</p>
 				<p>{{$data->address1}}</p>
+				<p>{{$data->address2}}</p>
 				<p>{{$data->price_per_hour}}円/時</p>
 				<p>{{$data->price_per_day}}円/日</p>
 				<p>{{$data->from}}</p>
 				<p>{{$data->to}}</p>
 
 	 		</div>
-
+		</a>
 			@endforeach
 	 	</div>
 	 	</div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\MailtableModel;
+use App\Jobs\MailtableJob;
 /**
  *
  */
@@ -343,7 +344,7 @@ class IndexController extends MypageController
 				//メールを発火
 				if (Auth::check('id',$to_user_id)) {
 					//ログインしている場合
-					$this->dispatch(new MessageJob($to_user_id,$from_user_id,$message));
+					$this->dispatch(new MailtableJob($to_user_id,$from_user_id,$message));
 				}else{
 					//ログインしていない場合
 					//broadcast(new AccessDetection($to_user_id,$from_user_id));
