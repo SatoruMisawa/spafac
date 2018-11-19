@@ -558,7 +558,7 @@
 					</a>
 				</div>
 			@endforeach
-	</div>
+	　</div>
 	</div>
 	<a class="detail" href="/purpose/wedding">結婚式・お祝いシーンで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -577,7 +577,7 @@
 					</a>
 				</div>
 			@endforeach
-	</div>
+	　</div>
 	</div>
 	<a class="detail" href="/purpose/parking">オフィスで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -597,7 +597,7 @@
 					</a>
 				</div>
 			@endforeach
-	</div>
+	　</div>
 	</div>
 	<a class="detail" href="/purpose/sports">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
