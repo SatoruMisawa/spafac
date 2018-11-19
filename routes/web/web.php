@@ -11,3 +11,6 @@
 |
 */
 include 'base.php';
+
+Route::get('privacy-policy', 'IndexController@privacyPolicy');
+Route::get('terms-of-service', 'IndexController@termsOfService');
