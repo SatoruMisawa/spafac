@@ -131,11 +131,11 @@ Route::group(['prefix' => 'verification/{user}'], function() {
 Route::get('/', 'IndexController@index');
 Route::get('inquiry', 'IndexController@inquiry');
 Route::get('guide', 'IndexController@guide');
-Route::get('terms-of-service', 'IndexController@termsOfService');
+// Route::get('terms-of-service', 'IndexController@termsOfService');
 Route::get('recommendation', 'IndexController@recommendation');
 Route::get('registration-contract', 'IndexController@registrationContract');
 Route::get('company-profile', 'IndexController@companyProfile');
-Route::get('privacy-policy', 'IndexController@privacyPolicy');
+// Route::get('privacy-policy', 'IndexController@privacyPolicy');
 Route::get('commercial-transaction-law', 'IndexController@commercialTransactionLaw');
 Route::get('event_types', 'IndexController@event_types');//目的から探す
 Route::get('areas', 'IndexController@areas');//エリアから探す
