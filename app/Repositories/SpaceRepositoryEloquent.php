@@ -34,9 +34,4 @@ class SpaceRepositoryEloquent extends BaseRepository implements SpaceRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
-    public function new(array $data) {
-        return new Space($data);
-    }
-
 }

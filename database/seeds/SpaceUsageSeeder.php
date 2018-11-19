@@ -1,27 +1,26 @@
 <?php
 
+use App\SpaceUsage;
 use Illuminate\Database\Seeder;
 
 class SpaceUsageSeeder extends Seeder
 {
-    private $table = 'space_usages';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        SpaceUsage::truncate();
 
-        DB::table($this->table)->insert([
-            ['name' => 'パーティー'],
-            ['name' => '会議'],
-            ['name' => '宿泊'],
-            ['name' => '写真撮影'],
-            ['name' => 'ロケ撮影'],
-            ['name' => 'イベント'],
-            ['name' => '演奏・パフォーマンス'],
-            ['name' => '個展・展示会'],
-            ['name' => 'スポーツ・フィットネス'],
-            ['name' => 'オフィス'],
-            ['name' => '結婚式'],
+        SpaceUsage::insert([
+            ['name' => '物販'],
+            ['name' => '飲食・パーティ'],
+            ['name' => '催事・展示会'],
+            ['name' => 'イベントプロモーション・広告'],
+            ['name' => 'オフィス・会議'],
+            ['name' => '宿泊・民泊'],
+            ['name' => '結婚式・お祝いシーン'],
+            ['name' => '演奏'],
+            ['name' => 'ロケ撮影・写真・動画'],
+            ['name' => '駐車場'],
+            ['name' => 'スポーツ'],
             ['name' => 'その他'],
         ]);
     }

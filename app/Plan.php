@@ -16,10 +16,20 @@ class Plan extends Model
 		'from', 'to',
 	];
 	
-	/**
-	* relations
-	*/	
-	public function user() {
-		return $this->belongsTo(User::class);
-	}	
+	
+	public function space() {
+		return $this->belongsTo(Space::class);
+	}
+
+	public function schedules() {
+		return $this->belongsToMany(Day::class, 'schedules');
+	}
+
+	public function planner() {
+		return $this->space->user;
+	}
+
+	public function isAlreadyApplied() {
+		return Apply::where('plan_id', $this->id)->exists();
+	}
 }

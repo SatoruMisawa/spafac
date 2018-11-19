@@ -5,13 +5,11 @@ use Illuminate\Database\Seeder;
 
 class PrefectureSeeder extends Seeder
 {
-    private $table = 'prefectures';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        Prefecture::truncate();
 
-        DB::table($this->table)->insert([
+        Prefecture::insert([
             ['name' => '北海道'],
             ['name' => '青森県'],
             ['name' => '岩手県'],

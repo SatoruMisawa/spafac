@@ -5,13 +5,11 @@ use Illuminate\Database\Seeder;
 
 class ProviderSeeder extends Seeder
 {
-    private $table = 'providers';
-
     public function run()
     {
-        DB::table($this->table)->truncate();
+        Provider::truncate();
 
-        DB::table($this->table)->insert([
+        Provider::insert([
             ['name' => 'facebook'],
             ['name' => 'yahoojp'],
             ['name' => 'google'],

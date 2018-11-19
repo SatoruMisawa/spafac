@@ -2,14 +2,12 @@
 
 namespace App;
 
-use App\MyModel;
 use App\Service\Claimant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-	use MyModel;
 	use Notifiable;
 
 	/**
@@ -45,11 +43,7 @@ class User extends Authenticatable
 
 	public function stripeCharges() {
 		return $this->hasMany(StripeCharge::class);
-	}
-
-	public function host() {
-		return $this->hasOne('App\Host')->withDefault();
-	}
+	}	
 
 	public function facilities() {
 		return $this->hasMany(Facility::class);
@@ -67,73 +61,14 @@ class User extends Authenticatable
 		return $this->hasMany(Apply::class);
 	}
 
-	/**
-	* password
-	*/
-	public function setPasswordAttribute($value) {
-		
-		//パスワードハッシュ
-		$this->attributes['password'] = password_hash($value, PASSWORD_BCRYPT);
-		
-	}
-	
-	/**
-	* メール認証完了
-	*/
-	public function verified() {
-		$this->email_token = null;
-		$this->verified = 1;
-		$this->status = 1;
-		$this->save();
-	}
-	
-	/**
-	* メール認証
-	*/
-	public static function verify($emailToken) {
-		
-		$query = static::query()
-			->where('email_token', '=', $emailToken)
-			;
-		
-		$user = $query->first();
-		if ($user) {
-			$user->verified();
-			return true;
-		}
-		
-		return false;
-	}
-	
-	/**
-	* スペースオーナー
-	*/
-	public function getHost() {
-		$host = $this->host;
-		if (!$host->id) {
-			//作成
-			$host->user()->associate($this);
-			$host->save();
-		}
-		return $host;
-	}
-	
-	/**
-	* メールアドレスで検索
-	*/
-	public static function find4Email($email) {
-		
-		$query = static::query()
-			->where('email', '=', $email)
-			->withTrashed()
-			;
-		
-		$user = $query->first();
-		
-		return $user;
-		
+	public function reservations() {
+		return $this->hasMany(Reservation::class);
 	}
 
+	public function bankAccounts() {
+		return $this->hasMany(BankAccount::class);
+	}
+			
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(10);
 		$this->save();
@@ -150,11 +85,11 @@ class User extends Authenticatable
 	}
 
 	public function apply(Plan $plan) {
-		if ($this->id === $plan->user_id) {
+		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
 
-		if (Apply::where('plan_id', $plan->id)->exists()) {
+		if ($plan->isAlreadyApplied()) {
 			return;
 		}
 
@@ -163,13 +98,16 @@ class User extends Authenticatable
 		]);
 	}
 
+	public function isSameAs(User $user) {
+		return $this->id === $user->id;
+	}
+
 	public function approve(Apply $apply) {
-		if ($this->id !== $apply->plan->user->id) {
+		if (!$this->isSameAs($apply->plan->planner())) {
 			return;
 		}
 
-		Reservation::create([
-			'user_id' => $apply->user_id,
+		$apply->user->reservations()->create([
 			'plan_id' => $apply->plan_id,
 		]);
 	}
@@ -185,6 +123,17 @@ class User extends Authenticatable
 		$this->stripeCharges()->create([
 			'reservation_id' => $reservation->id,
 			'stripe_charge_id' => $charge->id,
+		]);
+	}
+
+	public function createAndConnectWithStripeAccount() {
+		$stripeAccount = $this->claimant->createAccount([
+			'country' => 'JP',
+			'type' => 'custom',
+		]);
+		
+		$this->stripeUser()->create([
+			'stripe_account_id' => $stripeAccount->id,
 		]);
 	}
 }
