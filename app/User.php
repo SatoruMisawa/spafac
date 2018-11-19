@@ -117,7 +117,9 @@ class User extends Authenticatable
 			'amount' => $reservation->plan->amount,
 			// 'source' => $reservation->user->stripeUser->stripe_source_id,
 			'source' => 'tok_1DRiDdDX6z5hkjQAfFSM8xY8',
-			'dst_account_id' => $this->stripeUser->stripe_account_id,
+			'destination' => [
+				'account_id' => $this->stripeUser->stripe_account_id,
+			],
 		]);
 		
 		$this->stripeCharges()->create([
@@ -141,6 +143,44 @@ class User extends Authenticatable
 		$this->claimant->connectBankAccount([
 			'account_id' => $this->claimantUser->claimant_account_id,
 			'bank_account_id' => $this->bankAccount->claimantBankAccount->claimant_bank_account_id,
+		]);
+	}
+
+	public function fillClaimantRequirements() {
+		$this->claimant->fillRequirements([
+			'account_id' => $this->claimantUser->claimant_account_id,
+			'legal_entity' => [
+				'address_kana' => [
+					'postal_code' => '郵便番号',
+					'state' => '都道府県(かな)',
+					'city' => '市区群(かな)',
+					'town' => '町村名、丁目を含む(かな)',
+					'line1' => '番地(かな)',
+				],
+				'address_kanji' => [
+					'postal_code' => '郵便番号',
+					'state' => '都道府県(漢字)',
+					'city' => '市区群(漢字)',
+					'town' => '町村名、丁目を含む(漢字)',
+					'line1' => '番地(漢字)',
+				],
+				'dob' => [
+					'day' => '31',
+					'month' => '1',
+					'year' => '1998',
+				],
+				'first_name_kana' => 'おおさか',
+				'first_name_kanji' => '大阪',
+				'last_name_kana' => 'たろう',
+				'last_name_kanji' => '太郎',
+				'gender' => '男',
+				'phone_number' => '00000000',
+				'type' => 'indivisual',
+			],
+			'tos_acceptance' => [
+				'date' => 'date',
+				'ip' => 'ip',
+			],
 		]);
 	}
 
