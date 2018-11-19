@@ -5,6 +5,7 @@ namespace App;
 use App\Service\Claimant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -84,17 +85,31 @@ class User extends Authenticatable
 		$this->save();
 	}
 
-	public function apply(Plan $plan) {
+	public function applyHourlyPlan(Plan $plan, int $hours) {
 		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
-
 		if ($plan->isAlreadyApplied()) {
 			return;
 		}
 
 		$this->applies()->create([
 			'plan_id' => $plan->id,
+			'price' => $plan->price_per_hour * $hours,
+		]);
+	}
+
+	public function applyDaylyPlan(Plan $plan) {
+		if ($this->isSameAs($plan->planner())) {
+			return;
+		}
+		if ($plan->isAlreadyApplied()) {
+			return;
+		}
+
+		$this->applies()->create([
+			'plan_id' => $plan->id,
+			'price' => $plan->price_per_day,
 		]);
 	}
 
@@ -114,12 +129,9 @@ class User extends Authenticatable
 
 	public function chargeFor(Reservation $reservation) {
 		$charge = $this->claimant->charge([
-			'amount' => $reservation->plan->amount,
-			// 'source' => $reservation->user->stripeUser->stripe_source_id,
-			'source' => 'tok_1DRiDdDX6z5hkjQAfFSM8xY8',
-			'destination' => [
-				'account_id' => $this->stripeUser->stripe_account_id,
-			],
+			'amount' => $reservation->plan->price_per_hour,
+			'source' => $reservation->user->claimantUser->claimant_source_id,
+			'destination' => $this->claimantUser->claimant_account_id,
 		]);
 		
 		$this->stripeCharges()->create([
@@ -151,35 +163,35 @@ class User extends Authenticatable
 			'account_id' => $this->claimantUser->claimant_account_id,
 			'legal_entity' => [
 				'address_kana' => [
-					'postal_code' => '郵便番号',
-					'state' => '都道府県(かな)',
-					'city' => '市区群(かな)',
-					'town' => '町村名、丁目を含む(かな)',
-					'line1' => '番地(かな)',
+					'postal_code' => '',
+					'state' => '',
+					'city' => '',
+					'town' => '',
+					'line1' => '',
 				],
 				'address_kanji' => [
-					'postal_code' => '郵便番号',
-					'state' => '都道府県(漢字)',
-					'city' => '市区群(漢字)',
-					'town' => '町村名、丁目を含む(漢字)',
-					'line1' => '番地(漢字)',
+					'postal_code' => '',
+					'state' => '',
+					'city' => '',
+					'town' => '',
+					'line1' => '',
 				],
 				'dob' => [
-					'day' => '31',
-					'month' => '1',
-					'year' => '1998',
+					'day' => '',
+					'month' => '',
+					'year' => '',
 				],
 				'first_name_kana' => 'おおさか',
 				'first_name_kanji' => '大阪',
 				'last_name_kana' => 'たろう',
 				'last_name_kanji' => '太郎',
-				'gender' => '男',
-				'phone_number' => '00000000',
-				'type' => 'indivisual',
+				'gender' => 'male',
+				'phone_number' => '',
+				'type' => 'individual',
 			],
 			'tos_acceptance' => [
-				'date' => 'date',
-				'ip' => 'ip',
+				'date' => Carbon::now()->timestamp,
+				'ip' => request()->ip(),
 			],
 		]);
 	}
