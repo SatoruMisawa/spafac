@@ -2,10 +2,17 @@
 
 namespace App\Service;
 
+use App\Exceptions\StripeValidationException;
 use Stripe\Account;
 use Stripe\Charge;
 
 class Stripe implements Claimant {
+    private $validator;
+
+    public function __construct() {
+        $this->validator = app()->make(StripeValidator::class);
+    }
+
     public function charge($params = []) {
         if (!$this->validateToCharge($params)) {
             return;
@@ -81,5 +88,15 @@ class Stripe implements Claimant {
         }
 
         return true;
+    }
+
+    public function fillRequirements($params = []) {
+        try {
+            $this->validator->validateToFillRequirements($params);
+        } catch (StripeValidationException $e) {
+            dd($e->getMessage());
+            report($e);
+            return;
+        }
     }
 }
