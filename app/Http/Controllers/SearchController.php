@@ -8,6 +8,7 @@ use App\Plans;
 use App\Space;
 use App\Facility;
 use App\Prefecture;
+
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -103,8 +104,8 @@ class SearchController extends FrontController
 
 		$query = new Facility;
 		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
-										->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
-										->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id');
+										->join('spaces', 'spaces.facility_id', '=', 'facilities.id');//キャパシティー
+										//->leftjoin('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id');
 		//$query->join('plans', 'plans.space_id', '=', 'spaces.id');//プラン、費用
 		//$query->join('schedules', 'schedules.plan_id', '=', 'plans.id');//開始時間、終了時間
 		//エリア条件
@@ -128,8 +129,19 @@ class SearchController extends FrontController
 		//dd($room);
 		//目的条件
 		if(isset($space_usage_id)){
+			//space_usageと紐づけされたspace_idを取得
+			$spaces_id_usage= array();
+			$spaces_id_space_usage = DB::table('space_space_usage')->select('space_id')->where('space_usage_id', '=', $space_usage_id)->distinct()->get();
 
-			$query->where('space_space_usage.space_usage_id', '=', $space_usage_id);
+			//dd($spaces_id_space_usage[0]->space_id);
+
+			foreach ($spaces_id_space_usage as $value) {
+				//array_push($spaces_id_usage,$value->space_id );
+				$query->where('spaces.id', $value->space_id);
+			}
+		//dd($spaces_id_usage);
+
+
 		}
 
 		//spaces条件
@@ -146,8 +158,8 @@ class SearchController extends FrontController
 		//dd($day);
 		if(isset($day)){
 			//利用日
-		/*	$planday = new Plans;
-			$planday = Plans::select('space_id')->where('plans.from','<=',$day)->where('plans.to','>=',$day)->get();*/
+			$planday = new Plans;
+			$planday = Plans::select('space_id')->where('plans.from','<=',$day)->where('plans.to','>=',$day)->get();
 
 			$query->where('plans.from','<=',$day)->where('plans.to','>=',$day);
 		}

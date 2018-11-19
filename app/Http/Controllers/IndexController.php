@@ -23,17 +23,21 @@ class IndexController extends FrontController
 				$query = [];
 				for ($i=1; $i <13 ; $i++) {
 				$query[$i] = new Facility;
-				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
+				/*$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
 								->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
-								->join('spaces', 'spaces.facility_id', '=', 'facilities.id')
-								->leftjoin('plans', 'plans.space_id', '=', 'spaces.id')
+								->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id')
+								//->join('plans', 'plans.space_id', '=', 'spaces.id')
 								->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
-								->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();
+								->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();*/
 
+				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+																->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+																->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
+																->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();
 				}
 
 
-				//dd($query[1]);
+				//dd($query);
 				//$view = view('coming-soon', $data);
 				//$data = compact('goods','party','office','promotion','event','performance','stay','location','weddinghall','parking','sports');
 				$data = compact('query');
