@@ -17,10 +17,13 @@ class Stripe implements Claimant {
         try {
             $this->validator->validateToCharge($params);
             return Charge::create([
-                'amount' => $params['amount'],
+                'amount' => $params['guest_price_with_fee'],
                 'currency' => "JPY",
                 'source' => $params['source'],
-                'destination' => $params['destination'],
+                'destination' => [
+                    'amount' => $params['host_reward'],
+                    'account' => $params['destination'],
+                ],
             ]);
         } catch (StripeValidationException $e) {
             report($e);
