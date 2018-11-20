@@ -1,131 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="csrf-token" content="<?php echo csrf_token(); ?>">
-		<title>スペースオーナー | スペースファクトリー</title>
-		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="<?php echo url('bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('bower_components/font-awesome/css/font-awesome.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('bower_components/Ionicons/css/ionicons.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('bower_components/admin-lte/plugins/iCheck/all.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('bower_components/admin-lte/dist/css/AdminLTE.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('bower_components/admin-lte/dist/css/skins/skin-green.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo url('css/media.css'); ?>">
-		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		<link rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-	</head>
-	<body class="hold-transition skin-green sidebar-mini">
-		<div class="wrapper">
-			@include('host.layouts.header')
-			@include('host.layouts.sidebar')
-			<!-- Content Wrapper. Contains page content -->
-			<div class="content-wrapper">
-				@yield('content')
-			</div>
-			<!-- /.content-wrapper -->
-			@include('host.layouts.footer')
-			<!-- Control Sidebar -->
-			<aside class="control-sidebar control-sidebar-dark">
-				<!-- Create the tabs -->
-				<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-					<li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-					<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<!-- Home tab content -->
-					<div class="tab-pane active" id="control-sidebar-home-tab">
-						<h3 class="control-sidebar-heading">Recent Activity</h3>
-						<ul class="control-sidebar-menu">
-							<li>
-								<a href="javascript:;">
-									<i class="menu-icon fa fa-birthday-cake bg-red"></i>
-									<div class="menu-info">
-										<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-										<p>Will be 23 on April 24th</p>
-									</div>
-								</a>
-							</li>
-						</ul>
-						<!-- /.control-sidebar-menu -->
-						<h3 class="control-sidebar-heading">Tasks Progress</h3>
-						<ul class="control-sidebar-menu">
-							<li>
-								<a href="javascript:;">
-									<h4 class="control-sidebar-subheading">
-										Custom Template Design
-										<span class="pull-right-container">
-										<span class="label label-danger pull-right">70%</span>
-										</span>
-									</h4>
-									<div class="progress progress-xxs">
-										<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-									</div>
-								</a>
-							</li>
-						</ul>
-						<!-- /.control-sidebar-menu -->
-					</div>
-					<!-- /.tab-pane -->
-					<!-- Stats tab content -->
-					<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-					<!-- /.tab-pane -->
-					<!-- Settings tab content -->
-					<div class="tab-pane" id="control-sidebar-settings-tab">
-						<form method="post">
-							<h3 class="control-sidebar-heading">General Settings</h3>
-							<div class="form-group">
-								<label class="control-sidebar-subheading">
-								Report panel usage
-								<input type="checkbox" class="pull-right" checked>
-								</label>
-								<p>
-									Some information about this general settings option
-								</p>
-							</div>
-							<!-- /.form-group -->
-						</form>
-					</div>
-					<!-- /.tab-pane -->
-				</div>
-			</aside>
-			<!-- /.control-sidebar -->
-			<!-- Add the sidebar's background. This div must be placed
-				immediately after the control sidebar -->
-			<div class="control-sidebar-bg"></div>
-		</div>
-		<!-- ./wrapper -->
-		<!-- REQUIRED JS SCRIPTS -->
-		<script src="<?php echo url('bower_components/jquery/dist/jquery.min.js'); ?>"></script>
-		<script src="<?php echo url('bower_components/jquery-ui/jquery-ui.min.js'); ?>"></script>
-		<script src="<?php echo url('bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
-		<script src="<?php echo url('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>"></script>
-		<script src="<?php echo url('bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ja.min.js'); ?>"></script>
-		<script src="<?php echo url('bower_components/admin-lte/plugins/iCheck/icheck.min.js') ?>"></script>
-		<script src="<?php echo url('bower_components/admin-lte/dist/js/adminlte.min.js') ?>"></script>
-		<script src="//yubinbango.github.io/yubinbango/yubinbango.js"></script>
-		<script src="<?php echo url('js/media.js') ?>"></script>
-		<script>
-			$(function() {
-				$('input[type="checkbox"], input[type="radio"]').iCheck({
-					checkboxClass: 'icheckbox_flat-green',
-					radioClass: 'iradio_flat-green'
-				});
-				
-				$('.datepicker').datepicker({
-					autoclose: true,
-					language: 'ja',
-					format: 'yyyy-mm-dd'
-				});
-			});
-		</script>
-		@yield('script')
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href="{{ asset('/css/host/index.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="header01">
+            <div class="logo"><a href="https://test.spafac.com"><img src="{{ asset('/img/logo-top.png') }}" alt=""></a></div>
+            <nav>
+                <ul>
+                    <li><a href="#">ダッシュボード</a></li>
+                    <li><a href="#">スペース管理</a></li>
+                    <li><a href="#">予約管理</a></li>
+                    <li><a href="#">メッセージBOX</a></li>
+                    <li><a href="#">売上管理</a></li>
+                    <li><a href="#">設定</a></li>
+                    <li><a href="#">ヘルプ</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                    <li class="btn">
+                        <div class="btnBody"><a href="#">スペースを登録</a></div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="dashboardTop">
+            <div id="header02">
+                <div class="inner">
+                    <ul>
+                        <li><a href="#">ダッシュボード</a></li>
+                        <li><a href="#">メッセージ</a></li>
+                        <li><a href="#">スペース</a></li>
+                        <li><a href="#">参加する</a></li>
+                        <li><a href="#">プロフィール</a></li>
+                        <li><a href="#">アカウント</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <div class="picture">
+                        <div class="ttl">
+                            <h2>ダッシュボード</h2>
+                        </div>
+                        <div class="photos"><img src="{{ asset('/img/default_profile_image.jpg') }}" alt="" />
+                            <div class="name"> <a>石川花子</a> </div>
+                        </div>
+                        <div class="infobox">
+                            <div class="ttl">
+                                <h3>ヘルプ</h3>
+                            </div>
+                            <div class="infoTxt">
+                                <h4>予約について</h4>
+                                <ul>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                </ul>
+                                <h4>決済について</h4>
+                                <ul>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news">
+                        <div class="infobox">
+                            <div class="ttl">
+                                <h3>やることリスト</h3>
+                            </div>
+                            <div class="infoTxt">
+                                <ul>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="infobox">
+                            <div class="ttl">
+                                <h3>未読の新着メッセージ</h3>
+                            </div>
+                            <div class="infoTxt">
+                                <ul>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                </ul>
+                                <div class="readmore"> <a href="#">全てのメッセージを読む</a> </div>
+                            </div>
+                        </div>
+                        <div class="infobox">
+                            <div class="ttl">
+                                <h3>未完了の予約リクエスト</h3>
+                            </div>
+                            <div class="infoTxt">
+                                <ul>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="infobox">
+                            <div class="ttl">
+                                <h3>予約完了</h3>
+                            </div>
+                            <div class="infoTxt">
+                                <ul>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                    <li><a href="#">テキストサンプル</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
