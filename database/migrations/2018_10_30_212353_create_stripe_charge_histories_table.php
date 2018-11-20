@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStripeChargesTable extends Migration
+class CreateStripeChargeHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateStripeChargesTable extends Migration
      */
     public function up()
     {
-        Schema::create('stripe_charges', function (Blueprint $table) {
+        Schema::create('stripe_charge_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('reservation_id')->unsigned();
-            $table->string('stripe_charge_id');
+            $table->bigInteger('charge_history_id')->unsigned();
+            $table->string('claimant_charge_history_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

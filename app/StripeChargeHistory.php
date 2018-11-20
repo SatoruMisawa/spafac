@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StripeCharge extends Model
+class StripeChargeHistory extends Model
 {
     protected $fillable = [
-        'user_id', 'reservation_id', 'stripe_charge_id',
+        'charge_history_id', 'claimant_charge_history_id',
     ];
 }
