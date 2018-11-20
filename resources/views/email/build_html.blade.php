@@ -441,7 +441,7 @@
                         </tr>
                         <tr>
                             <td width="10%"></td>
-                            <td style="text-align:center;"><a href="/" class="judging_button">メールアカウントの認証と本登録に進む</a></td>
+                            <td style="text-align:center;"><a href="{{ route('verification.email.verify', [$user->id, $user->email_verification_token]) }}" class="judging_button">メールアカウントの認証と本登録に進む</a></td>
                             <td width="10%"></td>
                         </tr>
                         <tr>
