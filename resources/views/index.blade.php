@@ -378,6 +378,7 @@
 	</div>
 	<div class="pattern_box">
     <div class="pac">
+
 		@foreach($query[1] as $data)
 			<div class="pattern_boxs">
 				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
