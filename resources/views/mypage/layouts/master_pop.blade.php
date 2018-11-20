@@ -22,17 +22,44 @@
 		<!--css-->
 		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo url('assets/css/import.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo url('assets/css/dashboadTop_tyle.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo url('assets/css/dashboard_header_style.css'); ?>">
 		<link rel="stylesheet" href="<?php echo url('css/media.css'); ?>">
 		<!--css end-->
 
 	</head>
 	<body>
-@include('mypage.layouts.header-menu')
+		<div class="wrap">
+		@include('mypage.layouts.header-menu')
+		<div id="dashboardTop">
+		<div id="header02">
+			<div class="inner">
+				<ul>
+					<!--<li><a href="<?php //echo url('mypage'); ?>">マイページ </a></li>
+					<li><a href="<?php //echo url('host'); ?>">スペースオーナー</a></li>
+					<li><a href="<?php //echo url('mypage/like'); ?>">お気に入り</a></li>
+					<li><a href="<?php //echo url('mypage/management'); ?>">予約管理</a></li>
+					<li><a href="<?php //echo url('mypage/mail-list'); ?>">メール受信一覧</a></li>
+					<li><a href="<?php //echo url('mypage/review'); ?>">レビュー</a></li>
+					<li><a href="<?php //echo url('mypage/profile/edit-account'); ?>">会員情報修正</a></li>
+					<li><a href="<?php // echo url('logout'); ?>" onClick="window.open('about:blank','_self').close();">ウィンドウを閉じる</a></li>-->
+
+
+					<li><a href="<?php echo url('mypage'); ?>">ダッシュボード</a></li>
+					<li><a href="<?php echo url('mypage/mail-list'); ?>">メッセージ</a></li>
+					<li><a href="#">スペース</a></li>
+					<li><a href="#">参加する</a></li>
+					<li><a href="<?php echo url('mypage/profile/edit-account'); ?>">プロフフィール</a></li>
+					<li><a href="#">アカウント</a></li>
+				</ul>
+			</div>
+		</div>
+
 		@yield('content')
         <footer>&nbsp;</footer>
 		<script src="<?php echo url('bower_components/jquery/dist/jquery.min.js'); ?>"></script>
 		<script src="<?php echo url('bower_components/jquery-ui/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo url('assets/common/js/common.js'); ?>"></script>        
+		<script src="<?php echo url('assets/common/js/common.js'); ?>"></script>
 		<script type="text/javascript" src="<?php echo url('assets/mypage/js/lib/clipboard.min.js'); ?>"></script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script type="text/javascript" src="<?php echo url('assets/mypage/js/script.min.js'); ?>"></script>
 		<script src="//yubinbango.github.io/yubinbango/yubinbango.js"></script>
@@ -50,7 +77,7 @@
 			$('.sidebar-icon,.sidebar>.close span').on('click',function () {
 			$(".left_contents").slideToggle("fast");
 			});
-			
+
 			$(document).ready(function(){
 			  $('#slider').slick({
 			  "arrows": false,
@@ -62,5 +89,7 @@
 		</script>
 		@yield('script')
         @include('to-top')
+			</div>
+		</div>
 	</body>
 </html>

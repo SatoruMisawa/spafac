@@ -1,0 +1,275 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* --- reset css --- */
+/* http://meyerweb.com/eric/tools/css/reset/v2.0 | 20110126License: none (public domain)*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    position: relative;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    height: 100%;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+/* --- setting page --- */
+body {
+    background: #f3f2f3;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", verdana, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+div.wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#dashboardTop {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0%;
+}
+/* --- ヘッダー01--- */
+#header01 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 1% 0%;
+    width: 100%;
+    background: #fff;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+#header01 .logo {
+    padding-left: 1%;
+}
+#header01 nav ul {
+    display: flex;
+    align-items: center;
+    padding-right: 1%;
+}
+#header01 nav ul li {
+    padding: 10px 8px;
+    box-sizing: border-box;
+}
+#header01 nav ul li:hover {
+    border-bottom: solid 2px #3c8dbc;
+}
+li.btn .btnBody {
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #fa8b9f;
+    padding: 5px 10px;
+}
+#header01 nav ul li.btn .btnBody a {
+    color: #fff;
+    font-weight: bold;
+}
+#header01 nav ul li.btn:hover {
+    border-bottom: none;
+}
+#header01 nav ul li a {
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #3c8dbc;
+}
+#header01 nav ul li a:hover {
+    color: #69B4E0;
+}
+/* --- ヘッダー02--- */
+#header02 {
+    background: #434343;
+
+}
+#header02 .inner{
+    max-width: 1024px;
+    margin: 0 auto;    
+}
+#header02 ul {
+    display: flex;
+    align-items: flex-end;
+}
+#header02 ul li{
+}
+#header02 ul li a {
+    padding: 15px 10px;
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    color: #B2B2B2;
+    font-size: 0.9em;
+}
+#header02 ul li a:hover {
+    padding: 12px 10px;
+    color: #F2F2F3;
+}
+#header02 ul li:hover{
+    border-bottom: #F2F2F3 solid 3px;
+}
+/* --- 文字色 --- */
+.dglay {
+    color: #333;
+}
+/* --- タイトル周り --- */
+.ttl {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.ttl span.must {
+    display: block;
+    background: #cb5273;
+    width: 40px;
+    text-align: center;
+    padding-top: 5px;
+    height: 18px;
+    color: #FFFFFF;
+    font-size: 0.75em;
+    border-radius: 3px;
+    margin-right: 1%;
+}
+.ttl span.nomust {
+    display: block;
+    background: #0073b7;
+    width: 40px;
+    text-align: center;
+    padding-top: 5px;
+    height: 18px;
+    color: #FFFFFF;
+    font-size: 0.75em;
+    border-radius: 3px;
+    margin-right: 1%;
+}
+.ttl h1 {
+    display: block;
+    font-size: 1.4em;
+    margin-left: 5px;
+    color: #333;
+}
+.ttl h2 {
+    display: block;
+    font-size: 1.2em;
+    margin-left: 5px;
+    color: #333;
+}
+/* --- フォームパーツ --- */
+.partWrapper {
+    margin-bottom: 40px;
+    padding-left: 3px;
+}
+.partWrapper input[type="text"], .partWrapper input[type="email"] {
+    height: 33px;
+    min-width: 200px;
+    width: 30%;
+    border: solid 1px #999999;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-left: 5px;
+    font-size: 0.9em;
+}
+.partWrapper input[type="text"].short {
+    min-width: 100px;
+    width: 20%;
+}
+.partWrapper select {
+    outline: none;
+    text-overflow: '';
+    background: #FFFFFF;
+    vertical-align: middle;
+    color: inherit;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    height: 33px;
+    min-width: 100px;
+    width: 15%;
+    border: solid 1px #999999;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-size: 0.8em;
+    margin-right: 1%;
+}
+.partWrapper textarea {
+    min-height: 90px;
+    min-width: 200px;
+    width: 40%;
+    border: solid 1px #999999;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-left: 5px;
+    font-size: 0.9em;
+}
+.partWrapper dl dt {
+    color: #6C6C6C;
+    font-size: 0.8em;
+    padding: 10px 0 5px 5px;
+}
+.partWrapper dl dd {
+}
+/* --- セーブボタン --- */
+.saveBtn {
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    max-height: 160px;
+    background: #FBFBFB;
+    z-index: 9998;
+}
+.saveBtn input[type="submit"] {
+    padding: 5px 60px;
+    font-size: 1.2em;
+    background-color: #4abfe6;
+    color: #fff;
+    border-style: none;
+}
+/* --- フォームサンプルの色 --- */
+/* Chrome */
+::-webkit-input-placeholder {
+ color: #E3E3E3;
+ font-weight: lighter;
+}
+/* Firefox */
+::-moz-placeholder {
+ color: #E3E3E3;
+ font-weight: lighter;
+}
+/* IE */
+:-ms-input-placeholder {
+ color: #E3E3E3;
+ font-weight: lighter;
+}

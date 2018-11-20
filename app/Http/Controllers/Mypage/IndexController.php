@@ -23,14 +23,23 @@ class IndexController extends MypageController
 
 
 		//--トップのお知らせ用 モック用（仮）
-		$data = array("todo"=>
+		/*$data = array("todo"=>
 		array(array("id"=>1,"title"=>"やることやることやることやることやること…","date"=>"2018-08-01")),
 		"remess"=>
 		array(array("id"=>1,"title"=>"未返信メッセージ未返信メッセージ未返信メ…","date"=>"2018-08-02"),array("id"=>2,"title"=>"未返信メッセージ未返信メッセージ未返信メ…","date"=>"2018-08-02"))
 		,
 		"rerec"=>array(),
 		"redone"=>array()
-		);
+	);*/
+
+		$todo  =array();
+		$rerec =array();
+		$redone=array();
+		$maillist= $this->maillist();
+
+		//dd($maillist);
+
+		$data = compact(/*'space', 'address',*/'maillist','todo','rerec','redone');
 
 		$view = view('mypage.index', $data);
 		return $view;
@@ -156,6 +165,7 @@ class IndexController extends MypageController
 				->where('to_user_id', '!=', Auth::id())
 				->first();
 
+
 				$from_user_id = DB::table('mailtable')
 				->select('from_user_id')
 				->where('thread_id', $t_id->thread_id)
@@ -185,11 +195,13 @@ class IndexController extends MypageController
 						$content = DB::table('mailtable')->select('content')->where('thread_id', $t_id->thread_id)->orderBy('send_date', 'asc')->first();
 						$id = $user_id;
 						array_push($maillist, compact('content','id', 'name'));
+
 				}
+
 		}
 
-		$view = view('mypage.mailList', compact('maillist'));
-		return $view;
+		//$view = view('mypage.mailList', compact('maillist'));
+		return $maillist;
 
 	}
 
