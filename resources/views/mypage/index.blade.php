@@ -10,7 +10,7 @@
 				<h2>ダッシュボード</h2>
 			</div>
 			<div class="photos"><div class="avatar">
-            <img src="<?php //echo url('assets/mypage/img/avatar.jpg'); ?>" width="300" height="200" alt=""><span></span>
+            <img src="<?php //echo url('assets/mypage/img/avatar.jpg'); ?>" alt=""><span></span>
             </div>
 
 				<div class="name"> <a><?php echo e($loginUser->name); ?></a> </div>
@@ -81,7 +81,7 @@
 										@foreach ($maillist as $maillist_this)
 												<li>
 													<a href="{{ route('mailtable', $maillist_this['id']) }}">
-													
+
 													<ul class="m-list-box-ce">
 														<li><strong>姓名：</strong>{{$maillist_this['name']}}様</li>
 														<li><strong>内容：</strong>
