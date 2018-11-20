@@ -40,6 +40,9 @@ class UserTest extends TestCase
     public function testApprove() {
         $apply = factory(Apply::class)->create();
         $apply->plan->planner()->approve($apply);
-        $this->assertTrue($apply->user->reservations()->where('plan_id', $apply->plan_id)->exists());
+        $this->assertDatabaseHas('reservations', [
+            'user_id' => $apply->user->id,
+            'apply_id' => $apply->id,
+        ]);
     }
 }

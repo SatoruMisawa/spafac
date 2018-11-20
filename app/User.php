@@ -123,7 +123,7 @@ class User extends Authenticatable
 		}
 
 		$apply->user->reservations()->create([
-			'plan_id' => $apply->plan_id,
+			'apply_id' => $apply->id,
 		]);
 	}
 

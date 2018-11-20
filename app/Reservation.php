@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     protected $fillable = [
-        'user_id', 'plan_id',
+        'user_id', 'apply_id',
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function plan() {
-        return $this->belongsTo(Plan::class);
+    public function apply() {
+        return $this->belongsTo(Apply::class);
     }
 }
