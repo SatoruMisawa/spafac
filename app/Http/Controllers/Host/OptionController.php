@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Host;
 
+use App\Plan;
 use App\Space;
 use App\Repositories\OptionRepository;
 use App\Http\Requests\CreateOptionRequest;
@@ -15,9 +16,9 @@ class OptionController extends Controller
         $this->optionRepository = $optionRepository;
     }
 
-    public function new(Space $space) {
+    public function new(Space $space, Plan $plan) {
         try {
-            return view('host.space.option.new', compact('space'));
+            return view('host.space.option.new', compact('space', 'plan'));
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([
@@ -26,9 +27,9 @@ class OptionController extends Controller
         }
     }
 
-    public function create(CreateOptionRequest $request, Space $space) {
+    public function create(CreateOptionRequest $request, Space $space, Plan $plan) {
         try {
-            $this->createOptions($request, $space);
+            $this->createOptions($request, $plan);
     
             return redirect()->route('host.space.messagetemplate.new', $space->id);
         } catch (Exception $e) {
@@ -39,16 +40,16 @@ class OptionController extends Controller
         }
     }
 
-    private function createOptions(CreateOptionRequest $request, Space $space) {
+    private function createOptions(CreateOptionRequest $request, Plan $plan) {
         foreach ($request->get('options') as $option) {
             if (!isset($option['name'])) {
                 continue;
             }
             $this->optionRepository->create([
-                'space_id' => $space->id,
+                'plan_id' => $plan->id,
                 'name' => $option['name'],
+                'description' => $option['description'],
                 'price' => $option['price'],
-                'limit' => $option['limit'],
             ]);
         }
     }
