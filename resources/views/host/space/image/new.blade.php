@@ -70,7 +70,7 @@
 					</div>
 
 					<div class="form-group {{ App\Helper::errorClass($errors, ['video_url']) }}">
-						<label><small class="label bg-red">必須</small> 動画</label>
+						<label><small class="label bg-blue">任意</small> 動画</label>
 						@include('layouts.error', ['name' => 'video_url'])
 						<div class="row">
 							<div class="col-sm-6">

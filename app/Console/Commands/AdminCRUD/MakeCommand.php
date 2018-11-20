@@ -55,7 +55,7 @@ class MakeCommand extends Command
      */
     public function handle()
     {
-        // $this->setUp();
+        $this->setUp();
         $tableNames = $this->tableNames();
         foreach ($tableNames as $tableName) {
             $modelName = $this->modelName($tableName);

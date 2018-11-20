@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Space;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,7 @@ class MessageTemplateControllerTest extends TestCase
     public function testNew() {
         $space = factory(Space::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
+                        ->loginWithUser(User::find($space->user_id))
                         ->get(route('host.space.messagetemplate.new', $space->id));
 
         $response->assertStatus(200)
@@ -25,8 +26,8 @@ class MessageTemplateControllerTest extends TestCase
     public function testCreate() {
         $space = factory(Space::class)->create();
         $data = $this->data();
-        $this->assertPostRequestToCreateMessageTemplate($space->id, $data);
-        $this->assertMessageTemplateInDB($space->id, $data);
+        $this->assertPostRequestToCreateMessageTemplate($data, $space);
+        $this->assertMessageTemplateInDB($data, $space->id);
     }
 
     private function data() {
@@ -37,14 +38,14 @@ class MessageTemplateControllerTest extends TestCase
         ];
     }
 
-    private function assertPostRequestToCreateMessageTemplate($spaceID, $data) {
+    private function assertPostRequestToCreateMessageTemplate($data, Space $space) {
         return $this->loginWithTesterIfDebug()
-                    ->loginWithUser()
-                    ->post(route('host.space.messagetemplate.create', $spaceID), $data)
-                    ->assertRedirect(route('host.space.plan.new', $spaceID));
+                    ->loginWithUser(User::find($space->user_id))
+                    ->post(route('host.space.messagetemplate.create', $space->id), $data)
+                    ->assertRedirect(route('host.index'));
     }
 
-    private function assertMessageTemplateInDB($spaceID, $data) {
+    private function assertMessageTemplateInDB($data, $spaceID) {
         $this->assertDatabaseHas('message_templates', [
             'space_id' => $spaceID,
             'on_apply_approved' => $data['on_apply_approved'],

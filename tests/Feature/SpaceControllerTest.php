@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Facility;
 use App\Space;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +17,7 @@ class SpaceControllerTest extends TestCase
     public function testNew() {
         $facility = factory(Facility::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
+                        ->loginWithUser(User::find($facility->user_id))
                         ->get(route('host.facility.space.new', $facility->id));
 
         $response->assertStatus(200)
@@ -27,23 +28,23 @@ class SpaceControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $facility = factory(Facility::class)->create();
         $data = $this->data();
-        $this->assertPostRequestToCreateSpace($data, $facility->id);
+        $this->assertPostRequestToCreateSpace($data, $facility);
         $this->assertSpaceInDB($data, $facility->id);
         $this->assertAmenitiesInDB($data);
         $this->assertSpaceUsagesInDB($data);
     }
 
-    private function assertPostRequestToCreateSpace($data, $facilityID) {
+    private function assertPostRequestToCreateSpace($data, Facility $facility) {
         return $this->loginWithTesterIfDebug()
-        ->loginWithUser()
-        ->post(route('host.facility.space.create', $facilityID), $data)
+        ->loginWithUser(User::find($facility->user_id))
+        ->post(route('host.facility.space.create', $facility->id), $data)
         ->assertRedirect(route('host.space.image.new', 1));
     }
 
     public function testEdit() {
         $space = factory(Space::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser()
+                        ->loginWithUser(User::find(Facility::find($space->facility_id)->user_id))
                         ->get(route('host.facility.space.edit', [$space->facility_id, $space->id]));
 
         $response->assertStatus(200)
@@ -54,16 +55,16 @@ class SpaceControllerTest extends TestCase
         $this->refreshAndSeedDatabase();
         $space = factory(Space::class)->create();
         $data = $this->data();
-        $this->assertPutRequestToUpdateSpace($data, $space->facility_id, $space->id);
+        $this->assertPutRequestToUpdateSpace($data, $space);
         $this->assertSpaceInDB($data, $space->facility_id);
         $this->assertAmenitiesInDB($data);
         $this->assertSpaceUsagesInDB($data);
     }
 
-    private function assertPutRequestToUpdateSpace($data, $facilityID, $spaceID) {
+    private function assertPutRequestToUpdateSpace($data, Space $space) {
         return $this->loginWithTesterIfDebug()
-        ->loginWithUser()
-        ->put(route('host.facility.space.update', [$facilityID, $spaceID]), $data)
+        ->loginWithUser(User::find(Facility::find($space->facility_id)->user_id))
+        ->put(route('host.facility.space.update', [$space->facility_id, $space->id]), $data)
         ->assertRedirect(route('host.space.index'));
     }
 

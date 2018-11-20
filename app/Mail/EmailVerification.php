@@ -32,6 +32,6 @@ class EmailVerification extends Mailable
 	 */
 	public function build()
 	{
-		return $this->subject('メールアドレスの登録確認')->text('email.verification');
+		return $this->subject('メールアドレスの登録確認')->text('email.build');
 	}
 }
