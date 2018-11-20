@@ -377,19 +377,17 @@
 		<h2>物販</h2>
 	</div>
 	<div class="pattern_box">
-		<div class="pac">
-			{{$query[1]}}
-			@foreach($query[1] as $data)
-			<div class="pattern_boxs">
+    <div class="pac">
 
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
+		@foreach($query[1] as $data)
+			<div class="pattern_boxs">
+				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
 					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
 				</a>
-			</div>
-			@endforeach
-
-		</div>
+ 			</div>
+		@endforeach
+	</div>
 	</div>
 	<a class="detail" href="/purpose/sales">物販で利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -401,12 +399,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[2] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
 		</div>
 	</div>
@@ -419,12 +417,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[5] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+	 			</div>
 			@endforeach
 		</div>
 	</div>
@@ -446,12 +444,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[4] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
 		</div>
 	</div>
@@ -465,12 +463,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[3] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
 		</div>
 	</div>
@@ -484,12 +482,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[8] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
 		</div>
 	</div>
@@ -503,12 +501,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[6] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
 		</div>
 	</div>
@@ -521,12 +519,12 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[9] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
 		</div>
 	</div>
@@ -553,14 +551,14 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[7] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
-		</div>
+	　</div>
 	</div>
 	<a class="detail" href="/purpose/wedding">結婚式・お祝いシーンで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -572,14 +570,14 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[10] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
-		</div>
+	　</div>
 	</div>
 	<a class="detail" href="/purpose/parking">オフィスで利用できるスペースをもっと見る &raquo;</a>
 </section>
@@ -592,14 +590,14 @@
 	<div class="pattern_box">
 		<div class="pac">
 			@foreach($query[11] as $data)
-			<div class="pattern_boxs">
-				<a href="{{ action('SpaceController@index', $data->id ) }}">
-					<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
-					<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
-				</a>
-			</div>
+				<div class="pattern_boxs">
+					<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+						<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
+						<p>予約後すぐにわかりやすい説明も届き便利な場所で必要なものも揃っていてよかったです。部屋もキレイに清掃されてました。 床がオフィス</p>
+					</a>
+				</div>
 			@endforeach
-		</div>
+	　</div>
 	</div>
 	<a class="detail" href="/purpose/sports">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
