@@ -20,7 +20,7 @@ class MessageTemplateControllerTest extends TestCase
                         ->get(route('host.space.messagetemplate.new', $space->id));
 
         $response->assertStatus(200)
-                 ->assertSee('新規定型文');
+                 ->assertSee('定型文');
     }
 
     public function testCreate() {
