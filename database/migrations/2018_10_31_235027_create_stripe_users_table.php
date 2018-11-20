@@ -16,8 +16,8 @@ class CreateStripeUsersTable extends Migration
         Schema::create('stripe_users', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->string('stripe_source_id')->nullable();
-            $table->string('stripe_account_id')->nullable();
+            $table->string('claimant_source_id')->nullable();
+            $table->string('claimant_account_id')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

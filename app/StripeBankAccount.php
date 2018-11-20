@@ -9,6 +9,6 @@ class StripeBankAccount extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'stripe_bank_account_id',
+        'claimant_bank_account_id',
     ];
 }

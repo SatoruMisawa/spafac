@@ -16,7 +16,7 @@ class CreateStripeBankAccountsTable extends Migration
         Schema::create('stripe_bank_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('bank_account_id')->unsigned();
-            $table->string('stripe_bank_account_id');
+            $table->string('claimant_bank_account_id');
         });
     }
 

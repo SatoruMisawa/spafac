@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Host;
 
+use App\BankAccount;
 use App\Repositories\BankAccountRepository;
-use Auth;
 use App\Http\Requests\CreateBankAccountRequest;
 use App\Http\Controllers\Controller;
-use Exception;
-use Log;
+use Auth;
 
 class BankAccountController extends Controller
 {
@@ -30,24 +29,34 @@ class BankAccountController extends Controller
 
     public function create(CreateBankAccountRequest $request) {
         try {
-            $bankAccount = Auth::user()->bankAccounts()->create(
+            $bankAccount = $this->createBankAccount($request);
+
+            $this->createClaimantBankAccount($request, $bankAccount);
+
+            return redirect()->route('host.index');
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => "something went wrong",
+            ]);
+        }
+    }
+
+    private function createBankAccount(CreateBankAccountRequest $request) {
+        return Auth::user()->bankAccount()->save(
+            $this->bankAccountRepository->new(
                 $request->only([
                     'bank_name', 'bank_code',
                     'branch_name', 'branch_code',
                     'account_number', 'account_holder',
                 ])
-            );
-    
-            $bankAccount->stripeBankAccount()->create(
-                $request->only(['stripe_bank_account_id'])
-            );
-    
-            return redirect()->route('host.index');
-        } catch (Exception $e) {
-            report($e);
-            return redirect()->back()->withErrors([
-                'message' => 'something went wrong',
-            ]);
-        }
+            )
+        );
     }
+
+    private function createClaimantBankAccount(CreateBankAccountRequest $request, BankAccount $bankAccount) {
+        return $bankAccount->claimantBankAccount()->create(
+            $request->only(['claimant_bank_account_id'])
+        );
+    }    
 }
