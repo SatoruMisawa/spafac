@@ -16,7 +16,7 @@ Route::group(['middleware' => 'guest:users'], function() {
 
 	Route::get('login', 'SessionController@new')->name('login');
 	Route::post('login', 'SessionController@create')->name('session.create');
-	Route::get('login/{provider}', 'SessionController@redirectToProvider');
+	Route::get('login/{provider}', 'SessionController@redirectToProvider')->name('session.provider.new');
 	Route::get('login/{provider}/callback', 'SessionController@handleProviderCallback');
 });
 

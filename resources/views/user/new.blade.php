@@ -127,9 +127,9 @@
 							<div class="login_box box">
 								<div class="sns_login">
 									<ul>
-										<li class="fb"><a href=""><img src="<?php echo url('assets/mypage/img/fb2.png'); ?>" alt=""><span>Facebookで登録</span></a></li>
-										<li class="ya"><a href=""><img src="<?php echo url('assets/mypage/img/ya.png'); ?>" alt=""><span>Yahoo!で登録</span></a></li>
-										<li class="gg"><a href=""><img src="<?php echo url('assets/mypage/img/gg.png'); ?>" alt=""><span>Googleで登録</span></a></li>
+										<li class="fb"><a href="{{ route('session.provider.new', 'facebook') }}"><img src="<?php echo url('assets/mypage/img/fb2.png'); ?>" alt=""><span>Facebookで登録</span></a></li>
+										<li class="ya"><a href="{{ route('session.provider.new', 'yahoojp') }}"><img src="<?php echo url('assets/mypage/img/ya.png'); ?>" alt=""><span>Yahoo!で登録</span></a></li>
+										<li class="gg"><a href="{{ route('session.provider.new', 'google') }}"><img src="<?php echo url('assets/mypage/img/gg.png'); ?>" alt=""><span>Googleで登録</span></a></li>
 									</ul>
 									<p class="signup-box__notes ta-c">Facebookを使ってSPACE FACTORYにログインできます。
 										<br class="sm-hide">ログイン以外の目的に使われることはありません。
