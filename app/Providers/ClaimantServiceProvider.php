@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Mocks\Claimant as MockClaimant;
 use App\Service\Claimant;
 use App\Service\Stripe;
 use Illuminate\Support\ServiceProvider;
@@ -26,7 +27,11 @@ class ClaimantServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Claimant::class, function() {
-            return new Stripe();
+            if (env('APP_ENV') !== 'testing') {
+                return new Stripe();   
+            }
+            
+            return new MockClaimant;
         });
     }
 }

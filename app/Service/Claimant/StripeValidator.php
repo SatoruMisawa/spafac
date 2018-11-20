@@ -6,17 +6,23 @@ use App\Exceptions\StripeValidationException;
 
 class StripeValidator {
     public function validateToCharge($params) {
-        if (!isset($params['amount'])) {
-            throw new StripeValidationException("parameter 'amount' is not set");
+        if (!isset($params['guest_price_with_fee'])) {
+            throw new StripeValidationException("parameter 'guest_price_with_fee' is not set");
         }
-        if ($params['amount'] <= 0) {
-            throw new StripeValidationException("'country' should be more than 1");
+        if ($params['guest_price_with_fee'] <= 0) {
+            throw new StripeValidationException("'guest_price_with_fee' should be more than 1");
+        }
+        if (!isset($params['host_reward'])) {
+            throw new StripeValidationException("parameter 'host_reward' is not set");
+        }
+        if ($params['host_reward'] <= 0) {
+            throw new StripeValidationException("'host_reward' should be more than 1");
         }
         if (!isset($params['source'])) {
             throw new StripeValidationException("parameter 'source' is not set");
         }
-        if (!isset($params['destination']['account_id'])) {
-            throw new StripeValidationException("parameter 'desitination.account_id' is not set");
+        if (!isset($params['destination'])) {
+            throw new StripeValidationException("parameter 'desitination' is not set");
         }
     }
 

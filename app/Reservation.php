@@ -7,14 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     protected $fillable = [
-        'user_id', 'plan_id',
+        'host_id', 'guest_id', 'apply_id', 'is_charged',
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function host() {
+        return $this->belongsTo(User::class, 'host_id');
     }
 
-    public function plan() {
-        return $this->belongsTo(Plan::class);
+    public function guest() {
+        return $this->belongsTo(User::class, 'guest_id');
+    }
+
+    public function apply() {
+        return $this->belongsTo(Apply::class);
+    }
+
+    public function getCharged() {
+        $this->is_charged = true;
+        $this->save();
     }
 }

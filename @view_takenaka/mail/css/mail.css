@@ -1,0 +1,251 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* --- reset css --- */
+/* http://meyerweb.com/eric/tools/css/reset/v2.0 | 20110126License: none (public domain)*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    position: relative;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+/* --- sccount setting page --- */
+body {
+    background: #f3f2f3;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", verdana, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/* --- ここから追加する --- */
+
+.mail_body {
+    width:100% !important;
+    min-width:100%;
+    margin:0;
+    padding:0;
+    line-height:22px;
+    font-size:14px;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust: 100%;
+    mso-line-height-rule: exactly; 
+    background-color:#EFEFEF;"
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+table,
+td {
+    border-collapse: collapse;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
+    }
+a {
+    text-decoration: underline;
+    color:#00c0ef;
+}
+img {
+    border: 0 none;
+    height: auto;
+    line-height: 1;
+    outline: none;
+    text-decoration: none;
+}
+a img {
+    border: 0 none;
+    text-decoration: none;
+}
+h1, h2, h3 {
+    margin: 0;
+    line-height: 1.5em;
+}
+h1 {
+    font-size: 23px;
+  }
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 15px;
+}
+p {
+    margin: 1em 0em 1.0em;
+    color: #333 ;
+    line-height: 1.8em;
+}
+/* Custom CSS?*/
+
+.judging_button{
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #00A1DE;
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.judgingh1{
+    font-size: 22px;
+    text-align: center;
+    margin: 30px 0px 0px;
+    font-weight: bold;
+}
+
+img.judginglogo {
+    width: 40%;
+    margin: 0px 120px;
+}
+
+img.judging_search {
+    width: 60%;
+}
+
+img.judging_sns {
+    width: 10%;
+}
+
+.wrapper {
+    width: 600px;
+}
+.content {
+    width: 100%;
+}
+.spacing {
+    padding-top: 2em;
+}
+.preheader {
+    font-size: 11px;
+    text-align: center;
+    padding-top: 10px;
+}
+.title {
+    margin: 0.7em 0.5em;
+    color: #004e2e;
+    text-align: center;
+}
+.content-list {
+    margin: 0.5em 0.5em;
+    padding: 10px;
+    list-style: square inside;
+    font-size: 14px;
+    line-height: 1.8em;
+}
+.footer-copyright {
+    padding: 0 0 0 1em;
+    font-size: 11px;
+    text-align: center;
+}
+
+table.judgingfooter {
+    background-color: #CCCCCC;
+}
+
+td.judging_footerinfo {
+    text-align: center;
+    color: #606160;
+    padding: 0 20px;
+}
+
+td.skgjtuif {
+    background: #fff;
+}
+
+h2.footertitle {
+    font-weight: bold;
+}
+
+p.footer_sentence {
+    font-size: 13px;
+    padding: 0 30px;
+}
+
+p.sp_mai_ldhtBf {
+    font-size: 12px;
+    color: #666;
+}
+
+/* -----------------------------
+   mobile設定
+--------------------------------*/
+
+@media only screen and (max-width: 479px) {
+table[class="wrapper"] {
+    margin: 0 auto;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+table[class="content"] {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+img[class="img-responsive"] {
+    width: 100% !important;
+    max-width: 100%;
+}
+td[class="button-responsive"] {
+    width: 100% !important;
+    display: block;
+    box-sizing: border-box;
+}
+button-img {
+    width: 9px !important;
+    height: 15px !important;
+    margin-left: 36px !important;
+    vertical-align: bottom !important;
+}
+td[class="3column-responsive"] {
+    width: 100% !important;
+    display: block;
+    box-sizing: border-box;
+    margin: 20px 0;
+    padding: 0 16px;
+}
+td[class="3column-responsive"] img {
+    width: 85% !important;
+    max-width: 85%;
+    margin: 0 auto;
+}
+p {
+    margin: 1.0em 1.0em 1.0em;
+}
+}
