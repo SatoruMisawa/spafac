@@ -310,53 +310,53 @@
 			var maker;
 
 			$('#zip-input').change(function () {
-				var address = $(this).val();
+				var address = $(this).val()
 
-				var geocoder = new google.maps.Geocoder();
+				var geocoder = new google.maps.Geocoder()
 				geocoder.geocode({
 					address: address
 				}, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
-						map.setCenter(results[0].geometry.location);
-						marker.setPosition(results[0].geometry.location);
+						map.setCenter(results[0].geometry.location)
+						marker.setPosition(results[0].geometry.location)
 					}
-				});
-			});
+				})
+			})
 
 			function initMap() {
 
-				var lat = $('#latitude').val();
-				var lng = $('#longitude').val();
+				var lat = $('#latitude').val()
+				var lng = $('#longitude').val()
 				if (!lat) {
-					lat = 34.702715; //35.681429;
-					$('#latitude').val(lat);
+					lat = 34.702715 //35.681429
+					$('#latitude').val(lat)
 				}
 				if (!lng) {
-					lng = 135.495908; //139.767095;
-					$('#longitude').val(lng);
+					lng = 135.495908 //139.767095
+					$('#longitude').val(lng)
 				}
-				var latlng = new google.maps.LatLng(lat, lng);
+				var latlng = new google.maps.LatLng(lat, lng)
 
 				map = new google.maps.Map(document.getElementById('map'), {
 					center: latlng,
 					zoom: 14
-				});
+				})
 
 				marker = new google.maps.Marker({
 					map: map,
 					position: latlng,
 					draggable: true
-				});
+				})
 
 				google.maps.event.addListener(marker, 'dragend', function (ev) {
 
-					$('#latitude').val(ev.latLng.lat());
-					$('#longitude').val(ev.latLng.lng());
+					$('#latitude').val(ev.latLng.lat())
+					$('#longitude').val(ev.latLng.lng())
 
-				});
+				})
 
 			}
-			initMap();
-		});
+			initMap()
+		})
 	</script>
 @endsection
