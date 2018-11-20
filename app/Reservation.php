@@ -21,4 +21,9 @@ class Reservation extends Model
     public function apply() {
         return $this->belongsTo(Apply::class);
     }
+
+    public function getCharged() {
+        $this->is_charged = true;
+        $this->save();
+    }
 }

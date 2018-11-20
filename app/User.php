@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Service\Claimant;
+use App\Service\FeeCollector;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Carbon\Carbon;
@@ -32,10 +33,12 @@ class User extends Authenticatable
 
 	private $claimant;
 
+	private $feeCollector;
+
 	public function __construct($params = []) {
 		parent::__construct($params);
-
 		$this->claimant = app()->make(Claimant::class);
+		$this->feeCollector = app()->make(FeeCollector::class);
 	}
 
 	public function claimantUser() {
@@ -45,6 +48,10 @@ class User extends Authenticatable
 	public function stripeCharges() {
 		return $this->hasMany(StripeCharge::class);
 	}	
+
+	public function chargeHistories() {
+		return $this->hasMany(ChargeHistory::class);
+	}
 
 	public function facilities() {
 		return $this->hasMany(Facility::class);
@@ -69,7 +76,7 @@ class User extends Authenticatable
 	public function bankAccount() {
 		return $this->hasOne(BankAccount::class);
 	}
-			
+
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(30);
 		$this->save();
@@ -122,21 +129,30 @@ class User extends Authenticatable
 			return;
 		}
 
-		$apply->user->reservations()->create([
+		Reservation::create([
+			'host_id' => $apply->plan->planner()->id,
+			'guest_id' => $apply->user->id,
 			'apply_id' => $apply->id,
 		]);
 	}
 
 	public function chargeFor(Reservation $reservation) {
+		$this->feeCollector->setPrice($reservation->appley);
 		$charge = $this->claimant->charge([
-			'amount' => $reservation->plan->price_per_hour,
-			'source' => $reservation->user->claimantUser->claimant_source_id,
+			'guet_price' => $this->feeCollector->calculateGuestPriceWithFee(),
+			'host_reward' => $this->feeCollector->calculateHostReward(),
+			'source' => $reservation->guest->claimantUser->claimant_source_id,
 			'destination' => $this->claimantUser->claimant_account_id,
 		]);
 		
-		$this->stripeCharges()->create([
+		$reservation->getCharged();
+
+		$chargeHistory = $reservation->guest->chargeHistories()->create([
 			'reservation_id' => $reservation->id,
-			'stripe_charge_id' => $charge->id,
+		]);
+
+		$chargeHistory->claimantChargeHistory()->create([
+			'claimant_charge_history_id' => $charge->id,
 		]);
 	}
 
