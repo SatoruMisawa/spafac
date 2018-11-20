@@ -21,7 +21,7 @@ class SpaceAttachmentController extends Controller
 
     public function new(Space $space) {
         try {
-            return view('host.space.image.new', compact('space'));
+            return view('host.space.attachment.new', compact('space'));
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([

@@ -38,7 +38,7 @@ class SpaceControllerTest extends TestCase
         return $this->loginWithTesterIfDebug()
         ->loginWithUser(User::find($facility->user_id))
         ->post(route('host.facility.space.create', $facility->id), $data)
-        ->assertRedirect(route('host.space.image.new', 1));
+        ->assertRedirect(route('host.space.attachment.new', 1));
     }
 
     public function testEdit() {

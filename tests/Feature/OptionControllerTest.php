@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Space;
+use App\Plan;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -14,20 +14,20 @@ class OptionControllerTest extends TestCase
     use RefreshDatabase;
 
     public function testNew() {
-        $space = factory(Space::class)->create();
+        $plan = factory(Plan::class)->create();
         $response = $this->loginWithTesterIfDebug()
-                        ->loginWithUser(User::find($space->user_id))
-                        ->get(route('host.space.option.new', $space->id));
+                        ->loginWithUser(User::find($plan->space->user_id))
+                        ->get(route('host.space.plan.option.new', [$plan->space->id, $plan->id]));
         $response->assertStatus(200)
                 ->assertSee('新規オプション');
     }
 
     public function testCreate() {
         try {
-            $space = factory(Space::class)->create();
+            $plan = factory(Plan::class)->create();
             $data = $this->data();
-            $this->assertPostRequestToCreateOptions($data, $space);
-            $this->assertOptionsInDB($data, $space->id);
+            $this->assertPostRequestToCreateOptions($data, $plan);
+            $this->assertOptionsInDB($data, $plan->id);
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
@@ -38,32 +38,32 @@ class OptionControllerTest extends TestCase
             'options' => [
                 [
                     'name' => $this->faker->name(),
+                    'description' => $this->faker->sentence(),
                     'price' => $this->faker->numberBetween(1, 9999),
-                    'limit' => $this->faker->numberBetween(1, 99),
                 ],
                 [
                     'name' => $this->faker->name(),
+                    'description' => $this->faker->sentence(),
                     'price' => $this->faker->numberBetween(1, 9999),
-                    'limit' => null,
                 ],
             ],
         ];
     }
 
-    private function assertPostRequestToCreateOptions($data, Space $space) {
+    private function assertPostRequestToCreateOptions($data, Plan $plan) {
         return $this->loginWithTesterIfDebug()
-                    ->loginWithUser(User::find($space->user_id))
-                    ->post(route('host.space.option.create', $space->id), $data)
-                    ->assertRedirect(route('host.space.messagetemplate.new', $space->id));
+                    ->loginWithUser(User::find($plan->space->user_id))
+                    ->post(route('host.space.plan.option.create', [$plan->space->id, $plan->id]), $data)
+                    ->assertRedirect(route('host.space.messagetemplate.new', $plan->space->id));
     }
 
-    private function assertOptionsInDB($data, $spaceID) {
+    private function assertOptionsInDB($data, $planID) {
         foreach ($data['options'] as $option) {
             $this->assertDatabaseHas('options', [
-                'space_id' => $spaceID,
+                'plan_id' => $planID,
                 'name' => $option['name'],
+                'description' => $option['description'],
                 'price' => $option['price'],
-                'limit' => $option['limit'],
             ]);
         }
     }
