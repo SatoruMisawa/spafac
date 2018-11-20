@@ -3,8 +3,10 @@
 namespace App;
 
 use App\Service\Claimant;
+use App\Service\FeeCollector;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -31,10 +33,12 @@ class User extends Authenticatable
 
 	private $claimant;
 
+	private $feeCollector;
+
 	public function __construct($params = []) {
 		parent::__construct($params);
-
 		$this->claimant = app()->make(Claimant::class);
+		$this->feeCollector = app()->make(FeeCollector::class);
 	}
 
 	public function claimantUser() {
@@ -44,6 +48,10 @@ class User extends Authenticatable
 	public function stripeCharges() {
 		return $this->hasMany(StripeCharge::class);
 	}	
+
+	public function chargeHistories() {
+		return $this->hasMany(ChargeHistory::class);
+	}
 
 	public function facilities() {
 		return $this->hasMany(Facility::class);
@@ -68,7 +76,7 @@ class User extends Authenticatable
 	public function bankAccount() {
 		return $this->hasOne(BankAccount::class);
 	}
-			
+
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(30);
 		$this->save();
@@ -84,17 +92,31 @@ class User extends Authenticatable
 		$this->save();
 	}
 
-	public function apply(Plan $plan) {
+	public function applyHourlyPlan(Plan $plan, int $hours) {
 		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
-
 		if ($plan->isAlreadyApplied()) {
 			return;
 		}
 
 		$this->applies()->create([
 			'plan_id' => $plan->id,
+			'price' => $plan->price_per_hour * $hours,
+		]);
+	}
+
+	public function applyDaylyPlan(Plan $plan) {
+		if ($this->isSameAs($plan->planner())) {
+			return;
+		}
+		if ($plan->isAlreadyApplied()) {
+			return;
+		}
+
+		$this->applies()->create([
+			'plan_id' => $plan->id,
+			'price' => $plan->price_per_day,
 		]);
 	}
 
@@ -107,24 +129,30 @@ class User extends Authenticatable
 			return;
 		}
 
-		$apply->user->reservations()->create([
-			'plan_id' => $apply->plan_id,
+		Reservation::create([
+			'host_id' => $apply->plan->planner()->id,
+			'guest_id' => $apply->user->id,
+			'apply_id' => $apply->id,
 		]);
 	}
 
 	public function chargeFor(Reservation $reservation) {
+		$this->feeCollector->setPrice($reservation->appley);
 		$charge = $this->claimant->charge([
-			'amount' => $reservation->plan->amount,
-			// 'source' => $reservation->user->stripeUser->stripe_source_id,
-			'source' => 'tok_1DRiDdDX6z5hkjQAfFSM8xY8',
-			'destination' => [
-				'account_id' => $this->stripeUser->stripe_account_id,
-			],
+			'guet_price' => $this->feeCollector->calculateGuestPriceWithFee(),
+			'host_reward' => $this->feeCollector->calculateHostReward(),
+			'source' => $reservation->guest->claimantUser->claimant_source_id,
+			'destination' => $this->claimantUser->claimant_account_id,
 		]);
 		
-		$this->stripeCharges()->create([
+		$reservation->getCharged();
+
+		$chargeHistory = $reservation->guest->chargeHistories()->create([
 			'reservation_id' => $reservation->id,
-			'stripe_charge_id' => $charge->id,
+		]);
+
+		$chargeHistory->claimantChargeHistory()->create([
+			'claimant_charge_history_id' => $charge->id,
 		]);
 	}
 
@@ -151,35 +179,35 @@ class User extends Authenticatable
 			'account_id' => $this->claimantUser->claimant_account_id,
 			'legal_entity' => [
 				'address_kana' => [
-					'postal_code' => '郵便番号',
-					'state' => '都道府県(かな)',
-					'city' => '市区群(かな)',
-					'town' => '町村名、丁目を含む(かな)',
-					'line1' => '番地(かな)',
+					'postal_code' => '',
+					'state' => '',
+					'city' => '',
+					'town' => '',
+					'line1' => '',
 				],
 				'address_kanji' => [
-					'postal_code' => '郵便番号',
-					'state' => '都道府県(漢字)',
-					'city' => '市区群(漢字)',
-					'town' => '町村名、丁目を含む(漢字)',
-					'line1' => '番地(漢字)',
+					'postal_code' => '',
+					'state' => '',
+					'city' => '',
+					'town' => '',
+					'line1' => '',
 				],
 				'dob' => [
-					'day' => '31',
-					'month' => '1',
-					'year' => '1998',
+					'day' => '',
+					'month' => '',
+					'year' => '',
 				],
 				'first_name_kana' => 'おおさか',
 				'first_name_kanji' => '大阪',
 				'last_name_kana' => 'たろう',
 				'last_name_kanji' => '太郎',
-				'gender' => '男',
-				'phone_number' => '00000000',
-				'type' => 'indivisual',
+				'gender' => 'male',
+				'phone_number' => '',
+				'type' => 'individual',
 			],
 			'tos_acceptance' => [
-				'date' => 'date',
-				'ip' => 'ip',
+				'date' => Carbon::now()->timestamp,
+				'ip' => request()->ip(),
 			],
 		]);
 	}
