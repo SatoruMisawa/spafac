@@ -8,10 +8,10 @@
 				<a href="<?php echo url('host');?>">スペースオーナー登録する≫</a>
 			</li>
 			<li>
-				<a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a>
+				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a> -->
 			</li>
 			<li>
-				<a href="/coming-soon"><img src="/assets/mypage/img/banner-google.png"></a>
+				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-google.png"></a> -->
 			</li>
 		</ul>
 	</div>
@@ -115,7 +115,7 @@
 			ヒルトンプラザウエストオフィスタワー19階<br>-->
 			サービスその他に関するお問い合わせ<br>
 			<a href="/inquiry">info@spafac.com</a></p>
-		<p class="address">
+		<!-- <p class="address">
 <a href="/inquiry"><svg version="1.1" id="email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" width="50px" height="50px" viewBox="615 615 50 50" enable-background="new 615 615 50 50" xml:space="preserve">
 	<path fill="#FFFFFF" d="M650.064,644.009c-2.201,1.733-5.892,5.389-10.063,5.366c-4.192,0.022-7.93-3.687-10.064-5.367
@@ -130,7 +130,7 @@
 		h40.625V629.922z"/>
 </svg></a>
 		</p>
-        <p class="mailmaga-bt"><a href="https://magazine.spafac.com/mailmaga/">メルマガ購読</a></p>
+        <p class="mailmaga-bt"><a href="https://magazine.spafac.com/mailmaga/">メルマガ購読</a></p> -->
 		</div>
         <div class="foot f-links">
 		<ul class="links">
@@ -141,31 +141,22 @@
         </div>
         <div class="foot f-logo">
         <ul>
-        <li>
         <a href="/">
-        <img src="/assets/images/footerIcon01.png">
+        <img src="/assets/images/footer_logo_stay.png">
         </a>
-        </li>
-        <li>
-        <a href="/">
-        <img src="/assets/images/footerIcon02.png">
-        </a>
-        </li>
-        <li>
         <a href="/stay">
-        <img src="/assets/images/footerIcon03.png">
+        <img src="/assets/images/footer_logo_spacemagazine.png">
         </a>
-        </li>
         </ul>
-		@if (Auth::guard('users')->check())
+		<!-- @if (Auth::guard('users')->check())
         <p class="red txtC">ログイン中</p>
-        @endif
+        @endif -->
         </div>
        </div> 
 	</div>
 	
 	<div class="site-footer__copyright">
-		<p>© スペースファクトリー 2018<br>Copyright © スペースファクトリー Co., Ltd Allrights reserved.</p>
+		<p>© 2018-SPACE FACTORY Co., Ltd Allrights reserved.</p>
 	</div>
 
 </footer>
