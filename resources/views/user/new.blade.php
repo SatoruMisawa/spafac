@@ -75,12 +75,15 @@
 												<div class="" aria-disabled="false" style="position: relative; border: 0px; width: 100%; height: 100%;">
 													<div class="signup-box__wrapper-form-profile__img">
 														<div class="settings-img__change-img">
-															<label for="file" class="button-gray settings-img">
+															<label for="profile-image-input" class="button-gray settings-img">
 																<span class="icon-ll"><i class="fa fa-camera"></i></span><br>ファイルを変更
 															</label>
 														</div>
 													</div>
-													<input name="profile_image" type="file" id="file" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; opacity: 1e-05; pointer-events: none;">
+													<div class="profile-image-preview-container" style="width: 120px; height: 116px;">
+														<img id="profile-image-prview" style="position:relative; top: 50%; transform: translateY(-50%);">
+													</div>
+													<input name="profile_image" type="file" id="profile-image-input" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; opacity: 1e-05; pointer-events: none;">
 												</div>
 											</div>
 										</div>
@@ -152,4 +155,36 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('script')
+<script>
+	$(function() {
+		!(function() {
+			$('#profile-image-input').change(function(e) {
+				var file = e.target.files[0],
+				reader = new FileReader(),
+				$preview = $("#profile-image-prview")
+				t = this
+
+				if(file.type.indexOf("image") < 0){
+					return false
+				}
+
+
+				reader.onload = (function(file) {
+					return function(e) {
+						$preview.attr({
+							src: e.target.result,
+							width: "120px",
+							title: file.name
+						})
+					}
+				})(file)
+
+    			reader.readAsDataURL(file)
+			})
+		} ())
+	})
+</script>
 @endsection

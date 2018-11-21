@@ -33,6 +33,8 @@ var wpcf7 = {"apiSettings":{"root":"https:\/\/space-factory-kinofumi.c9users.io\
 <script type='text/javascript' src='/wp-content/themes/space-factory/js/default.js?ver=20180215'></script>
 <script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.9.5'></script>
 <script src="//yubinbango.github.io/yubinbango/yubinbango.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 @yield('script')
 @include('to-top')
 </body>
