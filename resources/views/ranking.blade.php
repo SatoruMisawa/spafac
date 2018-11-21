@@ -21,4 +21,4 @@
 
        </ul>
 </div>
-	<p class="more_lank"><a href="/search">ランキングをもっと見る</a></p>
+	<p class="more_lank"><a href="/search">新着スペースをみる</a></p>
