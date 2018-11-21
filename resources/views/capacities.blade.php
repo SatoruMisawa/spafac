@@ -18,7 +18,8 @@
    <div class="wrap party_abt">
 <p class="txtL">やってみたいことから、場所や目的をキーワードで検索してみましょう。思いがけないスペースと巡り会えるかもしれません。関西地域密着で豊富な写真と空きスペース情報で1時間から１日からの利用可能！地図から直接検索もできます。設備も充実。予約カレンダーツールで空いている日を検索。スマホやパソコンでいつでもどこでもすぐに予約できます。使い方は様々です。気に入ったスペースを見つけて今すぐ活用しよう！</p-->
    <div class="wrap party_abt">
-   <p><a href="{{ action('SearchController@capacitiesindex', '1' ) }}">1人</a>
+   <p>
+		 <a href="{{ action('SearchController@capacitiesindex', '1' ) }}">1人</a>
 		 <a href="{{ action('SearchController@capacitiesindex', '5' ) }}">5人</a>
 		 <a href="{{ action('SearchController@capacitiesindex', '10' ) }}">10人</a>
 		 <a href="{{ action('SearchController@capacitiesindex', '20' ) }}">20人</a>

@@ -164,6 +164,7 @@ Route::get('search/{space_usage_id}', '\App\Http\Controllers\SearchController@sp
 Route::get('search/{area}', '\App\Http\Controllers\SearchController@areasearchindex');
 Route::get('search/amenities/{amenities}', '\App\Http\Controllers\SearchController@amenitiesindex');
 Route::get('search/capacities/{capacities}', '\App\Http\Controllers\SearchController@capacitiesindex');
+Route::get('search/facilities/{facilities}', '\App\Http\Controllers\SearchController@facility_kindsindex');
 Route::get('search/', '\App\Http\Controllers\SearchController@searchindex');
 
 Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@media');

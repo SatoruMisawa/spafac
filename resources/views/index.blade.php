@@ -19,9 +19,9 @@
 </div>
 <div class="search_button gray">
 	<div class="search_width">
-		<a class="big_button" href="<?php echo url('areas'); ?>">エリアから探す</a>
+
 		<ul>
-			<li><a href="<?php echo url('amenities'); ?>">施設から探す</a></li>
+			<li><a class="" href="<?php echo url('areas'); ?>">エリアから探す</a></li>
 			<li><a href="<?php echo url('capacities'); ?>">収容人数から探す</a></li>
 			<li><a href="<?php echo url('keywords'); ?>">キーワードから探す</a></li>
 			<li><a href="<?php echo url('amenities'); ?>">設備から探す</a></li>
@@ -38,7 +38,7 @@
 				</div>
 				<div class="category_box_wrap">
 					<div class="category_box_icon">
-						<a href="/purpose/sales">
+						<a href="/purpose/sales/1">
 							<img src="<?php echo url('assets/mypage/img/cat-00.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>物販・POP Up Store</p>
@@ -47,7 +47,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/party">
+						<a href="/purpose/party/2">
 							<img src="<?php echo url('assets/mypage/img/cat-1.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>飲食・パーティ</p>
@@ -56,7 +56,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/exhibition">
+						<a href="/purpose/exhibition/3">
 							<img src="<?php echo url('assets/mypage/img/cat-2.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>催事・展示会</p>
@@ -66,7 +66,7 @@
 					</div>
 
 					<div class="category_box_icon">
-						<a href="/purpose/event">
+						<a href="/purpose/event/4">
 							<img src="<?php echo url('assets/mypage/img/cat-4.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>イベントプロモーション・広告</p>
@@ -75,7 +75,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/meeting">
+						<a href="/purpose/meeting/5">
 							<img src="<?php echo url('assets/mypage/img/cat-5.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>オフィス・会議</p>
@@ -84,7 +84,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/stay">
+						<a href="/purpose/meeting/4">
 							<img src="<?php echo url('assets/mypage/img/cat-6.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>宿泊・民泊</p>
@@ -93,7 +93,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/wedding">
+						<a href="/purpose/wedding/5">
 							<img src="<?php echo url('assets/mypage/img/cat-7.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>結婚式・お祝いシーン</p>
@@ -102,7 +102,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/performance">
+						<a href="/purpose/performance/6">
 							<img src="<?php echo url('assets/mypage/img/cat-80.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>演奏</p>
@@ -112,7 +112,7 @@
 					</div>
 
 					<div class="category_box_icon">
-						<a href="/purpose/location">
+						<a href="/purpose/location/7">
 							<img src="<?php echo url('assets/mypage/img/cat-8.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>ロケ撮影･写真･動画</p>
@@ -121,7 +121,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/parking">
+						<a href="/purpose/parking/8">
 							<img src="<?php echo url('assets/mypage/img/cat-7_bk.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>駐車場・空き地・倉庫</p>
@@ -130,7 +130,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/sports">
+						<a href="/purpose/sports/9">
 							<img src="<?php echo url('assets/mypage/img/cat-10.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>スポーツ・ボディメイク</p>
@@ -139,7 +139,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/other">
+						<a href="/purpose/other/10">
 							<img src="<?php echo url('assets/mypage/img/cat-9.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>その他</p>
@@ -155,37 +155,37 @@
 					<div class="category_text_menu">
 						<ul>
 
-							<li><a href="/search/">イベント</a></li>
-							<li><a href="/search">結婚式場</a></li>
-							<li><a href="/search">オフィス</a></li>
-							<li><a href="/search">ホール</a></li>
-							<li><a href="/search">貸し会議室</a></li>
-							<li><a href="/search">スタジオ</a></li>
-							<li><a href="/search">カフェ</a></li>
-							<li><a href="/search">レストラン</a></li>
-							<li><a href="/search">映画館</a></li>
-							<li><a href="/search">ギャラリー</a></li>
-							<li><a href="/search">バー</a></li>
-							<li><a href="/search">スポーツ施設</a></li>
-							<li><a href="/search">娯楽施設</a></li>
-							<li><a href="/search">ホテル</a></li>
-							<li><a href="/search">住宅</a></li>
-							<li><a href="/search">倉庫</a></li>
-							<li><a href="/search">ワイナリ・蔵</a></li>
-							<li><a href="/search">百貨店</a></li>
-							<li><a href="/search">オフィス街</a></li>
-							<li><a href="/search">商店街アーケード</a></li>
-							<li><a href="/search">ロードサイド</a></li>
-							<li><a href="/search">駅近　ロータリー</a></li>
-							<li><a href="/search">軒先き</a></li>
-							<li><a href="/search">移動販売車設置</a></li>
-							<li><a href="/search">駅地下</a></li>
-							<li><a href="/search">一戸建て</a></li>
-							<li><a href="/search">テラス</a></li>
-							<li><a href="/search">看板</a></li>
-							<li><a href="/search">掲示スペース</a></li>
-							<li><a href="/search">駐車場</a></li>
-							<li><a href="/search">その他</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '1' ) }}">イベント</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '2' ) }}">結婚式場</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '3' ) }}">オフィス</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '4' ) }}">ホール</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '5' ) }}">貸し会議室</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '6' ) }}">スタジオ</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '7' ) }}">カフェ</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '8' ) }}">レストラン</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '9' ) }}">映画館</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '10' ) }}">ギャラリー</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '11' ) }}">バー</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '12' ) }}">スポーツ施設</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '13' ) }}">娯楽施設</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '14' ) }}">ホテル</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '15' ) }}">住宅</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '16' ) }}">倉庫</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '17' ) }}">ワイナリ・蔵</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '18' ) }}">百貨店</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '19' ) }}">オフィス街</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '20' ) }}">商店街アーケード</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '21' ) }}">ロードサイド</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '22' ) }}">駅近　ロータリー</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '23' ) }}">軒先き</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '24' ) }}">移動販売車設置</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '25' ) }}">駅地下</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '26' ) }}">一戸建て</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '27' ) }}">テラス</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '28' ) }}">看板</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '29' ) }}">掲示スペース</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '30' ) }}">駐車場</a></li>
+							<li><a href="{{ action('SearchController@facility_kindsindex', '31' ) }}">その他</a></li>
 
 
 						</ul>
@@ -520,39 +520,6 @@
 					</h3>
 		</div>
 
-
-		<div class="col-4 col-md-4">
-
-			<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
-			<div class="sp-top-rakinbox sp-topbox-area">
-				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-						<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
-						<span class="sp-top-ranking__price-icon">
-							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-							<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-							<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-						</span>
-						</p>
-				</div>
-
-					<div class="sp-top-ranking__body">
-						<div class="sp-top-ranking__body-inner">
-							<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
-						</div>
-						<ul class="sp-top-ranking__body-info">
-							<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
-							<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
-						</ul>
-					</div>
-
-			</div>
-			</a>
-					<h3 class="staff-title" style="background-color: #4abfe6;">
-					<span class="star">★★★★★</span><br/>
-					<span>{{$data->about}}</span>
-					</h3>
-		</div>
 		@endforeach
 		</div>
 	</div>
@@ -601,44 +568,11 @@
 						</h3>
 			</div>
 
-
-			<div class="col-4 col-md-4">
-
-				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
-				<div class="sp-top-rakinbox sp-topbox-area">
-					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
-							<span class="sp-top-ranking__price-icon">
-								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-								<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-							</span>
-							</p>
-					</div>
-
-						<div class="sp-top-ranking__body">
-							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
-							</div>
-							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
-								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
-							</ul>
-						</div>
-
-				</div>
-				</a>
-						<h3 class="staff-title" style="background-color: #4abfe6;">
-						<span class="star">★★★★★</span><br/>
-						<span>{{$data->about}}</span>
-						</h3>
-			</div>
 			@endforeach
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/party">飲食・パーティで利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/party/2">飲食・パーティで利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section class="gray pattern_1" id="parking">
@@ -682,43 +616,11 @@
 						</h3>
 			</div>
 
-			<div class="col-4 col-md-4">
-
-				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
-				<div class="sp-top-rakinbox sp-topbox-area">
-					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
-							<span class="sp-top-ranking__price-icon">
-								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-								<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-							</span>
-							</p>
-					</div>
-
-						<div class="sp-top-ranking__body">
-							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
-							</div>
-							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
-								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
-							</ul>
-						</div>
-
-				</div>
-				</a>
-						<h3 class="staff-title" style="background-color: #4abfe6;">
-						<span class="star">★★★★★</span><br/>
-						<span>{{$data->about}}</span>
-						</h3>
-			</div>
 			@endforeach
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/office">オフィス・会議で利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/office/5">オフィス・会議で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section id="reg_now_3">
@@ -770,43 +672,12 @@
 						</h3>
 			</div>
 
-			<div class="col-4 col-md-4">
 
-				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
-				<div class="sp-top-rakinbox sp-topbox-area">
-					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
-							<span class="sp-top-ranking__price-icon">
-								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-								<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-							</span>
-							</p>
-					</div>
-
-						<div class="sp-top-ranking__body">
-							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
-							</div>
-							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
-								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
-							</ul>
-						</div>
-
-				</div>
-				</a>
-						<h3 class="staff-title" style="background-color: #4abfe6;">
-						<span class="star">★★★★★</span><br/>
-						<span>{{$data->about}}</span>
-						</h3>
-			</div>
 			@endforeach
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/event">イベントプロモーション・広告で利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/event/4">イベントプロモーション・広告で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section class="gray pattern_1" id="parking">
@@ -886,7 +757,7 @@
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/exhibitionhall">催事・展示会で利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/exhibitionhall/3">催事・展示会で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section class="gray pattern_1" id="parking">
@@ -930,7 +801,7 @@
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/performance">演奏で利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/performance/8">演奏で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section class="gray pattern_1" id="parking">
@@ -974,7 +845,7 @@
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/location">ロケ撮影･写真･動画で利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/location/9">ロケ撮影･写真･動画で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 
@@ -1031,7 +902,7 @@
 		</div>
 	　</div>
 	</div>
-	<a class="detail" href="/purpose/wedding">結婚式・お祝いシーンで利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/wedding/7">結婚式・お祝いシーンで利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section class="gray pattern_1" id="parking">
@@ -1075,7 +946,7 @@
 		</div>
 	　</div>
 	</div>
-	<a class="detail" href="/purpose/parking">オフィスで利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/parking/10">オフィスで利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 
@@ -1120,7 +991,7 @@
 		</div>
 	　</div>
 	</div>
-	<a class="detail" href="/purpose/sports">スポーツで利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section id="reg_now_5">

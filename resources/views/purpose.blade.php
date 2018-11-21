@@ -294,7 +294,22 @@
     <div class="party_search_list">
    <h2>収容人数から探す</h2>
    <div class="wrap party_abt">
-   <p><a href="/search">1人</a><a href="/search">5人</a><a href="/search">10人</a><a href="/search">20人</a><a href="/search">30人</a><a href="/search">40人</a><a href="/search">50人</a><a href="/search">100人</a><a href="/search">200人</a><a href="/search">300人</a><a href="/search">400人</a><a href="/search">500人</a><a href="/search">1000人</a><a href="/search">10000人</a></p>
+   <p>
+		 <a href="{{ action('SearchController@capacitiesindex', '1' ) }}">1人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '5' ) }}">5人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '10' ) }}">10人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '20' ) }}">20人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '30' ) }}">30人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '40' ) }}">40人</a>
+	   <a href="{{ action('SearchController@capacitiesindex', '50' ) }}">50人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '100' ) }}">100人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '200' ) }}">200人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '300' ) }}">300人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '400' ) }}">400人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '500' ) }}">500人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '1000' ) }}">1000人</a>
+		 <a href="{{ action('SearchController@capacitiesindex', '10000' ) }}">10000人</a></p>
+	 </p>
    </div>
     </div>
 
@@ -302,8 +317,35 @@
    <h2>キーワードから探す</h2>
    <div class="wrap party_abt">
 
-<p><a href="/search">イベント</a><a href="/search">結婚式場</a><a href="/search">オフィス</a><a href="/search">ホール</a><a href="/search">貸会議室</a><a href="/search">スタジオ</a><a href="/search">カフェ</a><a href="/search">レストラン</a><a href="/search">映画館</a>
-<a href="/search">ギャラリー</a><a href="/search">バー</a><a href="/search">スポーツ施設</a><a href="/search">娯楽施設</a><a href="/search">ホテル</a><a href="/search">住宅</a><a href="/search">倉庫</a><a href="/search">ワイナリー</a><a href="/search">蔵</a><a href="/search">百貨店</a><a href="/search">オフィス街</a><a href="/search">商店街</a><a href="/search">アーケード</a><a href="/search">ロードサイド</a><a href="/search">駅近</a><a href="/search">ロータリー</a><a href="/search">軒先</a><a href="/search">駅地下</a></p>
+<p>
+	<a href="/search">イベント</a>
+	<a href="/search">結婚式場</a>
+	<a href="/search">オフィス</a>
+	<a href="/search">ホール</a>
+	<a href="/search">貸会議室</a>
+	<a href="/search">スタジオ</a>
+	<a href="/search">カフェ</a>
+	<a href="/search">レストラン</a>
+	<a href="/search">映画館</a>
+　<a href="/search">ギャラリー</a>
+	<a href="/search">バー</a>
+	<a href="/search">スポーツ施設</a>
+	<a href="/search">娯楽施設</a>
+	<a href="/search">ホテル</a>
+	<a href="/search">住宅</a>
+	<a href="/search">倉庫</a>
+	<a href="/search">ワイナリー</a>
+	<a href="/search">蔵</a>
+	<a href="/search">百貨店</a>
+	<a href="/search">オフィス街</a>
+	<a href="/search">商店街</a>
+	<a href="/search">アーケード</a>
+	<a href="/search">ロードサイド</a>
+	<a href="/search">駅近</a>
+	<a href="/search">ロータリー</a>
+	<a href="/search">軒先</a>
+	<a href="/search">駅地下</a>
+</p>
    </div>
 
     </div>
