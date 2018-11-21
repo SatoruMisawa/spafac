@@ -6,7 +6,7 @@
 
 <ul class="table_list_menu">
 <li>
-<a href="/search">北区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">北区</a>
     <ul class="table_list_menu_sec">
     <li><a href="/search">梅田</a></li>
     </ul>
@@ -79,7 +79,7 @@
 </tbody>
 
 <tbody>
-<tr>		
+<tr>
 <td rowspan="7" class="rowspan">堺市</td><td>
 
 
@@ -172,7 +172,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">阪神南地域</td>
 <td>
 <ul class="table_list_menu">
@@ -196,7 +196,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">阪神北地域</td><td>
 <ul class="table_list_menu">
 <li><a href="/search">伊丹市</a></li>
@@ -209,7 +209,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">東播磨地域</td><td>
 
 <ul class="table_list_menu">
@@ -228,7 +228,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">北磻磨地域</td><td>
 <ul class="table_list_menu">
 <li><a href="/search">西脇市</a></li>
@@ -242,7 +242,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">中播磨地域</td><td>
 <ul class="table_list_menu">
 <li><a href="/search">姫路市</a></li>
@@ -254,7 +254,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">西播磨地域</td><td>
 <ul class="table_list_menu">
 <li><a href="/search">相生市</a></li>
@@ -269,7 +269,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">但馬地域</td><td>
 <ul class="table_list_menu">
 <li><a href="/search">豊岡市</a></li>
@@ -282,7 +282,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">丹波地域</td><td>
 <ul class="table_list_menu">
 <li><a href="/search">篠山市</a></li>
@@ -292,7 +292,7 @@
 </tr>
 </tbody>
 <tbody>
-<tr class="top_border">	
+<tr class="top_border">
 <td class="rowspan">淡路島</td>
 <td>
 <ul class="table_list_menu">
@@ -325,7 +325,7 @@
     <ul class="table_list_menu_sec">
     <li><a href="/search">京都</a></li>
     </ul>
-</li>    
+</li>
 <li><a href="/search">南区</a></li>
 <li><a href="/search">右京区</a></li>
 <li><a href="/search">西京区</a></li>
@@ -372,7 +372,7 @@ if ($(this).parents('tbody').hasClass("MaxHeight")) {
 	$(this).html("▼ひらく");
 	$(this).css({"top":"1em","bottom":"inherit"});
 }
-	
+
     });
 });
 </script>

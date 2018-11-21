@@ -256,8 +256,7 @@
     <div class="party_search_list attention_area">
    <h2>注目のエリア</h2>
    <ul>
-   <li><a href="/search">
-   <span><img src="/assets/images/party/umeda.png"></span><br>梅田</a></li>
+   <li><a href="/search"><span><img src="/assets/images/party/umeda.png"></span><br>梅田</a></li>
    <li><a href="{{ action('SearchController@areasearchindex', '心斎橋' ) }}"><span><img src="/assets/images/party/shinsaibashi.png"></span><br>心斎橋</a></li>
    <li><a href="{{ action('SearchController@areasearchindex', '難波' ) }}"><span><img src="/assets/images/party/nanba.png"></span><br>なんば</a></li>
    <li><a href="{{ action('SearchController@areasearchindex', '北浜' ) }}"><span><img src="/assets/images/party/kitahama.png"></span><br>北浜</a></li>
