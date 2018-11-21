@@ -36,8 +36,8 @@ class Space extends Model
 		return $this->belongsToMany(Amenity::class);
 	}
 
-	public function plan() {
-		return $this->hasOne(Plan::class);
+	public function plans() {
+		return $this->hasMany(Plan::class);
 	}
 
 	public function spaceAttachments() {

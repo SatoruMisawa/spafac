@@ -33,6 +33,12 @@ class PlanController extends Controller
 		$this->scheduleRepository = $scheduleRepository;
 	}
 
+	public function index(Space $space) {
+		return view('host.plan.index', [
+			'plans' => $space->plans()->get(),
+		]);
+	}
+
 	public function new(Space $space) {
 		try {
             return view('host.plan.new', [
@@ -64,7 +70,7 @@ class PlanController extends Controller
 	}
 
 	private function createPlan(CreatePlanRequest $request, Space $space) {
-		return $space->plan()->create(
+		return $space->plans()->create(
 			$request->only([
 				'name',
 				'preorder_deadline_id', 'preorder_period_id',

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Plan;
 use App\Space;
 use App\User;
 use Tests\TestCase;
@@ -32,7 +33,7 @@ class PlanControllerTest extends TestCase
     }
 
     private function assertPostRequestToCreatePlan($data, Space $space) {
-        return $this->loginWithTesterIfDebug()
+        $this->loginWithTesterIfDebug()
         ->loginWithUser(User::find($space->user_id))
         ->post(route('host.space.plan.create', $space->id), $data)
         ->assertRedirect(route('host.space.plan.option.new', [$space->id, 1]));
