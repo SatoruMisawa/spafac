@@ -717,10 +717,12 @@ section.pattern_1 .pattern_title span {
   color: #000; }
 
 section.pattern_1 .pattern_box {
-  display: table;
-  border-collapse: separate;
-  border-spacing: 60px 0;
-  margin:2em auto 0 auto; }
+	width: 100%;
+    max-width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 1vw 0;
+    margin: 2em auto 0 auto; }
 
 section.pattern_1 .pattern_box .pattern_boxs {
   display: table-cell;
@@ -1628,7 +1630,7 @@ table.myaccout tr.address_type td:last-child input[type="text"] {
 
 
   .staff-top-area.unit-st {
-    width: 300px;
+    /*width: 300px;*/
 }
 
 img.staffichioshi000 {

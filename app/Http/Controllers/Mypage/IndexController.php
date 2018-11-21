@@ -18,20 +18,6 @@ class IndexController extends MypageController
 	*/
 	public function index() {
 
-		//echo password_hash('0000', PASSWORD_BCRYPT);
-		//exit;
-
-
-		//--トップのお知らせ用 モック用（仮）
-		/*$data = array("todo"=>
-		array(array("id"=>1,"title"=>"やることやることやることやることやること…","date"=>"2018-08-01")),
-		"remess"=>
-		array(array("id"=>1,"title"=>"未返信メッセージ未返信メッセージ未返信メ…","date"=>"2018-08-02"),array("id"=>2,"title"=>"未返信メッセージ未返信メッセージ未返信メ…","date"=>"2018-08-02"))
-		,
-		"rerec"=>array(),
-		"redone"=>array()
-	);*/
-
 		$todo  =array();
 		$rerec =array();
 		$redone=array();
