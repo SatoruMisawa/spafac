@@ -206,7 +206,7 @@
 					</ul>
 					@else
 					<div class="login_form">
-						{{　Form::open(['route' => 'session.create','method' => 'POST'])}}
+						{{ Form::open(['route' => 'session.create','method' => 'POST']) }}
 						<table>
 							<tr>
 								<td>ユーザーID:</td>
@@ -226,7 +226,7 @@
 							<button type="submit">ログイン</button>
 						</div>
 						@include('mypage.layouts.message', array('errors' => $errors))
-						<?php echo Form::close(); ?>
+						{{ Form::close() }}
 						<div class="sns_login">
 							<ul>
 								<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
