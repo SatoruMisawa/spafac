@@ -40,7 +40,7 @@ table {
     clear: both;
 }
 img {
-    width: 100%;
+    /*width: 100%;*/
     max-width: 100%;
     height: auto;
 }
@@ -113,7 +113,7 @@ li.btn .btnBody {
 }
 #header02 .inner{
     max-width: 1024px;
-    margin: 0 auto;    
+    margin: 0 auto;
 }
 #header02 ul {
     display: flex;
