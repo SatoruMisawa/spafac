@@ -37,7 +37,7 @@
 	<section class="content container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<form method="POST" action="https://test.spafac.com/host/facilities" accept-charset="UTF-8" class="h-adr"></form>
+				<form method="POST" action="/host/facilities" accept-charset="UTF-8" class="h-adr"></form>
 				<input name="_token" type="hidden" value="nJaPejfPXkdepu0EGb0HsAiDyaH85zX05RR2T1oX">
 				<input type="hidden" name="_token" value="nJaPejfPXkdepu0EGb0HsAiDyaH85zX05RR2T1oX">
 				<input type="hidden" class="p-country-name" value="Japan">
