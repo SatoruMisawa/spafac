@@ -129,7 +129,7 @@
 	 	<div class="pattern_box">
 	     <div class="pac">
 			@foreach($room as $data)
-			<a href="{{ action('SpaceController@index', $data->id ) }}">
+			<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 	 		<div class="pattern_boxs">
 	 			<div class="pics"><img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt=""></div><span class="star">★★★★★</span>
 	 			<p>{{$data->name}}</p>

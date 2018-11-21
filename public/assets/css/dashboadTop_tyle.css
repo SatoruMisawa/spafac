@@ -1,0 +1,141 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* --- setting page --- */
+h2 {
+    font-size: 1.3em;
+    padding-left: 5px;
+    font-weight: bold;
+}
+h3 {
+    font-size: 1.15em;
+    color: #333;
+    font-weight: bold;
+    padding-bottom: 6px;
+    padding-top: 8px
+}
+h4 {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+    padding-left: 5px;
+    margin-bottom: 15px;
+}
+#dashboardTop .content {
+    width: 100%;
+}
+#dashboardTop .inner {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+}
+#dashboardTop .inner .picture {
+    box-sizing: border-box;
+    margin-top: 25px;
+    padding: 0 15px;
+    width: 25%;
+}
+#dashboardTop .inner .news {
+    box-sizing: border-box;
+    padding: 0 15px;
+    width: 75%;
+    margin-top: 25px;
+}
+/* --- 顔写真 --- */
+.picture .photos {
+    width: 100%;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    border: solid 1px #D2D2D2;
+}
+.picture .photos .name {
+    text-align: center;
+    padding: 10px 0;
+    background: #fff;
+}
+.picture .photos .name a {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+.picture .photos .name a:hover {
+    text-decoration: underline;
+    color: #69B4E0;
+}
+/* --- インフォメーションボックス --- */
+.infobox {
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background: #fff;
+}
+.infobox .ttl {
+    background: #D2D2D2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 25px;
+    margin-bottom: 0;
+}
+.infobox .infoTxt {
+    border-bottom: solid 1px #D2D2D2;
+    border-left: solid 1px #D2D2D2;
+    border-right: solid 1px #D2D2D2;
+    box-sizing: border-box;
+    padding: 15px;
+}
+.infobox ul {
+    margin-bottom: 25px;
+}
+.infobox ul li {
+    margin-bottom: 10px;
+}
+.infobox ul li a {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: #333;
+}
+.infobox ul li a:hover {
+    text-decoration: underline;
+    color: #69B4E0;
+}
+.infobox .readmore {
+    width: 100%;
+    border-top: solid 2px #D2D2D2;
+    padding-top: 10px;
+}
+.infobox .readmore a {
+    text-decoration: none;
+    font-size: 1.0em;
+    color: #333;
+    color: #3c8dbc;
+    padding-left: 10px;
+}
+.infobox .readmore a:hover {
+    text-decoration: underline;
+    color: #333;
+    color: #69B4E0;
+}
+/* --- 新着情報 --- */
+.news .infobox {
+    margin-bottom: 35px;
+}
+.news .infobox .ttl {
+    justify-content: flex-start;
+}
+.news .infobox .ttl h3 {
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+@media (max-width:728px){
+#dashboardTop .inner .picture {
+    display: none;
+}
+#dashboardTop .inner .news {
+    width: 100%;
+    margin-top: 40px;
+}
+
+}

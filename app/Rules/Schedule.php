@@ -15,10 +15,19 @@ class Schedule implements Rule
      *
      * @return void
      */
-    public function __construct(array $hourFrom, array $hourTo)
+    public function __construct($hourFrom, $hourTo)
     {
-        $this->hourFrom = $hourFrom;
-        $this->hourTo = $hourTo;
+        if ($hourFrom === null) {
+            $this->hourFrom = [];
+        } else {
+            $this->hourFrom = $hourFrom;
+        }
+
+        if ($hourTo === null) {
+            $this->hourTo = [];
+        } else {
+            $this->hourTo = $hourTo;
+        }
     }
 
     /**
@@ -30,6 +39,10 @@ class Schedule implements Rule
      */
     public function passes($attribute, $value)
     {
+        if (count($this->hourFrom) === 0 || count($this->hourTo) === 0) {
+            return true;
+        }
+        
         $dayID = $value[0];
         return $this->hourFrom[$dayID] < $this->hourTo[$dayID];
     }

@@ -20,9 +20,9 @@ class SpaceAttachmentControllerTest extends TestCase
         $space = factory(Space::class)->create();
         $response = $this->loginWithTesterIfDebug()
                         ->loginWithUser(User::find($space->user_id))
-                        ->get(route('host.space.image.new', $space->id));
+                        ->get(route('host.space.attachment.new', $space->id));
         $response->assertStatus(200)
-                ->assertSee('新規スペース画像・動画');
+                ->assertSee('スペース写真・動画');
     }
 
     public function testCreate() {
@@ -48,7 +48,7 @@ class SpaceAttachmentControllerTest extends TestCase
     private function assertPostRequestToCreateSpaceImage($data, Space $space) {
         return $this->loginWithTesterIfDebug()
                     ->loginWithUser(User::find($space->user_id))
-                    ->post(route('host.space.image.create', $space->id), $data)
+                    ->post(route('host.space.attachment.create', $space->id), $data)
                     ->assertRedirect(route('host.space.plan.new', $space->id));
     }
 

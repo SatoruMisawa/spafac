@@ -35,4 +35,8 @@ class BankAccountRepositoryEloquent extends BaseRepository implements BankAccoun
         $this->pushCriteria(app(RequestCriteria::class));
     }
     
+    public function new(array $data) {
+        $model = $this->model();
+        return new $model($data);
+    }
 }

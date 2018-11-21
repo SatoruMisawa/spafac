@@ -30,10 +30,8 @@ class UserController extends Controller
         
     public function create(CreateUserRequest $request) {
         try {
-            $data = $this->data($request);
-            $user = $this->userRepository->create($data);
+            $user = $this->createUser($request);
             Auth::guard('users')->login($user, true);
-                
             return redirect()->route('verification.email.send', $user->id);
         } catch (Exception $e) {
             report($e);
@@ -43,10 +41,17 @@ class UserController extends Controller
         }
     }
 
+    private function createUser(CreateUserRequest $request) {
+        $data = $this->data($request);
+        $filename = $request->file('profile_image')->store('public');
+        return $this->userRepository->create($data + [
+            'profile_image_url' => config('app.url').'/'.$filename,
+        ]);
+    }
+
     private function data(CreateUserRequest $request) {
         return $request->only([
-            'name', 'nickname',
-            'email', 'tel',
+            'family_name', 'given_name', 'email',
         ]) + ['password' => Hash::make($request->get('password'))];
     }
 }

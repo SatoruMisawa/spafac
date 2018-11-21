@@ -16,7 +16,7 @@ Route::group(['middleware' => 'guest:users'], function() {
 
 	Route::get('login', 'SessionController@new')->name('login');
 	Route::post('login', 'SessionController@create')->name('session.create');
-	Route::get('login/{provider}', 'SessionController@redirectToProvider');
+	Route::get('login/{provider}', 'SessionController@redirectToProvider')->name('session.provider.new');
 	Route::get('login/{provider}/callback', 'SessionController@handleProviderCallback');
 });
 
@@ -85,26 +85,29 @@ Route::group(['middleware' => 'auth:users'], function() {
 
 			Route::group(['prefix' => '/{space}', 'middleware' => 'owner.space'], function() {
 				Route::group(['prefix' => '/images'], function() {
-					Route::get('/', 'Host\SpaceAttachmentController@index')->name('host.space.image.index');
-					Route::get('/new', 'Host\SpaceAttachmentController@new')->name('host.space.image.new');
-					Route::post('/', 'Host\SpaceAttachmentController@create')->name('host.space.image.create');
-					Route::get('/{image}', 'Host\SpaceAttachmentController@show')->name('host.space.image.show');
-					Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.image.update');
-					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.image.delete');
+					Route::get('/', 'Host\SpaceAttachmentController@index')->name('host.space.attachment.index');
+					Route::get('/new', 'Host\SpaceAttachmentController@new')->name('host.space.attachment.new');
+					Route::post('/', 'Host\SpaceAttachmentController@create')->name('host.space.attachment.create');
+					Route::get('/{image}', 'Host\SpaceAttachmentController@show')->name('host.space.attachment.show');
+					Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.attachment.update');
+					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.attachment.delete');
 				});
 	
 				Route::group(['prefix' => '/plan'], function() {
 					Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
 					Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
 					Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
-					Route::get('/{plan}', 'Host\PlanController@show')->name('host.space.plan.show');
-					Route::put('/{plan}', 'Host\PlanController@update')->name('host.space.plan.update');
-					Route::delete('/{plan}', 'Host\PlanController@delete')->name('host.space.plan.delete');
-				});
 
-				Route::group(['prefix' => '/options'], function() {
-					Route::get('/new', 'Host\OptionController@new')->name('host.space.option.new');
-					Route::post('/', 'Host\OptionController@create')->name('host.space.option.create');
+					Route::group(['prefix' => '/{plan}'], function() {
+						Route::get('/', 'Host\PlanController@show')->name('host.space.plan.show');
+						Route::put('/', 'Host\PlanController@update')->name('host.space.plan.update');
+						Route::delete('/', 'Host\PlanController@delete')->name('host.space.plan.delete');
+
+						Route::group(['prefix' => '/options'], function() {
+							Route::get('/new', 'Host\OptionController@new')->name('host.space.plan.option.new');
+							Route::post('/', 'Host\OptionController@create')->name('host.space.plan.option.create');
+						});		
+					});
 				});
 
 				Route::group(['prefix' => '/messagetemplate'], function() {
@@ -131,11 +134,11 @@ Route::group(['prefix' => 'verification/{user}'], function() {
 Route::get('/', 'IndexController@index');
 Route::get('inquiry', 'IndexController@inquiry');
 Route::get('guide', 'IndexController@guide');
-Route::get('terms-of-service', 'IndexController@termsOfService');
+// Route::get('terms-of-service', 'IndexController@termsOfService');
 Route::get('recommendation', 'IndexController@recommendation');
 Route::get('registration-contract', 'IndexController@registrationContract');
 Route::get('company-profile', 'IndexController@companyProfile');
-Route::get('privacy-policy', 'IndexController@privacyPolicy');
+// Route::get('privacy-policy', 'IndexController@privacyPolicy');
 Route::get('commercial-transaction-law', 'IndexController@commercialTransactionLaw');
 Route::get('event_types', 'IndexController@event_types');//目的から探す
 Route::get('areas', 'IndexController@areas');//エリアから探す

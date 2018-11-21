@@ -54,7 +54,7 @@ class PlanController extends Controller
 			$plan = $this->createPlan($request, $space);
 			$this->fillSchedules($request, $plan);
 
-			return redirect()->route('host.space.option.new', $space->id);
+			return redirect()->route('host.space.plan.option.new', [$space->id, $plan->id]);
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([

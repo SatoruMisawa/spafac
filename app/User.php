@@ -3,8 +3,10 @@
 namespace App;
 
 use App\Service\Claimant;
+use App\Service\FeeCollector;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -16,8 +18,7 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'nickname', 'password', 'email', 'name',
-		'tel', 'zip', 'prefecture_id', 'address1', 'address2', 'address3',
+		'family_name', 'given_name', 'password', 'email', 'profile_image_url',
 	];
 
 	/**
@@ -31,19 +32,25 @@ class User extends Authenticatable
 
 	private $claimant;
 
+	private $feeCollector;
+
 	public function __construct($params = []) {
 		parent::__construct($params);
-
 		$this->claimant = app()->make(Claimant::class);
+		$this->feeCollector = app()->make(FeeCollector::class);
 	}
 
-	public function stripeUser() {
+	public function claimantUser() {
 		return $this->hasOne(StripeUser::class);
 	}
 
 	public function stripeCharges() {
 		return $this->hasMany(StripeCharge::class);
 	}	
+
+	public function chargeHistories() {
+		return $this->hasMany(ChargeHistory::class);
+	}
 
 	public function facilities() {
 		return $this->hasMany(Facility::class);
@@ -65,10 +72,10 @@ class User extends Authenticatable
 		return $this->hasMany(Reservation::class);
 	}
 
-	public function bankAccounts() {
-		return $this->hasMany(BankAccount::class);
+	public function bankAccount() {
+		return $this->hasOne(BankAccount::class);
 	}
-			
+
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(30);
 		$this->save();
@@ -84,17 +91,31 @@ class User extends Authenticatable
 		$this->save();
 	}
 
-	public function apply(Plan $plan) {
+	public function applyHourlyPlan(Plan $plan, int $hours) {
 		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
-
 		if ($plan->isAlreadyApplied()) {
 			return;
 		}
 
 		$this->applies()->create([
 			'plan_id' => $plan->id,
+			'price' => $plan->price_per_hour * $hours,
+		]);
+	}
+
+	public function applyDaylyPlan(Plan $plan) {
+		if ($this->isSameAs($plan->planner())) {
+			return;
+		}
+		if ($plan->isAlreadyApplied()) {
+			return;
+		}
+
+		$this->applies()->create([
+			'plan_id' => $plan->id,
+			'price' => $plan->price_per_day,
 		]);
 	}
 
@@ -107,33 +128,86 @@ class User extends Authenticatable
 			return;
 		}
 
-		$apply->user->reservations()->create([
-			'plan_id' => $apply->plan_id,
+		Reservation::create([
+			'host_id' => $apply->plan->planner()->id,
+			'guest_id' => $apply->user->id,
+			'apply_id' => $apply->id,
 		]);
 	}
 
 	public function chargeFor(Reservation $reservation) {
+		$this->feeCollector->setPrice($reservation->appley);
 		$charge = $this->claimant->charge([
-			'amount' => $reservation->plan->amount,
-			// 'source' => $reservation->user->stripeUser->stripe_source_id,
-			'source' => 'tok_1DRiDdDX6z5hkjQAfFSM8xY8',
-			'dst_account_id' => $this->stripeUser->stripe_account_id,
+			'guet_price' => $this->feeCollector->calculateGuestPriceWithFee(),
+			'host_reward' => $this->feeCollector->calculateHostReward(),
+			'source' => $reservation->guest->claimantUser->claimant_source_id,
+			'destination' => $this->claimantUser->claimant_account_id,
 		]);
 		
-		$this->stripeCharges()->create([
+		$reservation->getCharged();
+
+		$chargeHistory = $reservation->guest->chargeHistories()->create([
 			'reservation_id' => $reservation->id,
-			'stripe_charge_id' => $charge->id,
+		]);
+
+		$chargeHistory->claimantChargeHistory()->create([
+			'claimant_charge_history_id' => $charge->id,
 		]);
 	}
 
-	public function createAndConnectWithStripeAccount() {
-		$stripeAccount = $this->claimant->createAccount([
+	public function connectClaimantAccount() {
+		$claimantAccount = $this->claimant->connectAccount([
 			'country' => 'JP',
 			'type' => 'custom',
 		]);
 		
-		$this->stripeUser()->create([
-			'stripe_account_id' => $stripeAccount->id,
+		$this->claimantUser()->create([
+			'claimant_account_id' => $claimantAccount->id,
+		]);
+	}
+
+	public function connectClaimantBankAccount() {
+		$this->claimant->connectBankAccount([
+			'account_id' => $this->claimantUser->claimant_account_id,
+			'bank_account_id' => $this->bankAccount->claimantBankAccount->claimant_bank_account_id,
+		]);
+	}
+
+	public function fillClaimantRequirements() {
+		$this->claimant->fillRequirements([
+			'account_id' => $this->claimantUser->claimant_account_id,
+			'legal_entity' => [
+				'address_kana' => [
+					'postal_code' => '',
+					'state' => '',
+					'city' => '',
+					'town' => '',
+					'line1' => '',
+				],
+				'address_kanji' => [
+					'postal_code' => '',
+					'state' => '',
+					'city' => '',
+					'town' => '',
+					'line1' => '',
+				],
+				'dob' => [
+					'day' => '',
+					'month' => '',
+					'year' => '',
+				],
+				'first_name_kana' => 'おおさか',
+				'first_name_kanji' => '大阪',
+				'last_name_kana' => 'たろう',
+				'last_name_kanji' => '太郎',
+				'gender' => 'male',
+				'phone_number' => '',
+				'type' => 'individual',
+			],
+			'tos_acceptance' => [
+				'date' => Carbon::now()->timestamp,
+				'ip' => request()->ip(),
+			],
 		]);
 	}
 

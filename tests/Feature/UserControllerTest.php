@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Hash;
@@ -18,7 +19,7 @@ class UserControllerTest extends TestCase
                          ->get(route('user.new'));
 
         $response->assertStatus(200)
-                 ->assertSee('新規会員登録');
+                 ->assertSee('アカウント新規登録');
     }
 
     public function testCreate() {
@@ -36,10 +37,10 @@ class UserControllerTest extends TestCase
 
     private function assertUserInDB($data) {
         $this->assertDatabaseHas('users', [
-            'name' => $data['name'],
-            'nickname' => $data['nickname'],
+            'family_name' => $data['family_name'],
+            'given_name' => $data['given_name'],
             'email' => $data['email'],
-            'tel' => $data['tel'],
+            'profile_image_url' => config('app.url').'/public/'.$data['profile_image']->hashName(),
         ]);
 
         $user = User::find(1);
@@ -48,12 +49,12 @@ class UserControllerTest extends TestCase
 
     private function data() {
         return [
-            'name' => $this->faker->name(),
-            'nickname' => $this->faker->name(),
+            'family_name' => $this->faker->name(),
+            'given_name' => $this->faker->name(),
             'email' => $this->faker->email(),
-            'tel' => '000000000',
             'password' => 'aaaaaaaaaaaaaaa',
             'password_confirmation' => 'aaaaaaaaaaaaaaa',
+            'profile_image' => UploadedFile::fake()->image('test.png'),
         ];
     }
 }
