@@ -35,7 +35,7 @@ class PlanControllerTest extends TestCase
         return $this->loginWithTesterIfDebug()
         ->loginWithUser(User::find($space->user_id))
         ->post(route('host.space.plan.create', $space->id), $data)
-        ->assertRedirect(route('host.space.option.new', $space->id));
+        ->assertRedirect(route('host.space.plan.option.new', [$space->id, 1]));
     }
 
     private function assertPlanInDB($data, $spaceID) {

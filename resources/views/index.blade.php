@@ -206,7 +206,7 @@
 					</ul>
 					@else
 					<div class="login_form">
-						{{　Form::open(['route' => 'session.create','method' => 'POST'])}}
+						{{ Form::open(['route' => 'session.create','method' => 'POST']) }}
 						<table>
 							<tr>
 								<td>ユーザーID:</td>
@@ -226,7 +226,7 @@
 							<button type="submit">ログイン</button>
 						</div>
 						@include('mypage.layouts.message', array('errors' => $errors))
-						<?php echo Form::close(); ?>
+						{{ Form::close() }}
 						<div class="sns_login">
 							<ul>
 								<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
@@ -999,7 +999,7 @@
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
 		<p>今なら会員登録した方全員に、<br>すべてのスペースの予約で利用できる<br>2,000円分のポイントをプレゼント。</p>
-		<a href="<?php echo url('registration');?>">新規登録（無料）</a>
+		<a href="{{ route('user.new') }}">新規登録（無料）</a>
 	</div>
 </section>
 @stop

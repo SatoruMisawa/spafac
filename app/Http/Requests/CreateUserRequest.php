@@ -24,12 +24,12 @@ class CreateUserRequest extends FormRequest
     public function rules()
     {
         return [
-			'name' => 'required',
-			'nickname' => 'required',
+			'family_name' => 'required',
+			'given_name' => 'required',
 			'email' => 'required|email|unique:users,email',
-			'tel' => 'required|tel',
 			'password' => 'required|between:8,20|confirmed',
-			'password_confirmation' => 'required',
+            'password_confirmation' => 'required',
+            'profile_image' => 'required|image',
 		];
     }
 }

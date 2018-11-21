@@ -66,7 +66,7 @@ class SpaceController extends Controller
 			$this->createAmenities($request, $space);
 			$this->createSpaceUsages($request, $space);
 
-			return redirect()->route('host.space.image.new', $space->id);
+			return redirect()->route('host.space.attachment.new', $space->id);
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([
