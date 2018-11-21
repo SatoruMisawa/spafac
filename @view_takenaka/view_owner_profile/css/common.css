@@ -1263,14 +1263,6 @@ li.list-your-thing.pull-left {
   font-size: 12px;
 }
 
-.help-block2 {
-  display: block;
-  margin-top: 3px;
-  margin-bottom: 10px;
-  color: #737373;
-  font-size: 12px;
-}
-
 
 .AdorenJok{
   margin-top: 1px;
@@ -1552,10 +1544,6 @@ input[type="file"].row-space-top-1-file {
   margin: 30px 0 60px;
 }
 
-.sp_Asibut7nduS {
-  margin: 10px 0 60px;
-}
-
 .B8durTgfsd {
   margin: -24px 0 0 -12px;
 }
@@ -1564,13 +1552,6 @@ input[type="file"].row-space-top-1-file {
   display: inline-block;
   margin: 24px 0 0 12px;
   width: 200px;
-  vertical-align: top;
-}
-
-.sp_Fgjunibu5 {
-  display: inline-block;
-  margin: 24px 0 0 12px;
-  width: 50px;
   vertical-align: top;
 }
 
@@ -2003,28 +1984,6 @@ input.sp_securitycode_form-control {
 select.sp_bankclass_form-control {
   display: inline-block;
   width: 30%;
-  height: 40px;
-  padding: 6px 12px;
-  font-size: 14px;
-  border-radius: 10px;
-  box-shadow: none;
-  border-color: #d2d6de;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-select.sp_time_form-control {
-  display: inline-block;
-  width: 20%;
   height: 40px;
   padding: 6px 12px;
   font-size: 14px;
