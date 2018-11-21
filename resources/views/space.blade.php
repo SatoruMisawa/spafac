@@ -44,12 +44,14 @@
 		<div id="overview" class="main_wrapper cf">
 			<div class="ttl_box">
 				<div class="main_ttl"> <?php // echo e($space->title); ?></div>
-				<div class="star_box"> <img src="<?php // echo url('assets/mypage/img/star.jpg'); ?>" alt="写真"> 000件 </div>
+				<div class="star_box"> <img src="<?php  echo url('assets/mypage/img/star.jpg'); ?>" alt="写真"> 000件 </div>
 				<div class="service-box cf">
-					<div class="sub-ttl_box"> <span class="gray_txt">&#9632;</span> <?php // echo e($space->institution->name); ?></div>
-					<div class="spec_box"><img src="<?php echo url('assets/mypage/img/man.png'); ?>" alt="写真"> ～<?php //echo e($space->capacity); ?>人</div>
-					<div class="eria_box"><img src="<?php echo url('assets/mypage/img/pin.png'); ?>" alt="写真"> <?php //echo e($space->institution->getShortAddress()); ?></div>
-					<div class="use_box"><span class="gray_txt">&#9632;</span> <?php // echo e($space->institution->institutionKind->name); ?></div>
+					<div class="sub-ttl_box"> <span class="gray_txt">&#9632;</span> {{$facility[0]->name}}</div>
+					<div class="spec_box"><img src="<?php echo url('assets/mypage/img/man.png'); ?>" alt="写真"> ～{{$space[0]->capacity}}人</div>
+					<div class="eria_box"><img src="<?php echo url('assets/mypage/img/pin.png'); ?>" alt="写真">{{$facility[0]->address1}}{{$facility[0]->address2}}{{$facility[0]->address3}}</div>
+					<div class="use_box"><span class="gray_txt">&#9632;</span> {{$facility_kind[0]->name}}</div>
+
+
 				</div>
 			</div>
 			<!-- floating-menu　-->
@@ -89,8 +91,10 @@
 						<!-- /main__host-logo　-->
 						<div class="main__host-detail">
 							<h3 class="sub_discrpt">このスペースの管理者</h3>
-							<h2 class="host_name"><?php //echo e($space->host->getName()); ?></h2>
-							<a class="blue_txt" href="">メッセージを送る</a>
+							<h2 class="host_name">
+								{{$owner[0]->name}}
+							</h2>
+							<a href="{{ route('mailtable',$space[0]->user_id) }}">メッセージを送る</a>
 						</div>
 						<!-- /main__host-detail　-->
 					</div>
@@ -133,11 +137,8 @@
 					</div>
 					<div class="txt">
 
-						{{$space}}
+						{{$space[0]->about}}
 
-						<a href="{{ route('mailtable',$space[0]->user_id) }}">
-							{{$space[0]->user_id}}
-						</a>
 
 
 						<?php //echo nl2br(e($space->explanation)); ?></div>
@@ -149,7 +150,7 @@
 					<div class="ttl_box2">
 						<h3>設備・サービス</h3>
 					</div>
-					<div class="txt"><?php //echo nl2br(e($space->facility)); ?></div>
+					<div class="txt">{{$facility_kind[0]->name}}</div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -159,9 +160,11 @@
 						<h3>利用可能な用途</h3>
 					</div>
 					<div class="txt">
-						<?php // foreach ($space->getSpacePurposes() as $spacePurpose) : ?>
-							<span class="use blue"><?php //echo e($spacePurpose->purpose->name); ?></span>
-						<?php // endforeach; ?>
+						@foreach($space_usages as $data)
+							<span class="use blue">
+								{{$data->name}}
+							</span>
+						@endforeach
 					</div>
 				</div>
 				<!-- /col_wrapper　-->
@@ -171,7 +174,7 @@
 					<div class="ttl_box2">
 						<h3>広さ</h3>
 					</div>
-					<div class="txt"><?php //echo e(number_format($space->floor_space)); ?>m&#178;</div>
+					<div class="txt">{{$space[0]->floor_area}}m&#178;</div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -180,7 +183,7 @@
 					<div class="ttl_box2">
 						<h3>収容人数</h3>
 					</div>
-					<div class="txt">&#8764;<?php // echo e(number_format($space->capacity)); ?>人</div>
+					<div class="txt">&#8764;{{$space[0]->capacity}}人</div>
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
@@ -193,16 +196,7 @@
 				</div>
 				<!-- /col_wrapper　-->
 			</div>
-			<!--
-			<div class="main_wrapper cf">
-				<div class="col_wrapper  cf">
-					<div class="ttl_box2">
-						<h3>添付ファイル</h3>
-					</div>
-					<div class="txt"></div>
-				</div>
-			</div>
-			-->
+
 			<div class="main_wrapper cf">
 				<div class="col_wrapper  cf">
 					<div class="ttl_box2">
@@ -261,23 +255,23 @@
 						<h3>価格</h3>
 					</div>
 					<div class="txt">
-						<?php //foreach ($space->getPlans() as $plan) : ?>
+							@foreach($plan as $data)
 							<div class="plan_ttl_box cf">
-								<h3><?php //echo e($plan->name); ?>　<span><i class="fa fa-flash fa-lg"></i> 今すぐ予約</span></h3>
+								<h3>{{$plan[0]->name}}　<span><i class="fa fa-flash fa-lg"></i> 今すぐ予約</span></h3>
 
 								<div class="button-box_wrap cf">
 									<div class="plan-button-box">
-										<?php //if ($plan->by_hour) : ?>
-											<a href="" class="button-blue"><?php //echo $plan->getChargePerHour(); ?></a>
-										<?php //endif; ?>
-										<?php //if ($plan->by_day) : ?>
-											<a href="" class="button-blue"><?php //echo $plan->getChargePerDay(); ?></a>
-										<?php //endif; ?>
+										<?php if ($data->price_per_hour) : ?>
+											<a href="" class="button-blue">{{$data->price_per_hour}}円/時</a>
+										<?php endif; ?>
+										<?php if ($plan[0]->price_per_day) : ?>
+											<a href="" class="button-blue">{{$data->price_per_day}}円/日</a>
+										<?php endif; ?>
 									</div>
 								</div>
 							</div>
 							<div class="plan_txt"><?php //echo e($plan->explanation); ?></div>
-						<?php // endforeach; ?>
+						@endforeach
 					</div>
 				</div>
 				<!-- /col_wrapper　-->
@@ -437,8 +431,9 @@
 		</div>
 		<!-- このスペースの管理者  -->
 		<div id="map" style="height: 400px;"></div>
-		<input type="hidden" id="latitude" value="<?php //echo e($space->institution->latitude); ?>">
-		<input type="hidden" id="longitude" value="<?php //echo e($space->institution->longitude); ?>">
+		<input type="hidden" id="latitude" value="{{$facility[0]->latitude}}">
+		<input type="hidden" id="longitude" value="{{$facility[0]->longitude}}">
+
 
 		<!-- map  -->
 		<!-- 所在地  -->
@@ -452,7 +447,7 @@
 					<!-- /adress_box　-->
 					<div class="adress_box cf">
 						<h3 class="access-title">アクセス</h3>
-						<p class="access-content"><?php //echo nl2br(e($space->institution->access)); ?></p>
+						<p class="access-content">{{$facility[0] ->access}}</p>
 					</div>
 				</div>
 				<!-- /adress_wrap　-->

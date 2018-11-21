@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 		Route::get('topics', 'Mypage\IndexController@topics');
 
 		//-メール一覧
-		Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList');
+		Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList')->name('maillist');
 		Route::get('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@mailtable')->name('mailtable');
 		Route::post('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@sendmail')->name('send_mail');
 
@@ -106,7 +106,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 						Route::group(['prefix' => '/options'], function() {
 							Route::get('/new', 'Host\OptionController@new')->name('host.space.plan.option.new');
 							Route::post('/', 'Host\OptionController@create')->name('host.space.plan.option.create');
-						});		
+						});
 					});
 				});
 

@@ -22,17 +22,24 @@ class IndexController extends FrontController
 
 				$query = [];
 				for ($i=1; $i <13 ; $i++) {
-				$query[$i] = new Facility;
-				/*$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
-								->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
-								->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id')
-								//->join('plans', 'plans.space_id', '=', 'spaces.id')
-								->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
-								->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();*/
 
+
+				/*$space = new Facility;
+				$space = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+																->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+																->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')->first();
+
+				//dd($space->space_id);
+				$space_space_usage = DB::table('space_attachments')->where('space_id','=',$space->space_id )->first();*/
+				//dd($space_space_usage->id);
+				$query[$i] = new Facility;
 				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
 																->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
 																->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
+																->leftjoin('space_attachments', function ($join) {
+														        $join->on('space_attachments.space_id', '=', 'spaces.id');
+																		//->where('space_attachments.id', '=', 1);
+														    })
 																->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();
 				}
 
