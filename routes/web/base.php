@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
 			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
-			
+
 			Route::group(['middleware' => 'owner.facility'], function() {
 				Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
 				Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 					Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.attachment.update');
 					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.attachment.delete');
 				});
-	
+
 				Route::group(['prefix' => '/plan'], function() {
 					Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
 					Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
@@ -153,7 +153,7 @@ Route::get('request_chk', 'IndexController@request_chk');//予約確認
 Route::get('stay', 'IndexController@stay');//宿泊・民泊
 Route::get('stay/details', 'IndexController@stay_details');//宿泊・民泊詳細
 //Route::get('party', 'IndexController@party');//パーティページ（つかわなくなった）
-Route::get('purpose/{page?}', 'IndexController@purpose');//目的別ページ
+Route::get('purpose/{page?}/{space_usage_id}', 'IndexController@purpose');//目的別ページ
 Route::get('lodging_agreement', 'IndexController@lodging_agreement');//宿泊規約
 Route::get('lodging_agreement_guests', 'IndexController@lodging_agreement_guests');//宿泊規約ゲスト
 Route::get('flow_of_settlement', 'IndexController@flow_of_settlement');//決済の流れ
@@ -165,6 +165,8 @@ Route::get('help/{page?}', 'IndexController@help');//目的別ページ
 //Route::get('search', 'SearchController@index');
 Route::get('search/{space_usage_id}', '\App\Http\Controllers\SearchController@spaceusageindex');
 Route::get('search/{area}', '\App\Http\Controllers\SearchController@areasearchindex');
+Route::get('search/amenities/{amenities}', '\App\Http\Controllers\SearchController@amenitiesindex');
+Route::get('search/capacities/{capacities}', '\App\Http\Controllers\SearchController@capacitiesindex');
 Route::get('search/', '\App\Http\Controllers\SearchController@searchindex');
 
 Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@media');

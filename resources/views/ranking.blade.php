@@ -5,33 +5,20 @@
 @endif
 <div class="pac">
        <ul>
-           <li><a href="/search"><img src="/assets/images/party/okan01.png" class="okan" alt="1">
-           <img src="/assets/images/party/party_img01.jpg" alt="party">
-           <div class="readme">
-           <p>小さいスペース</p>
-           <p>1～5人 東京都新宿区新宿<span class="s-one"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>0000件</p>
-           <p>新宿駅より徒歩1分</p>
-           </div>
-           </a>
+        @foreach($query as $data)
+           <li>
+             <a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+               <img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" class="okan" alt="1">
+               <img src="/assets/images/party/party_img01.jpg" alt="party">
+               <div class="readme">
+               <p>{{$data->name}}</p>
+               <p>{{$data->capacity}}人 {{$data->address1}}<span class="s-one"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>0000件</p>
+               <p>{{$data->about}}</p>
+               </div>
+             </a>
            </li>
-    
-           <li><a href="/search"><img src="/assets/images/party/okan02.png" class="okan" alt="2">
-           <img src="/assets/images/party/party_img01.jpg" alt="party">
-           <div class="readme">
-           <p>小さいスペース</p>
-           <p>1～5人 東京都新宿区新宿<span class="s-two"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>0000件</p>
-           <p>新宿駅より徒歩1分</p>
-           </div></a>
-           </li>
-    
-           <li><a href="/search"><img src="/assets/images/party/okan03.png" class="okan" alt="3">
-           <img src="/assets/images/party/party_img01.jpg" alt="party">
-           <div class="readme">
-           <p>小さいスペース</p>
-           <p>1～5人 東京都新宿区新宿<span class="s-three"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>0000件</p>
-           <p>新宿駅より徒歩1分</p>
-           </div></a>
-           </li>
+        @endforeach
+
        </ul>
 </div>
 	<p class="more_lank"><a href="/search">ランキングをもっと見る</a></p>

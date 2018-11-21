@@ -41,6 +41,24 @@ nav.party_search form input[type=text]{
    border-right:1px solid #CECDCD;
    position:relative;
 }
+
+nav.party_search form input[type=text]{
+	height:50px;
+	width:250px;
+	padding:0 10px;
+	display: flex;
+   justify-content:left;
+   align-items: center;
+   font-size:1.4rem;
+   color:#333;
+   position:relative;
+   border: none;
+   float:left;
+   border-right:1px solid #CECDCD;
+   position:relative;
+}
+
+
 nav.party_search form div{
 	padding:0;
 }

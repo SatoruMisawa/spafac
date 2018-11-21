@@ -155,7 +155,7 @@
 					<div class="category_text_menu">
 						<ul>
 
-							<li><a href="/search">イベント</a></li>
+							<li><a href="/search/">イベント</a></li>
 							<li><a href="/search">結婚式場</a></li>
 							<li><a href="/search">オフィス</a></li>
 							<li><a href="/search">ホール</a></li>
@@ -557,7 +557,7 @@
 		</div>
 	</div>
 	</div>
-	<a class="detail" href="/purpose/sales">物販で利用できるスペースをもっと見る &raquo;</a>
+	<a class="detail" href="/purpose/sales/1">物販で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
 <section class="gray pattern_1" id="party">
