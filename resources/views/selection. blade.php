@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>無題ドキュメント</title>
-  <link href="../../css/selection.css" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets.css.selection.css') }}" rel="stylesheet" type="text/css">
 </head>
 
 <body class="sp_serviceselect＿Sduyb">
@@ -22,7 +22,7 @@
                 <div class="sp_diruby">
                   <div>
                     <div class="sp_fkhiT"></div>
-                    <div><img class="sp_H6uikd" src="../../images/spafac_logo.png" alt="" /></div>
+                    <div><img class="sp_H6uikd" src="{{ asset('assets.images.spafac_logo.png') }}" alt="" /></div>
                     <pre class="spFTvd">スペースを1時間単位で貸し出すことが出来る<br>「SPACE FACTORY」に掲載されます。主にパーティー、会議、イベントなどに利用されます。</pre>
                     <div class="sp_GHDxs">
                       <div class="sp_OALds">
@@ -36,7 +36,7 @@
                 <div class="sp_diruby">
                   <div>
                     <div class="sp_fkhiT"></div>
-                    <div><img class="sp_H6uikd" src="../../images/kansaistay_logo.png" alt="" /></div>
+                    <div><img class="sp_H6uikd" src="{{ asset('assets.images.kansaistay_logo.png') }}" alt="" /></div>
                     <pre class="spFTvd">スペースを1泊単位で貸し出すことが出来る<br>「KANSAI STAY」に掲載されます。主に旅行や合宿などに利用されます。</pre>
                     <div class="sp_GHDxs">
                       <div class="bnnZDP">
