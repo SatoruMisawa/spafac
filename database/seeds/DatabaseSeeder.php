@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         SpaceUsageSeeder::class,
         TesterSeeder::class,
         RentSpaceTypeSeeder::class,
+        RentSpaceBusinessTypeSeeder::class,
     ];
 
     /**
