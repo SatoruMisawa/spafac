@@ -11,8 +11,10 @@ use App\Space;
 use App\Repositories\PreorderDeadlineRepository;
 use App\Repositories\PreorderPeriodRepository;
 use App\Repositories\ScheduleRepository;
+use App\Repositories\ScheduleToStayRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlanRequest;
+use App\Http\Requests\CreatePlanToStayRequest;
 use Carbon\Carbon;
 
 
@@ -24,14 +26,18 @@ class PlanController extends Controller
 
 	private $scheduleRepository;
 
+	private $scheduleToStayRepository;
+
 	public function __construct(
 		PreorderDeadlineRepository $preorderDeadlineRepository,
 		PreorderPeriodRepository $preorderPeriodRepository,
-		ScheduleRepository $scheduleRepository
+		ScheduleRepository $scheduleRepository,
+		ScheduleToStayRepository $scheduleToStayRepository
 	) {
 		$this->preorderDeadlineRepository = $preorderDeadlineRepository;
 		$this->preorderPeriodRepository = $preorderPeriodRepository;
 		$this->scheduleRepository = $scheduleRepository;
+		$this->scheduleToStayRepository = $scheduleToStayRepository;
 	}
 
 	public function index(Space $space) {
@@ -55,6 +61,15 @@ class PlanController extends Controller
                 'message' => 'something went wrong',
             ]);
         }
+	}
+
+	public function newToStay(Space $space) {
+		return view('host.plan.new', [
+			'space' => $space,
+			'days' => Day::all(),
+			'preorderDeadlines' => $this->preorderDeadlineRepository->allNames()->toArray(),
+			'preorderPeriods' => $this->preorderPeriodRepository->allNames()->toArray(),
+		]);
 	}
 
 	public function create(CreatePlanRequest $request, Space $space) {
@@ -86,6 +101,31 @@ class PlanController extends Controller
 				'day_id' => $dayID,
 				'from' => $from,
 				'to' => $to,
+			]);
+		}
+	}
+
+	public function createToStay(CreatePlanToStayRequest $request, Space $space) {
+		$plan = $this->createPlanToStay($request, $space);
+		$this->fillSchedulesToStay($request, $space);
+
+		return redirect()->route('host.space.plan.option.new', [$space->id, $plan->id]);
+	}
+
+	private function createPlanToStay(CreatePlanToStayRequest $request, Space $space) {
+		$data = $this->dataToCreatePlanToStay($request);
+		return $space->plans()->create($data);
+	}
+
+	private function fillSchedulesToStay(CreatePlanToStayRequest $request, $planID) {
+		foreach ($request->get('day_ids') as $dayID) {
+			$this->scheduleToStayRepository->create([
+				'plan_id' => $planID,
+				'day_id' => $dayID,
+				'checkin_from' => $request->get('checkin_from'),
+				'checkin_to' => $request->get('checkin_to'),
+				'checkout_from' => $request->get('checkout_from'),
+				'checkout_from' => $request->get('checkout_to'),
 			]);
 		}
 	}
@@ -135,5 +175,9 @@ class PlanController extends Controller
 			'from' => Carbon::parse($request->get('period_from'))->format('Y-m-d'),
 			'to' => Carbon::parse($request->get('period_to'))->format('Y-m-d'),
 		];
+	}
+
+	private function dataToCreatePlanToStay(CreatePlanToStayRequest $request) {
+		return $request->onlyToCreatePlanToStay();
 	}
 }

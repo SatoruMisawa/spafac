@@ -11,9 +11,10 @@ class Plan extends Model
 {
 	protected $fillable = [
 		'space_id', 'preorder_deadline_id', 'preorder_period_id',
-		'name', 'price_per_hour', 'price_per_day',
+		'name', 'description', 'price_per_hour', 'price_per_day',
 		'need_to_be_approved',
-		'from', 'to',
+		'from', 'to', 'max_expected_number_of_people', 'excess_charge_per_person',
+		'min_number_of_nights', 'max_number_of_nights',
 	];
 	
 	
@@ -23,7 +24,11 @@ class Plan extends Model
 
 	public function schedules() {
 		return $this->belongsToMany(Day::class, 'schedules')->withPivot('from', 'to');
-	}	
+	}
+
+	public function schedulesToStay() {
+		return $this->belongsToMany(Day::class, 'schedules_to_stay')->withPivot('checkin', 'checkout');
+	}
 
 	public function planner() {
 		return $this->space->user;
