@@ -51,4 +51,8 @@ class Space extends Model
 	public function messageTemplates() {
 		return $this->hasOne(MessageTemplate::class);
 	}
+
+	public function thumbnail() {
+		return $this->spaceAttachments()->where('type', SpaceAttachment::TYPE_IMAGE)->first();
+	}
 }

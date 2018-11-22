@@ -35,6 +35,7 @@ class PlanController extends Controller
 
 	public function index(Space $space) {
 		return view('host.plan.index', [
+			'space' => $space,
 			'plans' => $space->plans()->get(),
 		]);
 	}
