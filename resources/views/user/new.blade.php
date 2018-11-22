@@ -57,15 +57,15 @@
 										<div class="col-sm-12">
 											@include('layouts.error', ['name' => 'password'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
-												<input class="mdl-textfield__input" id="textfield-" type="password" name="password" value="">
-												<label class="mdl-textfield__label" for="textfield-">パスワード</label>
+												<input class="mdl-textfield__input" id="password" type="password" name="password" autocomplete="new-password" >
+												<label class="mdl-textfield__label" for="password">パスワード</label>
 											</div>
 										</div>
 										<div class="col-sm-12">
 											@include('layouts.error', ['name' => 'password_confirmation'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
-												<input class="mdl-textfield__input" id="textfield-" type="password" name="password_confirmation" value="">
-												<label class="mdl-textfield__label" for="textfield-">パスワード（確認）</label>
+												<input class="mdl-textfield__input" id="password-confirmation" type="password" name="password_confirmation">
+												<label class="mdl-textfield__label" for="password-confirmation">パスワード（確認）</label>
 											</div>
 										</div>
 										<div class="col-xs-12">

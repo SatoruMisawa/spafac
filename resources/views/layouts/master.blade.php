@@ -16,6 +16,7 @@
 <div id="page" class="site">
 	<!--<a class="skip-link screen-reader-text" href="#content">Skip to content</a>-->
 	@include('layouts.header')
+	@include('layouts.message')
 	@yield('content')
 	@include('layouts.footer')
 </div><!-- #page -->

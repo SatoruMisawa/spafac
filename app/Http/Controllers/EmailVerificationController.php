@@ -14,8 +14,8 @@ class EmailVerificationController extends Controller
             $user->prepareToVerifyEmail();
             Mail::to($user->email)->send(new EmailVerification($user));
             
-            return view('verification.email.send');
-        } catch (Exception $e) {
+            return redirect()->route('index')->with('message', '確認メールを送信しました。');
+        } catch (\Exception $e) {
             report($e);
             return redirect()->route('index')->withErrors([
                 'message' => 'something went wrong',
@@ -27,7 +27,7 @@ class EmailVerificationController extends Controller
         try {
             $user->verifyEmail($token);
             return redirect()->route('index')->with('message', 'メールアドレスの登録確認が終わりました。');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             report($e);
             return redirect()->route('index')->with('message', $e->getMessage());
         }

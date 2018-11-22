@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/top.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-@include('host.layouts.message')
 <div id="search_box">
 	<div class="search_box_inner search_width">
 		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
