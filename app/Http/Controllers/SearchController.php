@@ -8,6 +8,7 @@ use App\Plans;
 use App\Space;
 use App\Facility;
 use App\Prefecture;
+use App\Amenity;
 
 use Illuminate\Support\Facades\DB;
 
@@ -33,45 +34,84 @@ class SearchController extends FrontController
     }
 
 
-	public function spaceusageindex($space_usage_id){
+	public function amenitiesindex($amenities){
 
-
-		/*$room = new Facility;
-		$room = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
-						->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
-						->join('spaces', 'spaces.facility_id', '=', 'facilities.id')
-						//->leftjoin('plans', 'plans.space_id', '=', 'spaces.id')
-						->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
-						->where('space_space_usage.space_usage_id', '=', $space_usage_id)->get();*/
 		$query = new Facility;
 		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
-									   ->join('spaces', 'spaces.facility_id', '=', 'facilities.id');//キャパシティー
+										->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id');//キャパシティー
 
-		$spaces_id_space_usage = DB::table('space_space_usage')->select('space_id')->where('space_usage_id', '=', $space_usage_id)->distinct()->get();
-				foreach ($spaces_id_space_usage as $value) {
-							$query->where('spaces.id', $value->space_id);
+		$spaces_id_amenities = DB::table('amenity_space')->select('space_id')->where('amenity_id', '=', $amenities)->distinct()->get();
+
+		//dd($spaces_id_amenities-);
+		if($spaces_id_amenities->isEmpty()){
+			$room =[];
+		}else{
+				foreach ($spaces_id_amenities as $value) {
+								$query->where('spaces.id', $value->space_id);
 						}
-				}
+						$room = $query->get();
+		}
+		$space_usage_id = '';
+		$data = compact('space_usage_id', 'room');
+		$view = view('search', $data);
+		return $view;
+	}
+
+
+	public function capacitiesindex($capacities){
+
+		$query = new Facility;
+		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+										->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id');//キャパシティー
+
+		$query->where('spaces.capacity', '>=', $capacities);
 
 		$room = $query->get();
 
+		if($room->isEmpty()){
+		$room =[];
+		}
+
+		$space_usage_id = '';
 		$data = compact('space_usage_id', 'room');
 		$view = view('search', $data);
 		return $view;
 
 	}
 
-	public function areasearchindex($area){
+
+	public function facility_kindsindex($facilities){
+
+		$query = new Facility;
+		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+										->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id');//キャパシティー
+
+		$query->where('facilities.facility_kind_id', '=', $facilities);
+
+		$room = $query->get();
+
+		if($room->isEmpty()){
+		$room =[];
+		}
+
+		$space_usage_id = '';
+		$data = compact('space_usage_id', 'room');
+		$view = view('search', $data);
+		return $view;
+
+	}
 
 
+
+	public function spaceusageindex($area){
+
+		$room =[];
 		$query = new Facility;
 		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
 										->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
 										->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id');
 		$query->leftjoin('plans', 'plans.space_id', '=', 'spaces.id');//プラン、費用
 		$query->join('schedules', 'schedules.plan_id', '=', 'plans.id');
-
-
 						//エリア条件
 		if(isset($area)){
 				//都道府県サーチ
@@ -86,10 +126,12 @@ class SearchController extends FrontController
 					$query->where('addresses.address1', 'like', "%$area%")->orwhere('addresses.address2', 'like', "%$area%");
 				}
 		}
-
-
-
+		//結合した条件でサーチ
+		$room = $query->get();
+		//dd($room);
+		$space_usage_id = '';
 		$data = compact('space_usage_id', 'room');
+
 		$view = view('search', $data);
 		return $view;
 

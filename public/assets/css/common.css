@@ -847,7 +847,7 @@ display: flex;
         display: block;
         list-style: none;
         border: none;
-        border-bottom: 1px solid #ffffff; }
+        /*border-bottom: 1px solid #ffffff; */}
       .site-footer__info .links a {
         color: #ffffff;
         font-size:1.3rem; }
@@ -2199,7 +2199,7 @@ h3.sp_profile_dfbrh3 {
 	width:100%;
 	padding:1em 0;
 	border-right:none;
-	border-bottom:1px solid #FFF;
+	/* border-bottom:1px solid #FFF; */
 }
 .site-footer__links ul li:nth-child(3),
 .site-footer__links ul li:nth-child(4){
@@ -2473,12 +2473,12 @@ nav ul li a {
 
 .site-footer__links ul {
 	width:100%;
-    margin: 0;
-    padding:1em 0;
-    min-height: inherit;
-    display: block;
-    justify-content: center;
-    align-items: center;
+  margin: 0 200px;
+  padding:1em 0;
+  min-height: inherit;
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 .site-footer__links ul:after {
   content: ".";

@@ -43,6 +43,7 @@
     39 => 'App\\Providers\\RepositoryServiceProvider',
     40 => 'App\\Providers\\StripeValidationServiceProvider',
     41 => 'App\\Providers\\FeeCollectionServiceProvider',
+    42 => 'App\\Providers\\ImageStorageServiceProvider',
   ),
   'eager' => 
   array (
@@ -70,6 +71,7 @@
     21 => 'App\\Providers\\RepositoryServiceProvider',
     22 => 'App\\Providers\\StripeValidationServiceProvider',
     23 => 'App\\Providers\\FeeCollectionServiceProvider',
+    24 => 'App\\Providers\\ImageStorageServiceProvider',
   ),
   'deferred' => 
   array (

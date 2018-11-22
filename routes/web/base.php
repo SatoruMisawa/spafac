@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
 	Route::group(['prefix' => 'mypage'], function() {
-		Route::get('/', 'Mypage\IndexController@index')->name('index');
+		Route::get('/', 'Mypage\IndexController@index');
 		Route::get('like', 'Mypage\IndexController@like');
 		Route::get('like-new', 'Mypage\IndexController@likeNew');
 		Route::get('login', 'Mypage\IndexController@login');
@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 		Route::get('topics', 'Mypage\IndexController@topics');
 
 		//-メール一覧
-		Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList');
+		Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList')->name('maillist');
 		Route::get('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@mailtable')->name('mailtable');
 		Route::post('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@sendmail')->name('send_mail');
 
@@ -60,11 +60,16 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::group(['prefix' => 'host'], function() {
 		Route::get('/', 'Host\HostController@index')->name('host.index');
 
+		// todo あとでちゃんとする
+		Route::get('/new', function() {
+			return view('selection');
+		});
+
 		Route::group(['prefix' => '/facilities'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
 			Route::post('/', 'Host\FacilityController@create')->name('host.facility.create');
-			
+
 			Route::group(['middleware' => 'owner.facility'], function() {
 				Route::get('/{facility}', 'Host\FacilityController@edit')->name('host.facility.edit');
 				Route::put('/{facility}', 'Host\FacilityController@update')->name('host.facility.update');
@@ -76,6 +81,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 					Route::get('/{space}', 'Host\SpaceController@edit')->name('host.facility.space.edit');
 					Route::put('/{space}', 'Host\SpaceController@update')->name('host.facility.space.update');
 					Route::delete('/{space}', 'Host\SpaceController@delete')->name('host.facility.space.delete');
+
+					Route::group(['prefix' => '/stay'], function() {
+						Route::get('/new', 'Host\SpaceController@newToStay')->name('host.facility.space.stay.new');
+						Route::post('/', 'Host\SpaceController@createToStay')->name('host.facility.space.stay.create');
+					});
 				});
 			});
 		});
@@ -92,11 +102,16 @@ Route::group(['middleware' => 'auth:users'], function() {
 					Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.attachment.update');
 					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.attachment.delete');
 				});
-	
-				Route::group(['prefix' => '/plan'], function() {
+
+				Route::group(['prefix' => '/plans'], function() {
 					Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
 					Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
 					Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
+
+					Route::group(['prefix' => '/stay'], function() {
+						Route::get('/new', 'Host\PlanController@newToStay')->name('host.space.plan.stay.new');
+						Route::post('/', 'Host\PlanController@createToStay')->name('host.space.plan.stay.create');
+					});
 
 					Route::group(['prefix' => '/{plan}'], function() {
 						Route::get('/', 'Host\PlanController@show')->name('host.space.plan.show');
@@ -106,7 +121,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 						Route::group(['prefix' => '/options'], function() {
 							Route::get('/new', 'Host\OptionController@new')->name('host.space.plan.option.new');
 							Route::post('/', 'Host\OptionController@create')->name('host.space.plan.option.create');
-						});		
+						});
 					});
 				});
 
@@ -131,7 +146,7 @@ Route::group(['prefix' => 'verification/{user}'], function() {
 	});
 });
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
 Route::get('inquiry', 'IndexController@inquiry');
 Route::get('guide', 'IndexController@guide');
 // Route::get('terms-of-service', 'IndexController@termsOfService');
@@ -153,7 +168,7 @@ Route::get('request_chk', 'IndexController@request_chk');//予約確認
 Route::get('stay', 'IndexController@stay');//宿泊・民泊
 Route::get('stay/details', 'IndexController@stay_details');//宿泊・民泊詳細
 //Route::get('party', 'IndexController@party');//パーティページ（つかわなくなった）
-Route::get('purpose/{page?}', 'IndexController@purpose');//目的別ページ
+Route::get('purpose/{page?}/{space_usage_id}', 'IndexController@purpose');//目的別ページ
 Route::get('lodging_agreement', 'IndexController@lodging_agreement');//宿泊規約
 Route::get('lodging_agreement_guests', 'IndexController@lodging_agreement_guests');//宿泊規約ゲスト
 Route::get('flow_of_settlement', 'IndexController@flow_of_settlement');//決済の流れ
@@ -165,6 +180,9 @@ Route::get('help/{page?}', 'IndexController@help');//目的別ページ
 //Route::get('search', 'SearchController@index');
 Route::get('search/{space_usage_id}', '\App\Http\Controllers\SearchController@spaceusageindex');
 Route::get('search/{area}', '\App\Http\Controllers\SearchController@areasearchindex');
+Route::get('search/amenities/{amenities}', '\App\Http\Controllers\SearchController@amenitiesindex');
+Route::get('search/capacities/{capacities}', '\App\Http\Controllers\SearchController@capacitiesindex');
+Route::get('search/facilities/{facilities}', '\App\Http\Controllers\SearchController@facility_kindsindex');
 Route::get('search/', '\App\Http\Controllers\SearchController@searchindex');
 
 Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@media');

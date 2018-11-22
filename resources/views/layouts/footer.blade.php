@@ -8,10 +8,10 @@
 				<a href="<?php echo url('signin'); ?>">スペースオーナー登録する≫</a>
 			</li>
 			<li>
-				<a href="<?php echo url('coming-soon'); ?>">iPhone</a>
+			<!-- <a href="<?php echo url('coming-soon'); ?>">iPhone</a> -->
 			</li>
 			<li>
-				<a href="<?php echo url('coming-soon'); ?>">Android</a>
+			<!-- <a href="<?php echo url('coming-soon'); ?>">Android</a> -->
 			</li>
 		</ul>
 	</div>

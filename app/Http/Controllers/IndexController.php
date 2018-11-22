@@ -22,17 +22,24 @@ class IndexController extends FrontController
 
 				$query = [];
 				for ($i=1; $i <13 ; $i++) {
-				$query[$i] = new Facility;
-				/*$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
-								->leftjoin('prefectures', 'prefectures.id', '=', 'addresses.prefecture_id')
-								->leftjoin('spaces', 'spaces.facility_id', '=', 'facilities.id')
-								//->join('plans', 'plans.space_id', '=', 'spaces.id')
-								->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
-								->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();*/
 
+
+				/*$space = new Facility;
+				$space = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+																->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+																->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')->first();
+
+				//dd($space->space_id);
+				$space_space_usage = DB::table('space_attachments')->where('space_id','=',$space->space_id )->first();*/
+				//dd($space_space_usage->id);
+				$query[$i] = new Facility;
 				$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
 																->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
 																->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
+																->leftjoin('space_attachments', function ($join) {
+														        $join->on('space_attachments.space_id', '=', 'spaces.id');
+																		//->where('space_attachments.id', '=', 1);
+														    })
 																->where('space_space_usage.space_usage_id', '=', $i)->limit(3)->get();
 				}
 
@@ -157,6 +164,7 @@ class IndexController extends FrontController
 	public function event_types() {//目的別ページ
 		$data = array(
 		);
+
 		$view = view('event_types', $data);
 		return $view;
 	}
@@ -204,21 +212,22 @@ class IndexController extends FrontController
 	}
 
 	//--目的別ページスイッチ
-	public function purpose($page=""){
+	public function purpose($page="",$space_usage_id){
 
-		//--モック用（仮）
-		global $request;
-		$slashParams =$request->route()->parameters();
-		if($page!==""&&$slashParams["page"]){
-		$page=htmlspecialchars($slashParams["page"],ENT_QUOTES,'UTF-8');
-		}
+
 		$page_name=array("party"=>"飲食・パーティー","meeting"=>"オフィス・会議","lodging"=>"宿泊","location"=>"ロケ撮影･写真･動画","specialevent"=>"イベント","performance"=>"演奏","exhibitionhall"=>"展示会","sports"=>"スポーツ","office"=>"オフィス","parking"=>"駐車場","wedding"=>"結婚式･お祝いシーン","other"=>"その他","food"=>"飲食","sales"=>"物販","exhibition"=>"催事･展示会","event"=>"イベントプロモーション・広告","ad"=>"広告・宿泊","servicepack"=>"プレミアムサービスパック");
-		//$page_name = Purpose::array5Select();//purposes TABLEからならapp/Purposeに書いた
+		$query = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+														->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+														->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')
+														->where('space_space_usage.space_usage_id', '=', $space_usage_id)->limit(3)->get();
 
-		$data = array(
-			"page"=>$page,
-			"page_name"=>$page_name
-		);
+		//dd($query);
+		//dd($query);
+		//$view = view('coming-soon', $data);
+		//$data = compact('goods','party','office','promotion','event','performance','stay','location','weddinghall','parking','sports');
+		$data = compact('query','page','page_name');
+
+
 			$view = view('purpose', $data);
 			return $view;
 	}

@@ -1,10 +1,6 @@
 @extends('host.layouts.master')
 
 @section('content')
-@include('host.layouts.sidebar')
-@if ($errors->has('hour_from[]'))
-{{ dd($errors->get('hour_from[]')) }}
-@endif
 <div class="content-wrapper" style="min-height: 622px;">
 	<section class="content container-fluid">
 		<div class="row">

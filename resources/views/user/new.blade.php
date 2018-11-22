@@ -29,53 +29,61 @@
 										Form::open([
 											'route' => 'user.create',
 											'method' => 'POST',
+											'files' => true
 										])
 									}}
 									<div>
-										<input name="utf8" type="hidden" value="✓">
-										<input type="hidden" name="user[registration_type]" id="user_registration_type" value="0">
 										<div class="col-sm-12 col-md-6">
+											@include('layouts.error', ['name' => 'family_name'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
 												<input class="mdl-textfield__input" id="family_name" name="family_name" value="">
 												<label class="mdl-textfield__label" for="family_name">姓</label>
 											</div>
 										</div>
 										<div class="col-sm-12 col-md-6">
+											@include('layouts.error', ['name' => 'given_name'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
 												<input class="mdl-textfield__input" id="textfield-" name="given_name" value="">
 												<label class="mdl-textfield__label" for="textfield-">名</label>
 											</div>
 										</div>
 										<div class="col-sm-12">
+											@include('layouts.error', ['name' => 'email'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
 												<input class="mdl-textfield__input" id="textfield-" name="email" value="">
 												<label class="mdl-textfield__label" for="textfield-">メールアドレス</label>
 											</div>
 										</div>
 										<div class="col-sm-12">
+											@include('layouts.error', ['name' => 'password'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
-												<input class="mdl-textfield__input" id="textfield-" type="password" name="password" value="">
-												<label class="mdl-textfield__label" for="textfield-">パスワード</label>
+												<input class="mdl-textfield__input" id="password" type="password" name="password" autocomplete="new-password" >
+												<label class="mdl-textfield__label" for="password">パスワード</label>
 											</div>
 										</div>
 										<div class="col-sm-12">
+											@include('layouts.error', ['name' => 'password_confirmation'])
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w100pa is-upgraded" data-upgraded=",MaterialTextfield">
-												<input class="mdl-textfield__input" id="textfield-" type="password" name="password_confirmation" value="">
-												<label class="mdl-textfield__label" for="textfield-">パスワード（確認）</label>
+												<input class="mdl-textfield__input" id="password-confirmation" type="password" name="password_confirmation">
+												<label class="mdl-textfield__label" for="password-confirmation">パスワード（確認）</label>
 											</div>
 										</div>
 										<div class="col-xs-12">
 											<div class="signup-box__wrapper-form-profile clearfix">
 												<label for="files" class="signup-box__wrapper-form-title fl">プロフィール画像</label>
+												@include('layouts.error', ['name' => 'profile_image'])
 												<div class="" aria-disabled="false" style="position: relative; border: 0px; width: 100%; height: 100%;">
 													<div class="signup-box__wrapper-form-profile__img">
 														<div class="settings-img__change-img">
-															<label for="file" class="button-gray settings-img">
+															<label for="profile-image-input" class="button-gray settings-img">
 																<span class="icon-ll"><i class="fa fa-camera"></i></span><br>ファイルを変更
 															</label>
 														</div>
 													</div>
-													<input name="profile_image" accept="image/*" type="file" autocomplete="off" id="file" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; opacity: 1e-05; pointer-events: none;">
+													<div class="profile-image-preview-container" style="width: 120px; height: 116px;">
+														<img id="profile-image-prview" style="position:relative; top: 50%; transform: translateY(-50%);">
+													</div>
+													<input name="profile_image" type="file" id="profile-image-input" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; opacity: 1e-05; pointer-events: none;">
 												</div>
 											</div>
 										</div>
@@ -89,7 +97,8 @@
 												<span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></span>
 											</label>
 										</div>
-										<div class="col-sm-12 ta-c">
+										{{--  recaptchaはver2以降  --}}
+										{{--  <div class="col-sm-12 ta-c">
 											<div id="google-recaptcha" style="margin: 15px auto 0px; width: 304px; height: 78px;">
 												<div style="width: 304px; height: 78px;">
 													<div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfqeFEUAAAAADAY0fi9k5spAgY3fxR8KVE7-qBb&amp;co=aHR0cHM6Ly9hY2NvdW50LnNwYWNlbWFya2V0LmNvbTo0NDM.&amp;hl=ja&amp;v=v1541614764654&amp;size=normal&amp;cb=nw1fyq5pif34"
@@ -97,9 +106,9 @@
 													<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 												</div>
 											</div>
-										</div>
+										</div>  --}}
 										<div class="col-sm-12 ta-c">
-											<button class="sc-iAyFgw ghlXAI" type="button" font-weight="600">
+											<button class="sc-iAyFgw ghlXAI" type="submit" font-weight="600">
 												<span class="sc-kEYyzF bgQmZj">登録する</span>
 											</button>
 										</div>
@@ -146,4 +155,36 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('script')
+<script>
+	$(function() {
+		!(function() {
+			$('#profile-image-input').change(function(e) {
+				var file = e.target.files[0],
+				reader = new FileReader(),
+				$preview = $("#profile-image-prview")
+				t = this
+
+				if(file.type.indexOf("image") < 0){
+					return false
+				}
+
+
+				reader.onload = (function(file) {
+					return function(e) {
+						$preview.attr({
+							src: e.target.result,
+							width: "120px",
+							title: file.name
+						})
+					}
+				})(file)
+
+    			reader.readAsDataURL(file)
+			})
+		} ())
+	})
+</script>
 @endsection

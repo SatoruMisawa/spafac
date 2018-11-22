@@ -1,4 +1,5 @@
 .env
+.env.testing
 .DS_Store
 vendor
 storage

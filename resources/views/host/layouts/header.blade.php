@@ -7,7 +7,7 @@
             <li><a href="{{ route('host.index') }}">ダッシュボード</a></li>
             <li><a href="#">スペース管理</a></li>
             <li><a href="#">予約管理</a></li>
-            <li><a href="#">メッセージBOX</a></li>
+            <li><a href="{{ route('maillist') }}">メッセージBOX</a></li>
             <li><a href="#">売上管理</a></li>
             <li><a href="#">設定</a></li>
             <li><a href="#">ヘルプ</a></li>
@@ -17,18 +17,4 @@
             </li>
         </ul>
     </nav>
-</div>
-<div class="dashboardTop">
-    <div id="header02">
-        <div class="inner">
-            <ul>
-                <li><a href="{{ route('host.index') }}">ダッシュボード</a></li>
-                <li><a href="#">メッセージ</a></li>
-                <li><a href="#">スペース</a></li>
-                <li><a href="#">参加する</a></li>
-                <li><a href="#">プロフフィール</a></li>
-                <li><a href="#">アカウント</a></li>
-            </ul>
-        </div>
-    </div>
 </div>

@@ -18,24 +18,10 @@ class IndexController extends MypageController
 	*/
 	public function index() {
 
-		//echo password_hash('0000', PASSWORD_BCRYPT);
-		//exit;
-
-
-		//--トップのお知らせ用 モック用（仮）
-		/*$data = array("todo"=>
-		array(array("id"=>1,"title"=>"やることやることやることやることやること…","date"=>"2018-08-01")),
-		"remess"=>
-		array(array("id"=>1,"title"=>"未返信メッセージ未返信メッセージ未返信メ…","date"=>"2018-08-02"),array("id"=>2,"title"=>"未返信メッセージ未返信メッセージ未返信メ…","date"=>"2018-08-02"))
-		,
-		"rerec"=>array(),
-		"redone"=>array()
-	);*/
-
 		$todo  =array();
 		$rerec =array();
 		$redone=array();
-		$maillist= $this->maillist();
+		$maillist= $this->maillist_index();
 
 		//dd($maillist);
 
@@ -145,7 +131,8 @@ class IndexController extends MypageController
 	/**
 	* mailList
 	*/
-	public function maillist() {
+
+	public function maillist_index() {
 
 
 		$thread_id = DB::table('mailtable')
@@ -202,6 +189,67 @@ class IndexController extends MypageController
 
 		//$view = view('mypage.mailList', compact('maillist'));
 		return $maillist;
+
+	}
+
+
+	public function maillist() {
+
+
+		$thread_id = DB::table('mailtable')
+		->select('thread_id')
+		->distinct()
+		->where('to_user_id', Auth::id())
+		->orWhere('from_user_id', Auth::id())
+		->get();
+
+		$maillist = [];
+
+		foreach($thread_id as $t_id)
+		{
+				$to_user_id = DB::table('mailtable')
+				->select('to_user_id')
+				->where('thread_id', $t_id->thread_id)
+				->where('to_user_id', '!=', Auth::id())
+				->first();
+
+
+				$from_user_id = DB::table('mailtable')
+				->select('from_user_id')
+				->where('thread_id', $t_id->thread_id)
+				->where('from_user_id', '!=', Auth::id())
+				->first();
+
+				if(!is_null($to_user_id) || !is_null($from_user_id))
+				{
+
+						$user_id;
+
+						if (boolval($to_user_id))
+						{
+								$user_id = $to_user_id->to_user_id;
+						}
+						else
+						{
+								$user_id = $from_user_id->from_user_id;
+						}
+
+						$name = DB::table('users')
+						->select('name')
+						->where('id', $user_id)
+						->value('name');
+
+						$content;
+						$content = DB::table('mailtable')->select('content')->where('thread_id', $t_id->thread_id)->orderBy('send_date', 'asc')->first();
+						$id = $user_id;
+						array_push($maillist, compact('content','id', 'name'));
+
+				}
+
+		}
+
+		$view = view('mypage.mailList', compact('maillist'));
+		return $view;
 
 	}
 

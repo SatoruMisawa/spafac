@@ -61,7 +61,7 @@ class SpaceAttachmentControllerTest extends TestCase
         foreach ($images as $image) {
             $this->assertDatabaseHas('space_attachments', [
                 'space_id' => $spaceID,
-                'url' => config('app.url').'/public/'.$image->hashName(),
+                'url' => config('app.url').'/storage/'.$image->hashName(),
                 'type' => SpaceAttachment::TYPE_IMAGE,
             ]);
         }

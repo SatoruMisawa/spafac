@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\Http\Requests\CreateUserRequest;
 use Auth;
 use Hash;
+use ImageStorage;
 
 class UserController extends Controller
 {
@@ -43,7 +44,7 @@ class UserController extends Controller
 
     private function createUser(CreateUserRequest $request) {
         $data = $this->data($request);
-        $filename = $request->file('profile_image')->store('public');
+        $filename = ImageStorage::store($request->file('profile_image'));
         return $this->userRepository->create($data + [
             'profile_image_url' => config('app.url').'/'.$filename,
         ]);
