@@ -1298,7 +1298,7 @@ header.main-header {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 70px 0 0 20px;
+  padding: 100px 0 0 20px;
   min-height: 100%;
   width: 270px;
   z-index: 810;
@@ -1319,7 +1319,7 @@ li.admin_header {
   overflow: hidden;
   text-overflow: clip;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 23px;
   margin: 15px 0;
 }
 
@@ -1336,7 +1336,9 @@ li.admin_header {
 
 .sidebar-menu_admin li>a {
   position: relative;
-  font-size: 23px;
+  font-size: 20px;
+  line-height: 3;
+  
 }
 
 .sidebar-menu_admin li>a:hover {

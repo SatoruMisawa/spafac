@@ -723,7 +723,8 @@ section.pattern_1 .pattern_box {
   display: table;
   border-collapse: separate;
   border-spacing: 60px 0;
-  margin:2em auto 0 auto; }
+  margin: 20px 50px;
+}
 
 section.pattern_1 .pattern_box .pattern_boxs {
   display: table-cell;
@@ -2626,13 +2627,13 @@ border-spacing:15px 0;
 	margin:5vw 0;
 }
   #flow .flow .flow_box {
-	  width:90%;
+	  width:70%;
 	  font-size:1.4rem;
     margin:5vw auto;
     display: block;
 	 }
   #flow .flow .flow_box p{
-	  font-size:1.4rem;
+    font-size: 18px;
   }
 #flow .flow .flow_box span {
     display: block;
@@ -2641,7 +2642,12 @@ border-spacing:15px 0;
 }
 
   #flow .flow .flow_arrow {
-    transform: rotate(90deg); }
+    transform: rotate(90deg); 
+    width: 20%;
+    font-size: 1.4rem;
+    margin: 5vw auto;
+    display: block;
+  }
 
 
 #reg_now #reg_now_box h2{

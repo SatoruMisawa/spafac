@@ -2,16 +2,16 @@
 	<div class="site-footer__links">
 		<ul>
 			<li>
-				<a href="<?php echo url('signin'); ?>">新規登録する≫</a>
+				<a href="<?php echo url('registration'); ?>">新規登録する≫</a>
 			</li>
 			<li>
-				<a href="<?php echo url('signin'); ?>">スペースオーナー登録する≫</a>
+				<a href="<?php echo url('host'); ?>">スペースオーナー登録する≫</a>
 			</li>
 			<li>
-			<!-- <a href="<?php echo url('coming-soon'); ?>">iPhone</a> -->
+				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a> -->
 			</li>
 			<li>
-			<!-- <a href="<?php echo url('coming-soon'); ?>">Android</a> -->
+				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-google.png"></a> -->
 			</li>
 		</ul>
 	</div>
@@ -20,39 +20,69 @@
 			<li>
 				目的から探す
 				<ul>
-					<li><a href="<?php echo url('coming-soon'); ?>">パーティー</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">会議</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">宿泊・民泊</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">写真撮影</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">ロケ撮影</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">個展・展示会</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">演奏</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">スポーツ</a></li>
+<!--
+					<li><a href="/coming-soon">パーティー</a></li>
+					<li><a href="/coming-soon">会議</a></li>
+					<li><a href="/coming-soon">宿泊・民泊</a></li>
+					<li><a href="/coming-soon">写真撮影</a></li>
+					<li><a href="/coming-soon">ロケ撮影</a></li>
+					<li><a href="/coming-soon">個展・展示会</a></li>
+					<li><a href="/coming-soon">演奏</a></li>
+					<li><a href="/coming-soon">スポーツ</a></li>
+-->
+   
+<li><a href="/purpose/sales/1">物販</a></li>
+<li><a href="/purpose/party/2">飲食・パーティー</a></li>
+<li><a href="/purpose/meeting/5">オフィス・会議</a></li>
+<li><a href="/purpose/event/4">イベントプロモーション・広告</a></li>
+<li><a href="/purpose/exhibition/3">催事・展示会</a></li>
+<li><a href="/purpose/purpose/performance/6">演奏</a></li>
+<li><a href="/stay">宿泊・民泊</a></li>
+<li><a href="/purpose/location/7">ロケ撮影･写真･動画</a></li>
+<li><a href="/purpose/purpose/wedding/5">結婚式・お祝いシーン</a></li>
+<li><a href="/purpose/parking/8">駐車場</a></li>
+<li><a href="/purpose/sports/9">スポーツ</a></li>
+<li><a href="/purpose/other/10">その他</a></li>
+
 				</ul>
 			</li>
 			<li>
 				カテゴリーから探す
 				<ul>
-					<li><a href="<?php echo url('coming-soon'); ?>">目的から探す</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">エリアから探す</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">人数から探す</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">会場タイプから探す</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">アメニティから探す</a></li>
+					<li><a href="/event_types">目的から探す</a></li>
+					<li><a href="/category">カテゴリから探す</a></li>
+					<li><a href="/areas">エリアから探す</a></li>
+					<li><a href="/capacities">人数から探す</a></li>
+					<li><a href="/space_types">会場タイプから探す</a></li>
+					<li><a href="/amenities">設備から探す</a></li>
+					<!--li><a href="/coming-soon">法人利用のご相談</a></li-->
 				</ul>
 			</li>
 			<li>
 				スペースファクトリーについて
 				<ul>
-					<li><a href="<?php echo url('guide'); ?>">ご利用ガイド</a></li>
-					<li><a href="<?php echo url('registration-contract'); ?>">スペース掲載をご希望の方へ</a></li>
-					<li><a href="#">スマートフォンアプリ</a></li>
-					<li><a href="#">法人向け管理サービス</a></li>
-					<li><a href="<?php echo url('privacy-policy'); ?>">プライバシーポリシー</a></li>
-					<li><a href="<?php echo url('terms-of-service'); ?>">スペースファクトリー利用規約</a></li>
-					<li><a href="<?php echo url('coming-soon'); ?>">ゲスト規約</a></li>
-					<li><a href="#">決済の流れ</a></li>
-					<li><a href="#">よくある質問</a></li>
-					<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
+                <!--
+					<li><a href="/guide">ご利用ガイド</a></li>
+					<li><a href="/registration-contract">スペース登録掲載利用の方へ</a></li>
+					<li><a href="/coming-soon">スマートフォンアプリ</a></li>
+					<li><a href="/coming-soon">法人向け管理サービス</a></li>
+					<li><a href="/privacy-policy">プライバシーポリシー</a></li>
+					<li><a href="/terms-of-service">スペースファクトリー利用規約</a></li>
+					<li><a href="/coming-soon">ゲスト規約</a></li>
+					<li><a href="/coming-soon">決済の流れ</a></li>
+					<li><a href="/coming-soon">よくある質問</a></li>
+					<li><a href="/inquiry">お問い合わせ</a></li>
+                 -->   
+					<li><a href="/guide">ご利用ガイド</a></li>
+					<li><a href="/registration-contract">スペース登録掲載利用の方へ</a></li>
+					<li><a href="/terms-of-service">利用規約</a></li>
+					<li><a href="/lodging_agreement">宿泊所掲載規約</a></li>
+					<li><a href="/lodging_agreement_guests">宿泊ゲスト規約</a></li>
+					<li><a href="/privacy-policy">プライバシーポリシー</a></li>
+					<li><a href="/flow_of_settlement">決済の流れ</a></li>
+					<li><a href="/privacy-policy">個人情報の取り扱いについて</a></li>
+					<li><a href="/inquiry">お問い合わせ</a></li>
+                    
 				</ul>
 			</li>
 		</ul>
@@ -69,13 +99,13 @@
 		</dl>
 	</div>
 	-->
-
 	<div class="site-footer__info">
+    <div class="footer_info_box">
         <div class="foot f-acsess">
 		<p class="company-name">スペースファクトリー事務局</p>
 		<ul class="links-sns">
 			<li><a href="https://www.facebook.com/SpafacSTAFF/">Facebook</a></li>
-			<li><a href="/coming-soon">Twitter</a></li>
+			<li><a href="https://twitter.com/Spafac_staff">Twitter</a></li>
 			<li><a href="/https://www.instagram.com/spafacstaff/">Instagram</a></li>
 		</ul>
 		<p class="address">
@@ -84,24 +114,9 @@
 			大阪市北区梅田2-2-2<br>
 			ヒルトンプラザウエストオフィスタワー19階<br>-->
 			サービスその他に関するお問い合わせ<br>
-			info@spafac.com<br>
-		</p>
-		</div>
-        <div class="foot f-links">
-		<ul class="links">
-			<li><a href="/coming-soon">採用情報</a></li>
-			<li><a href="/company-profile">運営会社</a></li>
-			<li><a href="/commercial-transaction-law">特定商取引法に基づく表示</a></li>
-		</ul>
-        </div>
-        <div class="foot f-logo">
-        <ul>
-        <li>
-        <a href="/">
-        <img src="/assets/images/blog_header_logo.png">
-        </a>
-        </li>
-        <li><a href="mailto:info@spafac.com"><svg version="1.1" id="email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+			<a href="/inquiry">info@spafac.com</a></p>
+		<!-- <p class="address">
+<a href="/inquiry"><svg version="1.1" id="email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" width="50px" height="50px" viewBox="615 615 50 50" enable-background="new 615 615 50 50" xml:space="preserve">
 	<path fill="#FFFFFF" d="M650.064,644.009c-2.201,1.733-5.892,5.389-10.063,5.366c-4.192,0.022-7.93-3.687-10.064-5.367
 		c-4.837-3.787-8.01-6.288-10.248-8.07v18.125h40.625v-18.125C658.074,637.72,654.901,640.222,650.064,644.009z"/>
@@ -113,18 +128,35 @@
 		c4.837-3.787,8.011-6.289,10.249-8.071v18.125H619.688z M660.313,629.922c-2.189,1.783-5.681,4.556-13.144,10.399
 		c-1.645,1.293-4.902,4.401-7.169,4.366c-2.267,0.036-5.525-3.072-7.169-4.366c-7.461-5.843-10.953-8.616-13.143-10.399v-3.985
 		h40.625V629.922z"/>
-</svg></a></li>
-        <li>mmm
-		@if (Auth::guard('users')->check())
-        <p class="red">ログイン中</p>
-        @endif
-        </li>
-        </ul>
+</svg></a>
+		</p>
+        <p class="mailmaga-bt"><a href="https://magazine.spafac.com/mailmaga/">メルマガ購読</a></p> -->
+		</div>
+        <div class="foot f-links">
+		<ul class="links">
+			<li><a href="/">採用情報</a></li>
+			<li><a href="/company-profile">運営会社</a></li>
+			<li><a href="/commercial-transaction-law">特定商取引法に基づく表示</a></li>
+		</ul>
         </div>
+        <div class="foot f-logo">
+        <ul>
+        <a href="/">
+        <img src="/assets/images/footer_logo_stay.png">
+        </a>
+        <a href="/stay">
+        <img src="/assets/images/footer_logo_spacemagazine.png">
+        </a>
+        </ul>
+		<!-- @if (Auth::guard('users')->check())
+        <p class="red txtC">ログイン中</p>
+        @endif -->
+        </div>
+       </div> 
 	</div>
 	
 	<div class="site-footer__copyright">
-		<p>© スペースファクトリー 2018<br>Copyright © スペースファクトリー Co., Ltd Allrights reserved.</p>
+		<p>© 2018-SPACE FACTORY Co., Ltd Allrights reserved.</p>
 	</div>
 
-</footer><!-- #colophon -->
+</footer>
