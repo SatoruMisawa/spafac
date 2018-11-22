@@ -11,4 +11,8 @@ class ImageStorage {
         $fileName = Storage::disk('local')->putFile('public', $file);
         return str_replace('public', 'storage', $fileName);
     }
+
+    public function storePrivately($file) {
+        return Storage::disk('local')->putFile('private', $file);
+    }
 }

@@ -21,7 +21,10 @@ class Space extends Model
 		'user_id', 'facility_id', 'key_delivery_id',
 		'name', 'about', 'capacity', 'floor_area',
 		'about_amenity', 'about_food_drink', 'about_cleanup',
-		'cancellation_policy', 'terms_of_use'
+		'cancellation_policy', 'terms_of_use',
+		'rent_space_type_id', 'numbers_of_beds',
+		'numbers_of_futons', 'numbers_of_baths','numbers_of_toilets',
+		'rent_space_business_type_id', 'business_license_image_name',
 	];
 
 	public function user() {
