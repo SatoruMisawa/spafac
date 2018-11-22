@@ -22,8 +22,8 @@ class Plan extends Model
 	}
 
 	public function schedules() {
-		return $this->belongsToMany(Day::class, 'schedules');
-	}
+		return $this->belongsToMany(Day::class, 'schedules')->withPivot('from', 'to');
+	}	
 
 	public function planner() {
 		return $this->space->user;
@@ -39,5 +39,34 @@ class Plan extends Model
 
 	public function isDayly() {
 		return $this->price_per_day !== null;
+	}
+
+	public function isScheduled($dayID) {
+		return $this->schedules()->where('day_id', $dayID)->exists();
+	}
+
+	public function schedule($dayID) {
+		if (!$this->isScheduled($dayID)) {
+			return null;
+		}
+		return $this->schedules()->where('day_id', $dayID)->first()->pivot;
+	}
+
+	public function hourFrom($dayID) {
+		$schedule = $this->schedule($dayID);
+		if ($schedule === null) {
+			return null;
+		}
+
+		return $schedule->from;
+	}
+
+	public function hourTo($dayID) {
+		$schedule = $this->schedule($dayID);
+		if ($schedule === null) {
+			return null;
+		}
+
+		return $schedule->to;
 	}
 }

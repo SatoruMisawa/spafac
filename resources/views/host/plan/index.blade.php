@@ -46,7 +46,7 @@
 														</div>
 													</div>
 													<div class="sp_Dirubg">
-														<a class="sp_vhfTg" href="#" type="anchor">
+														<a class="sp_vhfTg" href="{{ route('host.space.plan.show', [$space->id, $plan->id]) }}" type="anchor">
 															<span class="sp_khiRed">編集</span>
 														</a>
 														<a class="fqXqIA" type="anchor">
