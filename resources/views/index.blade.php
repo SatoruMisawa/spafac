@@ -996,12 +996,34 @@
 	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
 
-<section id="reg_now_5">
-	<div id="reg_now_box">
-		<h2>今すぐ会員登録して</h2>
-		<span>スペースを貸し借りしてみよう</span>
-		<p>今なら会員登録した方全員に、<br>すべてのスペースの予約で利用できる<br>2,000円分のポイントをプレゼント。</p>
-		<a href="{{ route('user.new') }}">新規登録（無料）</a>
+<div class="sp-zzz spafaclogo100">
+	<div class="sp-Agr splog101">
+		<h2 class="sf-dgrt splog102">関連企業</h2>
+		<div class="sf-cdrt splog103">
+				<ul class="sp-bjhut splog104">
+					<li>
+						<div>
+						<a href="https://www.goto2025.osaka/" target="_blank">
+							<img class="sp-clog spclog" src="{{ asset('assets.mypage.img.goto2025logo.jpg') }}" alt="">
+						</a>
+						</div>
+					</li>
+					<li>
+						<div>
+						<a href="https://camp-fire.jp/" target="_blank">
+							<img class="sp-clog spclog" src="{{ asset('assets.mypage.img.campfire_logo.png') }}" alt="">
+						</a>
+						</div>
+					</li>
+					<li>
+						<div>
+						<a href="https://osaka-info.jp/" target="_blank">
+							<img class="sp-clog spclog" src="{{ asset('assets.mypage.img.osakadowntown_logo.png') }}" alt="">						</a>
+						</div>
+					</li>
+				</ul>
+		</div>
 	</div>
-</section>
+</div>
+
 @stop
