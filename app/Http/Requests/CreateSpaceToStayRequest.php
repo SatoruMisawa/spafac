@@ -42,6 +42,7 @@ class CreateSpaceToStayRequest extends FormRequest
             'number_of_baths' => 'required|integer',
             'number_of_toilets' => 'required|integer',
             'rent_space_business_type_id' => 'required|integer',
+            'business_license_image' => 'required|image',
         ];
     }
 
