@@ -13,6 +13,7 @@ use App\Repositories\PreorderPeriodRepository;
 use App\Repositories\ScheduleRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlanRequest;
+use Carbon\Carbon;
 
 
 class PlanController extends Controller
@@ -71,15 +72,8 @@ class PlanController extends Controller
 	}
 
 	private function createPlan(CreatePlanRequest $request, Space $space) {
-		return $space->plans()->create(
-			$request->only([
-				'name',
-				'preorder_deadline_id', 'preorder_period_id',
-				'price_per_hour', 'price_per_day',
-				'need_to_be_approved',
-				'from', 'to',
-			])
-		);
+		$data = $this->data($request);
+		return $space->plans()->create($data);
 	}
 
 	private function fillSchedules(CreatePlanRequest $request, Plan $plan) {
@@ -94,5 +88,52 @@ class PlanController extends Controller
 				'to' => $to,
 			]);
 		}
+	}
+
+	public function show(Space $space, Plan $plan) {
+		return view('host.plan.show', [
+			'space' => $space,
+			'plan' => $plan,
+			'days' => Day::all(),
+			'preorderDeadlines' => $this->preorderDeadlineRepository->allNames()->toArray(),
+			'preorderPeriods' => $this->preorderPeriodRepository->allNames()->toArray(),
+		]);
+	}
+
+	public function update(CreatePlanRequest $request, Space $space, Plan $plan) {
+		try {
+			$this->updatePlan($request, $plan);
+			$this->refillSchedules($request, $plan);
+
+			return redirect()->route('host.space.plan.index', $space->id);
+        } catch (Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors([
+                'message' => 'something went wrong',
+            ]);
+        }
+	}
+
+	private function refillSchedules(CreatePlanRequest $request, Plan $plan) {
+		$plan->schedules()->detach();
+		$this->fillSchedules($request, $plan);
+	}
+
+	public function updatePlan(CreatePlanRequest $request, Plan $plan) {
+		$data = $this->data($request);
+		$plan->update($data);
+		return $plan;
+	}
+
+	private function data(CreatePlanRequest $request) {
+		return $request->only([
+			'name',
+			'preorder_deadline_id', 'preorder_period_id',
+			'price_per_hour', 'price_per_day',
+			'need_to_be_approved',
+		]) + [
+			'from' => Carbon::parse($request->get('period_from'))->format('Y-m-d'),
+			'to' => Carbon::parse($request->get('period_to'))->format('Y-m-d'),
+		];
 	}
 }
