@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
 	Route::group(['prefix' => 'mypage'], function() {
-		Route::get('/', 'Mypage\IndexController@index')->name('index');
+		Route::get('/', 'Mypage\IndexController@index');
 		Route::get('like', 'Mypage\IndexController@like');
 		Route::get('like-new', 'Mypage\IndexController@likeNew');
 		Route::get('login', 'Mypage\IndexController@login');
@@ -131,7 +131,7 @@ Route::group(['prefix' => 'verification/{user}'], function() {
 	});
 });
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
 Route::get('inquiry', 'IndexController@inquiry');
 Route::get('guide', 'IndexController@guide');
 // Route::get('terms-of-service', 'IndexController@termsOfService');
