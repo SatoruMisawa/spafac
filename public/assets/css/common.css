@@ -45,8 +45,9 @@ body *{
 
 .inner {
   max-width:1200px;
-  margin: auto;
+  margin: 20px auto;
 }
+
 .inner:after {
   content: ".";
   display: block;
@@ -508,6 +509,7 @@ nav>ul>li>a {
   justify-content: center;
   align-items: center;
   font-size:1.3rem;
+  color: #2ea7e0;
 }
 
 .head_l2 nav {

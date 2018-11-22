@@ -1660,6 +1660,7 @@ li.list-your-thing.pull-left {
   border-top: 1px solid #f4f4f4;
   padding: 10px 20px;
   background-color: #fff;
+  margin: 0 0 20px;
 }
 
 /* -----------------------------
@@ -1805,7 +1806,7 @@ span.purposenameS4gbt6Yhnj {
 input.form-control.p-locality {
   display: inline-block;
   width: 100%;
-  max-width: 100px;
+  /* max-width: 100px; */
 }
 
 span.FormItem__Unit-oe304i-5.hguKws {
