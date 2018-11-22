@@ -11,9 +11,10 @@ use App\Repositories\AmenityRepository;
 use App\Repositories\KeyDeliveryRepository;
 use App\Repositories\SpaceRepository;
 use App\Repositories\SpaceUsageRepository;
+use App\Http\Requests\CreateSpaceRequest;
+use App\Http\Requests\CreateSpaceToStayRequest;
 use App\Http\Controllers\Controller;
 use Auth;
-use App\Http\Requests\CreateSpaceRequest;
 
 class SpaceController extends Controller
 {
@@ -73,6 +74,14 @@ class SpaceController extends Controller
                 'message' => 'something went wrong',
             ]);
         }
+	}
+
+	public function createSpaceToStay(CreateSpaceToStayReqeust $request, Facility $facility) {
+		$space = Auth::user()->spaces()->create($this->dataToCreateSpaceToStay($request, $facilityID));
+		$this->createAmenities($request, $space);
+		$this->createSpaceUsages($request, $space);
+
+		return redirect()->route('host.space.attachment.new', $space->id);
 	}
 
 	public function edit(Facility $facility, Space $space) {
@@ -145,5 +154,9 @@ class SpaceController extends Controller
 			'about_amenity', 'about_food_drink','about_cleanup',
 			'cancellation_policy', 'terms_of_use',
 		]) + ['facility_id' => $facilityID];
+	}
+
+	private function dataToCreateSpaceToStay(CreateSpaceToStayRequest $request, $facilityID) {
+		return $reqeust->onlyToCreateSpaceToStay() + ['facility_id' => $facilityID];
 	}
 }
