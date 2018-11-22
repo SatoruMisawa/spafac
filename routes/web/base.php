@@ -60,6 +60,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::group(['prefix' => 'host'], function() {
 		Route::get('/', 'Host\HostController@index')->name('host.index');
 
+		// todo あとでちゃんとする
+		Route::get('/new', function() {
+			return view('selection');
+		});
+
 		Route::group(['prefix' => '/facilities'], function() {
 			Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
 			Route::get('/new', 'Host\FacilityController@new')->name('host.facility.new');
