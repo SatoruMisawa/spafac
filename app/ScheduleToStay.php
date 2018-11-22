@@ -13,6 +13,6 @@ class ScheduleToStay extends Pivot
     protected $fillable = [
         'plan_id', 'day_id',
         'checkin_from', 'checkin_to',
-        'checkout_from', 'checkout_to',
+        'checkout',
     ];
 }

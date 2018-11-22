@@ -64,7 +64,7 @@ class PlanController extends Controller
 	}
 
 	public function newToStay(Space $space) {
-		return view('host.plan.stay.new', [
+		return view('stay.host.plan.new', [
 			'space' => $space,
 			'days' => Day::all(),
 			'preorderDeadlines' => $this->preorderDeadlineRepository->allNames()->toArray(),
@@ -107,7 +107,7 @@ class PlanController extends Controller
 
 	public function createToStay(CreatePlanToStayRequest $request, Space $space) {
 		$plan = $this->createPlanToStay($request, $space);
-		$this->fillSchedulesToStay($request, $space);
+		$this->fillSchedulesToStay($request, $plan->id);
 
 		return redirect()->route('host.space.plan.option.new', [$space->id, $plan->id]);
 	}
@@ -124,8 +124,7 @@ class PlanController extends Controller
 				'day_id' => $dayID,
 				'checkin_from' => $request->get('checkin_from'),
 				'checkin_to' => $request->get('checkin_to'),
-				'checkout_from' => $request->get('checkout_from'),
-				'checkout_from' => $request->get('checkout_to'),
+				'checkout' => $request->get('checkout'),
 			]);
 		}
 	}

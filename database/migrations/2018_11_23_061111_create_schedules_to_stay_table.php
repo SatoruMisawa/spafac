@@ -19,8 +19,7 @@ class CreateSchedulesToStayTable extends Migration
             $table->bigInteger('day_id')->unsigned();
             $table->integer('checkin_from');
             $table->integer('checkin_to');
-            $table->integer('checkout_from');
-            $table->integer('checkout_to');
+            $table->integer('checkout');
         });
     }
 

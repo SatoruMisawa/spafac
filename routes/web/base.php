@@ -105,7 +105,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 
 					Route::group(['prefix' => '/stay'], function() {
 						Route::get('/new', 'Host\PlanController@newToStay')->name('host.space.plan.stay.new');
-						Route::post('/', 'Host\PlanController@create')->name('host.space.plan.stay.create');
+						Route::post('/', 'Host\PlanController@createToStay')->name('host.space.plan.stay.create');
 					});
 
 					Route::group(['prefix' => '/{plan}'], function() {

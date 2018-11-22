@@ -13,7 +13,7 @@ class CreatePlanToStayRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,14 +27,13 @@ class CreatePlanToStayRequest extends FormRequest
             'name' => 'required|string',
             'description' => 'required|string',
             'price_per_day' => 'required|integer|min:1',
-            'max_expected_number_of_people' => 'required|integer|min:1',
+            'max_expected_numbers_of_people' => 'required|integer|min:1',
             'excess_charge_per_person' => 'required|integer',
-            'min_number_of_nights' => 'required|integer|min:1',
-            'max_number_of_nights' => 'required|integer|min:1',
+            'min_numbers_of_nights' => 'required|integer|min:1',
+            'max_numbers_of_nights' => 'required|integer|min:1',
             'checkin_from' => 'required',
-            'checkin_to' => 'required|after:checkin_from',
-            'checkout_from' => 'required',
-            'checkout_to' => 'required|after:checkout_from',
+            'checkin_to' => 'required',
+            'checkout' => 'required',
 			'day_ids' => 'required|array',
 			'need_to_be_approved' => 'required|boolean',
 			'preorder_deadline_id' => 'required',
