@@ -24,7 +24,7 @@ class Space extends Model
 		'cancellation_policy', 'terms_of_use',
 		'rent_space_type_id', 'number_of_beds',
 		'number_of_futons', 'number_of_baths','number_of_toilets',
-		'rent_space_business_type_id',
+		'rent_space_business_type_id', 'business_license_image_name',
 	];
 
 	public function user() {

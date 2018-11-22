@@ -32,6 +32,7 @@ class CreateSpacesTable extends Migration
             $table->integer('number_of_futons')->nullable();
             $table->integer('number_of_toilets')->nullable();
             $table->bigInteger('rent_space_business_type_id')->unsigned()->nullable();
+            $table->string('business_license_image_name')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
