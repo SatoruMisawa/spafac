@@ -28,9 +28,10 @@ class CreateSpacesTable extends Migration
             $table->string('cancellation_policy');
             $table->string('terms_of_use');
             $table->bigInteger('rent_space_type_id')->unsigned()->nullable();
-            $table->integer('number_of_beds')->nullable();
-            $table->integer('number_of_futons')->nullable();
-            $table->integer('number_of_toilets')->nullable();
+            $table->integer('numbers_of_beds')->nullable();
+            $table->integer('numbers_of_futons')->nullable();
+            $table->integer('numbers_of_baths')->nullable();
+            $table->integer('numbers_of_toilets')->nullable();
             $table->bigInteger('rent_space_business_type_id')->unsigned()->nullable();
             $table->string('business_license_image_name')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

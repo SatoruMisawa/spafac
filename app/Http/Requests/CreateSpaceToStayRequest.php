@@ -37,10 +37,10 @@ class CreateSpaceToStayRequest extends FormRequest
             'space_usage_ids' => 'required|array',
             'amenity_ids' => 'required|array',
             'rent_space_type_id' => 'required',
-            'number_of_beds' => 'required|integer',
-            'number_of_futons' => 'required|integer',
-            'number_of_baths' => 'required|integer',
-            'number_of_toilets' => 'required|integer',
+            'numbers_of_beds' => 'required|integer',
+            'numbers_of_futons' => 'required|integer',
+            'numbers_of_baths' => 'required|integer',
+            'numbers_of_toilets' => 'required|integer',
             'rent_space_business_type_id' => 'required|integer',
             'business_license_image' => 'required|image',
         ];
@@ -52,7 +52,7 @@ class CreateSpaceToStayRequest extends FormRequest
 			'name', 'about', 'capacity', 'floor_area',
 			'about_amenity', 'about_food_drink','about_cleanup',
 			'cancellation_policy', 'terms_of_use', 'rent_space_type_id',
-            'number_of_beds', 'number_of_futons', 'number_of_baths', 'number_of_toilets',
+            'numbers_of_beds', 'numbers_of_futons', 'numbers_of_baths', 'numbers_of_toilets',
             'rent_space_business_type_id',
         ]);
     }

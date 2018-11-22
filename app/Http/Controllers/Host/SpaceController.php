@@ -17,6 +17,7 @@ use App\Http\Requests\CreateSpaceRequest;
 use App\Http\Requests\CreateSpaceToStayRequest;
 use App\Http\Controllers\Controller;
 use Auth;
+use ImageStorage;
 
 class SpaceController extends Controller
 {
@@ -71,13 +72,13 @@ class SpaceController extends Controller
 	}
 
 	public function newToStay(Facility $facility) {
-		return view('host.space.new', [
+		return view('stay.host.space.new', [
 			'facility' => $facility,
 			'spaceUsages' => $this->spaceUsageRepository->all(),
 			'amenities' => $this->amenityRepository->all(),
 			'keyDeliveries' => $this->keyDeliveryRepository->all(),
 			'rentSpaceTypes' => $this->rentSpaceTypeRepository->all(),
-			'rentSpaceBusinessTypes' => $this->rentSpaceBusinessTypeRepository->allIDsAndNames(),
+			'rentSpaceBusinessTypes' => $this->rentSpaceBusinessTypeRepository->allIDsAndNames()->toArray(),
 		]);
 	}
 
@@ -85,8 +86,8 @@ class SpaceController extends Controller
 		try {
 			$space = $this->createSpace($request, $facility);
 
-			$this->createAmenities($request, $space);
-			$this->createSpaceUsages($request, $space);
+			$this->createAmenities($request->get('amenity_ids'), $space);
+			$this->createSpaceUsages($request->get('space_usage_ids'), $space);
 
 			return redirect()->route('host.space.attachment.new', $space->id);
         } catch (Exception $e) {
@@ -97,17 +98,17 @@ class SpaceController extends Controller
         }
 	}
 
-	public function createToStay(CreateSpaceToStayReqeust $request, Facility $facility) {
+	public function createToStay(CreateSpaceToStayRequest $request, Facility $facility) {
 		$space = $this->createSpaceToStay($request, $facility->id);
 		
-		$this->createAmenities($request, $space);
-		$this->createSpaceUsages($request, $space);
+		$this->createAmenities($request->get('amenity_ids'), $space);
+		$this->createSpaceUsages($request->get('space_usage_ids'), $space);
 
 		return redirect()->route('host.space.attachment.new', $space->id);
 	}
 
 	private function createSpaceToStay(CreateSpaceToStayRequest $request, $facilityID) {
-		$imageName = ImageStorage::storePrivately($request->get('business_license_image'));
+		$imageName = ImageStorage::storePrivately($request->file('business_license_image'));
 		$data = $this->dataToCreateSpaceToStay($request, $facilityID, $imageName);
 		return Auth::user()->spaces()->create($data);
 	} 
@@ -131,8 +132,8 @@ class SpaceController extends Controller
 		try {
 			$space = $this->updateSpace($request, $facility, $space);
 				
-			$this->recreateAmenities($request, $space);
-			$this->recreateSpaceUsages($request, $space);
+			$this->recreateAmenities($request->get('amenity_ids'), $space);
+			$this->recreateSpaceUsages($request->get('space_usage_ids'), $space);
 
 			return redirect()->route('host.space.index');
         } catch (Exception $e) {
@@ -153,24 +154,24 @@ class SpaceController extends Controller
 		return $space = $this->spaceRepository->update($data, $space->id);
 	}
 
-	private function recreateAmenities(CreateSpaceRequest $request, Space $space) {
+	private function recreateAmenities($amenityIDs, Space $space) {
 		$space->amenities()->detach();
-		$this->createAmenities($request, $space);
+		$this->createAmenities($amenityIDs, $space);
 	}
 
-	private function createAmenities(CreateSpaceRequest $request, Space $space) {
-		foreach ($request->get('amenity_ids') as $amenityID) {
+	private function createAmenities($amenityIDs, Space $space) {
+		foreach ($amenityIDs as $amenityID) {
 			$space->amenities()->save(Amenity::find($amenityID));
 		}
 	}
 
-	private function recreateSpaceUsages(CreateSpaceRequest $request, Space $space) {
+	private function recreateSpaceUsages($spaceUsageIDs, Space $space) {
 		$space->spaceUsages()->detach();
-		$this->createSpaceUsages($request, $space);
+		$this->createSpaceUsages($spaceUsageIDs, $space);
 	}
 
-	private function createSpaceUsages(CreateSpaceRequest $request, Space $space) {
-		foreach ($request->get('space_usage_ids') as $spaceUsageID) {
+	private function createSpaceUsages($spaceUsageIDs, Space $space) {
+		foreach ($spaceUsageIDs as $spaceUsageID) {
 			$space->spaceUsages()->save(SpaceUsage::find($spaceUsageID));
 		}
 	}
@@ -185,9 +186,9 @@ class SpaceController extends Controller
 	}
 
 	private function dataToCreateSpaceToStay(CreateSpaceToStayRequest $request, $facilityID, $businessLisenceImageName) {
-		return $reqeust->onlyToCreateSpaceToStay() + [
+		return $request->onlyToCreateSpaceToStay() + [
 			'facility_id' => $facilityID,
-			'business_lisence_image_name' => $businessLisenceImageName,
+			'business_license_image_name' => $businessLisenceImageName,
 		];
 	}
 }

@@ -22,8 +22,8 @@ class Space extends Model
 		'name', 'about', 'capacity', 'floor_area',
 		'about_amenity', 'about_food_drink', 'about_cleanup',
 		'cancellation_policy', 'terms_of_use',
-		'rent_space_type_id', 'number_of_beds',
-		'number_of_futons', 'number_of_baths','number_of_toilets',
+		'rent_space_type_id', 'numbers_of_beds',
+		'numbers_of_futons', 'numbers_of_baths','numbers_of_toilets',
 		'rent_space_business_type_id', 'business_license_image_name',
 	];
 

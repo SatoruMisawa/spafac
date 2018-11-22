@@ -64,7 +64,7 @@ class PlanController extends Controller
 	}
 
 	public function newToStay(Space $space) {
-		return view('host.plan.new', [
+		return view('host.plan.stay.new', [
 			'space' => $space,
 			'days' => Day::all(),
 			'preorderDeadlines' => $this->preorderDeadlineRepository->allNames()->toArray(),

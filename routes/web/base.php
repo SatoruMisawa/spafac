@@ -76,6 +76,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 					Route::get('/{space}', 'Host\SpaceController@edit')->name('host.facility.space.edit');
 					Route::put('/{space}', 'Host\SpaceController@update')->name('host.facility.space.update');
 					Route::delete('/{space}', 'Host\SpaceController@delete')->name('host.facility.space.delete');
+
+					Route::group(['prefix' => '/stay'], function() {
+						Route::get('/new', 'Host\SpaceController@newToStay')->name('host.facility.space.stay.new');
+						Route::post('/', 'Host\SpaceController@createToStay')->name('host.facility.space.stay.create');
+					});
 				});
 			});
 		});
@@ -93,10 +98,15 @@ Route::group(['middleware' => 'auth:users'], function() {
 					Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.attachment.delete');
 				});
 
-				Route::group(['prefix' => '/plan'], function() {
+				Route::group(['prefix' => '/plans'], function() {
 					Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
 					Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
 					Route::post('/', 'Host\PlanController@create')->name('host.space.plan.create');
+
+					Route::group(['prefix' => '/stay'], function() {
+						Route::get('/new', 'Host\PlanController@newToStay')->name('host.space.plan.stay.new');
+						Route::post('/', 'Host\PlanController@create')->name('host.space.plan.stay.create');
+					});
 
 					Route::group(['prefix' => '/{plan}'], function() {
 						Route::get('/', 'Host\PlanController@show')->name('host.space.plan.show');
