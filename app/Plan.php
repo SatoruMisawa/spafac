@@ -32,4 +32,12 @@ class Plan extends Model
 	public function isAlreadyApplied() {
 		return Apply::where('plan_id', $this->id)->exists();
 	}
+
+	public function isHourly() {
+		return $this->price_per_hour !== null;
+	}
+
+	public function isDayly() {
+		return $this->price_per_day !== null;
+	}
 }
