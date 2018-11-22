@@ -555,7 +555,7 @@ section#news ul.news {
 
 section#news ul.news li {
   font-size:1.4rem;
-  border-bottom: 1px solid #0a0205;
+  /* border-bottom: 1px solid #0a0205; */
   padding: 10px 0;
   height: 40px; }
 
