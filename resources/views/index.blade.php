@@ -301,7 +301,9 @@
 				<li>
 					<span>2018.07.05</span>
 					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018//">ミスコスモポリタン・ジャパン2018年度日本代表決定</a>
-                    <a href="https://magazine.spafac.com/2018/09/20/restaurant-request//">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
+					<span>2018.07.05</span>
+					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request//">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
+					<span>2018.07.05</span>
                     <a href=" https://magazine.spafac.com/2018/08/29/rinenna3/ ">臭い匂いをごっそり落とす消臭スプレー＃３</a>
 				</li>
 			</div>
@@ -981,13 +983,7 @@
 	</div>
 	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
-
-<section id="reg_now_5">
-	<div id="reg_now_box">
-		<h2>今すぐ会員登録して</h2>
-		<span>スペースを貸し借りしてみよう</span>
-		<p>今なら会員登録した方全員に、<br>すべてのスペースの予約で利用できる<br>2,000円分のポイントをプレゼント。</p>
-		<a href="<?php echo url('registration');?>">新規登録（無料）</a>
 	</div>
-</section>
+</div>
+
 @stop

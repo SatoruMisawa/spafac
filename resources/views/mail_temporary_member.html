@@ -1,0 +1,138 @@
+<!-- @extends
+@include
+@section('content')
+@endsection
+url: href="{{ route('ルートの名前') }}"
+css等 : href="{{ asset('assets.css.cssのパス') }}"
+css等 : href="{{ asset('assets.images.imageのパス') }}" 
+"{{ asset('assets.css.mail.css') }}"
+"{{ asset('assets.images.mail.spafac_mail_logo.png') }}"
+-->
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>無料会員登録（仮登録が完了いたしました。）</title>
+    <link href="{{ asset('assets.css.mail.css') }}">
+</head>
+
+<body class="mail_body">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color:#EFEFEF; width:600px; margin:0 auto;">
+        <tr>
+            <td class="skgjtuif" align="center">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="max-width:600px;background-color:#FFFFFF;">
+                    <tr>
+                        <td width="10"></td>
+                        <td height="20"></td>
+                        <td width="10"></td>
+                    </tr>
+                    <!--内容ここから-->
+                    <tr>
+                        <td width="20"></td>
+                    </tr>
+                    <tr>
+                        <td width="10"></td>
+                        <td height="40"></td>
+                        <td width="10"></td>
+                    </tr>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td></td>
+                            <td height="40"><a href="/"><img class="judginglogo" src="{{ asset('assets.images.mail.spafac_mail_logo.png') }}"></a></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <h1 class="judgingh1">無料会員登録の仮登録を受け付けました！</h1>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td height="20">&nbsp;</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td width="10%"></td>
+                            <td>
+                                <p class="sp_mail_txtAeuh7gi">この度はスペースファクトリーへのご登録をいただきまして誠にありがとうございます。後日、本会員登録が行えるメールを配信させて頂きます。メールを受信次第、身分証及びプロフィールの登録を行いましょう。本会員登録が済みますと、スペースを登録する事が出来ます。<br>ご利用いただける身分証明証は下記の通りです。<br><br>免許証／
+                                    住基カード ／ パスポート ／ マイナンバーカード
+                                    いずれも顔写真付きのカラー写真をアップロードください。<br>又パスポートは外務大臣印部分の見開きページをマイナンバー及び住基カード・運転免許証は顔写真付きの表面をアップロードしてください。<br>住所変更等で記載住所と異なる場合でも表面記載の住所を記載ください。健康保険証での登録は行えません。</p>
+                                <p class="sp_mail_txtAeuh7gi"><a href="/privacy-policy">個人情報のお取り扱いについて</a></p>
+                            </td>
+
+                            <td width="10%"></td>
+                        </tr>
+                        <!-- <tr>
+                            <td></td>
+                            <td height="40">&nbsp;</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td width="10%"></td>
+                            <td style="text-align:center;"><a href="/" class="judging_button">メールアカウントの認証と本登録に進む</a></td>
+                            <td width="10%"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td height="40">&nbsp;</td>
+                            <td></td>
+                        </tr> -->
+                        <tr>
+                            <td width="10%"></td>
+                            <td>
+                                <p class="sp_mai_ldhtBf">本メールは仮登録情報をお知らせする為のメールとなります為に、こちらのメールに返信してもお答えできません。
+                                    万一このメールにお心当たりの無い場合は、メールアドレスが間違って入力された可能性があります。<br>お手数ですがメールの削除をお願いいたします。
+                                    このメールにここらあたりがない場合は削除願います。 お問い合わせは<a href="info@spafac.com">info@spafac.com</a>まで</p>
+                            </td>
+                            <td width="10%"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td height="100">&nbsp;</td>
+                            <td></td>
+                        </tr>
+                    </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="judgingfooter" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3" height="40"></td>
+                    </tr>
+                    <tr>
+                        <td class="judging_footerinfo" colspan="3">
+                            <h2 class="footertitle">スペースファクトリーとは</h2>
+                            <p>スペースファクトリーは貸し会議室やお寺、球場など、<br>多様なスペースを簡単に予約ができるサービスです。<br>イベント開催・経営会議・社員研修などのビジネス利用や<br>結婚式・誕生日会・パーティー利用など、<br>用途に応じてあなたにピッタリなスペースを見つけることができます。</p>
+                            <p style="text-align:center;">
+                                <a href=""><img class="judging_search" src="{{ asset('assets.images.mail.searchbt.png') }}"></a>
+                            </p>
+                            <a href="https://www.facebook.com/SpafacSTAFF/"><img class="judging_sns" src="{{ asset('assets.images.mail.icon_facebook_s.png') }}"
+                                    alt="Facebook"></a>
+                            <a href="https://twitter.com/Spafac_staff/"><img class="judging_sns" src="{{ asset('assets.images.mail.icon_insta_s.png') }}"
+                                    alt="Insta"></a>
+                            <a href="https://www.instagram.com/spafacstaff/"><img class="judging_sns" src="{{ asset('assets.images.mail.icon_twitter_s.png') }}"
+                                    alt="twitter"></a>
+                            </p>
+                            <p><a href="h/guide">ご利用ガイド</a>｜<a href="/company-profile">運営会社</a>｜<a href="/inquiry">お問い合わせ</a></p>
+                            <p class="footer_sentence">メールが不要な場合は、ログイン後に<a href="/mypage">設定画面</a>より設定を変更してください。<br>
+                                本メールは送信専用です。直接返信されてもご返答できませんので予めご了承ください。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" height="40"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--内容ここまで-->
+    </table>
+    </td>
+    <td width="10"></td>
+</body>
+
+</html>
