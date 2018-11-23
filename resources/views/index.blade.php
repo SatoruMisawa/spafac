@@ -196,7 +196,7 @@
 				<div class="login_title"><img src="<?php echo url('assets/mypage/img/icon-02.png'); ?>" alt=""><span>メンバーログイン</span></div>
 				<div class="login_box">
 					@if (Auth::guard('users')->check())
-					<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
+					<div class="avatar"><img src="{{ Auth::guard('users')->user()->profile_image_url }}" alt=""><spa>　メンバーログイン中</span></div>
 						<div class="login_form">
 					<ul class="login_chu">
 						<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
