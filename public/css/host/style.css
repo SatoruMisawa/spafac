@@ -1337,6 +1337,7 @@ li.admin_header {
 .sidebar-menu_admin li>a {
   position: relative;
   font-size: 15px;
+  line-height: 3;
 }
 
 .sidebar-menu_admin li>a:hover {
