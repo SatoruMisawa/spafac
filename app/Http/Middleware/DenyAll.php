@@ -15,6 +15,10 @@ class DenyAll
      */
     public function handle($request, Closure $next)
     {
-        abort(503);
+        if (env('APP_ENV') !== 'testing') {
+            abort(503);
+        }
+
+        return $next($request);
     }
 }
