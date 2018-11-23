@@ -42,7 +42,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-00.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>物販・POP Up Store</p>
-								<span>(件数)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -51,7 +51,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-1.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>飲食・パーティ</p>
-								<span>(件数)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -79,7 +79,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-5.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>オフィス・会議</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -88,7 +88,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-6.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>宿泊・民泊</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -97,7 +97,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-7.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>結婚式・お祝いシーン</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -106,7 +106,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-80.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>演奏</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -116,7 +116,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-8.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>ロケ撮影･写真･動画</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -125,7 +125,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-7_bk.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>駐車場・空き地・倉庫</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -134,7 +134,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-10.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>スポーツ・ボディメイク</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -143,7 +143,7 @@
 							<img src="<?php echo url('assets/mypage/img/cat-9.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>その他</p>
-								<span>(4592件)</span>
+								<span>(件)</span>
 							</div>
 						</a>
 					</div>
@@ -1004,21 +1004,22 @@
 					<li>
 						<div>
 						<a href="https://www.goto2025.osaka/" target="_blank">
-							<img class="sp-clog spclog" src="{{ asset('assets.mypage.img.goto2025logo.jpg') }}" alt="">
+							<img class="sp-clog spclog" src="{{asset('assets.mypage.img.goto2025logo.jpg')}}" alt="">
 						</a>
 						</div>
 					</li>
 					<li>
 						<div>
 						<a href="https://camp-fire.jp/" target="_blank">
-							<img class="sp-clog spclog" src="{{ asset('assets.mypage.img.campfire_logo.png') }}" alt="">
+							<img class="sp-clog spclog" src="{{ sset('assets.mypage.img.campfire_logo.png')}}" alt="">
 						</a>
 						</div>
 					</li>
 					<li>
 						<div>
 						<a href="https://osaka-info.jp/" target="_blank">
-							<img class="sp-clog spclog" src="{{ asset('assets.mypage.img.osakadowntown_logo.png') }}" alt="">						</a>
+							<img class="sp-clog spclog" src="{{asset('assets.mypage.img.osakadowntown_logo.png')}}" alt="">
+						</a>
 						</div>
 					</li>
 				</ul>

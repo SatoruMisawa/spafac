@@ -77,13 +77,13 @@ content: ".";
 /*----------- NAV -----------*/
 
 .head_l nav {
-  float: left;
-    width:740px;
-	height:48px;
-	margin:0 0 0 10px;
+  float: right;
+  width:740px;
+  height:48px;
+  margin:0 0 0 10px;
  display: flex;
-  justify-content:right;
-  align-items: center;
+ justify-content:right;
+ align-items: center;
 }
 nav ul {
   margin:0 0 0 10px;
@@ -113,7 +113,7 @@ nav>ul>li>a {
 
 
 nav li:nth-child(4){
-	width:4.5em;
+	/* width:4.5em; */
 	margin:0 0.5em;
 	
 }

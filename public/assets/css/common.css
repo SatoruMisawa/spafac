@@ -2136,7 +2136,7 @@ h3.sp_profile_dfbrh3 {
 }
 .inner {
     max-width: 1000px;
-    margin: auto;
+    margin: 30px 0;
 }
 
     .site-footer__sitemap > ul li{
@@ -2240,7 +2240,7 @@ a[href^="tel"]{
 .wrap,
 .inner {
     max-width: 90%;
-    margin: auto;
+    margin: 30px 0;
 }
 
 header{
