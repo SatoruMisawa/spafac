@@ -1090,6 +1090,11 @@ p.close{
   /* box-shadow: 0 1px 1px rgba(0,0,0,0.1); */
 }
 
+.sns_login > ul{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 header.main-header {
   display: block;
   margin: 0 auto;
@@ -2532,6 +2537,7 @@ nav ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
 }
 
 .site-footer__links ul li:nth-child(2) a {
@@ -2546,6 +2552,8 @@ nav ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
+
 }
 
 .site-footer__links ul li:nth-child(3) a ,

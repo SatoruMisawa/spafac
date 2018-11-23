@@ -141,10 +141,10 @@
         </div>
         <div class="foot f-logo">
         <ul>
-        <a href="/">
+        <a href="/stay">
         <img src="/assets/images/footer_logo_stay.png">
         </a>
-        <a href="/stay">
+        <a href="https://magazine.spafac.com/">
         <img src="/assets/images/footer_logo_spacemagazine.png">
         </a>
         </ul>

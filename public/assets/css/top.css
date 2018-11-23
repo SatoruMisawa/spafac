@@ -1137,7 +1137,7 @@ section.pattern_1 a.detail {
   background: #fff;
   width:80%;
   max-width:800px;
-  margin: 0 auto;
+  margin: 20px auto;
   border: 1px solid #eaeaea;
   padding: 20px;
   position: relative;
@@ -1509,7 +1509,7 @@ table.myaccout tr.address_type td:last-child input[type="text"] {
   width: 85% !important; }
 
 .login h2.login_title_h2 {
-  font-size:2.0rem; }
+  font-size:25px; }
 
 .login .login_box {
   padding: 0 !important; }
@@ -1529,7 +1529,7 @@ table.myaccout tr.address_type td:last-child input[type="text"] {
 
 .login .login_box .sns_login ul li a {
   display: block;
-  padding: 10px 0;
+  padding: 5px 0;
   border-radius: 8px;
 }
 
@@ -1546,17 +1546,25 @@ table.myaccout tr.address_type td:last-child input[type="text"] {
   font-weight: bold; }
 
 .login .login_box .sns_login ul li.fb {
-  background: #3458a7; }
+  background: #3458a7; 
+  border-radius: 8px;
+}
 
 .login .login_box .sns_login ul li.ya {
-  background: #e75345; }
+  background: #e75345; 
+  border-radius: 8px;
+}
 
 .login .login_box .sns_login ul li.gg {
-  background: rgb(1, 189, 85); }
+  background: rgb(1, 189, 85); 
+  border-radius: 8px;
+}
 
 .login .login_box .sns_login p {
   text-align: left;
-  font-size:1.3rem; }
+  font-size:1.3rem;
+  margin: 10px 0;
+}
 
 .login .login_box:after {
   height: 0;
