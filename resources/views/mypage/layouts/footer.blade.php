@@ -2,10 +2,10 @@
 	<div class="site-footer__links">
 		<ul>
 			<li>
-				<a href="<?php echo url('registration');?>">新規登録する≫</a>
+				<a href="<?php echo url('registration'); ?>">無料登録はこちら≫</a>
 			</li>
 			<li>
-				<a href="<?php echo url('host');?>">スペースオーナー登録する≫</a>
+				<a href="<?php echo url('host'); ?>">スペースを登録するならこちら≫</a>
 			</li>
 			<li>
 				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a> -->
@@ -31,18 +31,18 @@
 					<li><a href="/coming-soon">スポーツ</a></li>
 -->
    
-<li><a href="/purpose/sales">物販</a></li>
-<li><a href="/purpose/party">飲食・パーティー</a></li>
-<li><a href="/purpose/office">オフィス・会議</a></li>
-<li><a href="/purpose/event">イベントプロモーション・広告</a></li>
-<li><a href="/purpose/exhibition">催事・展示会</a></li>
-<li><a href="/purpose/performance">演奏</a></li>
+<li><a href="/purpose/sales/1">物販</a></li>
+<li><a href="/purpose/party/2">飲食・パーティー</a></li>
+<li><a href="/purpose/meeting/5">オフィス・会議</a></li>
+<li><a href="/purpose/event/4">イベントプロモーション・広告</a></li>
+<li><a href="/purpose/exhibition/3">催事・展示会</a></li>
+<li><a href="/purpose/purpose/performance/6">演奏</a></li>
 <li><a href="/stay">宿泊・民泊</a></li>
-<li><a href="/purpose/location">ロケ撮影･写真･動画</a></li>
-<li><a href="/purpose/wedding">結婚式・お祝いシーン</a></li>
-<li><a href="/purpose/parking">駐車場</a></li>
-<li><a href="/purpose/sports">スポーツ</a></li>
-<li><a href="/purpose/other">その他</a></li>
+<li><a href="/purpose/location/7">ロケ撮影･写真･動画</a></li>
+<li><a href="/purpose/purpose/wedding/5">結婚式・お祝いシーン</a></li>
+<li><a href="/purpose/parking/8">駐車場</a></li>
+<li><a href="/purpose/sports/9">スポーツ</a></li>
+<li><a href="/purpose/other/10">その他</a></li>
 
 				</ul>
 			</li>
@@ -80,7 +80,7 @@
 					<li><a href="/lodging_agreement_guests">宿泊ゲスト規約</a></li>
 					<li><a href="/privacy-policy">プライバシーポリシー</a></li>
 					<li><a href="/flow_of_settlement">決済の流れ</a></li>
-					<!--li><a href="/coming-soon">個人情報の取り扱いについて</a></li-->
+					<li><a href="/privacy-policy">個人情報の取り扱いについて</a></li>
 					<li><a href="/inquiry">お問い合わせ</a></li>
                     
 				</ul>
@@ -134,17 +134,17 @@
 		</div>
         <div class="foot f-links">
 		<ul class="links">
-			<li><a href="/coming-soon">採用情報</a></li>
+			<li><a href="/">採用情報</a></li>
 			<li><a href="/company-profile">運営会社</a></li>
 			<li><a href="/commercial-transaction-law">特定商取引法に基づく表示</a></li>
 		</ul>
         </div>
         <div class="foot f-logo">
         <ul>
-        <a href="/">
+        <a href="/stay">
         <img src="/assets/images/footer_logo_stay.png">
         </a>
-        <a href="/stay">
+        <a href="https://magazine.spafac.com/">
         <img src="/assets/images/footer_logo_spacemagazine.png">
         </a>
         </ul>

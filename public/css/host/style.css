@@ -1336,7 +1336,8 @@ li.admin_header {
 
 .sidebar-menu_admin li>a {
   position: relative;
-  font-size: 23px;
+  font-size: 15px;
+  line-height: 3;
 }
 
 .sidebar-menu_admin li>a:hover {
@@ -1440,6 +1441,13 @@ li.list-your-thing.pull-left {
 .form-control:hover {
   border-color: #00c0ef;
 }
+
+input.form-control {
+  display: inline-block;
+  width: 100%;
+  max-width: 100px;
+}
+
 
 .help-block {
   display: block;
@@ -2788,6 +2796,26 @@ font.preservation-button {
 
 @media only screen and (max-width: 768px) {
 
+  .content-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+aside.admin_main-sidebar {
+  /* width: 90%; */
+  /* margin: 0 auto; */
+  display: none;
+  /* position: relative; */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* box-sizing: border-box; */
+}
+
   /*---- キャンペーン -------------------*/
 
   .campaign {
@@ -3042,6 +3070,16 @@ font.preservation-button {
 }
 
 @media only screen and (max-width: 640px) {
+
+.party_search_list {
+    width: 100%;
+    min-height: 100px;
+    display: block;
+    clear: both;
+    margin: 0;
+    padding: 2em 0;
+}
+
   body {
     padding: 13vw 0 0 0;
   }
