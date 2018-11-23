@@ -2,10 +2,10 @@
 	<div class="site-footer__links">
 		<ul>
 			<li>
-				<a href="<?php echo url('registration'); ?>">新規登録する≫</a>
+				<a href="<?php echo url('registration'); ?>">無料登録はこちら≫</a>
 			</li>
 			<li>
-				<a href="<?php echo url('host'); ?>">スペースオーナー登録する≫</a>
+				<a href="<?php echo url('host'); ?>">スペースを登録するならこちら≫</a>
 			</li>
 			<li>
 				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a> -->
