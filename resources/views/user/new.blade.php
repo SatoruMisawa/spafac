@@ -119,15 +119,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="signup-box signup-box__new-account">
-					<div class="row">
-						<div class="signup-box__new-account-txt col-sm-12">
-							<a href="/login?done=https%3A%2F%2Fwww.spacemarket.com%2F" class="signup-box__new-account-title">メール認証が完了しました。
-								<span class="signup-box__new-account-linktxt">こちら</span>
-							</a>
-						</div>
-					</div>
-				</div>
 
 				<div class="signup-box">
 					<div class="row">
@@ -142,7 +133,7 @@
 									</ul>
 									<p class="signup-box__notes ta-c">Facebookを使ってSPACE FACTORYにログインできます。
 										<br class="sm-hide">ログイン以外の目的に使われることはありません。
-										<br class="sm-hide"><a href="https://test.spafac.com/terms-of-service/" class="a__underline" target="_blank">SPACE
+										<br class="sm-hide"><a href="/terms-of-service/" class="a__underline" target="_blank">SPACE
 											FACTORY利用規約</a>をお読みになり同意の上、登録へお進みください。
 									</p>
 								</div>
