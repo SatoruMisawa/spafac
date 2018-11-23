@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/top.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-@include('host.layouts.message')
 <div id="search_box">
 	<div class="search_box_inner search_width">
 		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
@@ -23,7 +22,7 @@
 		<ul>
 			<li><a class="" href="<?php echo url('areas'); ?>">エリアから探す</a></li>
 			<li><a href="<?php echo url('capacities'); ?>">収容人数から探す</a></li>
-			<li><a href="<?php echo url('keywords'); ?>">キーワードから探す</a></li>
+			<li><a href="<?php echo url('keywords'); ?>">カテゴリーから探す</a></li>
 			<li><a href="<?php echo url('amenities'); ?>">設備から探す</a></li>
 		</ul>
 	</div>
@@ -206,7 +205,9 @@
 					</ul>
 					@else
 					<div class="login_form">
-						{{ Form::open(['route' => 'session.create','method' => 'POST']) }}
+
+
+						<form  method="POST" action="{{ route('session.create')}}">
 						<table>
 							<tr>
 								<td>ユーザーID:</td>
@@ -226,7 +227,7 @@
 							<button type="submit">ログイン</button>
 						</div>
 						@include('mypage.layouts.message', array('errors' => $errors))
-						{{ Form::close() }}
+					</form>
 						<div class="sns_login">
 							<ul>
 								<li class="fb"><a href="/login/facebook"><img src="/assets/common/img/icon_fb.png"><span>Facebookでログイン</span></a></li>
@@ -437,7 +438,8 @@
 	</div>
 	<div class="pattern_box">
 		<div class="pac">
-			<div class="col-xs-4 col-lg-4 staff-box">
+			<div class="row">
+			<div class="col-4 col-md-4 staff-box">
 					<div class="staff-linkbox">
 						<div class="staff-top-area unit-st">
 							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage130.jpg'); ?>" alt="">
@@ -447,7 +449,7 @@
 						</div>
 					</div>
 			</div>
-			<div class="col-xs-4 col-lg-4 staff-box">
+			<div class="col-4 col-md-4 staff-box">
 					<div class="staff-linkbox">
 						<div class="staff-top-area unit-st">
 							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage131.jpg'); ?>" alt="">
@@ -457,7 +459,7 @@
 						</div>
 					</div>
 			</div>
-			<div class="col-xs-4 col-lg-4 staff-box">
+			<div class="col-4 col-md-4 staff-box">
 					<div class="staff-linkbox">
 						<div class="staff-top-area unit-st">
 							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage132.jpg'); ?>" alt="">
@@ -466,6 +468,7 @@
 							</h3>
 						</div>
 					</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -484,6 +487,7 @@
 	<div class="pattern_title">
 		<h2>物販・POP Up Store</h2>
 	</div>
+
 	<div class="pattern_box">
     <div class="pac">
 				<div class="row">
@@ -494,7 +498,7 @@
 			<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 			<div class="sp-top-rakinbox sp-topbox-area">
 				<div class="sp-top-rakinbox__image">
-						<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+						<img src="{{$data->url}}" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
 						<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
 						<span class="sp-top-ranking__price-icon">
 							<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
@@ -723,6 +727,22 @@
 						</h3>
 			</div>
 
+
+			@endforeach
+		</div>
+		</div>
+	</div>
+	<a class="detail" href="/purpose/exhibitionhall/3">催事・展示会で利用できるスペースをもっと見る &raquo;</a>
+</section>
+
+<section class="gray pattern_1" id="parking">
+	<div class="pattern_title">
+		<h2>演奏</h2>
+	</div>
+	<div class="pattern_box">
+		<div class="pac">
+			<div class="row">
+			@foreach($query[8] as $data)
 			<div class="col-4 col-md-4">
 
 				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
@@ -759,50 +779,6 @@
 		</div>
 		</div>
 	</div>
-	<a class="detail" href="/purpose/exhibitionhall/3">催事・展示会で利用できるスペースをもっと見る &raquo;</a>
-</section>
-
-<section class="gray pattern_1" id="parking">
-	<div class="pattern_title">
-		<h2>演奏</h2>
-	</div>
-	<div class="pattern_box">
-		<div class="pac">
-			<div class="row">
-			@foreach($query[8] as $data)
-				<div class="col-xs-4">
-					<a href="{{ action('SpaceController@index', $data->facility_id) }}" class="a__top-box">
-					<div class="sp-top-rakinbox sp-topbox-area">
-						<div class="sp-top-rakinbox__image">
-								<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage112.jpg'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-								<p class="sp-top-ranking__item-price">￥3,300<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
-								<span class="sp-top-ranking__price-icon">
-									<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
-									<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
-									<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
-								</span>
-								</p>
-						</div>
-							<div class="sp-top-ranking__body">
-								<div class="sp-top-ranking__body-inner">
-									<h3 class="sp-top-ranking__body-title">大阪上位獲得 3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真</h3>
-								</div>
-								<ul class="sp-top-ranking__body-info">
-									<li><i class="fa fa-user mr5"></i>10人</li>
-									<li><i class="fa fa-map-marker mr5"></i>大阪市天王寺区</li>
-								</ul>
-							</div>
-					</div>
-					</a>
-								<h3 class="staff-title" style="background-color: #4abfe6;">
-								<span class="star">★★★★★</span><br/>
-								<span>10人ほどで飲み会に利用しました。キッチン設備が充実しており、また、トイレもキレイで、ピアノの演奏も行う事ができ充実したイベント</span>
-								</h3>
-				</div>
-			@endforeach
-		</div>
-		</div>
-	</div>
 	<a class="detail" href="/purpose/performance/8">演奏で利用できるスペースをもっと見る &raquo;</a>
 </section>
 
@@ -814,12 +790,13 @@
 		<div class="pac">
 			<div class="row">
 			@foreach($query[9] as $data)
-			<div class="col-xs-4">
-				<a href="{{ action('SpaceController@index', $data->facility_id) }}" class="a__top-box">
+			<div class="col-4 col-md-4">
+
+				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 				<div class="sp-top-rakinbox sp-topbox-area">
 					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage112.jpg'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥3,300<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
+							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
 							<span class="sp-top-ranking__price-icon">
 								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
 								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
@@ -827,21 +804,23 @@
 							</span>
 							</p>
 					</div>
+
 						<div class="sp-top-ranking__body">
 							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">大阪上位獲得 3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真</h3>
+								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
 							</div>
 							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>10人</li>
-								<li><i class="fa fa-map-marker mr5"></i>大阪市天王寺区</li>
+								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
+								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
 							</ul>
 						</div>
+
 				</div>
 				</a>
-							<h3 class="staff-title" style="background-color: #4abfe6;">
-							<span class="star">★★★★★</span><br/>
-							<span>10人ほどで飲み会に利用しました。キッチン設備が充実しており、また、トイレもキレイで、ピアノの演奏も行う事ができ充実したイベント</span>
-							</h3>
+						<h3 class="staff-title" style="background-color: #4abfe6;">
+						<span class="star">★★★★★</span><br/>
+						<span>{{$data->about}}</span>
+						</h3>
 			</div>
 			@endforeach
 		</div>
@@ -871,12 +850,13 @@
 		<div class="pac">
 			<div class="row">
 			@foreach($query[7] as $data)
-			<div class="col-xs-4">
-				<a href="{{ action('SpaceController@index', $data->facility_id) }}" class="a__top-box">
+			<div class="col-4 col-md-4">
+
+				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 				<div class="sp-top-rakinbox sp-topbox-area">
 					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage112.jpg'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥3,300<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
+							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
 							<span class="sp-top-ranking__price-icon">
 								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
 								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
@@ -884,21 +864,23 @@
 							</span>
 							</p>
 					</div>
+
 						<div class="sp-top-ranking__body">
 							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">大阪上位獲得 3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真</h3>
+								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
 							</div>
 							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>10人</li>
-								<li><i class="fa fa-map-marker mr5"></i>大阪市天王寺区</li>
+								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
+								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
 							</ul>
 						</div>
+
 				</div>
 				</a>
-							<h3 class="staff-title" style="background-color: #4abfe6;">
-							<span class="star">★★★★★</span><br/>
-							<span>10人ほどで飲み会に利用しました。キッチン設備が充実しており、また、トイレもキレイで、ピアノの演奏も行う事ができ充実したイベント</span>
-							</h3>
+						<h3 class="staff-title" style="background-color: #4abfe6;">
+						<span class="star">★★★★★</span><br/>
+						<span>{{$data->about}}</span>
+						</h3>
 			</div>
 			@endforeach
 		</div>
@@ -915,12 +897,13 @@
 		<div class="pac">
 			<div class="row">
 			@foreach($query[10] as $data)
-			<div class="col-xs-4">
-				<a href="{{ action('SpaceController@index', $data->facility_id) }}" class="a__top-box">
+			<div class="col-4 col-md-4">
+
+				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 				<div class="sp-top-rakinbox sp-topbox-area">
 					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage112.jpg'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥3,300<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
+							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
 							<span class="sp-top-ranking__price-icon">
 								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
 								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
@@ -928,21 +911,23 @@
 							</span>
 							</p>
 					</div>
+
 						<div class="sp-top-ranking__body">
 							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">大阪上位獲得 3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真</h3>
+								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
 							</div>
 							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>10人</li>
-								<li><i class="fa fa-map-marker mr5"></i>大阪市天王寺区</li>
+								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
+								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
 							</ul>
 						</div>
+
 				</div>
 				</a>
-							<h3 class="staff-title" style="background-color: #4abfe6;">
-							<span class="star">★★★★★</span><br/>
-							<span>10人ほどで飲み会に利用しました。キッチン設備が充実しており、また、トイレもキレイで、ピアノの演奏も行う事ができ充実したイベント</span>
-							</h3>
+						<h3 class="staff-title" style="background-color: #4abfe6;">
+						<span class="star">★★★★★</span><br/>
+						<span>{{$data->about}}</span>
+						</h3>
 			</div>
 			@endforeach
 		</div>
@@ -960,12 +945,13 @@
 		<div class="pac">
 			<div class="row">
 			@foreach($query[11] as $data)
-			<div class="col-xs-4">
-				<a href="{{ action('SpaceController@index', $data->facility_id) }}" class="a__top-box">
+			<div class="col-4 col-md-4">
+
+				<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
 				<div class="sp-top-rakinbox sp-topbox-area">
 					<div class="sp-top-rakinbox__image">
-							<img src="<?php echo url('assets/mypage/img/image_photo/sampleimage112.jpg'); ?>" alt="大阪上位獲得 ✨3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
-							<p class="sp-top-ranking__item-price">￥3,300<span class="sp-top-ranking__item-different">〜</span>￥6,000<span class="sp-top-ranking__item-different">/時間</span>
+							<img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+							<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
 							<span class="sp-top-ranking__price-icon">
 								<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
 								<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
@@ -973,21 +959,23 @@
 							</span>
 							</p>
 					</div>
+
 						<div class="sp-top-ranking__body">
 							<div class="sp-top-ranking__body-inner">
-								<h3 class="sp-top-ranking__body-title">大阪上位獲得 3,300円～【天王寺 徒歩5分】大人の隠れ家/～10名/ごろごろ/Netflix/24h可/ホムパ の写真</h3>
+								<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
 							</div>
 							<ul class="sp-top-ranking__body-info">
-								<li><i class="fa fa-user mr5"></i>10人</li>
-								<li><i class="fa fa-map-marker mr5"></i>大阪市天王寺区</li>
+								<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
+								<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
 							</ul>
 						</div>
+
 				</div>
 				</a>
-							<h3 class="staff-title" style="background-color: #4abfe6;">
-							<span class="star">★★★★★</span><br/>
-							<span>10人ほどで飲み会に利用しました。キッチン設備が充実しており、また、トイレもキレイで、ピアノの演奏も行う事ができ充実したイベント</span>
-							</h3>
+						<h3 class="staff-title" style="background-color: #4abfe6;">
+						<span class="star">★★★★★</span><br/>
+						<span>{{$data->about}}</span>
+						</h3>
 			</div>
 			@endforeach
 		</div>
@@ -995,35 +983,6 @@
 	</div>
 	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
-
-<div class="sp-zzz spafaclogo100">
-	<div class="sp-Agr splog101">
-		<h2 class="sf-dgrt splog102">関連企業</h2>
-		<div class="sf-cdrt splog103">
-				<ul class="sp-bjhut splog104">
-					<li>
-						<div>
-						<a href="https://www.goto2025.osaka/" target="_blank">
-							<img class="sp-clog spclog" src="{{asset('assets.mypage.img.goto2025logo.jpg')}}" alt="">
-						</a>
-						</div>
-					</li>
-					<li>
-						<div>
-						<a href="https://camp-fire.jp/" target="_blank">
-							<img class="sp-clog spclog" src="{{ sset('assets.mypage.img.campfire_logo.png')}}" alt="">
-						</a>
-						</div>
-					</li>
-					<li>
-						<div>
-						<a href="https://osaka-info.jp/" target="_blank">
-							<img class="sp-clog spclog" src="{{asset('assets.mypage.img.osakadowntown_logo.png')}}" alt="">
-						</a>
-						</div>
-					</li>
-				</ul>
-		</div>
 	</div>
 </div>
 

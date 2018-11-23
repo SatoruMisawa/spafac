@@ -10,10 +10,11 @@
 				<h2>ダッシュボード</h2>
 			</div>
 			<div class="photos"><div class="avatar">
-            <img src="<?php //echo url('assets/mypage/img/avatar.jpg'); ?>" alt=""><span></span>
-            </div>
+            <img src="{{ asset('/img/default_profile_image.jpg') }}" alt="" /><span></span>
+							<div class="name"> <a>{{ Auth::user()->name }}</a> </div>
+      </div>
 
-				<div class="name"> <a><?php echo e($loginUser->name); ?></a> </div>
+
 			</div>
 			<div class="infobox">
 				<div class="ttl">

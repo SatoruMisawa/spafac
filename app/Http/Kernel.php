@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'tester' => \App\Http\Middleware\AuthenticateTester::class,
         'owner.facility' => \App\Http\Middleware\AuthenticateFacilityOwner::class,
         'owner.space' => \App\Http\Middleware\AuthenticateSpaceOwner::class,
+        'deny.all' => \App\Http\Middleware\DenyAll::class,
     ];
 }

@@ -719,13 +719,6 @@ section.pattern_1 .pattern_title span {
   font-size:2rem;
   color: #000; }
 
-section.pattern_1 .pattern_box {
-  display: table;
-  border-collapse: separate;
-  border-spacing: 60px 0;
-  margin: 20px 50px;
-}
-
 section.pattern_1 .pattern_box .pattern_boxs {
   display: table-cell;
   width:320px;
@@ -1632,7 +1625,7 @@ table.myaccout tr.address_type td:last-child input[type="text"] {
 
 
   .staff-top-area.unit-st {
-    width: 300px;
+    /*width: 300px;*/
 }
 
 img.staffichioshi000 {

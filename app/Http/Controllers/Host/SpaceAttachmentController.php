@@ -9,7 +9,8 @@ use App\Repositories\SpaceAttachmentRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateSpaceAttachmentRequest;
 use Intervention\Image\Facades\Image;
-use Storage;
+use ImageStorage;
+
 
 class SpaceAttachmentController extends Controller
 {
@@ -46,7 +47,7 @@ class SpaceAttachmentController extends Controller
 
     private function createImages(CreateSpaceAttachmentRequest $request, Space $space) {
         foreach ($request->file('images') as $image) {
-            $filename = $image->store('public');
+            $filename = ImageStorage::store($image);
             $this->spaceAttachmentRepository->create([
                 'space_id' => $space->id,
                 'url' => config('app.url').'/'.$filename,

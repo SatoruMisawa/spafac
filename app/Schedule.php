@@ -2,11 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Schedule extends Model
+class Schedule extends Pivot
 {
     public $timestamps = false;
+
+    protected $table = 'schedules';
 
     protected $fillable = [
         'plan_id', 'day_id',

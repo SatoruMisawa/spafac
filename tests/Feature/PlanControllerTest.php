@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Plan;
 use App\Space;
 use App\User;
 use Tests\TestCase;
@@ -32,7 +33,7 @@ class PlanControllerTest extends TestCase
     }
 
     private function assertPostRequestToCreatePlan($data, Space $space) {
-        return $this->loginWithTesterIfDebug()
+        $this->loginWithTesterIfDebug()
         ->loginWithUser(User::find($space->user_id))
         ->post(route('host.space.plan.create', $space->id), $data)
         ->assertRedirect(route('host.space.plan.option.new', [$space->id, 1]));
@@ -47,8 +48,8 @@ class PlanControllerTest extends TestCase
             'price_per_hour' => $data['price_per_hour'],
             'price_per_day' => $data['price_per_day'],
             'need_to_be_approved' => $data['need_to_be_approved'],
-            'from' => $data['from'],
-            'to' => $data['to'],
+            'from' => $data['period_from'],
+            'to' => $data['period_to'],
         ]);
     }
 
@@ -76,8 +77,8 @@ class PlanControllerTest extends TestCase
             'hour_from' => [1 => 1, 2 => 3, 3 => 5],
             'hour_to' => [1 => 4, 2 => 6, 3 => 8],
             'need_to_be_approved' => $this->faker->boolean(),
-            'from' => $this->faker->date(),
-            'to' => $this->faker->date(),
+            'period_from' => '2018-1-1',
+            'period_to' => '2121-3-4',
         ];
     }
 }

@@ -12,66 +12,66 @@
     </ul>
 </li>
 <li>
-<a href="/search">都島区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">都島区</a>
 </li>
 <li>
-<a href="/search">福島区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">福島区</a>
 </li>
 <li>
-<a href="/search">此花区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">此花区</a>
 </li>
 <li>
-<a href="/search">中央区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">中央区</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">心斎橋</a></li>
-    <li><a href="/search">なんば</a></li>
-    <li><a href="/search">北浜</a></li>
-    <li><a href="/search">淀屋橋</a></li>
-    <li><a href="/search">本町</a></li>
-    <li><a href="/search">南船場</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">心斎橋</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">なんば</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">北浜</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">淀屋橋</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">本町</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">南船場</a></li>
     </ul>
 </li>
 <li>
-<a href="/search">西区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">西区</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">新町</a></li>
-    <li><a href="/search">北堀江</a></li>
-    <li><a href="/search">南堀江</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">新町</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">北堀江</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">南堀江</a></li>
     </ul>
 </li>
 <li>
-<a href="/search">港区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">港区</a>
 </li>
 <li>
-<a href="/search">大正区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">大正区</a>
 </li>
 <li>
 <a href="/search">天王寺区</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">天王寺</a></li>
-    <li><a href="/search">阿倍野</a></li>
-    <li><a href="/search">上本町</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">天王寺</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">阿倍野</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">上本町</a></li>
     </ul>
 </li>
 <li>
-<a href="/search">浪速区</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">浪速区</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">なんば</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">なんば</a></li>
     </ul>
 </li>
 
-<li><a href="/search">西淀川区</a></li>
-<li><a href="/search">淀川区</a></li>
-<li><a href="/search">東淀川区</a></li>
-<li><a href="/search">西成区</a></li>
-<li><a href="/search">生野区</a></li>
-<li><a href="/search">旭区</a></li>
-<li><a href="/search">城東区</a></li>
-<li><a href="/search">鶴見区</a></li>
-<li><a href="/search">阿倍野区</a></li>
-<li><a href="/search">住之江区</a></li>
-<li><a href="/search">住吉区</a></li>
-<li><a href="/search">東住吉区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">西淀川区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">淀川区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">東淀川区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">西成区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">生野区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">旭区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">城東区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">鶴見区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">阿倍野区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">住之江区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">住吉区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">東住吉区</a></li>
 </ul>
 
 </td>
@@ -88,49 +88,82 @@
 <li>
 <a href="/search">豊能地域</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">野瀬町</a></li><li><a href="/search">豊能町</a></li><li><a href="/search">池田市</a></li><li><a href="/search">箕面市</a></li><li><a href="/search">豊中市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">野瀬町</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">豊能町</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">池田市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">箕面市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">豊中市</a></li>
     </ul>
 </li>
 <li>
-<a href="/search">三島地域</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">三島地域</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">茨城市</a></li><li><a href="/search">高槻市</a></li><li><a href="/search">島本町</a></li><li><a href="/search">吹田市</a></li><li><a href="/search">摂津市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">茨城市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">高槻市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">島本町</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">吹田市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">摂津市</a></li>
     </ul>
 </li>
 <li>
 <a href="/search">北河内地域</a>
 <ul class="table_list_menu_sec">
-<li><a href="/search">枚方市</a></li><li><a href="/search">交野市</a></li><li><a href="/search">寝屋川市</a></li><li><a href="/search">守口市</a></li><li><a href="/search">門真市</a></li><li><a href="/search">四條畷市</a></li><li><a href="/search">大東市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">枚方市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">交野市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">寝屋川市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">守口市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">門真市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">四條畷市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">大東市</a></li>
 </ul>
 
 </li>
 
 <li>
-<a href="/search">中河内地域</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">中河内地域</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">東大阪市</a></li><li><a href="/search">八尾市</a></li><li><a href="/search">柏原市</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">東大阪市</a></li>
+    <li><<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">八尾市</a></li><li><a href="/search">柏原市</a></li>
     </ul>
 </li>
 
 <li>
-<a href="/search">泉北市域</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">泉北市域</a>
 <ul class="table_list_menu_sec">
-<li><a href="/search">和泉市</a></li><li><a href="/search">高石市</a></li><li><a href="/search">泉大津市</a></li><li><a href="/search">忠岡町</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">和泉市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">高石市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">泉大津市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">忠岡町</a></li>
 </ul>
 </li>
 
 <li>
-<a href="/search">泉南地域</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">泉南地域</a>
 <ul class="table_list_menu_sec">
-<li><a href="/search">岸和田市</a></li><li><a href="/search">貝塚市</a></li><li><a href="/search">熊取町</a></li><li><a href="/search">泉佐野市</a></li><li><a href="/search">田尻市</a></li><li><a href="/search">泉南市</a></li><li><a href="/search">阪南市</a></li><li><a href="/search">岬町</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">岸和田市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">貝塚市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">熊取町</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">泉佐野市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">田尻市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">泉南市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">阪南市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">岬町</a></li>
 </ul>
 </li>
 
 <li>
 
-<a href="/search">南河内地域</a>
+<a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">南河内地域</a>
 <ul class="table_list_menu_sec">
-<li><a href="/search">松原市</a></li><li><a href="/search">羽曳野市</a></li><li><a href="/search">藤井寺市</a></li><li><a href="/search">太子町</a></li><li><a href="/search">河南町</a></li><li><a href="/search">千早赤阪村</a></li><li><a href="/search">富田林市</a></li><li><a href="/search">大阪狭山市</a></li><li><a href="/search">河内長野市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">松原市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">羽曳野市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">藤井寺市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">太子町</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">河南町</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">千早赤阪村</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">富田林市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">大阪狭山市</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">河内長野市</a></li>
 </ul>
 
 </li>
@@ -148,17 +181,17 @@
 <td class="rowspan">神戸市</td><td>
 
 <ul class="table_list_menu">
-<li><a href="/search">中央区</a>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">中央区</a>
 <ul class="table_list_menu_sec">
-<li><a href="/search">三宮・元町</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">三宮・元町</a></li>
 </ul>
 </li>
 
-<li><a href="/search">灘区</a></li>
-<li><a href="/search">東灘区</a></li>
-<li><a href="/search">兵庫区</a>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">灘区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">東灘区</a></li>
+<li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">兵庫区</a>
     <ul class="table_list_menu_sec">
-    <li><a href="/search">神戸、ハーバーランド</a></li>
+    <li><a href="{{ action('SearchController@areasearchindex', '大阪市北区' ) }}">神戸、ハーバーランド</a></li>
     </ul>
 </li>
 <li><a href="/search">長田区</a></li>
