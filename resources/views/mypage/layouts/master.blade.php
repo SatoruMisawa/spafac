@@ -28,6 +28,7 @@
 	<body>
 		@include('mypage.layouts.header')
 		@include('mypage.layouts.campaign')
+		@include('layouts.message')
 		@yield('content')
 		@include('mypage.layouts.footer')
 		<script src="<?php echo url('bower_components/jquery/dist/jquery.min.js'); ?>"></script>

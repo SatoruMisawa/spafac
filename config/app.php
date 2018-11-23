@@ -168,6 +168,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\StripeValidationServiceProvider::class,
         App\Providers\FeeCollectionServiceProvider::class,
+        App\Providers\ImageStorageServiceProvider::class,
     ],
 
     /*
@@ -222,6 +223,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
 
         // 'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        'ImageStorage' => App\Facades\ImageStorage::class,
 
     ],
 

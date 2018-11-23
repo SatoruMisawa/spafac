@@ -32,28 +32,7 @@
 		<div class="wrap">
 		@include('mypage.layouts.header-menu')
 		<div id="dashboardTop">
-		<div id="header02">
-			<div class="inner">
-				<ul>
-					<!--<li><a href="<?php //echo url('mypage'); ?>">マイページ </a></li>
-					<li><a href="<?php //echo url('host'); ?>">スペースオーナー</a></li>
-					<li><a href="<?php //echo url('mypage/like'); ?>">お気に入り</a></li>
-					<li><a href="<?php //echo url('mypage/management'); ?>">予約管理</a></li>
-					<li><a href="<?php //echo url('mypage/mail-list'); ?>">メール受信一覧</a></li>
-					<li><a href="<?php //echo url('mypage/review'); ?>">レビュー</a></li>
-					<li><a href="<?php //echo url('mypage/profile/edit-account'); ?>">会員情報修正</a></li>
-					<li><a href="<?php // echo url('logout'); ?>" onClick="window.open('about:blank','_self').close();">ウィンドウを閉じる</a></li>-->
-
-
-					<li><a href="<?php echo url('mypage'); ?>">ダッシュボード</a></li>
-					<li><a href="<?php echo url('mypage/mail-list'); ?>">メッセージ</a></li>
-					<li><a href="#">スペース</a></li>
-					<li><a href="#">参加する</a></li>
-					<li><a href="<?php echo url('mypage/profile/edit-account'); ?>">プロフフィール</a></li>
-					<li><a href="#">アカウント</a></li>
-				</ul>
-			</div>
-		</div>
+		
 
 		@yield('content')
         <footer>&nbsp;</footer>

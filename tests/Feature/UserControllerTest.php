@@ -40,7 +40,7 @@ class UserControllerTest extends TestCase
             'family_name' => $data['family_name'],
             'given_name' => $data['given_name'],
             'email' => $data['email'],
-            'profile_image_url' => config('app.url').'/public/'.$data['profile_image']->hashName(),
+            'profile_image_url' => config('app.url').'/storage/'.$data['profile_image']->hashName(),
         ]);
 
         $user = User::find(1);

@@ -1,10 +1,3 @@
-<!-- @extends 
-@include
-@section('content')
-@endsection
-url: href="{{ route('host.facility.space.new') }}"
-css等 : href="{{ asset('assets/css/blog_page.css') }}" -->
-
 <!doctype html>
 <html>
 
@@ -24,7 +17,7 @@ css等 : href="{{ asset('assets/css/blog_page.css') }}" -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	<link href="{{ asset('assets/css/common.css') }}" >
 	<link href="{{ asset('assets/css/css/style.css') }}" >
-	<link rel="stylesheet" href="{{ asset('assets/css/css/media.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
 	<style></style>
 	<meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;Bootstrap&quot;:-1,&quot;jQuery&quot;:&quot;3.3.1&quot;,&quot;jQuery UI&quot;:&quot;1.11.4&quot;,&quot;SPDY&quot;:-1,&quot;Font Awesome&quot;:-1}">
 	<script type="text/javascript" src="chrome-extension://fhhdlnnepfjhlhilgmeepgkhjmhhhjkh/js/detector.js"></script>

@@ -31,15 +31,14 @@
 							@include('layouts.error', ['name' => 'images.*'])
 							<div class="card-body">
 								<div class="row row-condensed row-space-4">
-									<label class="text-right col-3">現在のスペース画像</label>
-									<img class="BGDRI7k93ond5" src="https://spafac-storage.s3.amazonaws.com/uploads/profile_image/image/1/something.jpg"
-									 alt="Something">
+									<div id="image-preview-container" style="height: 100px;">
+									</div>
 								</div>
 								<div class="row row-condensed row-space-4">
-									<label for="image-upload-button" class="btn btn-success btn-sm media-button text-right col-3">
+									<label for="image-input" class="btn btn-success btn-sm media-button text-right col-3">
 										{{
 										Form::file('images[]', [
-										'id' => 'image-upload-button',
+										'id' => 'image-input',
 										'style' => 'display: none;',
 										'multiple' => true,
 										])
@@ -86,4 +85,39 @@
 		</div>
 	</section>
 </div>
+@endsection
+
+@section('script')
+<script>
+	$(function () {
+		!(function () {
+			$('#image-input').change(function (e) {
+				$container = $('#image-preview-container')
+				$container.empty()
+				var files = e.target.files
+				for (i = 0; i < files.length; i++) {
+					var file = e.target.files[i],
+					reader = new FileReader()
+
+					if (file.type.indexOf("image") < 0) {
+						return false
+					}
+
+
+					reader.onload = (function (file) {
+						return function (e) {
+							$container.append($('<img>').attr({
+								src: e.target.result,
+								style: "width: auto; height: 100px; margin: 0 10px;",
+								title: file.name,
+							}))
+						}
+					})(file)
+
+					reader.readAsDataURL(file)
+				}
+			})
+		}())
+	})
+</script>
 @endsection

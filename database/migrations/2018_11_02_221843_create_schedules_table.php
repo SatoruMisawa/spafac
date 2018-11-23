@@ -17,8 +17,8 @@ class CreateSchedulesTable extends Migration
             $table->increments('id');
             $table->bigInteger('plan_id')->unsigned();
             $table->bigInteger('day_id')->unsigned();
-            $table->time('from');
-            $table->time('to');
+            $table->integer('from');
+            $table->integer('to');
         });
     }
 

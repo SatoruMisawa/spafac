@@ -8,7 +8,7 @@
         @foreach($query as $data)
            <li>
              <a href="{{ action('SpaceController@index', $data->facility_id ) }}">
-               <img src="<?php echo url('assets/mypage/img/photo-14.png'); ?>" class="okan" alt="1">
+               <img src="{{$data->url}}" class="okan" alt="1">
                <img src="/assets/images/party/party_img01.jpg" alt="party">
                <div class="readme">
                <p>{{$data->name}}</p>
@@ -21,4 +21,4 @@
 
        </ul>
 </div>
-	<p class="more_lank"><a href="/search">ランキングをもっと見る</a></p>
+	<p class="more_lank"><a href="/search">新着スペースをみる</a></p>

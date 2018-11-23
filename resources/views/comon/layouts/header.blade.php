@@ -1,11 +1,3 @@
-<!-- @extends 
-@include
-@section('content')
-@endsection
-url: href="{{ route('host.facility.space.new') }}"
-css等 : href="{{ asset('assets/css/blog_page.css') }}" -->
-
-
 <nav class="sp_hide">
 	<ul>
 	<li><a href="#">ダッシュボード</a></li>

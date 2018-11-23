@@ -21,7 +21,7 @@ class SessionController extends Controller
             return redirect()->back();
         }
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('message', 'ログインしました');
     }
 
     public function delete() {
@@ -44,7 +44,7 @@ class SessionController extends Controller
 
         $this->guard()->login($user, true);
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('message', 'ログインしました');
     }
 
     public function guard() {
