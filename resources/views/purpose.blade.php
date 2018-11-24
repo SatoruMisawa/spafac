@@ -192,7 +192,7 @@
    </div>
 
 
-   <div class="three_list new_review">
+   <!-- <div class="three_list new_review">
    <h2>新着レビュー</h2>
    <div class="pac">
        <ul>
@@ -229,133 +229,36 @@
        </ul>
 </div>
 <p class="more_lank"><a href="/search">新着レビューをもっと読む</a></p>
-   </div>
+   </div> -->
 
 
-   <div class="three_list summary">
-   <h2>関連するまとめ</h2>
-<div class="pac">
-       <ul>
-           <li>
-<div class="pic"></div>
-<p>【緊急応援企画】日本代表のベルギー・テキストテキストテキストテキストテキスト</p>
+<div class="three_list summary">
+    <h2>関連するまとめ</h2>
+    <div class="pac">
+        <ul>
+            <li><div class="pic"><img src="https://magazine.spafac.com/wp-content/uploads/2018/11/45198452_1936266683156801_4458416983733436416_n.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/"></div>
+                <p><a href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/">森友嵐士さんのSecretライブ　イベントレポート</a></p>
            </li>
-           <li>
-<div class="pic"></div>
-<p>【緊急応援企画】日本代表のベルギー・テキストテキストテキストテキストテキスト</p>
+           <li><div class="pic"><img src="https://magazine.spafac.com/wp-content/uploads/2018/11/45280391_2066236716761304_8326664946569969664_o.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/"></div>
+                <p><a href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/">【２０人限定】ジビエクィーン中川妙子スペシャルパーティー in心斎橋</a></p>
            </li>
-           <li>
-<div class="pic"></div>
-<p>【緊急応援企画】日本代表のベルギー・テキストテキストテキストテキストテキスト</p>
+           <li><div class="pic"><img src="https://magazine.spafac.com/wp-content/uploads/2018/11/box-2953722_640.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/2018xmasparty/"></div>
+                <p><a href="https://magazine.spafac.com/2018/11/08/2018xmasparty/">今年のクリスマスはどう過ごしますか？大人女子の事情</a></p>
            </li>
-       </ul>
-</div>
-<p class="more_lank"><a href="/search">関連するまとめをもっと見る</a></p>
+        </ul>
+    </div>
+<p class="more_lank"><a href="https://magazine.spafac.com/">関連するまとめをもっと見る</a></p>
    </div>
 
-    <div class="party_search_list attention_area">
-   <h2>注目のエリア</h2>
-   <ul>
-   <li><a href="{{ action('SearchController@areasearchindex', '梅田' ) }}"><span><img src="/assets/images/party/umeda.png"></span><br>梅田</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '心斎橋' ) }}"><span><img src="/assets/images/party/shinsaibashi.png"></span><br>心斎橋</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '難波' ) }}"><span><img src="/assets/images/party/nanba.png"></span><br>なんば</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '北浜' ) }}"><span><img src="/assets/images/party/kitahama.png"></span><br>北浜</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '淀屋橋' ) }}"><span><img src="/assets/images/party/yodoyabashi.png"></span><br>淀屋橋</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '本町' ) }}"><span><img src="/assets/images/party/honcho.png"></span><br>本町</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '南船場' ) }}"><span><img src="/assets/images/party/minamihunaba.png"></span><br>南船場</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '新町' ) }}"><span><img src="/assets/images/party/shinmachi.png"></span><br>新町</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '北堀江' ) }}"><span><img src="/assets/images/party/kitahorie.png"></span><br>北堀江</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '南堀江' ) }}"><span><img src="/assets/images/party/minamihorie.png"></span><br>南堀江</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '天王寺' ) }}"><span><img src="/assets/images/party/tannoji.png"></span><br>天王寺</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '阿倍野' ) }}"><span><img src="/assets/images/party/abeno.png"></span><br>阿倍野</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '上本町' ) }}"><span><img src="/assets/images/party/kamihoncho.png"></span><br>上本町</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '京都' ) }}"><span><img src="/assets/images/party/kyoto.png"></span><br>京都</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '三宮' ) }}"><span><img src="/assets/images/party/motomachi.png"></span><br>三宮・元町</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '神戸' ) }}"><span><img src="/assets/images/party/kobe.png"></span><br>神戸・ハーバーランド</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '神戸' ) }}"><span><img src="/assets/images/party/amagasaki.png"></span><br>神戸</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '西宮' ) }}"><span><img src="/assets/images/party/nishinomiya.png"></span><br>西宮</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '芦屋' ) }}"><span><img src="/assets/images/party/ashiya.png"></span><br>芦屋</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '明石' ) }}"><span><img src="/assets/images/party/akashi.png"></span><br>明石</a></li>
-   <li><a href="{{ action('SearchController@areasearchindex', '淡路島' ) }}"><span><img src="/assets/images/party/awajishima.png"></span><br>淡路島</a></li>
-   </ul>
+@include('sp_kansaiarea')　<!-- 注目のエリア -->
+@include('sp_area')　<!-- エリア-->
+@include('sp_people')　<!-- 収容人数-->
+@include('sp_purpose')　<!-- 目的を探す-->
+@include('sp_institution')　<!-- 施設-->
+@include('sp_amenity')　<!-- 設備-->
+
+        </div>
     </div>
-
-    <div class="party_search_list table_list bgcg">
-   <h2>エリアから探す</h2>
-
-<div class="wrap">
-
-@include('areas_table')
-
-</div>
-
-    </div>
-
-    <div class="party_search_list">
-   <h2>収容人数から探す</h2>
-   <div class="wrap party_abt">
-   <p>
-		 <a href="{{ action('SearchController@capacitiesindex', '1' ) }}">1人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '5' ) }}">5人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '10' ) }}">10人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '20' ) }}">20人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '30' ) }}">30人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '40' ) }}">40人</a>
-	   <a href="{{ action('SearchController@capacitiesindex', '50' ) }}">50人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '100' ) }}">100人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '200' ) }}">200人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '300' ) }}">300人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '400' ) }}">400人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '500' ) }}">500人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '1000' ) }}">1000人</a>
-		 <a href="{{ action('SearchController@capacitiesindex', '10000' ) }}">10000人</a></p>
-	 </p>
-   </div>
-    </div>
-
-    <div class="party_search_list bgcg">
-   <h2>キーワードから探す</h2>
-   <div class="wrap party_abt">
-
-<p>
-
-								<a href="{{ action('SearchController@facility_kindsindex', '1' ) }}">イベント</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '2' ) }}">結婚式場</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '3' ) }}">オフィス</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '4' ) }}">ホール</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '5' ) }}">貸し会議室</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '6' ) }}">スタジオ</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '7' ) }}">カフェ</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '8' ) }}">レストラン</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '9' ) }}">映画館</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '10' ) }}">ギャラリー</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '11' ) }}">バー</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '12' ) }}">スポーツ施設</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '13' ) }}">娯楽施設</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '14' ) }}">ホテル</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '15' ) }}">住宅</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '16' ) }}">倉庫</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '17' ) }}">ワイナリ・蔵</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '18' ) }}">百貨店</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '19' ) }}">オフィス街</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '20' ) }}">商店街アーケード</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '21' ) }}">ロードサイド</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '22' ) }}">駅近　ロータリー</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '23' ) }}">軒先き</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '24' ) }}">移動販売車設置</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '25' ) }}">駅地下</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '26' ) }}">一戸建て</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '27' ) }}">テラス</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '28' ) }}">看板</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '29' ) }}">掲示スペース</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '30' ) }}">駐車場</a>
-								<a href="{{ action('SearchController@facility_kindsindex', '31' ) }}">その他</a>
-</p>
-   </div>
-
-    </div>
-
-
 </section>
 
 @stop

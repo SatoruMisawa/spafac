@@ -1,7 +1,7 @@
 @if(!array_key_exists($page,$page_name))
-   <h2>パーティースペースランキングTop3</h2>
+   <h2>新着物件</h2>
 @else
-   <h2>{{$page_name[$page]}}ランキングTop3</h2>
+   <h2>{{$page_name[$page]}}新着物件</h2>
 @endif
 <div class="pac">
        <ul>
