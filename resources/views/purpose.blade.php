@@ -250,12 +250,12 @@
 <p class="more_lank"><a href="https://magazine.spafac.com/">関連するまとめをもっと見る</a></p>
    </div>
 
-@include('sp_kansaiarea')　<!-- 注目のエリア -->
-@include('sp_area')　<!-- エリア-->
-@include('sp_people')　<!-- 収容人数-->
-@include('sp_purpose')　<!-- 目的を探す-->
-@include('sp_institution')　<!-- 施設-->
-@include('sp_amenity')　<!-- 設備-->
+        @include('sp_kansaiarea')　<!-- 注目のエリア -->
+        @include('sp_area')　<!-- エリア-->
+        @include('sp_people')　<!-- 収容人数-->
+        @include('sp_purpose')　<!-- 目的を探す-->
+        @include('sp_institution')　<!-- 施設-->
+        @include('sp_amenity')　<!-- 設備-->
 
         </div>
     </div>

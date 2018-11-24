@@ -114,7 +114,7 @@
 			大阪市北区梅田2-2-2<br>
 			ヒルトンプラザウエストオフィスタワー19階<br>-->
 			サービスその他に関するお問い合わせ<br>
-			<a href="/inquiry">info@spafac.com</a></p>
+			<a href="info@spafac.com">info@spafac.com</a></p>
 		<!-- <p class="address">
 <a href="/inquiry"><svg version="1.1" id="email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" width="50px" height="50px" viewBox="615 615 50 50" enable-background="new 615 615 50 50" xml:space="preserve">
@@ -142,10 +142,10 @@
         <div class="foot f-logo">
         <ul>
         <a href="/stay">
-        <img src="/assets/images/footer_logo_stay.png">
+        <img src="{{asset('assets/images/footer_logo_stay.png')}}">
         </a>
         <a href="https://magazine.spafac.com/">
-        <img src="/assets/images/footer_logo_spacemagazine.png">
+        <img src="{{asset('assets/images/footer_logo_spacemagazine.png')}}">
         </a>
         </ul>
 		<!-- @if (Auth::guard('users')->check())
