@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>スペースファクトリー</title>
-<link rel="stylesheet" type="text/css" href="<?php echo url('assets/css/import.css'); ?>">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/import.css') }}">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<link rel="stylesheet" href="<?php echo url('assets/css/search.css'); ?>">
+<link rel="stylesheet" href="{{ asset('assets/css/search.css') }}">
 <script src="<?php echo url('assets/common/js/common.js'); ?>"></script>
 </head>
 

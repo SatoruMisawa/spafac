@@ -1,7 +1,6 @@
 @extends('mypage.layouts.master_pop')
 @section('content')
 
-
 <div class="content">
 	<div class="inner">
 
