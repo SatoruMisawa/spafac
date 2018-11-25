@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// this route is to test settlement
+// and will be deleted soon
+include 'test.php';
+
 Route::group(['middleware' => 'guest:users'], function() {
 	Route::get('users/new', 'UserController@new')->name('user.new');
 	Route::post('users', 'UserController@create')->name('user.create');
