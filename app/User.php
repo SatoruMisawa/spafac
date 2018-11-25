@@ -176,7 +176,7 @@ class User extends Authenticatable
 	public function connectClaimantCustomer() {
 		$claimantCustomer = $this->claimant->connectCustomer([
 			'email' => 'paying.user@example.com',
-			'source' => 'tok_1DaPM5DX6z5hkjQAL74FXRFi',
+			'source' => 'tok_1DaRE9JoWq7YlbrqoL7j0VnN',
 		]);
 		
 		if ($this->claimantUser === null) {
