@@ -44,7 +44,7 @@
 					<h3>所在地</h3>
 					<p>〒541-0052 大阪府大阪市中央区安土町2-3-13 大阪国際ビルディング 31F</p>
 					<h3>お問い合わせ</h3>
-					<p><a href="tomail:info@spafac.com">info@spafac.com</a>
+					<p><a href="mailto:info@spafac.com">info@spafac.com</a>
 					<p>お電話番号につきましては、上記のメールアドレスにご請求いただければ、遅滞なく開示いたします。</p>
 					<h3>営業時間</h3>
 					<p>平日　10:00～18:00</p>

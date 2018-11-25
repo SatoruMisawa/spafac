@@ -50,10 +50,9 @@
 				カテゴリーから探す
 				<ul>
 					<li><a href="/event_types">目的から探す</a></li>
-					<li><a href="/category">カテゴリから探す</a></li>
-					<li><a href="/areas">エリアから探す</a></li>
 					<li><a href="/capacities">人数から探す</a></li>
-					<li><a href="/space_types">会場タイプから探す</a></li>
+					<li><a href="/category">施設から探す</a></li>
+					<li><a href="/areas">エリアから探す</a></li>
 					<li><a href="/amenities">設備から探す</a></li>
 					<!--li><a href="/coming-soon">法人利用のご相談</a></li-->
 				</ul>

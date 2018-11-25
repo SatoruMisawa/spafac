@@ -467,7 +467,7 @@ ul.recomend-list{
 }
 .summary .pac>ul li p:nth-last-of-type(1){
 	max-height:2.5em;
-	overflow:hidden;
+	/* overflow:hidden; */
 }
 
 
