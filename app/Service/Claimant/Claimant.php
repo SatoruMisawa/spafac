@@ -7,6 +7,8 @@ interface Claimant {
 
     public function connectAccount($params = []);
 
+    public function connectCustomer($params = []);
+
     public function connectBankAccount($params = []);
 
     public function fillRequirements($params = []);

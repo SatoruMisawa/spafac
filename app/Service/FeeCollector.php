@@ -14,7 +14,7 @@ class FeeCollector {
     }
 
     public function calculateGuestPriceWithFee() {
-        return $this->price + $this->guestFee();
+        return ceil($this->price + $this->guestFee());
     }
 
     private function guestFee() {
@@ -22,7 +22,7 @@ class FeeCollector {
     }
 
     public function calculatehostReward() {
-        return $this->price - $this->hostFee();
+        return ceil($this->price - $this->hostFee());
     }
 
     private function hostFee() {
