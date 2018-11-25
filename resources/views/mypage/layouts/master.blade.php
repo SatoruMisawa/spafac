@@ -21,8 +21,9 @@
 		<meta property="og:description" content="">
 		<!--css-->
 		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo url('assets/css/import.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo url('assets/css/import.css'); ?>">
 		<link rel="stylesheet" href="<?php echo url('css/media.css'); ?>">
+		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 		<!--css end-->
 	</head>
 	<body>
@@ -33,7 +34,7 @@
 		@include('mypage.layouts.footer')
 		<script src="<?php echo url('bower_components/jquery/dist/jquery.min.js'); ?>"></script>
 		<script src="<?php echo url('bower_components/jquery-ui/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo url('assets/common/js/common.js'); ?>"></script>        
+		<script src="<?php echo url('assets/common/js/common.js'); ?>"></script>        
 		<script type="text/javascript" src="<?php echo url('assets/mypage/js/lib/clipboard.min.js'); ?>"></script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script type="text/javascript" src="<?php echo url('assets/mypage/js/script.min.js'); ?>"></script>
 		<script src="//yubinbango.github.io/yubinbango/yubinbango.js"></script>

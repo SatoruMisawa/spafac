@@ -5,7 +5,7 @@ header {
     border-bottom:1px solid #9E9E9E;
 }
 .whats_about_page{
-	padding:30px 0;	
+	padding: 30px 70px;	
 }
 .whats_about_page:after {
   content: ".";
@@ -212,15 +212,16 @@ box-sizing: border-box;
 	border:1px solid #C5C5C5;
 	padding:1em;	
 }
-.whats_about_page .w-box .type-choice{
-	border:none;
-	display:block;
-	padding:1em 2em;
-	background-color:#60DF52;
-	color:#FFF;
-	font-size:18px;
-	font-weight:bold;
-	margin:0 auto;	
+
+.whats_about_page .w-box .type-choice {
+    border: none;
+    display: inline-block;
+    padding: 1em 2em;
+    background-color: #60DF52;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 10px 0px 25px;
 }
 
 .whats_about_page .w-box table.calendar{
@@ -554,6 +555,245 @@ label#angle-right{
 	display:none;	
 }
 
+/* -------------------------------------------------
+
+ 予約決済時のカレンダー
+ 
+ ---------------------------------------------------*/
+
+.sp-daily_svFrt {
+    min-height: 300px;
+}
+
+.sp_period_Dfribg {
+    font-size: 0;
+    border: 1px solid #bfbfbf;
+    margin-top: 16px;
+}
+
+.rsp_period_Dfribg li:nth-child(4n+1) {
+    border-left: none;
+}
+
+.sp_period_Dfribg .is-unavailable {
+    background: #f8f8f8;
+    color: #d0d1cf;
+}
+
+.sp_period_Dfribg li {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+    width: 24.4%;
+    font-size: 14px;
+    vertical-align: top;
+    border-left: 1px solid #bfbfbf;
+}
+
+.sp_period_Dfribg .is-unavailable:before {
+    content: "\f00d";
+    color: #d0d1cf;
+}
+
+.sp_period_Dfribg .is-checked:before {
+    content: "\f00c";
+    color: #fff;
+}
+
+.sp_period_Dfribg li:before {
+	content: "\f111";
+	font-family: FontAwesome;
+    font-size: 22px;
+    color: #68D35E;
+    position: absolute;
+    top: 32%;
+    left: 12px;
+}
+
+.sp_period_Dfribg-time {
+    margin-bottom: 6px;
+}
+
+.sp_period_Dfribg-time, .sp_period_Dfribg-status {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.sp_period_Dfribg .is-reserved {
+    background: #68D35E;
+}
+
+.sp_period_Dfribg .is-reserved a {
+    color: #fff;
+}
+
+.sp_period_Dfribg-content {
+    padding: 10px;
+}
+
+.sp_period_Dfribg .is-checked a .sp_period_Dfribg-time, .sp_period_Dfribg .is-checked a .sp_period_Dfribg-status, .sp_period_Dfribg .is-reserved a .sp_period_Dfribg-time, .sp_period_Dfribg .is-reserved a .sp_period_Dfribg-status {
+    color: #fff;
+}
+
+.sp_period_Dfribg li:nth-child(n+5) {
+    border-top: 1px solid #bfbfbf;
+}
+
+.price-manage {
+    margin: 30px 0px 10px 0;
+    text-align: right;
+}
+
+
+.reserve-subtitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.reserve-card {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #d0d1cf;
+}
+
+.reserve-card__inner {
+    padding: 16px;
+    width: 100%;
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.reserve-plan__name {
+    padding-top: 3px;
+    overflow: hidden;
+}
+
+input, select, textarea {
+    padding: 5px 5px;
+    font-size: 14px;
+    border: 1px solid #b3b3b4;
+    background: #FFF;
+}
+
+.reserve-plan__name-radio {
+    display: block;
+}
+
+.service-radio, .service-checkbox {
+    margin: 0 20px 3px 0;
+    padding-left: 30px;
+}
+
+.service-radio:before {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    border-radius: 100%;
+    background: #4abfe6;
+    content: '';
+    opacity: 0;
+    top: 50%;
+}
+
+.reserve-plan__title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-right: 10px;
+}
+
+.reserve-card__inner+.reserve-card__inner {
+    border-top: 1px solid #ddd;
+}
+
+label {
+    display: inline-block;
+    margin: 5px;
+}
+
+fieldset.sp_usedivision_deiFgb {
+    margin: 5px 0 40px;
+}
+
+.reserve-period__calendar td.is-closed, .reserve-period__calendar td.is-unavailable, .reserve-period__calendar td.is-past {
+    color: #b3b3b4;
+    background: #f3f3f3;
+}
+
+.dashboard-calendar__table th, .dashboard-calendar__table td {
+    border: 1px solid #b3b3b4;
+    width: 14.28%;
+}
+
+
+.reserve-period__calendar-content {
+    min-height: 40px;
+    margin: 8px 10px 7px;
+    font-size: 12px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.dashboard-calendar__table th, .dashboard-calendar__table td {
+    border: 1px solid #b3b3b4;
+    width: 14.28%;
+}
+
+.dashboard-calendar__table td {
+    background: #FFF;
+}
+
+.dashboard-calendar__cell-wrap {
+    display: block;
+    color: inherit;
+    position: relative;
+}
+
+.dashboard-calendar__date {
+    height: 28px;
+    padding: 7px 10px;
+}
+
+.reserve-period__calendar-price {
+    color: #68D35E;
+}
+
+
+/* .service-radio:after {
+    left: 0;
+    margin-top: 1px;
+    width: 18px;
+    height: 18px;
+    box-sizing: content-box;
+    top: 0%;
+}
+
+.service-radio:after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    border: 1px solid #b3b3b4;
+    border-radius: 100%;
+    content: '';
+    background: #FFF;
+} */
+
+
+
+
+/* -------------------------------------------------
+
+ mobile設定
+ 
+ ---------------------------------------------------*/
+
 @media only screen and ( max-width:1200px) {
 .wrap {
     width:100%;
@@ -568,6 +808,20 @@ label#angle-right{
 -moz-box-sizing: border-box;
 box-sizing: border-box;	
 }
+
+.rsp_period_Dfribg-content {
+    padding: 12px 5px;
+}
+
+
+.sp_period_Dfribg-time, .sp_period_Dfribg-status {
+    font-size: 13px;
+}
+
+.reserve-period__calendar-content {
+    margin: 8px 6px 7px;
+}
+
 
 	
 }
@@ -715,15 +969,14 @@ border-spacing: 2px 0;  /* 左右 上下 */
 	padding:1em;	
 }
 
-.whats_about_page .w-box h4 span{
-	display:block;
-	clear:both;
-	margin-top:0.8em;
-	float:right;
-	background-color:#000;
-	color:#FFF;
-	padding:0 1em;
-	border-radius:5px;
+.whats_about_page .w-box h4 span{{
+    display: block;
+    float: right;
+    background-color: #000;
+    color: #FFF;
+    padding: 7px 5px;
+    border-radius: 5px;
+    margin: 0 5px;
 }
 
 #fee ul.fee-list li span:first-child{

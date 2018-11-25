@@ -43,6 +43,12 @@ body *{
    WRAP
 --------------------------------*/
 
+div.wrap {
+  width: 90% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
 .inner {
   /* max-width:1200px; */
   margin: 20px auto;
