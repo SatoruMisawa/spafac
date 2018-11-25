@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// this route is to test settlement
+// and will be deleted soon
+include 'test.php';
+
 Route::group(['middleware' => 'guest:users'], function() {
 	Route::get('users/new', 'UserController@new')->name('user.new');
 	Route::post('users', 'UserController@create')->name('user.create');
@@ -24,7 +28,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::get('logout', 'SessionController@delete')->name('logout');
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
-	Route::group(['middleware' => 'deny.all'], function() {
+Route::group([/*'middleware' => 'deny.all'*/], function() {
 		Route::group(['prefix' => 'mypage', 'middleware' => 'deny.all'], function() {
 			Route::get('/', 'Mypage\IndexController@index');
 			Route::get('like', 'Mypage\IndexController@like');
