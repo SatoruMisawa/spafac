@@ -36,6 +36,7 @@ Route::group([/*'middleware' => 'deny.all'*/], function() {
 	Route::group(['prefix' => '/guest'], function() {
 		Route::group(['prefix' => '/applies'], function() {
 			Route::get('/', 'Guest\ApplyController@index')->name('guest.apply.index');
+			Route::post('/', 'Guest\ApplyController@create')->name('guest.apply.create');
 
 			Route::group(['prefix' => '/{apply}', 'middleware' => 'guest.owner.apply'], function() {
 				Route::get('/', 'Guest\ApplyController@show')->name('guest.apply.show');
