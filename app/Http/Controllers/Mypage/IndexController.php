@@ -174,9 +174,9 @@ class IndexController extends MypageController
 						}
 
 						$name = DB::table('users')
-						->select('name')
+						->select('family_name')
 						->where('id', $user_id)
-						->value('name');
+						->value('family_name');
 
 						$content;
 						$content = DB::table('mailtable')->select('content')->where('thread_id', $t_id->thread_id)->orderBy('send_date', 'asc')->first();

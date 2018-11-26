@@ -15,17 +15,17 @@ use Auth;
  */
 class SpaceController extends FrontController
 {
-	public function index($space) {
+	public function index($facility_id) {
 
 		//用途
 		 //$spacはFacility_id
 		 //space情報
 		  $facility = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')
-									->where('facilities.id','=',$space)->get();
+									->where('facilities.id','=',$facility_id)->get();
 
 			$owner = User::where('id',$facility[0]->user_id)->get();
 			//dd($owner);
-			$space = Facility::find(1)->spaces()->where('facility_id','=',$space)->get();
+			$space = Facility::where('id','=',$facility_id)->get();
 			//dd($facility);
 			$facility_kind = DB::table('facility_kinds')->where('id','=',$facility[0]->facility_kind_id)->get();
 
