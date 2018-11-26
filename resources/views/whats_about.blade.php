@@ -472,7 +472,7 @@
 	c2.351,2.351,2.351,6.152,0,8.478l-34.011,34.011C1241.926,426.421,1238.124,426.421,1235.773,424.071z"/>
 </svg></p>
 
-<fieldset class="sp_usedivision_deiFgb">
+<!-- <fieldset class="sp_usedivision_deiFgb">
     <legend class="reserve-subtitle">利用者区分を選択</legend>
     <div class="reserve-card sm-hide__guteter">
         <div class="reserve-card__inner reserve-plan__content clearfix">
@@ -526,7 +526,7 @@
 <path fill="#C5C5C5" d="M1235.773,424.071l-34.011-34.011c-2.351-2.351-2.351-6.152,0-8.478l5.652-5.651
 	c2.351-2.351,6.151-2.351,8.478,0L1240,400.037l24.107-24.107c2.351-2.351,6.152-2.351,8.478,0l5.652,5.651
 	c2.351,2.351,2.351,6.152,0,8.478l-34.011,34.011C1241.926,426.421,1238.124,426.421,1235.773,424.071z"/>
-</svg></p>
+</svg></p> -->
 
     <h3>追加料金（オプション）</h3>
     <div class="w-box">

@@ -18,19 +18,49 @@
 <section class="party_page">
 <div class="three_list summary">
     <h2>関連するまとめ</h2>
-    <div class="pac">
-        <ul>
-            <li><div class="pic"><img src="https://magazine.spafac.com/wp-content/uploads/2018/11/45198452_1936266683156801_4458416983733436416_n.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/" target="_blank"></div>
-                <p><a href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/" target="_blank">森友嵐士さんのSecretライブ　イベントレポート</a></p>
-           </li>
-           <li><div class="pic"><img src="https://magazine.spafac.com/wp-content/uploads/2018/11/45280391_2066236716761304_8326664946569969664_o.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/" target="_blank"></div>
-                <p><a href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/" target="_blank">【２０人限定】ジビエクィーン中川妙子スペシャルパーティー in心斎橋</a></p>
-           </li>
-           <li><div class="pic"><img src="https://magazine.spafac.com/wp-content/uploads/2018/11/box-2953722_640.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/2018xmasparty/" target="_blank"></div>
-                <p><a href="https://magazine.spafac.com/2018/11/08/2018xmasparty/" target="_blank">今年のクリスマスはどう過ごしますか？大人女子の事情</a></p>
-           </li>
-        </ul>
-    </div>
+    <div class="news_card">
+				<ul>
+					<li>
+						<a href="https://magazine.spafac.com/2018/10/17/spaceentryservice/" target="_blank">
+						<div class="img">
+						    <img src="https://magazine.spafac.com/wp-content/uploads/2018/11/45198452_1936266683156801_4458416983733436416_n.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/" target="_blank">
+						</div>
+						</a>
+						<div class="text">
+							<span class="date">2018.11.08</span>
+							<p><a href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/" target="_blank">森友嵐士さんのSecretライブ　イベントレポート</a></p>
+							<p>いよいよ始まる、地域密着の空間シェアリングサービス。遊休空間や空いているスペ…</p>
+							<a class="readmore" href="https://magazine.spafac.com/2018/11/08/arashi-moritomo-live/" target="_blank">続きを読む</a>
+						</div>
+					</li>
+					<li>
+						<a href="https://magazine.spafac.com/2018/09/15/spafac-campfire/" target="_blank">
+							<div class="img">
+                            <img src="https://magazine.spafac.com/wp-content/uploads/2018/11/45280391_2066236716761304_8326664946569969664_o.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/" target="_blank">
+							</div>
+						</a>
+							<div class="text">
+								<span class="date">2018.11.08</span>
+								<p><a href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/" target="_blank">【２０人限定】ジビエクィーン中川妙子スペシャルパーティー in心斎橋</a></p>
+								<p>大阪の街を活性化したい。大阪を盛り上げたい.大阪万博誘致プロジェウト「ダイヤ…</p>
+								<a class="readmore" href="https://magazine.spafac.com/2018/11/08/zombie-partyshinsaibashi/" target="_blank">続きを読む</a>
+							</div>
+					</li>
+					<li>
+						<a href="https://magazine.spafac.com/2018/09/15/osakacity-info/" target="_blank">
+							<div class="img">
+                            <img src="https://magazine.spafac.com/wp-content/uploads/2018/11/box-2953722_640.jpg" alt="review" href="https://magazine.spafac.com/2018/11/08/2018xmasparty/" target="_blank">
+							</div>
+						</a>
+						<div class="text">
+							<span class="date">2018.11.08</span>
+							<p><a href="https://magazine.spafac.com/2018/11/08/2018xmasparty/" target="_blank">今年のクリスマスはどう過ごしますか？大人女子の事情</a></p>
+							<p>関西地域の活性化　空間活用を行う事で様々なライフスタイルやワークスタイルに変化を…</p>
+							<a class="readmore" href="https://magazine.spafac.com/2018/09/15/osakacity-info/" target="_blank">続きを読む</a>
+						</div>
+					</li>
+				</ul>
+            </div>
     <p class="more_lank"><a href="https://magazine.spafac.com/" target="_blank">関連するまとめをもっと見る</a></p>
 </div>
 </section>
