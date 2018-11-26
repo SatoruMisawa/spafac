@@ -8,9 +8,11 @@
 				<a href="<?php echo url('host'); ?>">スペースを登録するならこちら</a>
 			</li>
 			<li>
+				<a href="/stay"><img src="{{asset('assets/images/footer_logo_stay.png')}}"></a>
 				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a> -->
 			</li>
 			<li>
+				<a href="https://magazine.spafac.com/"><img src="{{asset('assets/images/footer_logo_spacemagazine.png')}}"></a>
 				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-google.png"></a> -->
 			</li>
 		</ul>

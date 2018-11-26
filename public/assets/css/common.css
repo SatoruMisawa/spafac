@@ -1175,7 +1175,7 @@ nav.sp_hide {
   float: right;
   width: auto;
   height: 46px;
-  margin: 0;
+  margin: 0 30px;
 }
 
 li.admin_header {
