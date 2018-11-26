@@ -13,6 +13,8 @@
 				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
 				@endif
+				<li><a href="{{ route('user.new') }}">新規登録</a></li>
+				<li><div class="btnBody"><a href="{{ route('host.facility.new') }}">スペースを登録</a></div></li>　<!-- "{{ route('host.facility.new') }}" -->
 			</ul>
 			</div>
 		</div>
@@ -30,6 +32,8 @@
 				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
 				@endif
+				<li><a href="{{ route('user.new') }}">新規登録</a></li>
+				<li><div class="btnBody"><a href="{{ route('host.facility.new') }}">スペースを登録</a></div></li>　<!-- "{{ route('host.facility.new') }}" -->
 			</ul>
 			</nav>
 		</div>

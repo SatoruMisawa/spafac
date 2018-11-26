@@ -10,7 +10,7 @@
 
 <div id="search_box">
 	<div class="search_box_inner search_width">
-		<p class="search_box_p">目的にあった空間・スペースの簡単登録検索予約サイトへようこそ</p>
+		<p class="search_box_p">目的にあった空間・スペースのかんたん登録・検索・予約サイトへようこそ</p>
 
 		@include('mid-nav')
 
@@ -22,7 +22,7 @@
 		<ul>
 			<li><a class="" href="<?php echo url('areas'); ?>">エリアから探す</a></li>
 			<li><a href="<?php echo url('capacities'); ?>">収容人数から探す</a></li>
-			<li><a href="<?php echo url('keywords'); ?>">カテゴリーから探す</a></li>
+			<li><a href="<?php echo url('keywords'); ?>">キーワードから探す</a></li>
 			<li><a href="<?php echo url('amenities'); ?>">設備から探す</a></li>
 		</ul>
 	</div>
@@ -68,7 +68,7 @@
 						<a href="/purpose/event/4">
 							<img src="<?php echo url('assets/mypage/img/cat-4.png'); ?>" alt="">
 							<div class="cat_text">
-								<p>イベントプロモーション・広告</p>
+								<p>イベント・プロモーション・広告</p>
 								<span>(件)</span>
 							</div>
 						</a>
@@ -291,7 +291,7 @@
 	</div>
 	</div>
 	</div>
-	<a class="detail" href="/recommendation">スタッフのイチオシスペース &raquo;</a>
+	<a class="detail" href="/recommendation">スタッフのイチオシスペース一覧 &raquo;</a>
 </section>
 
 <section class="white" id="news">
@@ -301,12 +301,15 @@
 				<li>
 					<span>2018.08.29</span>
                     <a href="https://magazine.spafac.com/2018/08/29/rinenna3/" target="_blank">臭い匂いをごっそり落とす消臭スプレー＃３</a><br>
-					<span>2018.09.20</span>
+					<span data-select-like-a-boss="1">2018.09.20</span>
 					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018/" target="_blank">ミスコスモポリタン・ジャパン2018年度日本代表決定</a><br>
-					<span>2018.09.20</span>
+					<span data-select-like-a-boss="1">2018.09.20</span>
 					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request/" target="_blank">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
 				</li>
 			</div>
+			<div class="wrap txtR">
+			<a class="archive_link" href="https://magazine.spafac.com/category/ニュース/" target="_blank">News一覧を見る »</a>
+	</div>
 		</ul>
 			<div class="news_card">
 				<ul>
@@ -351,9 +354,6 @@
 					</li>
 				</ul>
 			</div>
-	<div class="wrap txtR">
-		<a class="archive_link" href="https://magazine.spafac.com/category/ニュース/" target="_blank">News一覧を見る »</a>
-	</div>
 </section>
 
 
@@ -363,7 +363,7 @@
 		<h2>関西エリアを地域密着でサポートいたします。<br>
 			様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>
 			空間・スペースシェアリング検索・予約サイトへようこそ</h2>
-		<p>スペースの貸し借りで社会貢献ができる。<br>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップでフルサポート致します。</p>
+		<p>1日1時間からご利用できるレンタルスペースから関西ならではのとっておきの空間を体験しよう<br>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップ。登録はもちろん無料です。</p>
 	</div>
 	<div class="welcome_figure_1">
 		<div class="figure_box">
@@ -427,7 +427,7 @@
 	<div id="reg_now_box">
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
-		<p>12月末までの先行会員様無料登録キャンペーン実施中。<br>スペースレンタル成約時の手数料が12月末まで無料!</p>
+		<p>12月末まで弊社スペース登録代行　無料キャンペーン実施中！<br>お持ちのスペースを有効活用して収益化UP!!</p>
 		<a href="{{ route('user.new') }}">新規登録（無料）</a>
 	</div>
 </section>
@@ -633,7 +633,7 @@
 		<h2>あなたもスペースオーナーになってみませんか</h2>
 		<span>お持ちのスペースを今すぐ有効活用。あらゆるスペースが登録可能です</span>
 	</div>
-	<div class="reg_now_3_button"><a href="{{ route('user.new') }}">無料登録をしてすぐスペースオーナーになる</a></div>
+	<div class="reg_now_3_button"><a href="{{ route('user.new') }}">無料登録をしてすぐスペースオーナーになる<i class="fas fa-arrow-circle-right"></i></a></div>
 </section>
 
 <section class="gray pattern_1" id="parking">

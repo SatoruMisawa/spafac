@@ -65,7 +65,7 @@
                     </ul>                
                 </li>
                 <li>
-                <p class="bold red" target="_blank">このプランは予約リクエスト送信後、即時に予約成立となり請求が発生します。</p>
+                <p class="bold red" target="_blank">このプランは予約リクエスト送信後、スペースオーナーによって承認された後、請求が発生します。</p>
                 <p>見積もりの発行は<a href="">こちら</a>、PDFにて保存してお使いいただけます。</p>
                 <p class="indm">※キャンセルに関しましては、決済の流れの<a href="/flow_of_settlement" target="_blank">キャンセルの場合</a>をご確認ください。</p>
                 <p class="indm">※予約リクエストを送信する前に<a href="/terms-of-service" target="_blank">利用規約</a>をお読みください。</p>

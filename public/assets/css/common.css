@@ -782,14 +782,18 @@ display: flex;
         margin-bottom: 8px;
         margin-right: 12px;
         list-style: none; }
-        .site-footer__links ul li:nth-child(1) a {
-          height: 40px;
-          padding: 0 40px;
-          display: block;
-          line-height: 40px;
-          color: #fff;
-          font-size:1.3rem;
-          background-color: #fa8b9f; }
+
+      .site-footer__links ul li:nth-child(1) a {
+        height: 40px;
+        padding: 0 40px;
+        display: block;
+        line-height: 40px;
+        color: #fff;
+        font-size:1.3rem;
+        font-weight: bold;
+        background-color: #fa8b9f; 
+        border-radius: 8px;
+      }
 
         .site-footer__links ul li:nth-child(2) a {
           height: 40px;
@@ -798,7 +802,9 @@ display: flex;
           line-height: 40px;
           color: #000000;
           font-size:1.3rem;
-          background-color: #4abfe6; }
+          background-color: #4abfe6;
+          border-radius: 8px;
+        }
 
         .site-footer__links ul li:nth-child(3) a {
           padding-top:0;
@@ -1169,7 +1175,7 @@ nav.sp_hide {
   float: right;
   width: auto;
   height: 46px;
-  margin: 0;
+  margin: 0 30px;
 }
 
 li.admin_header {
@@ -2566,6 +2572,7 @@ nav ul li a {
   color: #fff;
   border-radius:5px;
   font-size: 1.2rem;
+  font-weight: bold;
   background-color: #fa8b9f;
   display: flex;
   justify-content: center;
@@ -2581,12 +2588,13 @@ nav ul li a {
   color: #fff;
   border-radius:5px;
   font-size: 1.2rem;
+  font-weight: bold;
   background-color: #4abfe6;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-
+  
 }
 
 .site-footer__links ul li:nth-child(3) a ,
@@ -2802,10 +2810,12 @@ display: flex;
   color: #fff;
   border-radius:5px;
   font-size: 1rem;
+  font-weight: bold;
   background-color: #fa8b9f;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
 }
 
 .site-footer__links ul li:nth-child(2) a {
@@ -2816,10 +2826,12 @@ display: flex;
   color: #fff;
   border-radius:5px;
   font-size: 1rem;
+  font-weight: bold;
   background-color: #4abfe6;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
 }
 
 .site-footer__links ul li:nth-child(3) a ,
@@ -3020,6 +3032,7 @@ body{
   color: #fff;
   border-radius:5px;
   font-size: 1.3rem;
+  font-weight: bold;
   background-color: #fa8b9f;
   display: flex;
   justify-content: center;
@@ -3034,10 +3047,12 @@ body{
   color: #fff;
   border-radius:5px;
   font-size: 1.3rem;
+  font-weight: bold;
   background-color: #4abfe6;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
 }
 .site-footer__links ul li:nth-child(3) a ,
 .site-footer__links ul li:nth-child(4) a {
