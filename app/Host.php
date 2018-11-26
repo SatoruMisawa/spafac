@@ -7,6 +7,10 @@ class Host extends User {
         return $this->hasMany(Apply::class, 'host_id');
     }
 
+    public function reservations() {
+        return $this->hasMany(Reservation::class, 'host_id');
+    }
+
     public function ownApply(Apply $apply) {
         return $this->isSameAs($apply->host);
     }
