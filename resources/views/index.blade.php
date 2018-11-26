@@ -196,7 +196,7 @@
 				<div class="login_title"><img src="<?php echo url('assets/mypage/img/icon-02.png'); ?>" alt=""><span>メンバーログイン</span></div>
 				<div class="login_box">
 					@if (Auth::guard('users')->check())
-					<div class="avatar"><img src="" alt=""><spa>　メンバーログイン中</span></div>
+					<div class="avatar"><img src="{{ Auth::guard('users')->user()->profile_image_url }}" alt=""><spa>　メンバーログイン中</span></div>
 						<div class="login_form">
 					<ul class="login_chu">
 						<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
@@ -299,12 +299,12 @@
 		<ul class="news">
 			<div class="case_study_wrap">
 				<li>
-					<span>2018.07.05</span>
-					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018//">ミスコスモポリタン・ジャパン2018年度日本代表決定</a>
-					<span>2018.07.05</span>
-					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request//">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
-					<span>2018.07.05</span>
-                    <a href=" https://magazine.spafac.com/2018/08/29/rinenna3/ ">臭い匂いをごっそり落とす消臭スプレー＃３</a>
+					<span>2018.08.29</span>
+                    <a href=" https://magazine.spafac.com/2018/08/29/rinenna3/">臭い匂いをごっそり落とす消臭スプレー＃３</a><br>
+					<span>2018.09.20</span>
+					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018/">ミスコスモポリタン・ジャパン2018年度日本代表決定</a><br>
+					<span>2018.09.20</span>
+					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request/">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
 				</li>
 			</div>
 		</ul>
@@ -478,7 +478,6 @@
 <section id="reg_now_2">
 	<div class="reg_now_2_title">
 		<h2>今すぐ会員登録して、スペースを貸し借りしてみよう</h2>
-		<span></span>
 	</div>
 	<div class="reg_now_2_button"><a href="{{ route('user.new') }}">新規登録（無料）</a></div>
 </section>
@@ -983,6 +982,37 @@
 	</div>
 	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
+
+<div class="sp-zzz spafaclogo100">
+	<div class="sp-Agr splog101">
+		<h2 class="sf-dgrt splog102">関連企業</h2>
+		<div class="sf-cdrt splog103">
+				<ul class="sp-bjhut splog104">
+					<li>
+						<div>
+						<a href="https://www.goto2025.osaka/" target="_blank">
+							<img class="sp-clog spclog" src="<?php echo url('assets/mypage/img/goto2025logo.jpg'); ?>" alt="">
+						</a>
+						</div>
+					</li>
+					<li>
+						<div>
+						<a href="https://camp-fire.jp/" target="_blank">
+							<img class="sp-clog spclog" src="<?php echo url('assets/mypage/img/campfire_logo.png'); ?>" alt="">
+						</a>
+						</div>
+					</li>
+					<li>
+						<div>
+						<a href="https://osaka-info.jp/" target="_blank">
+							<img class="sp-clog spclog" src="<?php echo url('assets/mypage/img/osakadowntown_logo.png'); ?>" alt="">						</a>
+						</div>
+					</li>
+				</ul>
+		</div>
+	</div>
+</div>
+
 	</div>
 </div>
 

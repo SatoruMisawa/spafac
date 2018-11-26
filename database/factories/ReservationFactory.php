@@ -12,7 +12,7 @@ $factory->define(Reservation::class, function (Faker $faker) {
     ]);
     $guest = factory(User::class)->create();
     $guest->claimantUser()->create([
-        'claimant_source_id' => str_random(30),
+        'claimant_customer_id' => str_random(30),
     ]);
     return [
         'host_id' => $host->id,

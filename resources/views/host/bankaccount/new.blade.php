@@ -104,7 +104,7 @@
 <script>
 	$(function () {
 		!(function () {
-			var stripe = Stripe('pk_test_sWtuOvxNqVcnwv1xAGmDlcpB');
+			var stripe = Stripe("{{ config('services.stripe.client_id') }}");
 			var $form = $('#bank-account-form')
 			var $submitButton = $('#submit-button')
 			var $claimantBankAccountIDInput = $('#claimant-bank-account-id-input')
@@ -128,6 +128,7 @@
 					}
 
 					$claimantBankAccountIDInput.val(result.token.id)
+					
 					$form.submit()
 				});
 			});

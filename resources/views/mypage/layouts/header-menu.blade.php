@@ -20,9 +20,6 @@
 			<li><a href="#">設定</a></li>
 			<li><a href="#">ヘルプ</a></li>
 			<li><a href="#">お問い合わせ</a></li>
-
-
-
 			<li class="btn">
 				<div class="btnBody"><a href="{{ route('host.facility.new') }}">スペースを登録</a></div>
 			</li>

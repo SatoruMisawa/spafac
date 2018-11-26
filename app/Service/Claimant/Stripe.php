@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Exceptions\StripeValidationException;
 use Stripe\Account;
 use Stripe\Charge;
+use Stripe\Customer;
 
 class Stripe implements Claimant {
     private $validator;
@@ -19,7 +20,7 @@ class Stripe implements Claimant {
             return Charge::create([
                 'amount' => $params['guest_price_with_fee'],
                 'currency' => "JPY",
-                'source' => $params['source'],
+                'customer' => $params['customer'],
                 'destination' => [
                     'amount' => $params['host_reward'],
                     'account' => $params['destination'],
@@ -40,6 +41,13 @@ class Stripe implements Claimant {
         } catch (StripeValidationException $e) {
             report($e);
         }
+    }
+
+    public function connectCustomer($params = []) {
+        return Customer::create([
+            'email' => $params['email'],
+            'source' => $params['source'],
+        ]);
     }
 
     public function connectBankAccount($params = []) {

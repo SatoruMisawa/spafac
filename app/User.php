@@ -136,11 +136,11 @@ class User extends Authenticatable
 	}
 
 	public function chargeFor(Reservation $reservation) {
-		$this->feeCollector->setPrice($reservation->appley);
+		$this->feeCollector->setPrice($reservation->apply->price);
 		$charge = $this->claimant->charge([
-			'guet_price' => $this->feeCollector->calculateGuestPriceWithFee(),
+			'guest_price_with_fee' => $this->feeCollector->calculateGuestPriceWithFee(),
 			'host_reward' => $this->feeCollector->calculateHostReward(),
-			'source' => $reservation->guest->claimantUser->claimant_source_id,
+			'customer' => $reservation->guest->claimantUser->claimant_customer_id,
 			'destination' => $this->claimantUser->claimant_account_id,
 		]);
 		
@@ -161,8 +161,33 @@ class User extends Authenticatable
 			'type' => 'custom',
 		]);
 		
-		$this->claimantUser()->create([
+		if ($this->claimantUser === null) {
+			$this->claimantUser()->create([
+				'claimant_account_id' => $claimantAccount->id,
+			]);
+			return;
+		}
+		
+		$this->claimantUser->update([
 			'claimant_account_id' => $claimantAccount->id,
+		]);
+	}
+
+	public function connectClaimantCustomer() {
+		$claimantCustomer = $this->claimant->connectCustomer([
+			'email' => 'paying.user@example.com',
+			'source' => 'tok_1DaRE9JoWq7YlbrqoL7j0VnN',
+		]);
+		
+		if ($this->claimantUser === null) {
+			$this->claimantUser()->create([
+				'claimant_customer_id' => $claimantCustomer->id,
+			]);
+			return;	
+		}
+
+		$this->claimantUser->update([
+			'claimant_customer_id' => $claimantCustomer->id,
 		]);
 	}
 
@@ -178,30 +203,30 @@ class User extends Authenticatable
 			'account_id' => $this->claimantUser->claimant_account_id,
 			'legal_entity' => [
 				'address_kana' => [
-					'postal_code' => '',
-					'state' => '',
-					'city' => '',
-					'town' => '',
-					'line1' => '',
+					'postal_code' => '5600043',
+					'state' => 'オオサカフ',
+					'city' => 'トヨナカシ',
+					'town' => 'マチカネヤマチョウ1',
+					'line1' => '5',
 				],
 				'address_kanji' => [
-					'postal_code' => '',
-					'state' => '',
-					'city' => '',
-					'town' => '',
-					'line1' => '',
+					'postal_code' => '5600043',
+					'state' => '大阪府',
+					'city' => '豊中市',
+					'town' => '待兼山町1',
+					'line1' => '5',
 				],
 				'dob' => [
-					'day' => '',
-					'month' => '',
-					'year' => '',
+					'day' => '1',
+					'month' => '1',
+					'year' => '1998',
 				],
 				'first_name_kana' => 'おおさか',
 				'first_name_kanji' => '大阪',
 				'last_name_kana' => 'たろう',
 				'last_name_kanji' => '太郎',
 				'gender' => 'male',
-				'phone_number' => '',
+				'phone_number' => '09056511723',
 				'type' => 'individual',
 			],
 			'tos_acceptance' => [
