@@ -22,7 +22,7 @@ class Guest extends User {
 		]);
 	}
 
-	public function applyDaylyPlan(Plan $plan) {
+	public function applyDailyPlan(Plan $plan) {
 		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
