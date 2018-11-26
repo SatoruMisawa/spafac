@@ -63,10 +63,6 @@ class User extends Authenticatable
 	public function providers() {
 		return $this->belongsToMany(Provider::class, 'user_provider')->using(UserProvider::class);
 	}
-	
-	public function applies() {
-		return $this->hasMany(Apply::class);
-	}
 
 	public function reservations() {
 		return $this->hasMany(Reservation::class);
@@ -80,6 +76,12 @@ class User extends Authenticatable
 		$guest = new Guest($this->toArray());
 		$guest->id = $this->id;
 		return $guest;
+	}
+
+	public function asHost() {
+		$host = new Host($this->toArray());
+		$host->id = $this->id;
+		return $host;
 	}
 
 	public function prepareToVerifyEmail() {

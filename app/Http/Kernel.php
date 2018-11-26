@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'owner.space' => \App\Http\Middleware\AuthenticateSpaceOwner::class,
         'deny.all' => \App\Http\Middleware\DenyAll::class,        
         'guest.owner.apply' => \App\Http\Middleware\AuthenticateApplyOwnerOfGuest::class,
+        'host.owner.apply' => \App\Http\Middleware\AuthenticateApplyOwnerOfHost::class,
     ];
 }
