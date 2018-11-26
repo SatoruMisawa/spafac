@@ -42,7 +42,13 @@ Route::group([/*'middleware' => 'deny.all'*/], function() {
 				Route::get('/', 'Guest\ApplyController@show')->name('guest.apply.show');
 			});
 		});
+
+		Route::group(['prefix' => '/reservations'], function() {
+			Route::get('/', 'Guest\ReservationController@index')->name('guest.reservation.index');
+		});
 	});
+
+
 		Route::group(['prefix' => 'mypage'], function() {
 			Route::get('/', 'Mypage\IndexController@index');
 			Route::get('like', 'Mypage\IndexController@like');
