@@ -34,5 +34,4 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
 }
