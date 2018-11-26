@@ -10,6 +10,7 @@
 		<div class="eria">
 			<label for="select_2" class="select-1">
 				<input type="text" name="area" value="" placeholder = "エリア"></input>
+				<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			</label>
 		</div>
 		<div class="time">
@@ -104,7 +105,7 @@
 <div class="inner cf">
 	<div id="main">
 			<div class="list_wrap cf">
-			
+
 					@foreach($room as $data)
 					<!-- box　-->
 					<div class="box_wrap">
@@ -126,9 +127,102 @@
 			<!-- /list_wrap　-->
 		</div>
 		<!-- /main　-->
+
+
 		<div id="aside">
-			<div class="map"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d829778.0708004539!2d139.18106809294216!3d35.66910737612222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b857628235d%3A0xcdd8aef709a2b520!2z5p2x5Lqs6YO95p2x5Lqs!5e0!3m2!1sja!2sjp!4v1524714717288"
-				width="100%" height="700" frameborder="0" style="border:0" allowfullscreen></iframe> </div>
+			<div class="map">
+
+
+
+				<div id="searchmap" style="width: 300px; height:700px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.1);"></div>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzq2kSVHGO-_H7Ls1bm7rduFQ4V5Xw9TE&libraries=places"></script>
+        <script type="text/javascript">
+
+				$(function() {
+					var map;
+					var marker = [];
+					var markerData = {!! json_encode($room) !!};
+
+					console.log(markerData);
+
+
+					function initMap() {
+
+						// Create the search box and link it to the UI element.
+		        var input = document.getElementById('pac-input');
+		        var searchBox = new google.maps.places.SearchBox(input);
+
+						var lat = $('#latitude').val();
+						var lng = $('#longitude').val();
+						if (!lat) {
+							lat = 34.702715; //35.681429;
+							$('#latitude').val(lat);
+						}
+						if (!lng) {
+							lng = 135.495908; //139.767095;
+							$('#longitude').val(lng);
+						}
+						var latlng = new google.maps.LatLng(lat, lng);
+
+						map = new google.maps.Map(document.getElementById('searchmap'), {
+							center: latlng,
+							zoom: 14
+						});
+
+
+						map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+						// Bias the SearchBox results towards current map's viewport.
+						map.addListener('bounds_changed', function() {
+							searchBox.setBounds(map.getBounds());
+						});
+
+
+						<?php for ( $i = 0; $i < count($room); $i++) {?>
+							var i = <?php echo json_encode($i); ?>;
+							//緯度を変数に代入
+							var latitude = Number(markerData[i]['latitude']);
+							// 経度を変数に代入
+							var longitude = Number(markerData[i]['longitude']);
+							 markerLatLng = new google.maps.LatLng({
+										 lat: latitude,
+										 lng: longitude}); // 緯度経度のデータ作成
+							 marker[i] = new google.maps.Marker({ // マーカーの追加
+							 position: markerLatLng, // マーカーを立てる位置を指定
+							 map: map, // マーカーを立てる地図を指定
+
+						});
+					//	var build_id = markerData[i]['build_id'];
+
+							markerEvent(i); // マーカーにクリックイベントを追加
+							bounds.extend(markerLatLng);
+
+							clusterer.push(marker[i]);
+						<?php }?>
+
+
+
+
+					/*	marker = new google.maps.Marker({
+							map: map,
+							position: latlng,
+							draggable: true
+						});
+
+						google.maps.event.addListener(marker, 'dragend', function(ev) {
+
+							$('#latitude').val(ev.latLng.lat());
+							$('#longitude').val(ev.latLng.lng());
+
+						});*/
+
+					}
+					initMap();
+				});
+
+
+           </script>
+			 </div>
 		</div>
 		<!-- /side　-->
 	</div>
