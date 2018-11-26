@@ -9,17 +9,81 @@
 		<form method="get" action="{{action('SearchController@searchindex')}}">
 		<div class="eria">
 			<label for="select_2" class="select-1">
-				<input type="text" name="area" value="" placeholder = "エリア"></input>
-				<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+				<input id="pac-input" type="text" name="area" placeholder="エリア">
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzq2kSVHGO-_H7Ls1bm7rduFQ4V5Xw9TE&libraries=places"></script>
+					<script type="text/javascript">
+					// Create the search box and link it to the UI element.
+					var defaultBounds = new google.maps.LatLngBounds(
+					  new google.maps.LatLng(34.702715, 135.495908));
+					var input = document.getElementById('pac-input');
+					var componentForm = {
+			        street_number: 'short_name',
+			        route: 'long_name',
+			        locality: 'long_name',
+			        administrative_area_level_1: 'short_name',
+			        country: 'long_name',
+			        postal_code: 'short_name'
+			      };
+					var options = {
+										  bounds: defaultBounds,
+										  types: ['geocode']
+										};
+					var searchBox;
+					function initAutocomplete() {
+						searchBox = new google.maps.places.SearchBox(input, options);
+							autocomplete.addListener('place_changed', fillInAddress);
+					}
+
+
+					function fillInAddress() {
+			        // Get the place details from the autocomplete object.
+			        var place = autocomplete.getPlace();
+
+			        for (var component in componentForm) {
+			          document.getElementById(component).value = '';
+			          document.getElementById(component).disabled = false;
+			        }
+
+			        // Get each component of the address from the place details
+			        // and fill the corresponding field on the form.
+			        for (var i = 0; i < place.address_components.length; i++) {
+			          var addressType = place.address_components[i].types[0];
+			          if (componentForm[addressType]) {
+			            var val = place.address_components[i][componentForm[addressType]];
+			            document.getElementById(addressType).value = val;
+			          }
+			        }
+							input.value = this.getPlace().name;
+			      }
+
+						// Bias the autocomplete object to the user's geographical location,
+			      // as supplied by the browser's 'navigator.geolocation' object.
+			      function geolocate() {
+			        if (navigator.geolocation) {
+			          navigator.geolocation.getCurrentPosition(function(position) {
+			            var geolocation = {
+			              lat: position.coords.latitude,
+			              lng: position.coords.longitude
+			            };
+			            var circle = new google.maps.Circle({
+			              center: geolocation,
+			              radius: position.coords.accuracy
+			            });
+			            autocomplete.setBounds(circle.getBounds());
+			          });
+			        }
+			      }
+
+					</script>
 			</label>
 		</div>
 		<div class="time">
 			<label for="select_3" class="select-1">
 				<select name="plan" id="select_3">
 					<option value='' disabled selected style='display:none;'></option>
-					<option value="選択肢2">指定なし</option>
-					<option value="選択肢2">時間単位で予約</option>
-					<option value="選択肢3">1日単位で予約</option>
+					<option value="1">指定なし</option>
+					<option value="2">時間単位で予約</option>
+					<option value="3">1日単位で予約</option>
 				</select>
 			</label>
 		</div>
@@ -170,12 +234,12 @@
 						});
 
 
-						map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+						/*map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
 						// Bias the SearchBox results towards current map's viewport.
 						map.addListener('bounds_changed', function() {
 							searchBox.setBounds(map.getBounds());
-						});
+						});*/
 
 
 						<?php for ( $i = 0; $i < count($room); $i++) {?>
