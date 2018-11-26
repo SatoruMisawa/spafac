@@ -21,4 +21,16 @@ class Apply extends Model
     public function plan() {
         return $this->belongsTo(Plan::class);
     }
+
+    public function options() {
+        return $this->belongsToMany(Option::class);
+    }
+
+    public function addRelationshipToOptions(array $options, array $optionCounts) {
+        foreach ($options as $option) {
+            $this->options()->save(Option::find($option['id']), [
+                'count' => $optionCounts[$option['id']],
+            ]);
+        }
+    }
 }

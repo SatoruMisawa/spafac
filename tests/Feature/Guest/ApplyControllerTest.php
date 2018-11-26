@@ -15,11 +15,13 @@ class ApplyControllerTest extends TestCase
     use RefreshDatabase;
 
     public function testCreateApplyToDailyPlan() {
+        $this->refreshAndSeedDatabase();
         $this->loginWithTesterIfDebug()->loginWithUser();
         $plan = factory(Plan::class)->create();
         $case = $this->caseOfCreatingApplyToDailyPlan($plan);
         $this->assertPostToCreateApply($case['data']);
-        $this->assertApplyToDailyPlanInDB($case['expect']);
+        $this->assertApplyInDB($case['expectedApply']);
+        $this->assertApplyOptionsInDB($case['expectedApplyOptions']);
     }
 
     public function caseOfCreatingApplyToDailyPlan(Plan $plan) {
@@ -31,25 +33,24 @@ class ApplyControllerTest extends TestCase
                 'option_ids' => [],
                 'option_counts' => [],
             ],
-            'expect' => [
+            'expectedApply' => [
                 'guest_id' => Auth::guard('users')->user()->id,
                 'host_id' => $plan->planner()->id,
                 'plan_id' => $plan->id,
                 'price' => $plan->price_per_day,
-            ]
+            ],
+            'expectedApplyOptions' => [],
         ];
     }
 
-    public function assertApplyToDailyPlanInDB($expect) {
-        $this->assertDatabaseHas('applies', $expect);
-    }
-
     public function testCreateApplyToHourlyPlan() {
+        $this->refreshAndSeedDatabase();
         $this->loginWithTesterIfDebug()->loginWithUser();
         $plan = factory(Plan::class)->create();
         $case = $this->caseOfCreatingApplyToHourlyPlan($plan);
         $this->assertPostToCreateApply($case['data']);
-        $this->assertApplyToHourlyPlanInDB($case['expect']);
+        $this->assertApplyInDB($case['expectedApply']);
+        $this->assertApplyOptionsInDB($case['expectedApplyOptions']);
     }
 
     private function caseOfCreatingApplyToHourlyPlan(Plan $plan) {
@@ -70,11 +71,23 @@ class ApplyControllerTest extends TestCase
                     $option2->id => 2,
                 ],
             ],
-            'expect' => [
+            'expectedApply' => [
                 'guest_id' => Auth::guard('users')->user()->id,
                 'host_id' => $plan->planner()->id,
                 'plan_id' => $plan->id,
                 'price' => $plan->price_per_hour * 5 + $option1->price * 3 + $option2->price * 2,
+            ],
+            'expectedApplyOptions' => [
+                [
+                    'apply_id' => 1,
+                    'option_id' => $option1->id,
+                    'count' => 3,
+                ],
+                [
+                    'apply_id' => 1,
+                    'option_id' => $option2->id,
+                    'count' => 2,
+                ],
             ]
         ];
     }
@@ -84,7 +97,13 @@ class ApplyControllerTest extends TestCase
         ->assertRedirect(route('guest.apply.index'));
     }
 
-    private function assertApplyToHourlyPlanInDB($expect) {
+    public function assertApplyInDB($expect) {
         $this->assertDatabaseHas('applies', $expect);
+    }
+
+    private function assertApplyOptionsInDB($expects) {
+        foreach ($expects as $expect) {
+            $this->assertDatabaseHas('apply_option', $expect);
+        }
     }
 }

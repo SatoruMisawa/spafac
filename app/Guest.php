@@ -22,11 +22,13 @@ class Guest extends User {
 
 		$optionPrice = $this->sumOptionPrice($options, $optionCounts);
 
-        $this->applies()->create([
+        $apply = $this->createRelationshipToApply([
 			'host_id' => $plan->planner()->id,
 			'plan_id' => $plan->id,
 			'price' => $plan->price_per_hour * $hours + $optionPrice,
 		]);
+
+		$apply->addRelationshipToOptions($options, $optionCounts);
 	}
 
 	public function applyDailyPlan(Plan $plan, array $options = [], array $optionCounts = []) {
@@ -39,11 +41,13 @@ class Guest extends User {
 
 		$optionPrice = $this->sumOptionPrice($options, $optionCounts);
 
-        $this->applies()->create([
+        $apply = $this->createRelationshipToApply([
             'host_id' => $plan->planner()->id,
 			'plan_id' => $plan->id,
 			'price' => $plan->price_per_day + $optionPrice,
-        ]);
+		]);
+
+		$apply->addRelationshipToOptions($options, $optionCounts);
 	}
 
 	private function sumOptionPrice(array $options, array $optionCounts) {
@@ -53,6 +57,10 @@ class Guest extends User {
 		}
 
 		return $price;
+	}
+
+	private function createRelationshipToApply(array $data) {
+		return $this->applies()->create($data);
 	}
 
 	public function ownApply(Apply $apply) {
