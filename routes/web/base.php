@@ -58,6 +58,10 @@ Route::group(['middleware' => 'auth:users'], function() {
 
 			Route::group(['prefix' => '/applies'], function() {
 				Route::get('/', 'Host\ApplyController@index')->name('host.apply.index');
+
+				Route::group(['prefix' => '/{apply}', 'middleware' => 'host.owner.apply'], function() {
+					Route::get('/', 'Host\ApplyController@show')->name('host.apply.show');
+				});
 			});
 		
 			Route::group(['prefix' => '/facilities'], function() {

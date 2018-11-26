@@ -52,5 +52,4 @@ Route::get('/test/settlements', function() {
     return redirect()->route('index')->with('message', '請求しました。');
 });
 
-Route::get('/test/applies/1', 'Host\ApplyController@show');
 Route::post('/test/applies/1/approvements', 'Host\ApplyController@approved');

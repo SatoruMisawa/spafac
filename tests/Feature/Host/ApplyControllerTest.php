@@ -23,4 +23,17 @@ class ApplyControllerTest extends TestCase
         ->assertStatus(200)
         ->assertSee('apply: '.$apply->id);
     }
+
+    public function testShow() {
+        $apply = factory(Apply::class)->create();
+        $this->assertGetRequestToShowApply($apply);
+    }
+
+    private function assertGetRequestToShowApply(Apply $apply) {
+        return $this->loginWithTesterIfDebug()
+        ->loginWithUser($apply->host)
+        ->get(route('host.apply.show', $apply->id))
+        ->assertStatus(200)
+        ->assertSee('apply: '.$apply->id);
+    }
 }
