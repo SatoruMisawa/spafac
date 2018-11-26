@@ -234,10 +234,10 @@ class IndexController extends MypageController
 								$user_id = $from_user_id->from_user_id;
 						}
 
-						$name = DB::table('users')
+						$name = DB::table('family_name')
 						->select('name')
 						->where('id', $user_id)
-						->value('name');
+						->value('family_name');
 
 						$content;
 						$content = DB::table('mailtable')->select('content')->where('thread_id', $t_id->thread_id)->orderBy('send_date', 'asc')->first();
@@ -347,10 +347,10 @@ class IndexController extends MypageController
 
 			// 相手の名前を取得
 			$name = DB::table('users')
-					->select('name')
+					->select('family_name')
 					->where('id', $decrypted_id)
 					//->first();
-					->value('name');
+					->value('family_name');
 
 			$thread_id;
 			$mailtable;
