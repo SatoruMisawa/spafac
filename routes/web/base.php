@@ -14,6 +14,10 @@
 // and will be deleted soon
 include 'test.php';
 
+Route::group(['prefix' => '/spaces'], function() {
+	Route::get('/{space}', 'SpaceController@show')->name('space.show');
+});
+
 Route::group(['middleware' => 'guest:users'], function() {
 	Route::get('users/new', 'UserController@new')->name('user.new');
 	Route::post('users', 'UserController@create')->name('user.create');
