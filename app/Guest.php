@@ -36,4 +36,8 @@ class Guest extends User {
 			'price' => $plan->price_per_day,
         ]);
 	}
+
+	public function ownApply(Apply $apply) {
+		return $this->isSameAs($apply->guest);
+	}
 }
