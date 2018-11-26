@@ -64,10 +64,6 @@ class User extends Authenticatable
 		return $this->belongsToMany(Provider::class, 'user_provider')->using(UserProvider::class);
 	}
 
-	public function reservations() {
-		return $this->hasMany(Reservation::class);
-	}
-
 	public function bankAccount() {
 		return $this->hasOne(BankAccount::class);
 	}

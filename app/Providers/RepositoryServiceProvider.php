@@ -43,6 +43,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\RentSpaceBusinessTypeRepository::class, \App\Repositories\RentSpaceBusinessTypeRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\RentSpaceTypeRepository::class, \App\Repositories\RentSpaceTypeRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\ScheduleToStayRepository::class, \App\Repositories\ScheduleToStayRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\ApplyRepository::class, \App\Repositories\ApplyRepositoryEloquent::class);
         //:end-bindings:
     }
 }
