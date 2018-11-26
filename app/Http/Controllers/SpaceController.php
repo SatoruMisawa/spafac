@@ -58,4 +58,8 @@ class SpaceController extends FrontController
 		return Media::responseNoThumbnail($width, $height);
 
 	}
+
+	public function show(Space $space) {
+		return view('space.show', compact('space'));
+	}
 }
