@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 
 			Route::group(['prefix' => '/reservations'], function() {
 				Route::get('/', 'Host\ReservationController@index')->name('host.reservation.index');
+				Route::post('/', 'host\ReservationController@create')->name('host.reservation.create');
 			});
 		
 			Route::group(['prefix' => '/facilities'], function() {
