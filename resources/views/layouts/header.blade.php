@@ -5,7 +5,6 @@
 			<div id="nav-content">
 			<ul>
 				<li><a href="<?php echo url('guide'); ?>">ご利用ガイド</a></li>
-				<li><a href="<?php echo url('/'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
 				@if (Auth::guard('users')->check())
@@ -14,7 +13,6 @@
 				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
 				@endif
-				<li><a href="{{ route('user.new') }}">新規会員登録</a></li>
 			</ul>
 			</div>
 		</div>
@@ -24,7 +22,6 @@
 			<nav class="sp_hide">
 			<ul>
 				<li><a href="<?php echo url('guide'); ?>">ご利用ガイド</a></li>
-				<li><a href="<?php echo url('/'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
 				@if (Auth::check())
@@ -33,7 +30,6 @@
 				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
 				@endif
-				<li><a href="{{ route('user.new') }}">新規会員登録</a></li>
 			</ul>
 			</nav>
 		</div>

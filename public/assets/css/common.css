@@ -43,9 +43,16 @@ body *{
    WRAP
 --------------------------------*/
 
+div.wrap {
+  width: 90% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
 .inner {
-  max-width:1200px;
+  /* max-width:1200px; */
   margin: 20px auto;
+  background: #fff;
 }
 
 .inner:after {
@@ -432,6 +439,27 @@ header {
   width:100%;
 }
 
+.btnBody {
+  background-color: #fa8b9f;
+  border-color: rgba(0,0,0,0.05);
+  padding: 4px 12px;
+  margin: 7px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #fff;
+}
+
+.btnBody > a{
+  color: #fff;
+}
+
+.btnBody > a :hover{
+  color: #fff !important;
+  border-bottom: 0px solid #1177ba !important;
+}
+
 
 /*----------- logo -----------*/
 header h1 {
@@ -465,7 +493,8 @@ h1.page_ttl::before {
 
 .logo{
 	display:inline-block;
-	float:left;	
+  float:left;
+  margin: 0 20px;
 }
 
 
@@ -508,7 +537,7 @@ nav>ul>li>a {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size:1.3rem;
+  font-size:15px;
   color: #2ea7e0;
 }
 
@@ -593,12 +622,15 @@ nav li label.select-1 select{
 
 .head_r>ul>li>a:hover,
 nav li a:hover {
-  color: #333;
+  color: #fa8b9f;
   border-bottom: 2px solid #1177ba;
   -webkit-transition: none;
   -moz-transition: none;
   transition: none;
+  text-decoration: none;
 }
+
+
 nav li.current {
   color: #333;
   border-bottom: 2px solid #1177ba;
@@ -2140,8 +2172,9 @@ h3.sp_profile_dfbrh3 {
     box-sizing: border-box;
 }
 .inner {
-    max-width: 1000px;
+    /* max-width: 1000px; */
     margin: 30px 0;
+    background: #fff;
 }
 
     .site-footer__sitemap > ul li{

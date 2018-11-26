@@ -5,12 +5,12 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/top.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/top.css')}}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <div id="search_box">
 	<div class="search_box_inner search_width">
-		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
+		<p class="search_box_p">目的にあった空間・スペースの簡単登録検索予約サイトへようこそ</p>
 
 		@include('mid-nav')
 
@@ -237,7 +237,7 @@
 							<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
 						</div>
 						<div class="register">
-							<p>無料登録してお今すぐ検索する</p>
+							<p>無料登録して今すぐ検索する</p>
 							<a href="{{ route('user.new') }}">新規登録</a>
 						</div>
 					</div>
@@ -300,18 +300,18 @@
 			<div class="case_study_wrap">
 				<li>
 					<span>2018.08.29</span>
-                    <a href=" https://magazine.spafac.com/2018/08/29/rinenna3/">臭い匂いをごっそり落とす消臭スプレー＃３</a><br>
+                    <a href="https://magazine.spafac.com/2018/08/29/rinenna3/" target="_blank">臭い匂いをごっそり落とす消臭スプレー＃３</a><br>
 					<span>2018.09.20</span>
-					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018/">ミスコスモポリタン・ジャパン2018年度日本代表決定</a><br>
+					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018/" target="_blank">ミスコスモポリタン・ジャパン2018年度日本代表決定</a><br>
 					<span>2018.09.20</span>
-					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request/">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
+					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request/" target="_blank">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
 				</li>
 			</div>
 		</ul>
 			<div class="news_card">
 				<ul>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/news02/">
+						<a href="https://magazine.spafac.com/2018/10/17/spaceentryservice/" target="_blank">
 						<div class="img">
 							<img src="{{ asset('assets/mypage/img/campfire_logo.png') }}" alt="">
 						</div>
@@ -320,11 +320,11 @@
 							<span class="date">2018.07.19</span>
 							<p class="bold">12月末までのスペース登録弊社代行無料キャンペーン実施中！</p>
 							<p>いよいよ始まる、地域密着の空間シェアリングサービス。遊休空間や空いているスペ…</p>
-							<a class="readmore" href="https://magazine.spafac.com/2018/10/17/spaceentryservice/">続きを読む</a>
+							<a class="readmore" href="https://magazine.spafac.com/2018/10/17/spaceentryservice/" target="_blank">続きを読む</a>
 						</div>
 					</li>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/news02/">
+						<a href="https://magazine.spafac.com/2018/09/15/spafac-campfire/" target="_blank">
 							<div class="img">
 								<img src="{{ asset('assets/mypage/img/goto2025logo.jpg') }}" alt="">
 							</div>
@@ -333,11 +333,11 @@
 								<span class="date">2018.07.19</span>
 								<p class="bold">2025年万博誘致プロジェクト！「Spacefactory×Campfire コラボ企画」</p>
 								<p>大阪の街を活性化したい。大阪を盛り上げたい.大阪万博誘致プロジェウト「ダイヤ…</p>
-								<a class="readmore" "https://magazine.spafac.com/2018/09/15/spafac-campfire/">続きを読む</a>
+								<a class="readmore" href="https://magazine.spafac.com/2018/09/15/spafac-campfire/" target="_blank">続きを読む</a>
 							</div>
 					</li>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/18070501/">
+						<a href="https://magazine.spafac.com/2018/09/15/osakacity-info/" target="_blank">
 							<div class="img">
 								<img src="{{ asset('assets/mypage/img/osakadowntown_logo.png') }}" alt="">
 							</div>
@@ -346,13 +346,13 @@
 							<span class="date">2018.09.25</span>
 							<p class="bold">大阪観光局の会へ参加</p>
 							<p>関西地域の活性化　空間活用を行う事で様々なライフスタイルやワークスタイルに変化を…</p>
-							<a class="readmore" href=" https://magazine.spafac.com/2018/09/15/osakacity-info//">続きを読む</a>
+							<a class="readmore" href="https://magazine.spafac.com/2018/09/15/osakacity-info/" target="_blank">続きを読む</a>
 						</div>
 					</li>
 				</ul>
 			</div>
 	<div class="wrap txtR">
-		<a class="archive_link" href="https://magazine.spafac.com/category/ニュース/">News一覧を見る »</a>
+		<a class="archive_link" href="https://magazine.spafac.com/category/ニュース/" target="_blank">News一覧を見る »</a>
 	</div>
 </section>
 
@@ -363,7 +363,7 @@
 		<h2>関西エリアを地域密着でサポートいたします。<br>
 			様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>
 			空間・スペースシェアリング検索・予約サイトへようこそ</h2>
-		<p>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップでフルサポート致します。</p>
+		<p>スペースの貸し借りで社会貢献ができる。<br>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップでフルサポート致します。</p>
 	</div>
 	<div class="welcome_figure_1">
 		<div class="figure_box">

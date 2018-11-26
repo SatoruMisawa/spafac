@@ -2,10 +2,10 @@
 	<div class="site-footer__links">
 		<ul>
 			<li>
-				<a href="<?php echo url('registration'); ?>">無料登録はこちら≫</a>
+				<a href="{{ route('user.new') }}">無料登録はこちら</a>
 			</li>
 			<li>
-				<a href="<?php echo url('host'); ?>">スペースを登録するならこちら≫</a>
+				<a href="<?php echo url('host'); ?>">スペースを登録するならこちら</a>
 			</li>
 			<li>
 				<!-- <a href="/coming-soon"><img src="/assets/mypage/img/banner-apple.png"></a> -->
@@ -47,13 +47,12 @@
 				</ul>
 			</li>
 			<li>
-				カテゴリーから探す
+			カテゴリーから探す
 				<ul>
 					<li><a href="/event_types">目的から探す</a></li>
-					<li><a href="/category">カテゴリから探す</a></li>
-					<li><a href="/areas">エリアから探す</a></li>
 					<li><a href="/capacities">人数から探す</a></li>
-					<li><a href="/space_types">会場タイプから探す</a></li>
+					<li><a href="/category">施設から探す</a></li>
+					<li><a href="/areas">エリアから探す</a></li>
 					<li><a href="/amenities">設備から探す</a></li>
 					<!--li><a href="/coming-soon">法人利用のご相談</a></li-->
 				</ul>
@@ -106,7 +105,7 @@
 		<ul class="links-sns">
 			<li><a href="https://www.facebook.com/SpafacSTAFF/">Facebook</a></li>
 			<li><a href="https://twitter.com/Spafac_staff">Twitter</a></li>
-			<li><a href="/https://www.instagram.com/spafacstaff/">Instagram</a></li>
+			<li><a href="https://www.instagram.com/spafacstaff/">Instagram</a></li>
 		</ul>
 		<p class="address">
 			<!--
@@ -114,7 +113,7 @@
 			大阪市北区梅田2-2-2<br>
 			ヒルトンプラザウエストオフィスタワー19階<br>-->
 			サービスその他に関するお問い合わせ<br>
-			<a href="/inquiry">info@spafac.com</a></p>
+			<a href="mailto:info@spafac.com">info@spafac.com</a></p>
 		<!-- <p class="address">
 <a href="/inquiry"><svg version="1.1" id="email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" width="50px" height="50px" viewBox="615 615 50 50" enable-background="new 615 615 50 50" xml:space="preserve">
@@ -142,10 +141,10 @@
         <div class="foot f-logo">
         <ul>
         <a href="/stay">
-        <img src="/assets/images/footer_logo_stay.png">
+        <img src="{{asset('assets/images/footer_logo_stay.png')}}">
         </a>
         <a href="https://magazine.spafac.com/">
-        <img src="/assets/images/footer_logo_spacemagazine.png">
+        <img src="{{asset('assets/images/footer_logo_spacemagazine.png')}}">
         </a>
         </ul>
 		<!-- @if (Auth::guard('users')->check())
