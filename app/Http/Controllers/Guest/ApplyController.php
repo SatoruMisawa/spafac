@@ -15,4 +15,8 @@ class ApplyController extends Controller
             'applies' => $guest->applies()->get(),
         ]);
     }
+
+    public function show(Apply $apply) {
+        return view('guest.apply.show', compact('apply'));
+    }
 }
