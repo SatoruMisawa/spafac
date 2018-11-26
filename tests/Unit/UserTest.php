@@ -15,17 +15,7 @@ class UserTest extends TestCase
 {
     use WithFaker;
     use RefreshDatabase;
-
-    public function testApprove() {
-        $apply = factory(Apply::class)->create();
-        $apply->plan->planner()->approve($apply);
-        $this->assertDatabaseHas('reservations', [
-            'host_id' => $apply->plan->planner()->id,
-            'guest_id' => $apply->guest->id,
-            'apply_id' => $apply->id,
-        ]);
-    }
-
+    
     public function testChargeFor() {
         $reservation = factory(Reservation::class)->create();
         $reservation->host->chargeFor($reservation);
