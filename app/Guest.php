@@ -3,9 +3,14 @@
 namespace App;
 
 class Guest extends User {
+
     public function applies() {
         return $this->hasMany(Apply::class, 'guest_id');
-    }
+	}
+	
+	public function reservations() {
+		return $this->hasMany(Reservation::class, 'guest_id');
+	}
 
     public function applyHourlyPlan(Plan $plan, int $hours) {
 		if ($this->isSameAs($plan->planner())) {
