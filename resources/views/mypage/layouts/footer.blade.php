@@ -36,7 +36,7 @@
 <li><a href="/purpose/sales/1">物販</a></li>
 <li><a href="/purpose/party/2">飲食・パーティー</a></li>
 <li><a href="/purpose/meeting/5">オフィス・会議</a></li>
-<li><a href="/purpose/event/4">イベントプロモーション・広告</a></li>
+<li><a href="/purpose/event/4">イベント・プロモーション・広告</a></li>
 <li><a href="/purpose/exhibition/3">催事・展示会</a></li>
 <li><a href="/purpose/purpose/performance/6">演奏</a></li>
 <li><a href="/stay">宿泊・民泊</a></li>
@@ -140,7 +140,7 @@
 			<li><a href="/commercial-transaction-law">特定商取引法に基づく表示</a></li>
 		</ul>
         </div>
-        <div class="foot f-logo">
+        <!-- <div class="foot f-logo">
         <ul>
         <a href="/stay">
         <img src="{{asset('assets/images/footer_logo_stay.png')}}">
@@ -152,7 +152,7 @@
 		<!-- @if (Auth::guard('users')->check())
         <p class="red txtC">ログイン中</p>
         @endif -->
-        </div>
+        </div> -->
        </div> 
 	</div>
 	
