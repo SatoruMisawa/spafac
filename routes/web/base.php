@@ -33,7 +33,17 @@ Route::group(['middleware' => 'auth:users'], function() {
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
 Route::group([/*'middleware' => 'deny.all'*/], function() {
-		Route::group(['prefix' => 'mypage', 'middleware' => 'deny.all'], function() {
+	Route::group(['prefix' => '/guest'], function() {
+		Route::group(['prefix' => '/applies'], function() {
+			Route::get('/', 'Guest\ApplyController@index')->name('guest.apply.index');
+			Route::post('/', 'Guest\ApplyController@create')->name('guest.apply.create');
+
+			Route::group(['prefix' => '/{apply}', 'middleware' => 'guest.owner.apply'], function() {
+				Route::get('/', 'Guest\ApplyController@show')->name('guest.apply.show');
+			});
+		});
+	});
+		Route::group(['prefix' => 'mypage'], function() {
 			Route::get('/', 'Mypage\IndexController@index');
 			Route::get('like', 'Mypage\IndexController@like');
 			Route::get('like-new', 'Mypage\IndexController@likeNew');

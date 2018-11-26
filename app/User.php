@@ -76,6 +76,12 @@ class User extends Authenticatable
 		return $this->hasOne(BankAccount::class);
 	}
 
+	public function asGuest() {
+		$guest = new Guest($this->toArray());
+		$guest->id = $this->id;
+		return $guest;
+	}
+
 	public function prepareToVerifyEmail() {
 		$this->email_verification_token = str_random(30);
 		$this->save();
@@ -91,34 +97,6 @@ class User extends Authenticatable
 		$this->save();
 	}
 
-	public function applyHourlyPlan(Plan $plan, int $hours) {
-		if ($this->isSameAs($plan->planner())) {
-			return;
-		}
-		if ($plan->isAlreadyApplied()) {
-			return;
-		}
-
-		$this->applies()->create([
-			'plan_id' => $plan->id,
-			'price' => $plan->price_per_hour * $hours,
-		]);
-	}
-
-	public function applyDaylyPlan(Plan $plan) {
-		if ($this->isSameAs($plan->planner())) {
-			return;
-		}
-		if ($plan->isAlreadyApplied()) {
-			return;
-		}
-
-		$this->applies()->create([
-			'plan_id' => $plan->id,
-			'price' => $plan->price_per_day,
-		]);
-	}
-
 	public function isSameAs(User $user) {
 		return $this->id === $user->id;
 	}
@@ -130,7 +108,7 @@ class User extends Authenticatable
 
 		Reservation::create([
 			'host_id' => $apply->plan->planner()->id,
-			'guest_id' => $apply->user->id,
+			'guest_id' => $apply->guest->id,
 			'apply_id' => $apply->id,
 		]);
 	}
