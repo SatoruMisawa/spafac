@@ -5,7 +5,9 @@ header {
     border-bottom:1px solid #9E9E9E;
 }
 .whats_about_page{
-	padding:30px 0;	
+	padding: 30px 70px;	
+	padding: 0px;
+    margin: 50px 0 300px;
 }
 .whats_about_page:after {
   content: ".";
@@ -161,6 +163,8 @@ box-sizing: border-box;
 	width:100%;
 	min-height:50px;
 }
+
+
 .whats_about_page .w-box:after {
   content: ".";
   display: block;
@@ -169,7 +173,8 @@ box-sizing: border-box;
   visibility: hidden;
 }
 .whats_about_page .w-box.pad{
-	padding:15px;	
+	padding:15px;
+	margin: 30px 0;
 }
 .whats_about_page .w-box h4{
 	font-size:16px;
@@ -212,15 +217,16 @@ box-sizing: border-box;
 	border:1px solid #C5C5C5;
 	padding:1em;	
 }
-.whats_about_page .w-box .type-choice{
-	border:none;
-	display:block;
-	padding:1em 2em;
-	background-color:#60DF52;
-	color:#FFF;
-	font-size:18px;
-	font-weight:bold;
-	margin:0 auto;	
+
+.whats_about_page .w-box .type-choice {
+    border: none;
+    display: inline-block;
+    padding: 1em 2em;
+    background-color: #60DF52;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 10px 0px 25px;
 }
 
 .whats_about_page .w-box table.calendar{
@@ -231,10 +237,16 @@ empty-cells:show;
 }
 .whats_about_page .w-box table.calendar th,
 .whats_about_page .w-box table.calendar td{
-	text-align:center;
-border:1px solid #C5C5C5;
-padding:0.5em;		
+	text-align:left;
+	border:1px solid #C5C5C5;
+	padding:0.5em;		
 }
+
+td.sp-reservation_calendar:hover {
+    background: #4abfe6;
+}
+
+
 .whats_about_page .w-box table.calendar th{
 	background-color:#CCC;	
 }
@@ -306,6 +318,161 @@ padding:0.5em;
 	margin-right:1em; 
 }
 
+.w-box_sub{
+	/* border:1px solid #C5C5C5; */
+	clear:both;
+	display:block;
+	width:100%;
+	min-height:50px;
+}
+
+.whats_about_page .w-box_sub:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+  }
+  .whats_about_page .w-box_sub.pad{
+	  padding:15px;	
+  }
+  .whats_about_page .w-box_sub h4{
+	  font-size:16px;
+	  padding:1px 0 2px 28px;
+	position:relative;
+  }
+  .whats_about_page .w-box_sub h4>img,
+  .whats_about_page .w-box_sub h4>svg{
+	  height:22px;
+	  width:auto;
+	  left:0;
+	  top:0;
+	  margin-right:0.5em;
+	  position:absolute;
+  }
+  .whats_about_page .w-box_sub h4 span{
+	  display:block;
+	  float:right;
+	  background-color:#000;
+	  color:#FFF;
+	  padding:0 1em;
+	  border-radius:5px;
+  }
+  .whats_about_page .w-box_sub h4 span i{
+	  font-style:normal;
+	  font-size:12px;	
+  }
+  .whats_about_page .w-box_sub p.auch{
+	  margin:0 5px 1em 0;
+	  font-weight:bold;
+	  padding:1px 1em;
+	  display:inline-block;
+	  border:1px solid #FF6B24;
+	  clear:both;
+	  border-radius:5px;
+	  font-size:12px;
+	  color:#FF6B24;
+  }
+  .whats_about_page .w-box_sub .read{
+	  border:1px solid #C5C5C5;
+	  padding:1em;	
+  }
+  
+  .whats_about_page .w-box_sub .type-choice {
+	  border: none;
+	  display: inline-block;
+	  padding: 1em 2em;
+	  background-color: #60DF52;
+	  color: #FFF;
+	  font-size: 18px;
+	  font-weight: bold;
+	  margin: 0 10px 0px 25px;
+  }
+  
+  .whats_about_page .w-box_sub table.calendar{
+	  width:100%;
+  border-collapse:collapse;
+  border-spacing:0;
+  empty-cells:show;
+  }
+  .whats_about_page .w-box_sub table.calendar th,
+  .whats_about_page .w-box_sub table.calendar td{
+	  text-align:center;
+  border:1px solid #C5C5C5;
+  padding:0.5em;		
+  }
+  .whats_about_page .w-box_sub table.calendar th{
+	  background-color:#CCC;	
+  }
+  .whats_about_page .w-box_sub table.calendar tr:first-child td:nth-of-type(1){
+	  border:none;
+	  padding:2em 0;
+	  font-size:18px;
+	  font-weight:bold;
+  }
+  .whats_about_page .w-box_sub table.calendar tr:first-child td.calendar-page{
+	  width:100%;
+	  height:18px;
+	  margin:0;
+	  padding:0;	
+  }
+  .whats_about_page .w-box_sub table.calendar tr:first-child td.calendar-page a{
+	  display:inline-block;
+	  color:#4ABFE6;
+	  font-size:22px;
+	  font-weight:bold;
+  }
+  .whats_about_page .w-box_sub table.calendar tr:first-child td.calendar-page a:nth-of-type(1){
+	  float:left;	
+  }
+  .whats_about_page .w-box_sub table.calendar tr:first-child td.calendar-page a:nth-of-type(2){
+	  float:right;	
+  }
+  
+  .whats_about_page .w-box_sub h5{
+	  background-color:#C5C5C5;
+	  padding:0.5em 1em;	
+  }
+  .whats_about_page .w-box_sub ul.service{
+	  width:100%;
+  }
+  .whats_about_page .w-box_sub ul.service:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+  }
+  .whats_about_page .w-box_sub ul.service li{
+	  padding:15px;
+	  border-bottom:1px solid #C5C5C5;	
+  }
+  .whats_about_page .w-box_sub ul.service li:last-child{
+	  border-bottom:none;
+  }
+  .whats_about_page .w-box_sub ul.service li p{
+	  margin:0;
+	  padding:0;
+  }
+  .whats_about_page .w-box_sub ul.service li p:first-child{
+	  font-weight:bold;
+	  margin-bottom:0.5em;
+  }
+  
+  .whats_about_page .w-box_sub ul.service li p:first-child label{
+	  display: flex;
+	justify-content:left;
+	align-items: center;
+  }
+  
+  .whats_about_page .w-box_sub ul.service li p:first-child input[type=checkbox]{
+	  border:1px solid #C5C5C5;
+	  width:20px;
+	  height:20px;
+	  margin-right:1em; 
+  }
+
+
 #fee ul.fee-list{
 	width:100%;
 	display:table;
@@ -357,7 +524,7 @@ border-spacing: 2px 0;  /* 左右 上下 */
 	position:absolute;
 	display:block;
 	text-align:center;
-	width:350px;
+	width:800px;
 	height:8em;
 margin:auto;
 top: 0;
@@ -367,17 +534,30 @@ left: 0;
 }
 
 .whats_about_page .done>h2{
-	font-size:18px;
-	color:#DB131E;
+	font-size: 28px;
+    color: #fa8b9f;
+    font-weight: bold;
 }
+
 .whats_about_page .done>h3{
-	font-size:20px;
-	margin:2em 0;
+	font-size: 18px;
+    margin: 2em 0;
+    line-height: 1.5;
 }
 .whats_about_page .done>p{
 	font-size:16px;
 }
 
+.judging_button{
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #00A1DE;
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
 
 
 /* -------------------------------------------------
@@ -389,7 +569,7 @@ left: 0;
 	padding:2em;	
 }
 .whats_about_page .chk-box h2{
-	font-size:24px;
+	font-size:40px;
 	text-align:center;
 	margin:1em 0;	
 }
@@ -435,14 +615,16 @@ left: 0;
 	margin-right:1em;
 	color:#FFF;
 	font-weight:bold;
+	border-radius: 7px;
 }
+
 .chk-ul * span.nini{
 	background-color:#9E9E9E;	
 }
 .chk-ul * h3,
 .chk-ul * .bold{
 	font-weight:bold;
-	font-size:18px;
+	font-size:16px;
 }
 .chk-ul * select,
 .chk-ul * textarea{
@@ -461,6 +643,7 @@ border-spacing:3em 0;
 	min-width:15em;
 	display:table-cell;
 	position:relative;
+	margin: 0;
 }
 
 
@@ -473,12 +656,17 @@ border-spacing:3em 0;
 	color:#9E9E9E;
 }
 .payment{
-	width:50%;
+	width:100%;
 	margin:2em auto;
 	padding:1em 2em;
 	background-color:#CECECE;
 	display:block;
+	border-radius: 7px;
 }
+.payment > p{
+border-radius: 7px;
+}
+
 .payment label{
 	font-size:18px;
 	font-weight:bold;
@@ -488,7 +676,9 @@ border-spacing:3em 0;
 	padding:0.5em;
 	width:100%;
   background-color:#EEEEEE;
+  border-radius: 7px;
 }
+
 .payment label input{
 	float:right;
 	display:block;
@@ -526,7 +716,7 @@ border-spacing: 2px 0;  /* 左右 上下 */
 }
 .pay-list li{
 	display:table-row;
-	text-align:left;e
+	text-align:left;
 }
 .pay-list li span{
 	display:table-cell;	
@@ -554,6 +744,275 @@ label#angle-right{
 	display:none;	
 }
 
+p.bold {
+    margin: 5px 0 20px;
+}
+
+/* -------------------------------------------------
+
+ 予約決済時のカレンダー
+ 
+ ---------------------------------------------------*/
+
+.sp-daily_svFrt {
+    min-height: 300px;
+}
+
+.sp_period_Dfribg {
+    font-size: 0;
+    border: 1px solid #bfbfbf;
+    margin-top: 16px;
+}
+
+.rsp_period_Dfribg li:nth-child(4n+1) {
+    border-left: none;
+}
+
+.sp_period_Dfribg .is-unavailable {
+    background: #f8f8f8;
+    color: #d0d1cf;
+}
+
+.sp_period_Dfribg li {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+    width: 24.4%;
+    font-size: 14px;
+    vertical-align: top;
+    border-left: 1px solid #bfbfbf;
+}
+
+/* .sp_period_Dfribg .is-unavailable:before {
+    content: "\f00d";
+    color: #d0d1cf;
+} */
+
+.sp_period_Dfribg .is-checked:before {
+    content: "\f00c";
+    color: #fff;
+}
+
+/* .sp_period_Dfribg li:before {
+	content: "\f111";
+	font-family: FontAwesome;
+    font-size: 22px;
+    color: #68D35E;
+    position: absolute;
+    top: 32%;
+    left: 12px;
+} */
+
+.sp_period_Dfribg-time {
+    margin-bottom: 6px;
+}
+
+.sp_period_Dfribg-time, .sp_period_Dfribg-status {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.sp_period_Dfribg .is-reserved {
+    background: #68D35E;
+}
+
+.sp_period_Dfribg .is-reserved a {
+    color: #fff;
+}
+
+.sp_period_Dfribg-content {
+    padding: 10px;
+}
+
+.sp_period_Dfribg .is-checked a .sp_period_Dfribg-time, .sp_period_Dfribg .is-checked a .sp_period_Dfribg-status, .sp_period_Dfribg .is-reserved a .sp_period_Dfribg-time, .sp_period_Dfribg .is-reserved a .sp_period_Dfribg-status {
+    color: #fff;
+}
+
+.sp_period_Dfribg li:nth-child(n+5) {
+    border-top: 1px solid #bfbfbf;
+}
+
+.price-manage {
+    margin: 30px 0px 10px 0;
+    text-align: right;
+}
+
+
+.reserve-subtitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.reserve-card {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #d0d1cf;
+}
+
+.reserve-card__inner {
+    padding: 16px;
+    width: 100%;
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.reserve-plan__name {
+    padding-top: 3px;
+    overflow: hidden;
+}
+
+input, select, textarea {
+    padding: 5px 5px;
+    font-size: 14px;
+    border: 1px solid #b3b3b4;
+    background: #FFF;
+}
+
+.reserve-plan__name-radio {
+    display: block;
+}
+
+.service-radio, .service-checkbox {
+    margin: 0 20px 3px 0;
+    padding-left: 30px;
+}
+
+.service-radio:before {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    border-radius: 100%;
+    background: #4abfe6;
+    content: '';
+    opacity: 0;
+    top: 50%;
+}
+
+.reserve-plan__title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-right: 10px;
+}
+
+.reserve-card__inner+.reserve-card__inner {
+    border-top: 1px solid #ddd;
+}
+
+label {
+    display: inline-block;
+    margin: 5px;
+}
+
+fieldset.sp_usedivision_deiFgb {
+    margin: 5px 0 40px;
+}
+
+.sp-reservation_calendar td.is-closed, .sp-reservation_calendar td.is-unavailable, .sp-reservation_calendar td.is-past {
+    color: #b3b3b4;
+    background: #f3f3f3;
+}
+
+.sp_calendar__table th, .sp_calendar__table td {
+    border: 1px solid #b3b3b4;
+    width: 14.28%;
+}
+
+
+.sp-reservation_calendar-content {
+    min-height: 40px;
+    margin: 8px 10px 7px;
+    font-size: 12px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.sp_calendar__table th, .sp_calendar__table td {
+    border: 1px solid #b3b3b4;
+    width: 14.28%;
+}
+
+.sp_calendar__table td {
+    background: #FFF;
+}
+
+.sp_calendar__cell-wrap {
+    display: block;
+    color: inherit;
+    position: relative;
+}
+
+.sp_calendar__date {
+    height: 28px;
+    padding: 7px 10px;
+}
+
+.sp-reservation_calendar-price {
+	color: #4abfe6;
+	font-weight: bold;
+}
+
+.sp-reservation_calendar-price:hover{
+	color: #fff;
+	font-weight: bold;
+}
+
+td.is-unavailable {
+    color: #b3b3b4;
+	background: #f3f3f3;
+	text-align: left;
+}
+
+p.sp-reservation_calendar-done {
+    color: #b3b3b4;
+    margin-bottom: 5px;
+}
+
+/* .reserve-period__calendar td.is-reserved {
+    background: #68D35E !important;
+} */
+
+/* .sp-reservation_calendar:hover {
+    background: #68D35E !important;
+} */
+
+
+
+/* .service-radio:after {
+    left: 0;
+    margin-top: 1px;
+    width: 18px;
+    height: 18px;
+    box-sizing: content-box;
+    top: 0%;
+}
+
+.service-radio:after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    border: 1px solid #b3b3b4;
+    border-radius: 100%;
+    content: '';
+    background: #FFF;
+} */
+
+
+
+
+/* -------------------------------------------------
+
+ mobile設定
+ 
+ ---------------------------------------------------*/
+
 @media only screen and ( max-width:1200px) {
 .wrap {
     width:100%;
@@ -567,6 +1026,69 @@ label#angle-right{
 	-webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
 box-sizing: border-box;	
+}
+
+.rsp_period_Dfribg-content {
+    padding: 12px 5px;
+}
+
+
+.sp_period_Dfribg-time, .sp_period_Dfribg-status {
+    font-size: 13px;
+}
+
+.reserve-period__calendar-content {
+    margin: 8px 6px 7px;
+}
+
+/* カレンダーボタン */
+
+.cp_ipcheck {
+	width: 90%;
+	margin: 2em auto;
+	text-align: left;
+}
+.cp_ipcheck input[type='checkbox'] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.cp_ipcheck label {
+	position: relative;
+	display: inline-block;
+	margin-right: 30px;
+	padding-right: 10px;
+	padding-left: 35px;
+	cursor: pointer;
+}
+.cp_ipcheck label::before {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 24px;
+	height: 24px;
+	content: ' ';
+	border: 2px solid #da3c41;
+}
+.cp_ipcheck input[type='checkbox'] + label::before {
+	border-radius: 4px;
+}
+.cp_ipcheck input[type='checkbox']:checked + label {
+	padding-left: 10px;
+	color: #ffffff;
+}
+.cp_ipcheck input[type='checkbox']:checked + label::before {
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #da3c41;
+}
+/* Transition */
+.cp_ipcheck label, .cp_ipcheck label::before {
+	-webkit-transition: 0.25s all ease;
+	        transition: 0.25s all ease;
 }
 
 	
@@ -716,14 +1238,13 @@ border-spacing: 2px 0;  /* 左右 上下 */
 }
 
 .whats_about_page .w-box h4 span{
-	display:block;
-	clear:both;
-	margin-top:0.8em;
-	float:right;
-	background-color:#000;
-	color:#FFF;
-	padding:0 1em;
-	border-radius:5px;
+    display: block;
+    float: right;
+    background-color: #000;
+    color: #FFF;
+    padding: 7px 5px;
+    border-radius: 5px;
+    margin: 0 5px;
 }
 
 #fee ul.fee-list li span:first-child{

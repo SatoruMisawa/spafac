@@ -5,15 +5,16 @@
 			<div id="nav-content">
 			<ul>
 				<li><a href="<?php echo url('guide'); ?>">ご利用ガイド</a></li>
-				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
 				@if (Auth::guard('users')->check())
 					<li><a href="<?php echo url('mypage'); ?>">マイページ</a></li>
-					<li><a href="<?php echo url('logout'); ?>">ログアウトaaa</a></li>
+					<li><a href="<?php echo url('logout'); ?>">ログアウト</a></li>
 				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
 				@endif
+				<li><a href="{{ route('user.new') }}">新規登録</a></li>
+				<li><div class="btnBody"><a href="{{ route('host.facility.new') }}">スペースを登録</a></div></li>　<!-- "{{ route('host.facility.new') }}" -->
 			</ul>
 			</div>
 		</div>
@@ -23,7 +24,6 @@
 			<nav class="sp_hide">
 			<ul>
 				<li><a href="<?php echo url('guide'); ?>">ご利用ガイド</a></li>
-				<li><a href="<?php echo url('help'); ?>">ヘルプ</a></li>
 				<li><a href="<?php echo url('inquiry'); ?>">お問い合わせ</a></li>
 				<li><a href="<?php echo url('host'); ?>">スペースをお持ちの方</a></li>
 				@if (Auth::guard('users')->check())
@@ -32,6 +32,8 @@
 				@else
 					<li><a href="<?php echo url('login'); ?>">ログイン</a></li>
 				@endif
+				<li><a href="{{ route('user.new') }}">新規登録</a></li>
+				<li><div class="btnBody"><a href="{{ route('host.facility.new') }}">スペースを登録</a></div></li>　<!-- "{{ route('host.facility.new') }}" -->
 			</ul>
 			</nav>
 		</div>

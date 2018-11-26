@@ -5,12 +5,12 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/top.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/top.css')}}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <div id="search_box">
 	<div class="search_box_inner search_width">
-		<p class="search_box_p">目的にあったスペースの簡単検索予約サービス</p>
+		<p class="search_box_p">目的にあった空間・スペースのかんたん登録・検索・予約サイトへようこそ</p>
 
 		@include('mid-nav')
 
@@ -22,7 +22,7 @@
 		<ul>
 			<li><a class="" href="<?php echo url('areas'); ?>">エリアから探す</a></li>
 			<li><a href="<?php echo url('capacities'); ?>">収容人数から探す</a></li>
-			<li><a href="<?php echo url('keywords'); ?>">カテゴリーから探す</a></li>
+			<li><a href="<?php echo url('keywords'); ?>">キーワードから探す</a></li>
 			<li><a href="<?php echo url('amenities'); ?>">設備から探す</a></li>
 		</ul>
 	</div>
@@ -68,7 +68,7 @@
 						<a href="/purpose/event/4">
 							<img src="<?php echo url('assets/mypage/img/cat-4.png'); ?>" alt="">
 							<div class="cat_text">
-								<p>イベントプロモーション・広告</p>
+								<p>イベント・プロモーション・広告</p>
 								<span>(件)</span>
 							</div>
 						</a>
@@ -237,7 +237,7 @@
 							<p>ログイン以外の目的に使われることはありません。スペースファクトリーがゲストの同意なしに投稿することはありません。</p>
 						</div>
 						<div class="register">
-							<p>無料登録してお今すぐ検索する</p>
+							<p>無料登録して今すぐ検索する</p>
 							<a href="{{ route('user.new') }}">新規登録</a>
 						</div>
 					</div>
@@ -291,7 +291,7 @@
 	</div>
 	</div>
 	</div>
-	<a class="detail" href="/recommendation">スタッフのイチオシスペース &raquo;</a>
+	<a class="detail" href="/recommendation">スタッフのイチオシスペース一覧 &raquo;</a>
 </section>
 
 <section class="white" id="news">
@@ -299,19 +299,22 @@
 		<ul class="news">
 			<div class="case_study_wrap">
 				<li>
-					<span>2018.07.05</span>
-					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018//">ミスコスモポリタン・ジャパン2018年度日本代表決定</a>
-					<span>2018.07.05</span>
-					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request//">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
-					<span>2018.07.05</span>
-                    <a href=" https://magazine.spafac.com/2018/08/29/rinenna3/ ">臭い匂いをごっそり落とす消臭スプレー＃３</a>
+					<span>2018.08.29</span>
+                    <a href="https://magazine.spafac.com/2018/08/29/rinenna3/" target="_blank">臭い匂いをごっそり落とす消臭スプレー＃３</a><br>
+					<span data-select-like-a-boss="1">2018.09.20</span>
+					<a href="https://magazine.spafac.com/2018/09/20/missjapan2018/" target="_blank">ミスコスモポリタン・ジャパン2018年度日本代表決定</a><br>
+					<span data-select-like-a-boss="1">2018.09.20</span>
+					<a href="https://magazine.spafac.com/2018/09/20/restaurant-request/" target="_blank">レストラン・飲食店をお持ちの方スペースファクトリーに無料登録しませんか？</a>
 				</li>
 			</div>
+			<div class="wrap txtR">
+			<a class="archive_link" href="https://magazine.spafac.com/category/ニュース/" target="_blank">News一覧を見る »</a>
+	</div>
 		</ul>
 			<div class="news_card">
 				<ul>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/news02/">
+						<a href="https://magazine.spafac.com/2018/10/17/spaceentryservice/" target="_blank">
 						<div class="img">
 							<img src="{{ asset('assets/mypage/img/campfire_logo.png') }}" alt="">
 						</div>
@@ -320,11 +323,11 @@
 							<span class="date">2018.07.19</span>
 							<p class="bold">12月末までのスペース登録弊社代行無料キャンペーン実施中！</p>
 							<p>いよいよ始まる、地域密着の空間シェアリングサービス。遊休空間や空いているスペ…</p>
-							<a class="readmore" href="https://magazine.spafac.com/2018/10/17/spaceentryservice/">続きを読む</a>
+							<a class="readmore" href="https://magazine.spafac.com/2018/10/17/spaceentryservice/" target="_blank">続きを読む</a>
 						</div>
 					</li>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/news02/">
+						<a href="https://magazine.spafac.com/2018/09/15/spafac-campfire/" target="_blank">
 							<div class="img">
 								<img src="{{ asset('assets/mypage/img/goto2025logo.jpg') }}" alt="">
 							</div>
@@ -333,11 +336,11 @@
 								<span class="date">2018.07.19</span>
 								<p class="bold">2025年万博誘致プロジェクト！「Spacefactory×Campfire コラボ企画」</p>
 								<p>大阪の街を活性化したい。大阪を盛り上げたい.大阪万博誘致プロジェウト「ダイヤ…</p>
-								<a class="readmore" "https://magazine.spafac.com/2018/09/15/spafac-campfire/">続きを読む</a>
+								<a class="readmore" href="https://magazine.spafac.com/2018/09/15/spafac-campfire/" target="_blank">続きを読む</a>
 							</div>
 					</li>
 					<li>
-						<a href="http://spafac.sa-m.net/wp/news/18070501/">
+						<a href="https://magazine.spafac.com/2018/09/15/osakacity-info/" target="_blank">
 							<div class="img">
 								<img src="{{ asset('assets/mypage/img/osakadowntown_logo.png') }}" alt="">
 							</div>
@@ -346,14 +349,11 @@
 							<span class="date">2018.09.25</span>
 							<p class="bold">大阪観光局の会へ参加</p>
 							<p>関西地域の活性化　空間活用を行う事で様々なライフスタイルやワークスタイルに変化を…</p>
-							<a class="readmore" href=" https://magazine.spafac.com/2018/09/15/osakacity-info//">続きを読む</a>
+							<a class="readmore" href="https://magazine.spafac.com/2018/09/15/osakacity-info/" target="_blank">続きを読む</a>
 						</div>
 					</li>
 				</ul>
 			</div>
-	<div class="wrap txtR">
-		<a class="archive_link" href="https://magazine.spafac.com/category/ニュース/">News一覧を見る »</a>
-	</div>
 </section>
 
 
@@ -363,7 +363,7 @@
 		<h2>関西エリアを地域密着でサポートいたします。<br>
 			様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>
 			空間・スペースシェアリング検索・予約サイトへようこそ</h2>
-		<p>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップでフルサポート致します。</p>
+		<p>1日1時間からご利用できるレンタルスペースから関西ならではのとっておきの空間を体験しよう<br>スペースを貸す方、借りる方をワンストップ + αの付加価値をつけてお繋ぎ致します。<br>業界でもお得な手数料と豊富なスペースラインナップ。登録はもちろん無料です。</p>
 	</div>
 	<div class="welcome_figure_1">
 		<div class="figure_box">
@@ -427,7 +427,7 @@
 	<div id="reg_now_box">
 		<h2>今すぐ会員登録して</h2>
 		<span>スペースを貸し借りしてみよう</span>
-		<p>８月末までの先行会員様無料登録キャンペーン実施中。<br>スペースレンタル成約時の手数料が８月末まで無料!</p>
+		<p>12月末まで弊社スペース登録代行　無料キャンペーン実施中！<br>お持ちのスペースを有効活用して収益化UP!!</p>
 		<a href="{{ route('user.new') }}">新規登録（無料）</a>
 	</div>
 </section>
@@ -478,7 +478,6 @@
 <section id="reg_now_2">
 	<div class="reg_now_2_title">
 		<h2>今すぐ会員登録して、スペースを貸し借りしてみよう</h2>
-		<span>今なら会員登録した方全員に、すべてのスペースの予約で利用できる2,000円分のポイントをプレゼント。</span>
 	</div>
 	<div class="reg_now_2_button"><a href="{{ route('user.new') }}">新規登録（無料）</a></div>
 </section>
@@ -634,7 +633,7 @@
 		<h2>あなたもスペースオーナーになってみませんか</h2>
 		<span>お持ちのスペースを今すぐ有効活用。あらゆるスペースが登録可能です</span>
 	</div>
-	<div class="reg_now_3_button"><a href="{{ route('user.new') }}">無料登録をしてすぐスペースオーナーになる</a></div>
+	<div class="reg_now_3_button"><a href="{{ route('user.new') }}">無料登録をしてすぐスペースオーナーになる<i class="fas fa-arrow-circle-right"></i></a></div>
 </section>
 
 <section class="gray pattern_1" id="parking">
@@ -983,6 +982,37 @@
 	</div>
 	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
+
+<div class="sp-zzz spafaclogo100">
+	<div class="sp-Agr splog101">
+		<h2 class="sf-dgrt splog102">関連企業</h2>
+		<div class="sf-cdrt splog103">
+				<ul class="sp-bjhut splog104">
+					<li>
+						<div>
+						<a href="https://www.goto2025.osaka/" target="_blank">
+							<img class="sp-clog spclog" src="<?php echo url('assets/mypage/img/goto2025logo.jpg'); ?>" alt="">
+						</a>
+						</div>
+					</li>
+					<li>
+						<div>
+						<a href="https://camp-fire.jp/" target="_blank">
+							<img class="sp-clog spclog" src="<?php echo url('assets/mypage/img/campfire_logo.png'); ?>" alt="">
+						</a>
+						</div>
+					</li>
+					<li>
+						<div>
+						<a href="https://osaka-info.jp/" target="_blank">
+							<img class="sp-clog spclog" src="<?php echo url('assets/mypage/img/osakadowntown_logo.png'); ?>" alt="">						</a>
+						</div>
+					</li>
+				</ul>
+		</div>
+	</div>
+</div>
+
 	</div>
 </div>
 

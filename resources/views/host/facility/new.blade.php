@@ -224,7 +224,7 @@
 										'latitude',
 										null,
 										[
-										'id' => 'latitude',
+										'id' => 'latitude-input',
 										'class' => 'form-control'
 										]
 										)
@@ -234,7 +234,7 @@
 										'longitude',
 										null,
 										[
-										'id' => 'longitude',
+										'id' => 'longitude-input',
 										'class' => 'form-control'
 										]
 										)
@@ -343,6 +343,8 @@
 				address: address
 			}, function (results, status) {
 				if (status == google.maps.GeocoderStatus.OK) {
+					$('#latitude-input').val(results[0].geometry.location.lat())
+					$('#longitude-input').val(results[0].geometry.location.lng())
 					map.setCenter(results[0].geometry.location)
 					marker.setPosition(results[0].geometry.location)
 				}
@@ -350,16 +352,15 @@
 		})
 
 		function initMap() {
-
-			var lat = $('#latitude').val()
-			var lng = $('#longitude').val()
+			var lat = $('#latitude-input').val()
+			var lng = $('#longitude-input').val()
 			if (!lat) {
 				lat = 34.702715 //35.681429
-				$('#latitude').val(lat)
+				$('#latitude-input').val(lat)
 			}
 			if (!lng) {
 				lng = 135.495908 //139.767095
-				$('#longitude').val(lng)
+				$('#longitude-input').val(lng)
 			}
 			var latlng = new google.maps.LatLng(lat, lng)
 
@@ -375,12 +376,10 @@
 			})
 
 			google.maps.event.addListener(marker, 'dragend', function (ev) {
-
-				$('#latitude').val(ev.latLng.lat())
-				$('#longitude').val(ev.latLng.lng())
-
+				console.log(ev.latLng.lat())
+				$('#latitude-input').val(ev.latLng.lat())
+				$('#longitude-input').val(ev.latLng.lng())
 			})
-
 		}
 		initMap()
 	})

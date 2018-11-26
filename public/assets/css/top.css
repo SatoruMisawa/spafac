@@ -92,9 +92,9 @@ nav.party_search form input[type=submit]{
 }
 /*--------------------------------------*/
 
-.txtR{
-	text-align:right;
-
+.wrap.txtR {
+  margin: 90px 0 0;
+  text-align: right;
 }
 
 ul.login_chu{
@@ -238,7 +238,7 @@ display: flex;
 #search_box_2 .category_box {
   padding-top: 50px;
   padding-bottom: 35px;
-  padding-left: 60px;
+  padding-left: 10px;
 }
 
 #search_box_2 .category_box .category_box_menu {
@@ -549,12 +549,13 @@ section#news h2 {
   margin-bottom:0; }
 
 section#news ul.news {
-  max-width:1056px;
+  max-width: 1056px;
   margin: 0 auto;
-  margin-bottom:3em;
-  padding: 25px 30px 30px;
+  margin-bottom: 3em;
+  padding: 25px 30px 20px;
   border: 1px solid #bfbfbf;
-  border-radius: 15px; }
+  border-radius: 15px;
+}
 
 section#news ul.news li {
   font-size:1.4rem;
@@ -562,7 +563,7 @@ section#news ul.news li {
   padding: 10px 0;
   height: 40px; }
 
-section#news ul.news li span:first-child:after {
+section#news ul.news li span:after {
   content: "|";
   display: inline-block;
   padding-left: 20px;
@@ -665,7 +666,8 @@ section#news .news_card ul li p.bold{
 }
 
 .archive_link {
-  margin-right:90px;
+  font-size: 20px;
+  /* margin-right:90px; */
 }
 
 .campaign_area {
@@ -751,7 +753,7 @@ section.pattern_1 a.detail {
 	clear:both;
   margin:2em 0 1em 0;
   display: inline-block;
-  background: #9e9e9e;
+  background: #f2c41c;
   padding: 21px 30px;
   border-radius: 10px;
   color: #fff;
@@ -990,15 +992,26 @@ section.pattern_1 a.detail {
     margin-top:30px;
 }
 
-#reg_now_3 .reg_now_3_button a, #reg_now_3 .reg_now_4_button a, #reg_now_4 .reg_now_3_button a, #reg_now_4 .reg_now_4_button a {
-  background: url(/assets/mypage/img/icon-8.png) no-repeat #fff;
+#reg_now_3 .reg_now_3_button a {
+  /* background: url(/assets/mypage/img/icon-8.png) no-repeat #fff; */
+  background-color: #b7d32a;
   background-position: 90%;
   font-size:2rem;
-  color: #000;
+  color: #fff;
   display: inline-block;
   font-weight: bold;
-  padding: 26px 90px 26px 50px;
+  padding: 20px 90px 20px 50px;
   box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); }
+
+  #reg_now_3 .reg_now_4_button a, #reg_now_4 .reg_now_3_button a, #reg_now_4 .reg_now_4_button a {
+    background: url(/assets/mypage/img/icon-8.png) no-repeat #fff; 
+    background-position: 90%;
+    font-size:2rem;
+    color: #000;
+    display: inline-block;
+    font-weight: bold;
+    padding: 26px 90px 26px 50px;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); }
 
 #reg_now_4 {
   background: url(/assets/mypage/img/photo-3.png) no-repeat;

@@ -18,8 +18,8 @@ class StripeValidator {
         if ($params['host_reward'] <= 0) {
             throw new StripeValidationException("'host_reward' should be more than 1");
         }
-        if (!isset($params['source'])) {
-            throw new StripeValidationException("parameter 'source' is not set");
+        if (!isset($params['customer'])) {
+            throw new StripeValidationException("parameter 'customer' is not set");
         }
         if (!isset($params['destination'])) {
             throw new StripeValidationException("parameter 'desitination' is not set");

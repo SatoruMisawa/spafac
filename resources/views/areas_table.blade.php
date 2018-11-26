@@ -1,3 +1,6 @@
+<div class="party_search_list table_list bgcg">
+    <h2>エリアから探す</h2>
+        <div class="wrap">
 <h3>大阪府</h3>
 <table>
 <tbody>
@@ -390,8 +393,12 @@
 </td>
 </tr>
 </tbody>
-
 </table>
+
+</div>
+</div>
+
+
 <script>
 $(function() {
 	$('label.open').on('click', function () {

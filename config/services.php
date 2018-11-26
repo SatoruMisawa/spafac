@@ -54,6 +54,7 @@ return [
     ],
     
     'stripe' => [
+        'client_id' => env('STRIPE_CLIENT_ID'),
         'client_secret' => env('STRIPE_CLIENT_SECRET'),
     ],
 

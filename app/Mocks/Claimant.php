@@ -14,6 +14,9 @@ class Claimant implements Genuine {
     public function connectAccount($params = []) {
     }
 
+    public function connectCustomer($params = []) {
+    }
+
     public function connectBankAccount($params = []) {
     }
 

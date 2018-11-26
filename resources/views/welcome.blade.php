@@ -89,6 +89,14 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div class="links">
+                        <a href="/test/users">User</a>
+                        <a href="/test/users/host">Host</a>
+                        <a href="/test/users/host/bank">Host Bank</a>
+                        <a href="/test/users/host/requirements">Host Requirements</a>
+                        <a href="/test/users/guest">Guest</a>
+                        <a href="/test/settlements">Settlement</a>
+                    </div>
             </div>
         </div>
     </body>
