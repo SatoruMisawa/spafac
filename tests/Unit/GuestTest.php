@@ -26,10 +26,10 @@ class GuestTest extends TestCase
         ]);
     }
 
-    public function testApplyDaylyPlan() {
+    public function testApplyDailyPlan() {
         $guest = factory(User::class)->create()->asGuest();
         $plan = factory(Plan::class)->create();
-        $guest->applyDaylyPlan($plan);
+        $guest->applyDailyPlan($plan);
         $this->assertDatabaseHas('applies', [
             'guest_id' => $guest->id,
             'host_id' => $plan->planner()->id,
