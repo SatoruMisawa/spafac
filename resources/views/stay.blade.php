@@ -12,13 +12,13 @@
 </svg>
 </label>
 <input type="checkbox" id="search-ck">
-<link rel="stylesheet" type="text/css" href="/assets/css/stay.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/stay.css') }}">
 <article class="stay_container">
 
 <section class="stay_page">
     <div class="wrap stay_logo">
-    <img src="/assets/images/stay/stay_logo.png" alt="関西地域限定　宿泊先を探す">
-    <img src="/assets/images/stay/stay_catch.png" alt="どこへ向かいますか？">
+    <img src="{{ asset('assets/images/stay/stay_logo.png') }}" alt="関西地域限定　宿泊先を探す">
+    <!-- <img src="/assets/images/stay/stay_catch.png" alt="どこへ向かいますか？"> -->
     </div>
     <nav class="stay_search">
     <h1>関西地域限定　宿泊先を探す</h1>
