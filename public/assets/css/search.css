@@ -9,7 +9,8 @@ html {
   font-size: 62.5%;
 }
 body {
-  font: 14px/1.6 "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Verdana, "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font: 14px/1.6;
+  font-family:'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','メイリオ', Meiryo,'ヒラギノ角ゴシック','Hiragino Sans','Verdana','Osaka','ＭＳ Ｐゴシック','MS PGothic',sans-serif;
   margin: 0;
   color: #616161;
 }
@@ -95,7 +96,7 @@ nav ul {
 nav ul li {
   width: auto;
   height:46px;
-  float:left;
+  /* float:left; */
   display:inline-block;
 }
 

@@ -74,7 +74,7 @@
         <option>時間価格￥500/時間〜</option>
     </select>
     <select class="type-choice">
-        <option selected>1日価格￥9,000/日〜</option>
+    <option selected>1日価格￥9,000/日〜</option>
     </select>
     </div>
 <p class="arrow-down"><svg version="1.1" id="ard" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -101,57 +101,208 @@
         </tr>
         <tr>
             <td class="is-unavailable">
-                <p class="dashboard-calendar__date">1</p>
-                <div class="reserve-period__calendar-content">
-                    <p class="reserve-period__calendar-done">予約あり</p>
+                <p class="sp_calendar__date">1</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
                 </div>
             </td>
-            <td class="">
-                <a href="#" class="dashboard-calendar__cell-wrap">
-                    <p class="dashboard-calendar__date">2</p>
-                    <div class="reserve-period__calendar-content">
-                        <p class="reserve-period__calendar-price">￥38,000〜</p>
-                        <p class="reserve-period__calendar-check"><i class="fa fa-check"></i></p>
+                <td class="sp-reservation_calendar">
+                    <p class="sp_calendar__date">2</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
                     </div>
-                </a>
+                </td>
+                <td class="sp-reservation_calendar">
+                    <p class="sp_calendar__date">3</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+                </td>
+                <td class="sp-reservation_calendar">
+                    <p class="sp_calendar__date">4</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+                </td>
+                <td class="sp-reservation_calendar">
+                    <p class="sp_calendar__date">5</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+                </td>
+                <td class="sp-reservation_calendar">
+                    <p class="sp_calendar__date">6</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+                </td>
+                <td class="sp-reservation_calendar">
+                    <p class="sp_calendar__date">7</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+                </td>
+        </tr>
+        <tr>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">8</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
             </td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">9</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">10</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">11</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">12</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">13</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">14</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-            <td>14</td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">15</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">16</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">17</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">18</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">19</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">20</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">21</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">予約あり</p>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">22</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">23</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">24</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">25</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">26</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">27</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
+            <td class="is-unavailable">
+                <p class="sp_calendar__date">28</p>
+                <div class="sp-reservation_calendar-content">
+                    <p class="sp-reservation_calendar-done">不可</p>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-        </tr>
-        <tr>
-            <td>29</td>
-            <td>30</td>
-            <td>31</td>
+            <td class="sp-reservation_calendar">
+                <p class="sp_calendar__date">29</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+            </td>
+            <td class="sp-reservation_calendar">
+                <p class="sp_calendar__date">30</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+            </td>
+            <td class="sp-reservation_calendar">
+                <p class="sp_calendar__date">31</p>
+                    <div class="sp-reservation_calendar-content">
+                        <p class="sp-reservation_calendar-price">￥38,000〜</p>
+                        <p class="sp-reservation_calendar-check"><i class="far fa-circle"></i></p>
+                    </div>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -162,160 +313,152 @@
         <span>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">0:00 - 1:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">0:00 - 1:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">1:00 - 2:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">1:00 - 2:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">2:00 - 3:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">2:00 - 3:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">3:00 - 4:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">3:00 - 4:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">4:00 - 5:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">4:00 - 5:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">5:00 - 6:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">5:00 - 6:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">6:00 - 7:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">6:00 - 7:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">7:00 - 8:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">7:00 - 8:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">8:00 - 9:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">8:00 - 9:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">9:00 - 10:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">9:00 - 10:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">10:00 - 11:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">10:00 - 11:00</span>
                     <span class="sp_period_Dfribg-status">予約あり</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">11:00 - 12:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">11:00 - 12:00</span>
                     <span class="sp_period_Dfribg-status">不可</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">12:00 - 13:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">12:00 - 13:00</span>
                     <span class="sp_period_Dfribg-status">不可</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">13:00 - 14:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">13:00 - 14:00</span>
                     <span class="sp_period_Dfribg-status">不可</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">14:00 - 15:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">14:00 - 15:00</span>
                     <span class="sp_period_Dfribg-status">不可</span>
                 </div>
             </li>
             <li class="is-unavailable">
                 <div class="sp_period_Dfribg-content">
-                    <span class="sp_period_Dfribg-time">15:00 - 16:00</span>
+                <i class="fas fa-times fa-2x"></i><span class="sp_period_Dfribg-time">15:00 - 16:00</span>
                     <span class="sp_period_Dfribg-status">不可</span>
                 </div>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">16:00 - 17:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">16:00 - 17:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">17:00 - 18:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">17:00 - 18:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">18:00 - 19:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">18:00 - 19:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">19:00 - 20:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">19:00 - 20:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">20:00 - 21:00</span>
+                    <i class="far fa-circle fa-2x" ></i><span class="sp_period_Dfribg-time">20:00 - 21:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">21:00 - 22:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">21:00 - 22:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">22:00 - 23:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">22:00 - 23:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>
             </li>
             <li class="">
-                <a href="#">
                     <div class="sp_period_Dfribg-content">
-                        <span class="sp_period_Dfribg-time">23:00 - 0:00</span>
+                    <i class="far fa-circle fa-2x"></i><span class="sp_period_Dfribg-time">23:00 - 0:00</span>
                         <span class="sp_period_Dfribg-status">￥1,968</span>
                     </div>
                 </a>

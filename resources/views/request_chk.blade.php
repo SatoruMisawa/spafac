@@ -5,7 +5,7 @@
 <section class="whats_about_page">
 
 <div class="wrap">
-        <div class="w-box chk-box">
+        <div class="w-box_sub chk-box">
             <h2>予約リクエスト</h2>
             <p class="txtC">必要な情報を入力して「予約リクエスト送信する」ボタンを押してください。</p>
             <form action="/request_done">
