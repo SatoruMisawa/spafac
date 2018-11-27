@@ -30,9 +30,9 @@ class User extends Authenticatable
 		'password', 'remember_token',
 	];
 
-	private $claimant;
+	protected $claimant;
 
-	private $feeCollector;
+	protected $feeCollector;
 
 	public function __construct($params = []) {
 		parent::__construct($params);
@@ -41,7 +41,7 @@ class User extends Authenticatable
 	}
 
 	public function claimantUser() {
-		return $this->hasOne(StripeUser::class);
+		return $this->hasOne(StripeUser::class, 'user_id');
 	}
 
 	public function stripeCharges() {
@@ -98,39 +98,7 @@ class User extends Authenticatable
 	public function isSameAs(User $user) {
 		return $this->id === $user->id;
 	}
-
-	public function approve(Apply $apply) {
-		if (!$this->isSameAs($apply->plan->planner())) {
-			return;
-		}
-
-		Reservation::create([
-			'host_id' => $apply->plan->planner()->id,
-			'guest_id' => $apply->guest->id,
-			'apply_id' => $apply->id,
-		]);
-	}
-
-	public function chargeFor(Reservation $reservation) {
-		$this->feeCollector->setPrice($reservation->apply->price);
-		$charge = $this->claimant->charge([
-			'guest_price_with_fee' => $this->feeCollector->calculateGuestPriceWithFee(),
-			'host_reward' => $this->feeCollector->calculateHostReward(),
-			'customer' => $reservation->guest->claimantUser->claimant_customer_id,
-			'destination' => $this->claimantUser->claimant_account_id,
-		]);
-		
-		$reservation->getCharged();
-
-		$chargeHistory = $reservation->guest->chargeHistories()->create([
-			'reservation_id' => $reservation->id,
-		]);
-
-		$chargeHistory->claimantChargeHistory()->create([
-			'claimant_charge_history_id' => $charge->id,
-		]);
-	}
-
+	
 	public function connectClaimantAccount() {
 		$claimantAccount = $this->claimant->connectAccount([
 			'country' => 'JP',

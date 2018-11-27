@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Apply;
+use App\Reservation;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,6 +20,20 @@ class HostTest extends TestCase
             'host_id' => $host->id,
             'guest_id' => $apply->guest->id,
             'apply_id' => $apply->id,
+        ]);
+    }
+
+    public function testChargeFor() {
+        $reservation = factory(Reservation::class)->create();
+        $host = $reservation->host->asHost();
+        $host->chargeFor($reservation);
+        $this->assertDatabaseHas('reservations', [
+            'id' => $reservation->id,
+            'is_charged' => true,
+        ]);
+        $this->assertDatabaseHas('charge_histories', [
+            'user_id' => $reservation->guest->id,
+            'reservation_id' => $reservation->id,
         ]);
     }
 }

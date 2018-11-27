@@ -27,7 +27,9 @@ class ReservationController extends Controller
             abort(404);
         }
 
-        Auth::guard('users')->user()->asHost()->approve($apply);
+        $host = Auth::guard('users')->user()->asHost();
+        $reservation = $host->approve($apply);
+        $host->chargeFor($reservation);
 
         return redirect()->route('host.reservation.index');
     }
