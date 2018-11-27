@@ -11,9 +11,8 @@ use App\Repositories\FacilityRepository;
 use App\Repositories\FacilityKindRepository;
 use App\Repositories\PrefectureRepository;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateFacilityRequest;
+use App\Http\Requests\CreateFacilityRequest as Request;
 use Auth;
-use Exception;
 
 class FacilityController extends Controller
 {
@@ -34,100 +33,41 @@ class FacilityController extends Controller
 	}
 
 	public function index() {
-		try {
-            return view('host.facility.index', [
-				'facilities' => Auth::user()->facilities()->get(),
-			]);
-        } catch (Exception $e) {
-            report($e);
-            return redirect()->back()->withErrors([
-                'message' => 'something went wrong',
-            ]);
-        }
+		return view('host.facility.index', [
+			'facilities' => Auth::user()->facilities()->get(),
+		]);
 	}
 
 	public function new() {
-		try {
-            return view('host.facility.new', [
-				'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
-				'facilityKinds' => $this->facilityKindRepository->all(),
-			]);
-        } catch (Exception $e) {
-            report($e);
-            return redirect()->back()->withErrors([
-                'message' => 'something went wrong',
-            ]);
-        }
+		return view('host.facility.new', [
+			'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
+			'facilityKinds' => $this->facilityKindRepository->all(),
+		]);
 	}
 
-	public function create(CreateFacilityRequest $request) {
-		try {
-            $address = $this->firstOrCreateAddress($request);
-			$facility = $this->createFacility($request, $address);
+	public function create(Request $request) {
+		$address = $this->addressRepository->firstOrCreate($request->onlyDataOfAddress());
+		$facility = Auth::guard('users')->user()->facilities()->create($request->onlyDataOfFacility()+[
+			'address_id' => $address->id,
+		]);
 		
-			return redirect()->route('host.facility.space.new', $facility->id);
-        } catch (Exception $e) {
-            report($e);
-            return redirect()->back()->withErrors([
-                'message' => 'something went wrong',
-            ]);
-        }
+		return redirect()->route('host.facility.space.new', $facility->id);
 	}
 
 	public function edit(Facility $facility) {
-		try {
-            return view('host.facility.edit', [
-				'facility' => $facility,
-				'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
-				'facilityKinds' => $this->facilityKindRepository->all(),
-			]);
-        } catch (Exception $e) {
-            report($e);
-            return redirect()->back()->withErrors([
-                'message' => 'something went wrong',
-            ]);
-        }
+		return view('host.facility.edit', [
+			'facility' => $facility,
+			'prefectures' => $this->prefectureRepository->allIDsAndNames()->toArray(),
+			'facilityKinds' => $this->facilityKindRepository->all(),
+		]);
 	}
 
-	public function update(CreateFacilityRequest $request, Facility $facility) {
-		try {
-            $address = $this->firstOrCreateAddress($request);
-			$this->updateFacility($request, $facility, $address);
+	public function update(Request $request, Facility $facility) {
+		$address = $this->addressRepository->firstOrCreate($request->onlyDataOfAddress());
+		$facility->update($request->onlyDataOfFacility()+[
+			'address_id' => $address->id
+		]);
 
-			return redirect()->route('host.facility.index');
-        } catch (Exception $e) {
-            report($e);
-            return redirect()->back()->withErrors([
-                'message' => 'something went wrong',
-            ]);
-        }
-	}
-
-	private function firstOrCreateAddress(CreateFacilityRequest $request) {
-		return $this->addressRepository->firstOrCreate(
-			$request->only([
-				'zip', 'prefecture_id',
-				'address1', 'address1_ruby',
-				'address2', 'address2_ruby',
-				'address3', 'address3_ruby',
-				'latitude', 'longitude',
-			])
-		);
-	}
-
-	private function createFacility(CreateFacilityRequest $request, Address $address) {
-		$data = $this->data($request, $address->id);
-		return Auth::user()->facilities()->create($data);
-	}
-
-	private function updateFacility(CreateFacilityRequest $request, Facility $facility, Address $address) {
-		$data = $this->data($request, $address->id);
-		return $this->facilityRepository->update($data, $facility->id);
-	}
-
-	private function data(CreateFacilityRequest $request, $addressID) {
-		return $request->only([
-			'facility_kind_id', 'name', 'access', 'tel',
-		]) + ['address_id' => $addressID];
+		return redirect()->route('host.facility.index');
 	}
 }
