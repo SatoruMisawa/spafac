@@ -45,19 +45,19 @@ class User extends Authenticatable
 	}
 
 	public function stripeCharges() {
-		return $this->hasMany(StripeCharge::class);
+		return $this->hasMany(StripeCharge::class, 'user_id');
 	}	
 
 	public function chargeHistories() {
-		return $this->hasMany(ChargeHistory::class);
+		return $this->hasMany(ChargeHistory::class, 'user_id');
 	}
 
 	public function facilities() {
-		return $this->hasMany(Facility::class);
+		return $this->hasMany(Facility::class, 'user_id');
 	}
 
 	public function spaces() {
-		return $this->hasMany(Space::class);
+		return $this->hasMany(Space::class, 'user_id');
 	}
 
 	public function providers() {
@@ -65,7 +65,7 @@ class User extends Authenticatable
 	}
 
 	public function bankAccount() {
-		return $this->hasOne(BankAccount::class);
+		return $this->hasOne(BankAccount::class, 'user_id');
 	}
 
 	public function asGuest() {

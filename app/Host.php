@@ -3,6 +3,8 @@
 namespace App;
 
 class Host extends User {
+	protected $table = 'users';
+	
     public function applies() {
         return $this->hasMany(Apply::class, 'host_id');
     }

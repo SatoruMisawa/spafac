@@ -25,8 +25,7 @@ class HostTest extends TestCase
 
     public function testChargeFor() {
         $reservation = factory(Reservation::class)->create();
-        $host = $reservation->host->asHost();
-        $host->chargeFor($reservation);
+        $reservation->host->chargeFor($reservation);
         $this->assertDatabaseHas('reservations', [
             'id' => $reservation->id,
             'is_charged' => true,

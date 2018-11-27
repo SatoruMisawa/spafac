@@ -3,6 +3,7 @@
 namespace App;
 
 class Guest extends User {
+	protected $table = 'users';
 
     public function applies() {
         return $this->hasMany(Apply::class, 'guest_id');
