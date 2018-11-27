@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('/css/host/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/space_infopege.css') }}">
     @yield('css')
 </head>
 <body>
