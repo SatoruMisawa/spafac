@@ -68,6 +68,10 @@ Route::group(['middleware' => 'auth:users'], function() {
 				Route::get('/', 'Host\ReservationController@index')->name('host.reservation.index');
 				Route::post('/', 'host\ReservationController@create')->name('host.reservation.create');
 			});
+
+			Route::group(['prefix' => '/requirements'], function() {
+				Route::get('/new', 'Host\RequirementController@new')->name('host.requirement.new');
+			});
 		
 			Route::group(['prefix' => '/facilities'], function() {
 				Route::get('/', 'Host\FacilityController@index')->name('host.facility.index');
