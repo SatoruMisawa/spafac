@@ -9,7 +9,7 @@
 |Routes are loaded by theRouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 // this route is to test settlement
 // and will be deleted soon
 include 'test.php';
@@ -28,7 +28,7 @@ Route::group(['middleware' => 'guest:users'], function() {
 	Route::get('login/{provider}/callback', 'SessionController@handleProviderCallback');
 });
 
-Route::group(['middleware' => 'auth:users'], function() {
+Route::group(['middleware' => 'auth:users'], function () {
 	Route::get('logout', 'SessionController@delete')->name('logout');
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('/', 'Host\HostController@index')->name('host.index');
 		
 			// todo あとでちゃんとする
-			Route::get('/new', function() {
+			Route::get('/new', function () {
 				return view('selection');
 			});
 
@@ -67,6 +67,11 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::group(['prefix' => '/reservations'], function() {
 				Route::get('/', 'Host\ReservationController@index')->name('host.reservation.index');
 				Route::post('/', 'host\ReservationController@create')->name('host.reservation.create');
+			});
+
+			Route::group(['prefix' => '/requirements'], function() {
+				Route::get('/new', 'Host\RequirementController@new')->name('host.requirement.new');
+				Route::post('/', 'Host\RequirementController@create')->name('host.requirement.create');
 			});
 		
 			Route::group(['prefix' => '/facilities'], function() {
@@ -106,7 +111,6 @@ Route::group(['middleware' => 'auth:users'], function() {
 						Route::put('/{image}', 'Host\SpaceAttachmentController@update')->name('host.space.attachment.update');
 						Route::delete('/{image}', 'Host\SpaceAttachmentController@delete')->name('host.space.attachment.delete');
 					});
-		
 					Route::group(['prefix' => '/plans'], function() {
 						Route::get('/', 'Host\PlanController@index')->name('host.space.plan.index');
 						Route::get('/new', 'Host\PlanController@new')->name('host.space.plan.new');
@@ -128,14 +132,12 @@ Route::group(['middleware' => 'auth:users'], function() {
 							});
 						});
 					});
-		
 					Route::group(['prefix' => '/messagetemplate'], function() {
 						Route::get('/new', 'Host\MessageTemplateController@new')->name('host.space.messagetemplate.new');
 						Route::post('/', 'Host\MessageTemplateController@create')->name('host.space.messagetemplate.create');
 					});
 				});
 			});
-		
 			Route::group(['prefix' => 'bankaccounts'], function() {
 				Route::get('/new', 'Host\BankAccountController@new')->name('host.bankaccount.new');
 				Route::post('/', 'Host\BankAccountController@create')->name('host.bankaccount.create');
@@ -150,19 +152,14 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('management', 'Mypage\IndexController@management');
 			Route::get('pass', 'Mypage\IndexController@pass');
 			Route::get('profile', 'Mypage\ProfileController@index');
-		
 			Route::get('profile/edit-account', 'Mypage\ProfileController@editAccount');
-			Route::post('profile/edit-account', 'Mypage\ProfileController@confirmAccount');
-		
+			Route::post('profile/edit-account', 'Mypage\ProfileController@confirmAccount');		
 			Route::get('profile/edit-contact', 'Mypage\ProfileController@editContact');
 			Route::post('profile/edit-contact', 'Mypage\ProfileController@confirmContact');
-		
 			Route::get('profile/edit-mail', 'Mypage\ProfileController@editMail');
 			Route::post('profile/edit-mail', 'Mypage\ProfileController@confirmMail');
-		
 			Route::get('profile/edit-password', 'Mypage\ProfileController@editPassword');
 			Route::post('profile/edit-password', 'Mypage\ProfileController@confirmPassword');
-		
 			Route::get('register', 'Mypage\IndexController@register');
 			Route::get('review', 'Mypage\IndexController@review');
 			Route::get('topics', 'Mypage\IndexController@topics');
@@ -171,7 +168,6 @@ Route::group(['middleware' => 'auth:users'], function() {
 			Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList')->name('maillist');
 			Route::get('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@mailtable')->name('mailtable');
 			Route::post('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@sendmail')->name('send_mail');
-		
 			Route::get('profile/avatar', 'Mypage\ProfileController@avatar');
 		});
 	});
@@ -229,3 +225,12 @@ Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@med
 Route::get('space/{space}', 'SpaceController@index');
 
 Route::get('coming-soon', 'IndexController@comingSoon');
+
+// todo 竹中が追加したページ　消さないで
+Route::get('recruit', 'IndexController@index');// footerの採用情報
+
+
+
+// todo あとで消す
+
+// todo あとで消す　END

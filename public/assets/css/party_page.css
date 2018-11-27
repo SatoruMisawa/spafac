@@ -158,8 +158,11 @@ display: flex;
 
 .party_page_mv .party_page_mv_box{
 	display:inline-block;
-	padding:1em;	
+	padding:3em;
+	background-color: rgb(255,255,255,0.5);
+	border: 5px solid #000;
 }
+
 
 .party_page_mv * h1{
 	font-size:3.4rem;

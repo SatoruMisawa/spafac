@@ -83,7 +83,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/meeting/4">
+						<a href="/stay">
 							<img src="<?php echo url('assets/mypage/img/cat-6.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>宿泊・民泊</p>
@@ -153,8 +153,9 @@
 					</div>
 					<div class="category_text_menu">
 						<ul>
-
-							<li><a href="{{ action('SearchController@facility_kindsindex', '1' ) }}">イベント</a></li>
+						<div class="wrap party_abt">
+            				<p>
+                			<li><a href="{{ action('SearchController@facility_kindsindex', '1' ) }}">イベント</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '2' ) }}">結婚式場</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '3' ) }}">オフィス</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '4' ) }}">ホール</a></li>
@@ -184,11 +185,8 @@
 							<li><a href="{{ action('SearchController@facility_kindsindex', '28' ) }}">看板</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '29' ) }}">掲示スペース</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '30' ) }}">駐車場</a></li>
-							<li><a href="{{ action('SearchController@facility_kindsindex', '31' ) }}">その他</a></li>
-
-
+							<li><a href="{{ action('SearchController@facility_kindsindex', '31' ) }}">その他</a></li> 
 						</ul>
-
 					</div>
 				</div>
 			</div>
@@ -294,7 +292,7 @@
 	<a class="detail" href="/recommendation">スタッフのイチオシスペース一覧 &raquo;</a>
 </section>
 
-<section class="white" id="news">
+<section class="white_topics" id="news">
 	<h2>Topics &amp; News</h2>
 		<ul class="news">
 			<div class="case_study_wrap">
@@ -358,7 +356,7 @@
 
 
 
-<section class="gray" id="welcome">
+<section class="space_service_Sefv8d" id="welcome">
 	<div class="welcome_title">
 		<h2>関西エリアを地域密着でサポートいたします。<br>
 			様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>
@@ -983,6 +981,7 @@
 	<a class="detail" href="/purpose/sportsinde/11">スポーツで利用できるスペースをもっと見る &raquo;</a>
 </section>
 
+<section>
 <div class="sp-zzz spafaclogo100">
 	<div class="sp-Agr splog101">
 		<h2 class="sf-dgrt splog102">関連企業</h2>
@@ -1012,6 +1011,7 @@
 		</div>
 	</div>
 </div>
+</section>
 
 	</div>
 </div>

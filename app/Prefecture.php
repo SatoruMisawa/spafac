@@ -11,7 +11,7 @@ class Prefecture extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'name',
+		'name', 'name_ruby',
 	];
 	
 	/**
