@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\OptionRepository;
-use App\Option;
-use App\Validators\OptionValidator;
+use App\Repositories\ApplyRepository;
+use App\Apply;
+use App\Validators\ApplyValidator;
 
 /**
- * Class OptionRepositoryEloquent.
+ * Class ApplyRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class OptionRepositoryEloquent extends BaseRepository implements OptionRepository
+class ApplyRepositoryEloquent extends BaseRepository implements ApplyRepository
 {
     /**
      * Specify Model class name
@@ -22,7 +22,7 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
      */
     public function model()
     {
-        return Option::class;
+        return Apply::class;
     }
 
     
@@ -34,4 +34,5 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    
 }

@@ -7,14 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 class Apply extends Model
 {
     protected $fillable = [
-        'user_id', 'plan_id', 'price',
+        'guest_id', 'host_id', 'plan_id', 'price',
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function guest() {
+        return $this->belongsTo(Guest::class, 'guest_id');
+    }
+
+    public function host() {
+        return $this->belongsTo(Host::class, 'host_id');
     }
 
     public function plan() {
         return $this->belongsTo(Plan::class);
+    }
+
+    public function options() {
+        return $this->belongsToMany(Option::class);
+    }
+
+    public function addRelationshipToOptions($options, array $optionCounts) {
+        foreach ($options as $option) {
+            $this->options()->save($option, [
+                'count' => $optionCounts[$option['id']],
+            ]);
+        }
     }
 }

@@ -20,7 +20,7 @@
 	<div class="search_width">
 
 		<ul>
-			<li><a class="" href="<?php echo url('areas'); ?>">エリアから探す</a></li>
+			<!--<li><a class="" href="<?php echo url('areas'); ?>">エリアから探す</a></li>-->
 			<li><a href="<?php echo url('capacities'); ?>">収容人数から探す</a></li>
 			<li><a href="<?php echo url('keywords'); ?>">キーワードから探す</a></li>
 			<li><a href="<?php echo url('amenities'); ?>">設備から探す</a></li>

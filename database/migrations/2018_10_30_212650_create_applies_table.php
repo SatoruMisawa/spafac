@@ -15,7 +15,8 @@ class CreateAppliesTable extends Migration
     {
         Schema::create('applies', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('guest_id')->unsigned();
+            $table->bigInteger('host_id')->unsigned();
             $table->bigInteger('plan_id')->unsigned();
             $table->bigInteger('price')->unsigned();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

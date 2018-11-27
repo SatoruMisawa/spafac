@@ -4,11 +4,11 @@
 <div>
     <div class="apply text-center pt-5 pb-5">
         <div class="d-inline-block col-md-3">
-                <form action="/applies/1/approvements" method="POST">
+                <form action="/applies/{{ $apply->id }}/approvements" method="POST">
                     @csrf
                     <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Apply 1</h4>
+                                <h4 class="card-title">apply: {{ $apply->id }}</h4>
                                 <p class="card-text">
                                     From Tester
                                 </p>

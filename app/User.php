@@ -30,9 +30,9 @@ class User extends Authenticatable
 		'password', 'remember_token',
 	];
 
-	private $claimant;
+	protected $claimant;
 
-	private $feeCollector;
+	protected $feeCollector;
 
 	public function __construct($params = []) {
 		parent::__construct($params);
@@ -41,39 +41,43 @@ class User extends Authenticatable
 	}
 
 	public function claimantUser() {
-		return $this->hasOne(StripeUser::class);
+		return $this->hasOne(StripeUser::class, 'user_id');
 	}
 
 	public function stripeCharges() {
-		return $this->hasMany(StripeCharge::class);
+		return $this->hasMany(StripeCharge::class, 'user_id');
 	}	
 
 	public function chargeHistories() {
-		return $this->hasMany(ChargeHistory::class);
+		return $this->hasMany(ChargeHistory::class, 'user_id');
 	}
 
 	public function facilities() {
-		return $this->hasMany(Facility::class);
+		return $this->hasMany(Facility::class, 'user_id');
 	}
 
 	public function spaces() {
-		return $this->hasMany(Space::class);
+		return $this->hasMany(Space::class, 'user_id');
 	}
 
 	public function providers() {
 		return $this->belongsToMany(Provider::class, 'user_provider')->using(UserProvider::class);
 	}
-	
-	public function applies() {
-		return $this->hasMany(Apply::class);
-	}
-
-	public function reservations() {
-		return $this->hasMany(Reservation::class);
-	}
 
 	public function bankAccount() {
-		return $this->hasOne(BankAccount::class);
+		return $this->hasOne(BankAccount::class, 'user_id');
+	}
+
+	public function asGuest() {
+		$guest = new Guest($this->toArray());
+		$guest->id = $this->id;
+		return $guest;
+	}
+
+	public function asHost() {
+		$host = new Host($this->toArray());
+		$host->id = $this->id;
+		return $host;
 	}
 
 	public function prepareToVerifyEmail() {
@@ -91,70 +95,10 @@ class User extends Authenticatable
 		$this->save();
 	}
 
-	public function applyHourlyPlan(Plan $plan, int $hours) {
-		if ($this->isSameAs($plan->planner())) {
-			return;
-		}
-		if ($plan->isAlreadyApplied()) {
-			return;
-		}
-
-		$this->applies()->create([
-			'plan_id' => $plan->id,
-			'price' => $plan->price_per_hour * $hours,
-		]);
-	}
-
-	public function applyDaylyPlan(Plan $plan) {
-		if ($this->isSameAs($plan->planner())) {
-			return;
-		}
-		if ($plan->isAlreadyApplied()) {
-			return;
-		}
-
-		$this->applies()->create([
-			'plan_id' => $plan->id,
-			'price' => $plan->price_per_day,
-		]);
-	}
-
 	public function isSameAs(User $user) {
 		return $this->id === $user->id;
 	}
-
-	public function approve(Apply $apply) {
-		if (!$this->isSameAs($apply->plan->planner())) {
-			return;
-		}
-
-		Reservation::create([
-			'host_id' => $apply->plan->planner()->id,
-			'guest_id' => $apply->user->id,
-			'apply_id' => $apply->id,
-		]);
-	}
-
-	public function chargeFor(Reservation $reservation) {
-		$this->feeCollector->setPrice($reservation->apply->price);
-		$charge = $this->claimant->charge([
-			'guest_price_with_fee' => $this->feeCollector->calculateGuestPriceWithFee(),
-			'host_reward' => $this->feeCollector->calculateHostReward(),
-			'customer' => $reservation->guest->claimantUser->claimant_customer_id,
-			'destination' => $this->claimantUser->claimant_account_id,
-		]);
-		
-		$reservation->getCharged();
-
-		$chargeHistory = $reservation->guest->chargeHistories()->create([
-			'reservation_id' => $reservation->id,
-		]);
-
-		$chargeHistory->claimantChargeHistory()->create([
-			'claimant_charge_history_id' => $charge->id,
-		]);
-	}
-
+	
 	public function connectClaimantAccount() {
 		$claimantAccount = $this->claimant->connectAccount([
 			'country' => 'JP',
