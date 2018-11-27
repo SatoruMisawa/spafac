@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class AuthenticateFacilityOwner
@@ -16,7 +17,7 @@ class AuthenticateFacilityOwner
     public function handle($request, Closure $next)
     {
         $facility = $request->route()->parameter('facility');
-        if (!$request->user()->ownFacility($facility)) {
+        if (!Auth::guard('users')->user()->asHost()->ownFacility($facility)) {
             abort(404);
         }
         

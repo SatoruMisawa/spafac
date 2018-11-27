@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class AuthenticateSpaceOwner
@@ -16,7 +17,7 @@ class AuthenticateSpaceOwner
     public function handle($request, Closure $next)
     {
         $space = $request->route()->parameter('space');
-        if (!$request->user()->ownSpace($space)) {
+        if (!Auth::guard('users')->user()->asHost()->ownSpace($space)) {
             abort(404);
         }
         

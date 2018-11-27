@@ -64,6 +64,24 @@ class Guest extends User {
 		return $this->applies()->create($data);
 	}
 
+	public function connectClaimantCustomer($source) {
+		$claimantCustomer = $this->claimant->connectCustomer([
+			'email' => $this->email,
+			'source' => $source,
+		]);
+		
+		if ($this->claimantUser === null) {
+			$this->claimantUser()->create([
+				'claimant_customer_id' => $claimantCustomer->id,
+			]);
+			return;	
+		}
+
+		$this->claimantUser->update([
+			'claimant_customer_id' => $claimantCustomer->id,
+		]);
+	}
+
 	public function ownApply(Apply $apply) {
 		return $this->isSameAs($apply->guest);
 	}
