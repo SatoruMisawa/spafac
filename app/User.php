@@ -43,6 +43,10 @@ class User extends Authenticatable
 		$this->feeCollector = app()->make(FeeCollector::class);
 	}
 
+	public function address() {
+		return $this->belongsTo(Address::class);
+	}
+
 	public function claimantUser() {
 		return $this->hasOne(StripeUser::class, 'user_id');
 	}
@@ -123,7 +127,7 @@ class User extends Authenticatable
 	public function connectClaimantCustomer() {
 		$claimantCustomer = $this->claimant->connectCustomer([
 			'email' => 'paying.user@example.com',
-			'source' => 'tok_1DaRE9JoWq7YlbrqoL7j0VnN',
+			'source' => 'tok_1Db4pFJoWq7YlbrqqbJDVHun',
 		]);
 		
 		if ($this->claimantUser === null) {
