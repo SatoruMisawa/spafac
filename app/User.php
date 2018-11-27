@@ -18,6 +18,7 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
+		'address_id',
 		'family_name', 'family_name_ruby', 'given_name', 'given_name_ruby',
 		'email', 'tel', 'password', 'profile_image_url', 'gender',
 		'dob_day', 'dob_month', 'dob_year', 'email_verification_token', 'has_verified_email',

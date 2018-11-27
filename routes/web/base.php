@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth:users'], function() {
 
 			Route::group(['prefix' => '/requirements'], function() {
 				Route::get('/new', 'Host\RequirementController@new')->name('host.requirement.new');
+				Route::post('/', 'Host\RequirementController@create')->name('host.requirement.create');
 			});
 		
 			Route::group(['prefix' => '/facilities'], function() {

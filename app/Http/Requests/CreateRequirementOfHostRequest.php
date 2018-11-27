@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 
 class CreateRequirementOfHostRequest extends FormRequest
 {
@@ -38,12 +39,30 @@ class CreateRequirementOfHostRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'first_name' => 'required',
-            'first_name_ruby' => 'required',
+            'family_name' => 'required',
+            'family_name_ruby' => 'required',
             'given_name' => 'required',
             'given_name_ruby' => 'required',
             'gender' => 'in:male,female',
             'tel' => 'required|tel',
         ];
+    }
+
+    public function onlyDataOfAddress() {
+        return $this->only([
+            'zip', 'prefecture_id',
+            'address1', 'address1_ruby',
+            'address2', 'address2_ruby',
+            'address3', 'address3_ruby',
+        ]);
+    }
+
+    public function onlyDataOfUser() {
+        return $this->only([
+            'dob_day', 'dob_month', 'dob_year',
+            'family_name', 'family_name_ruby',
+            'given_name', 'given_name_ruby',
+            'gender', 'tel',
+        ]);
     }
 }
