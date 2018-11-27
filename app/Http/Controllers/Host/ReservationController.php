@@ -23,11 +23,9 @@ class ReservationController extends Controller
 
     public function create(Request $request) {
         $apply = $this->applyRepository->find($request->apply_id);
-        if ($apply === null) {
-            abort(404);
-        }
-
-        Auth::guard('users')->user()->asHost()->approve($apply);
+        $host = Auth::guard('users')->user()->asHost();
+        $reservation = $host->approve($apply);
+        $host->chargeFor($reservation);
 
         return redirect()->route('host.reservation.index');
     }
