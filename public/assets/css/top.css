@@ -93,7 +93,7 @@ nav.party_search form input[type=submit]{
 /*--------------------------------------*/
 
 .wrap.txtR {
-  margin: 90px 0 0;
+  margin: 40px 0 0 90px;
   text-align: right;
 }
 
@@ -544,6 +544,12 @@ display: flex;
 
 /*-------NEWS--------------------------------------------*/
 
+section#news {
+  padding: 1vw;
+  background: #fff;
+}
+
+
 section#news h2 {
   font-size:2rem;
   margin-bottom:0; }
@@ -759,6 +765,10 @@ section.pattern_1 a.detail {
   color: #fff;
   font-weight: bold;
   font-size:2rem; }
+
+  section#welcome {
+    background: url(/assets/images/background_image001*.jpg);
+}
 
   .staff-title {
     width: 100%;
@@ -1001,7 +1011,22 @@ section.pattern_1 a.detail {
   display: inline-block;
   font-weight: bold;
   padding: 20px 90px 20px 50px;
-  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); }
+  /* box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); */
+  border-radius: 10px;
+ }
+
+ #reg_now_4 .reg_now_4_button a {
+  /* background: url(/assets/mypage/img/icon-8.png) no-repeat #fff;  */
+  background-position: 90%;
+  background-color: #6ab257;
+  font-size:2rem;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 26px 90px 26px 50px;
+  /* box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); } */
+  
+
 
   #reg_now_3 .reg_now_4_button a, #reg_now_4 .reg_now_3_button a, #reg_now_4 .reg_now_4_button a {
     background: url(/assets/mypage/img/icon-8.png) no-repeat #fff; 
@@ -1065,6 +1090,34 @@ section.pattern_1 a.detail {
   content: "";
   visibility: hidden;
   display: block; }
+
+  .party_search_list .party_abt{
+    text-align:center;
+    margin-top:40px;	
+  }
+  .party_search_list .party_abt p{
+    display:inline-block;
+    margin:0 auto 20px 0;	
+  }
+  .party_search_list .party_abt a{
+    display: inline-block;
+    min-width:130px;
+    padding:1em;
+    border:1px solid #17aedf;
+    background-color:#FFF;
+    text-align:center;
+    margin:0 10px 1em 0;
+    float: none;
+    justify-content: center;
+    align-items: center;
+    border-radius:7px;
+    color:#17aedf;
+  }
+  .party_search_list .party_abt a:hover{
+    background-color:#fa8b9f;
+    border:1px solid #fa8b9f;
+    color:#FFF;
+  }
 
 /*
  共通css
@@ -1649,6 +1702,61 @@ table.myaccout tr.address_type td:last-child input[type="text"] {
     /*width: 300px;*/
 }
 
+/*---------------- 企業logo --------------*/
+
+.sp-zzz.spafaclogo100 {
+  position: relative;
+  padding-top: 32px;
+  padding-bottom: 24px;
+}
+
+.sp-Agr.splog101 {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h2.sf-dgrt.splog102 {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: rgb(75, 75, 75);
+}
+
+.sf-cdrt.splog103 {
+  text-align: center;
+}
+
+ul.sp-bjhut.splog104 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 890px;
+  text-align: center;
+  margin: 24px auto;
+  padding: 0px 24px;
+}
+
+.spclog {
+  display: inline-block;
+  height: 120px;
+  width: auto;
+  margin: 8px;
+}
+
+#useinfor-whole {
+  margin: 100px auto !important;
+  width: 90%;
+}
+
+.useinfor-text {
+  text-align: center;
+}
+
+img.sp-clog.spclog {
+  width: 20%;
+}
+
 img.staffichioshi000 {
   width: 100%;
   height: 300px;
@@ -1844,56 +1952,7 @@ img.staffichioshi000 {
       margin-right: 5px;
     }
 
-/*---------------- 企業logo --------------*/
 
-.spafaclogo100 {
-    position: relative;
-    padding-top: 32px;
-    padding-bottom: 24px;
-}
-
-.splog101 {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.splog102 {
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
-    letter-spacing: 1px;
-    line-height: 1.2;
-    color: rgb(75, 75, 75);
-}
-
-.splog103  {
-    text-align: center;
-}
-
-.splog104 {
-    display: inline-flex;
-    flex-wrap: wrap;
-    max-width: 890px;
-    text-align: center;
-    margin: 24px auto;
-    padding: 0px 24px;
-}
-
-.spclog {
-    display: inline-block;
-    height: 120px;
-    width: auto;
-    margin: 8px;
-}
-
-#useinfor-whole {
-    margin: 100px auto !important;
-    width: 90%;
-}
-
-.useinfor-text {
-    text-align: center;
-}
 
 /*---------------------------------------------
   スマホ設定

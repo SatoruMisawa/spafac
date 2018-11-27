@@ -13,8 +13,9 @@
 </label>
 
 <article class="stay_container">
-<link rel="stylesheet" type="text/css" href="/assets/css/stay.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/stay_details.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/stay.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/stay_details.css') }}">
+
 <section>
 	<div class="main_img_box">
 <img src="/assets/images/stay/stay_details_mv.jpg" width="1600" height="665">

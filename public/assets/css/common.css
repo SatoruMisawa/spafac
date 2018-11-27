@@ -44,9 +44,9 @@ body *{
 --------------------------------*/
 
 div.wrap {
-  width: 90% !important;
-  height: 100% !important;
-  position: relative !important;
+  width: 90%;
+  height: 100%;
+  position: relative ;
 }
 
 .inner {
@@ -385,7 +385,7 @@ section.pattern_1 a.detail {
   text-align: center;
   margin-top: 45px; }
 
-#reg_now_3 .reg_now_3_button a, #reg_now_3 .reg_now_4_button a, #reg_now_4 .reg_now_3_button a, #reg_now_4 .reg_now_4_button a {
+/* #reg_now_3 .reg_now_4_button a, #reg_now_4 .reg_now_3_button a, #reg_now_4 .reg_now_4_button a {
   background: url(/assets/mypage/img/icon-8.png) no-repeat #fff;
   background-position: 90%;
   font-size:2rem;
@@ -393,7 +393,7 @@ section.pattern_1 a.detail {
   display: inline-block;
   font-weight: bold;
   padding: 26px 90px 26px 50px;
-  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); }
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8); } */
 
 #reg_now_4 {
   background: url(/assets/mypage/img/photo-3.png) no-repeat;
