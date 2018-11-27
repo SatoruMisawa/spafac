@@ -10,7 +10,7 @@
 	background-color:#FFF !important;
 	border-radius:7px;
 	padding:5px 1em;
-	box-shadow:none !important;	
+	box-shadow:none !important;
 }
 </style>
 <div class="login" id="mypage_contents">
@@ -45,6 +45,8 @@
 					<button type="submit">ログイン</button>
 				{{ Form::close()}}
 			</div>
+			<!--#todo デザイン追加 -->
+			<a href="<?php echo url('/'); ?>">トップに戻る</a>
 		</div>
 	</div>
 	<div class="register_link">
@@ -52,5 +54,3 @@
 	</div>
 </div>
 @stop
-
-
