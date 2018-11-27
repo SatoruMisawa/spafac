@@ -15,7 +15,8 @@ class CreatePrefecturesTable extends Migration
     {
         Schema::create('prefectures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('name_ruby')->unique();
         });
     }
 

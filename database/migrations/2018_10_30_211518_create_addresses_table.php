@@ -23,8 +23,8 @@ class CreateAddressesTable extends Migration
             $table->string('address2_ruby');
             $table->string('address3')->nullable();
             $table->string('address3_ruby')->nullable();
-            $table->decimal('latitude', 8, 6);
-            $table->decimal('longitude', 9, 6);
+            $table->decimal('latitude', 8, 6)->nullable();
+            $table->decimal('longitude', 9, 6)->nullable();
         });
     }
 

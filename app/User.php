@@ -18,7 +18,10 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'family_name', 'given_name', 'password', 'email', 'profile_image_url',
+		'address_id',
+		'family_name', 'family_name_ruby', 'given_name', 'given_name_ruby',
+		'email', 'tel', 'password', 'profile_image_url', 'gender',
+		'dob_day', 'dob_month', 'dob_year', 'email_verification_token', 'has_verified_email',
 	];
 
 	/**
@@ -38,6 +41,10 @@ class User extends Authenticatable
 		parent::__construct($params);
 		$this->claimant = app()->make(Claimant::class);
 		$this->feeCollector = app()->make(FeeCollector::class);
+	}
+
+	public function address() {
+		return $this->belongsTo(Address::class);
 	}
 
 	public function claimantUser() {
@@ -120,7 +127,7 @@ class User extends Authenticatable
 	public function connectClaimantCustomer() {
 		$claimantCustomer = $this->claimant->connectCustomer([
 			'email' => 'paying.user@example.com',
-			'source' => 'tok_1DaRE9JoWq7YlbrqoL7j0VnN',
+			'source' => 'tok_1Db4pFJoWq7YlbrqqbJDVHun',
 		]);
 		
 		if ($this->claimantUser === null) {
@@ -147,30 +154,30 @@ class User extends Authenticatable
 			'account_id' => $this->claimantUser->claimant_account_id,
 			'legal_entity' => [
 				'address_kana' => [
-					'postal_code' => '5600043',
-					'state' => 'オオサカフ',
-					'city' => 'トヨナカシ',
-					'town' => 'マチカネヤマチョウ1',
-					'line1' => '5',
+					'postal_code' => $this->address->zip,
+					'state' => $this->address->prefecture->name_ruby,
+					'city' => $this->address->address1_ruby,
+					'town' => $this->address->address2_ruby,
+					'line1' => $this->address->address3_ruby,
 				],
 				'address_kanji' => [
-					'postal_code' => '5600043',
-					'state' => '大阪府',
-					'city' => '豊中市',
-					'town' => '待兼山町1',
-					'line1' => '5',
+					'postal_code' => $this->address->zip,
+					'state' => $this->address->prefecture->name,
+					'city' => $this->address->address1,
+					'town' => $this->address->address2,
+					'line1' => $this->address->address3
 				],
 				'dob' => [
-					'day' => '1',
-					'month' => '1',
-					'year' => '1998',
+					'day' => $this->dob_day,
+					'month' => $this->dob_month,
+					'year' => $this->dob_year,
 				],
-				'first_name_kana' => 'おおさか',
-				'first_name_kanji' => '大阪',
-				'last_name_kana' => 'たろう',
-				'last_name_kanji' => '太郎',
-				'gender' => 'male',
-				'phone_number' => '09056511723',
+				'first_name_kana' => $this->family_name_ruby,
+				'first_name_kanji' => $this->family_name,
+				'last_name_kana' => $this->given_name_ruby,
+				'last_name_kanji' => $this->given_name,
+				'gender' => $this->gender,
+				'phone_number' => $this->tel,
 				'type' => 'individual',
 			],
 			'tos_acceptance' => [
