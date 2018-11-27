@@ -39,4 +39,20 @@ class CreateFacilityRequest extends FormRequest
 			'tel' => 'required|tel',
 		];
     }
+
+    public function onlyDataOfAddress() {
+        return $this->only([
+            'prefecture_id', 'zip',
+			'address1', 'address1_ruby',
+			'address2', 'address2_ruby',
+			'address3', 'address3_ruby',
+			'latitude', 'longitude',
+        ]);
+    }
+
+    public function onlyDataOfFacility() {
+        return $this->only([
+            'facility_kind_id', 'name', 'access', 'tel',
+        ]);
+    }
 }

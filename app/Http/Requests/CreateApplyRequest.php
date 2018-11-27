@@ -28,7 +28,11 @@ class CreateApplyRequest extends FormRequest
             'plan_id' => 'required|integer',
             'by_day' => 'required|boolean',
             'by_hour' => 'required|boolean',
-            'hours' => 'required_if:by_hour,true'
+            'hours' => 'required_if:by_hour,true',
+            'option_ids' => 'present|array',
+            'option_ids.*' => 'integer',
+            'option_counts' => 'present|array',
+            'option_counts.*' => 'integer|min:1',
         ];
     }
 }

@@ -16,6 +16,10 @@ class Address extends Model
         'latitude', 'longitude',
     ];
 
+    public function prefecture() {
+        return $this->belongsTo(Prefecture::class);
+    }
+
     public function spaces() {
         return $this->hasMany(Space::class);
     }

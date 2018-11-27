@@ -4,6 +4,7 @@ namespace Tests\Feature\Host;
 
 use App\Apply;
 use App\Reservation;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,30 +25,43 @@ class ReservationControllerTest extends TestCase
     }
 
     public function testCreate() {
+        $this->refreshAndSeedDatabase();
         $apply = factory(Apply::class)->create();
-        $data = $this->data($apply->id);
-        $this->assertPostRequestToCreate($data, $apply);
-        $this->assertReservationInDB($data, $apply);
+        $case = $this->caseOfCreatingReservation($apply);
+        $this->assertPostRequestToCreate($case['data'], $apply->host);
+        $this->assertReservationInDB($case['expectedReservation']);
+        $this->assertChargeHistoryInDB($case['expectedChargeHistory']);
     }
 
-    private function data($applyID) {
+    private function caseOfCreatingReservation(Apply $apply) {
         return [
-            'apply_id' => $applyID,
+            'data' => [
+                'apply_id' => $apply->id,
+            ],
+            'expectedReservation' => [
+                'host_id' => $apply->plan->planner()->id,
+                'guest_id' => $apply->guest->id,
+                'apply_id' => $apply->id,
+            ],
+            'expectedChargeHistory' => [
+                'user_id' => $apply->guest->id,
+                'reservation_id' => 1,
+            ],
         ];
     }
 
-    private function assertPostRequestToCreate($data, Apply $apply) {
+    private function assertPostRequestToCreate($data, User $user) {
         return $this->loginWithTesterIfDebug()
-        ->loginWithUser($apply->host)
+        ->loginWithUser($user)
         ->post(route('host.reservation.create'), $data)
         ->assertRedirect(route('host.reservation.index'));
     }
 
-    private function assertReservationInDB($data, Apply $apply) {
-        $this->assertDatabaseHas('reservations', [
-            'host_id' => $apply->plan->planner()->id,
-            'guest_id' => $apply->guest->id,
-            'apply_id' => $data['apply_id'],
-        ]);
+    private function assertReservationInDB($data) {
+        $this->assertDatabaseHas('reservations', $data);
+    }
+
+    private function assertChargeHistoryInDB($data) {
+        $this->assertDatabaseHas('charge_histories', $data);
     }
 }

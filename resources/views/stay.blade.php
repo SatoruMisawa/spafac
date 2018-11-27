@@ -12,35 +12,30 @@
 </svg>
 </label>
 <input type="checkbox" id="search-ck">
-<link rel="stylesheet" type="text/css" href="/assets/css/stay.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/stay.css') }}">
 <article class="stay_container">
 
 <section class="stay_page">
     <div class="wrap stay_logo">
-    <img src="/assets/images/stay/stay_logo.png" alt="関西地域限定　宿泊先を探す">
-    <img src="/assets/images/stay/stay_catch.png" alt="どこへ向かいますか？">
+    <img src="{{ asset('assets/images/stay/stay_logo.png') }}" alt="関西地域限定　宿泊先を探す">
+    <!-- <img src="/assets/images/stay/stay_catch.png" alt="どこへ向かいますか？"> -->
     </div>
     <nav class="stay_search">
-    <h1>関西地域限定　宿泊先を探す</h1>
-    <form action="/search" method="get">
-    <div><input type="text" placeholder="エリア　地名" value=""><i>▼</i></div>
-    <div><input type="text" placeholder="チェックイン・アウト" value=""><i>▼</i></div>
-    <div><input type="text" placeholder="宿泊人数" value=""><i>▼</i></div>    
-    <input type="submit" value="検索">
-    </form>    
+        <h1>関西地域限定　宿泊先を探す</h1>
+        @include('stay_mid-nav')   
     </nav>
     <div class="stay_page_mv">&nbsp;</div>
 </section>
 
 <section class="stay_page">
     <div class="wrap left-box">
-    <h2>旅の目的別</h2>
+    <h2 class="stayh2_title">旅の目的別</h2>
 <div class="slider">
     <ul class="three-box">
     	<li>
         <a href="/stay/details">
         <div class="pic">
-        <img src="/assets/images/stay/stay_img01.jpg" width="300" height="200">
+        <img src="{{ asset('assets/images/stay/stay_lover_image006.jpg') }}" width="300" height="200">
         </div>
         <h3>カップル</h3>
         <p>カップルで思い出作り。おしゃれな空間とフォトジェニックな空間を兼ね備えた宿泊先で</p>
@@ -50,7 +45,7 @@
     	<li>
         <a href="/stay/details">
         <div class="pic">
-        <img src="/assets/images/stay/stay_img02.jpg" width="300" height="200">
+        <img src="{{ asset('assets/images/stay/stay_family_image001.jpg') }}" width="300" height="200">
         </div>
         <h3>ファミリー</h3>
         <p>大人も子供の大満足！充実したファミリーホリディをお楽しみいただける宿泊先</p>
@@ -60,11 +55,10 @@
     	<li>
         <a href="/stay/details">
         <div class="pic">
-        <img src="/assets/images/stay/stay_img03.jpg" width="300" height="200">
+        <img src="{{ asset('assets/images/stay/stay_friend_image001.jpg') }}" width="300" height="200">
         </div>
         <h3>友達旅行</h3>
-        <p>気の合う仲間との思い出作りに最高の宿
-泊先を。大人数でもゆったり過ごせます</p>
+        <p>気の合う仲間との思い出作りに最高の宿泊先を。大人数でもゆったり過ごせます</p>
 		</a>        
         </li>
         
@@ -77,8 +71,8 @@
     <div class="wrap left-box">
     <div class="add-box">
     <h2>旅のお手伝いをしませんか？</h2>
-    <p>宿泊スペースをお持ちの方</p>
-    <p><a href="">登録する</a></p>
+    <p>宿泊スペースをお持ちの方は、<br>今すぐ会員登録してスペースを登録しよう！</p>
+    <div class="reg_now_2_button"><a href="{{ route('user.new') }}">新規登録（無料）</a></p>
     </div>
     </div>
 </section>
@@ -107,15 +101,15 @@
 
 <section class="stay_page bg-orange">
     <div class="wrap left-box">
-        <h2>
+        <h2 class="stayh2_title">注目の宿泊スペース</h2>
+        <!-- 星のアイコン -->
+        <!-- <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
         <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
+        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24"> -->
+        <!-- <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
         <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        注目の宿泊スペース
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        </h2>
+        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24"> -->
+        
     <div class="slider">
     <ul class="three-box">
     	<li>
@@ -155,7 +149,7 @@
 
 <section class="stay_page">
     <div class="wrap left-box">
-    <h2 class="mg-b0">宿泊Topic</h2>
+    <h2 class="stayh2_title">宿泊Topic</h2>
     <p class="f-size18 txtC">宿泊スペースに関するお役立ち情報</p>
     <div class="slider">
     <ul class="three-box mg-t2em">
@@ -182,7 +176,7 @@
 
 <section class="stay_page bg-orange">
     <div class="wrap left-box">
-        <h2 class="mg-b0">近隣のレストランを探す</h2>
+    <h2 class="stayh2_title">近隣のレストランを探す</h2>
         <p class="f-size18 txtC">宿泊先の近くにあるレストラン情報をお届け</p>
     <div class="slider">
     <ul class="three-box mg-t2em">
@@ -214,7 +208,7 @@
 
 <section class="stay_page">
     <div class="wrap left-box">
-    <h2>関西</h2>
+    <h2 class="stayh2_title">関西</h2>
     <div class="slider">
          <ul class="fourth-box mg-t2em">
          <li>
@@ -264,35 +258,27 @@
 
 <section class="stay_page bg-orange">
     <div class="wrap left-box">
-        <h2>
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        注目のエリア
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        <img src="/assets/images/stay/stay_icon06.png" width="26" height="24">
-        </h2>
+    <h2 class="stayh2_title">注目のエリア</h2>
     <div class="slider">
          <ul class="fourth-box mg-t2em">
          <li>
-	    <a href="/stay/details">
-         <img src="/assets/images/stay/stay_img08.jpg" width="235" height="250">
+	    <a href="/stay">
+         <img src="{{ asset('assets/images/stay/stay_notice_image001.jpg') }}" width="350" height="300">
 		</a>
          </li>
          <li>
-	    <a href="/stay/details">
-        <img src="/assets/images/stay/stay_img09.jpg" width="235" height="250">
+	    <a href="/stay">
+        <img src="{{ asset('assets/images/stay/stay_notice_image003.jpg') }}" width="350" height="300">
         </a>
          </li>
          <li>
-	    <a href="/stay/details">
-         <img src="/assets/images/stay/stay_img10.jpg" width="235" height="250">
+	    <a href="/stay">
+         <img src="{{ asset('assets/images/stay/stay_notice_image002.jpg') }}" width="350" height="300">
          </a>
          </li>
          <li>
-	    <a href="/stay/details">
-         <img src="/assets/images/stay/stay_img11.jpg" width="235" height="250">
+	    <a href="/stay">
+         <img src="{{ asset('assets/images/stay/stay_notice_image004.jpg') }}" width="350" height="300">
          </a>
          </li>
          </ul>
@@ -300,7 +286,7 @@
     </div>
 </section>
 
-<aside id="rightSide">
+<!-- <aside id="rightSide">
 <label id="rightSide-close" for="search-ck">×</label>
 <form>
 <ul class="side-menu">
@@ -422,7 +408,7 @@
 </form>
 </aside>    
 
-</article>
+</article> -->
 <script>
 $(function() {
 $(window).load(function() {
