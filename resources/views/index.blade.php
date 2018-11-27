@@ -185,7 +185,7 @@
 							<li><a href="{{ action('SearchController@facility_kindsindex', '28' ) }}">看板</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '29' ) }}">掲示スペース</a></li>
 							<li><a href="{{ action('SearchController@facility_kindsindex', '30' ) }}">駐車場</a></li>
-							<li><a href="{{ action('SearchController@facility_kindsindex', '31' ) }}">その他</a></li> 
+							<li><a href="{{ action('SearchController@facility_kindsindex', '31' ) }}">その他</a></li>
 						</ul>
 					</div>
 				</div>
@@ -254,39 +254,45 @@
 	<div class="pattern_box">
     <div class="pac">
 
-	<div class="col-xs-4 col-lg-4 staff-box">
-		<div class="staff-linkbox">
-			<div class="staff-top-area unit-st">
-			<img  class="staffichioshi000" src="<?php echo url('assets/mypage/img/image_photo/sampleimage91.png'); ?>" alt="" class="sp-top-ranking__image-pict">
-			<h3 class="staff-title" style="background-color: #fa8b9f;">
-				<span class="star">★★★★☆</span><br>
-				<span>白を基調としたスタイリッシュでオシャレな空間は物件の室内に大きなキッチンは使い勝手も便利でお料理教室や、お菓子などのワークシ…</span>
-			</h3>
-			</div>
+<div class="row">
+@foreach($best as $data)
+
+<div class="col-4 col-md-4">
+
+<a href="{{ action('SpaceController@index', $data->facility_id ) }}">
+<div class="sp-top-rakinbox sp-topbox-area">
+<div class="sp-top-rakinbox__image">
+		<img src="{{$data->url}}" alt="関西上位獲得 1,200円～【本町 徒歩3分】インスタ映えのおしやれなお部屋で女子会など/～7名/ごろごろ/Netflix/24h可/ホムパ の写真" class="sp-top-ranking__image-pict">
+		<p class="sp-top-ranking__item-price">￥1,200<span class="sp-top-ranking__item-different">〜</span>￥2,100<span class="sp-top-ranking__item-different">/時間</span>
+		<span class="sp-top-ranking__price-icon">
+			<i class="fa fa-bolt sp-top-ranking__item-instant"></i>
+			<span class="icon-spm-top_host sp-top-ranking__item-top-host"></span>
+			<i class="icon-spm-discount sp-top-ranking__item-icon-discount"></i>
+		</span>
+		</p>
+</div>
+
+	<div class="sp-top-ranking__body">
+		<div class="sp-top-ranking__body-inner">
+			<h3 class="sp-top-ranking__body-title">{{$data->name}}　</h3>
 		</div>
+		<ul class="sp-top-ranking__body-info">
+			<li><i class="fa fa-user mr5"></i>〜{{$data->capacity}}人</li>
+			<li><i class="fa fa-map-marker mr5"></i>{{$data->address1}}</li>
+		</ul>
 	</div>
-	<div class="col-xs-4 col-lg-4 staff-box">
-		<div class="staff-linkbox">
-			<div class="staff-top-area unit-st">
-			<img  class="staffichioshi000" src="<?php echo url('assets/mypage/img/image_photo/sampleimage90.png'); ?>" alt="" class="sp-top-ranking__image-pict">
-			<h3 class="staff-title" style="background-color: #fa8b9f;">
-				<span class="star">★★★★☆</span><br>
-				<span>結婚式場のテラスを使って女子会を行いました。オシャレなアンティーク調の雰囲気の中で友人のサプライズ誕生日を行い、本人もとって…</span>
-			</h3>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-4 col-lg-4 staff-box">
-		<div class="staff-linkbox">
-			<div class="staff-top-area unit-st">
-			<img  class="staffichioshi000" src="<?php echo url('assets/mypage/img/image_photo/sampleimage92.png'); ?>" alt="">
-			<h3 class="staff-title" style="background-color: #fa8b9f;">
-				<span class="star">★★★★★</span><br>
-				<span>結婚式場のチャペルで大切な人からサプライズでプロポーズされました。ほんの少しの時間でこんな大きな幸せを一生の宝物にしたいと思…</span>
-			</h3>
-			</div>
-		</div>
-	</div>
+
+</div>
+</a>
+	<h3 class="staff-title" style="background-color: #4abfe6;">
+	<span class="star">★★★★★</span><br/>
+	<span>{{$data->about}}</span>
+	</h3>
+</div>
+
+@endforeach
+</div>
+
 	</div>
 	</div>
 	<a class="detail" href="/recommendation">スタッフのイチオシスペース一覧 &raquo;</a>
