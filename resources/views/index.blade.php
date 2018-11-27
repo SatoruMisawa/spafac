@@ -83,7 +83,7 @@
 						</a>
 					</div>
 					<div class="category_box_icon">
-						<a href="/purpose/meeting/4">
+						<a href="/stay">
 							<img src="<?php echo url('assets/mypage/img/cat-6.png'); ?>" alt="">
 							<div class="cat_text">
 								<p>宿泊・民泊</p>
@@ -356,7 +356,7 @@
 
 
 
-<section class="gray" id="welcome">
+<section class="space_service_Sefv8d" id="welcome">
 	<div class="welcome_title">
 		<h2>関西エリアを地域密着でサポートいたします。<br>
 			様々なスペースで「ワクワク」「ドキドキ」を体験　個人様でも法人様でもご利用できる<br>

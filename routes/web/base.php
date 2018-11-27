@@ -14,6 +14,10 @@
 // and will be deleted soon
 include 'test.php';
 
+Route::group(['prefix' => '/spaces'], function () {
+	Route::get('/{space}', 'SpaceController@show')->name('space.show');
+});
+
 Route::group(['middleware' => 'guest:users'], function () {
 	Route::get('users/new', 'UserController@new')->name('user.new');
 	Route::post('users', 'UserController@create')->name('user.create');
@@ -29,45 +33,40 @@ Route::group(['middleware' => 'auth:users'], function () {
 	Route::post('logout', 'SessionController@delete')->name('logout');
 
 	Route::group([/*'middleware' => 'deny.all'*/ ], function () {
-		Route::group(['prefix' => 'mypage', 'middleware' => 'deny.all'], function () {
-			Route::get('/', 'Mypage\IndexController@index');
-			Route::get('like', 'Mypage\IndexController@like');
-			Route::get('like-new', 'Mypage\IndexController@likeNew');
-			Route::get('login', 'Mypage\IndexController@login');
-			Route::get('management', 'Mypage\IndexController@management');
-			Route::get('pass', 'Mypage\IndexController@pass');
-			Route::get('profile', 'Mypage\ProfileController@index');
+		Route::group(['prefix' => '/guest'], function () {
+			Route::group(['prefix' => '/applies'], function () {
+				Route::get('/', 'Guest\ApplyController@index')->name('guest.apply.index');
+				Route::post('/', 'Guest\ApplyController@create')->name('guest.apply.create');
 
-			Route::get('profile/edit-account', 'Mypage\ProfileController@editAccount');
-			Route::post('profile/edit-account', 'Mypage\ProfileController@confirmAccount');
+				Route::group(['prefix' => '/{apply}', 'middleware' => 'guest.owner.apply'], function () {
+					Route::get('/', 'Guest\ApplyController@show')->name('guest.apply.show');
+				});
+			});
 
-			Route::get('profile/edit-contact', 'Mypage\ProfileController@editContact');
-			Route::post('profile/edit-contact', 'Mypage\ProfileController@confirmContact');
-
-			Route::get('profile/edit-mail', 'Mypage\ProfileController@editMail');
-			Route::post('profile/edit-mail', 'Mypage\ProfileController@confirmMail');
-
-			Route::get('profile/edit-password', 'Mypage\ProfileController@editPassword');
-			Route::post('profile/edit-password', 'Mypage\ProfileController@confirmPassword');
-
-			Route::get('register', 'Mypage\IndexController@register');
-			Route::get('review', 'Mypage\IndexController@review');
-			Route::get('topics', 'Mypage\IndexController@topics');
-	
-			//-メール一覧
-			Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList')->name('maillist');
-			Route::get('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@mailtable')->name('mailtable');
-			Route::post('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@sendmail')->name('send_mail');
-
-			Route::get('profile/avatar', 'Mypage\ProfileController@avatar');
+			Route::group(['prefix' => '/reservations'], function () {
+				Route::get('/', 'Guest\ReservationController@index')->name('guest.reservation.index');
+			});
 		});
 
-		Route::group(['prefix' => 'host'], function () {
+		Route::group(['prefix' => '/host'], function () {
 			Route::get('/', 'Host\HostController@index')->name('host.index');
-	
+		
 			// todo あとでちゃんとする
 			Route::get('/new', function () {
 				return view('selection');
+			});
+
+			Route::group(['prefix' => '/applies'], function () {
+				Route::get('/', 'Host\ApplyController@index')->name('host.apply.index');
+
+				Route::group(['prefix' => '/{apply}', 'middleware' => 'host.owner.apply'], function () {
+					Route::get('/', 'Host\ApplyController@show')->name('host.apply.show');
+				});
+			});
+
+			Route::group(['prefix' => '/reservations'], function () {
+				Route::get('/', 'Host\ReservationController@index')->name('host.reservation.index');
+				Route::post('/', 'host\ReservationController@create')->name('host.reservation.create');
 			});
 
 			Route::group(['prefix' => '/facilities'], function () {
@@ -142,8 +141,42 @@ Route::group(['middleware' => 'auth:users'], function () {
 				Route::post('/', 'Host\BankAccountController@create')->name('host.bankaccount.create');
 			});
 		});
+
+		Route::group(['prefix' => 'mypage'], function () {
+			Route::get('/', 'Mypage\IndexController@index');
+			Route::get('like', 'Mypage\IndexController@like');
+			Route::get('like-new', 'Mypage\IndexController@likeNew');
+			Route::get('login', 'Mypage\IndexController@login');
+			Route::get('management', 'Mypage\IndexController@management');
+			Route::get('pass', 'Mypage\IndexController@pass');
+			Route::get('profile', 'Mypage\ProfileController@index');
+
+			Route::get('profile/edit-account', 'Mypage\ProfileController@editAccount');
+			Route::post('profile/edit-account', 'Mypage\ProfileController@confirmAccount');
+
+			Route::get('profile/edit-contact', 'Mypage\ProfileController@editContact');
+			Route::post('profile/edit-contact', 'Mypage\ProfileController@confirmContact');
+
+			Route::get('profile/edit-mail', 'Mypage\ProfileController@editMail');
+			Route::post('profile/edit-mail', 'Mypage\ProfileController@confirmMail');
+
+			Route::get('profile/edit-password', 'Mypage\ProfileController@editPassword');
+			Route::post('profile/edit-password', 'Mypage\ProfileController@confirmPassword');
+
+			Route::get('register', 'Mypage\IndexController@register');
+			Route::get('review', 'Mypage\IndexController@review');
+			Route::get('topics', 'Mypage\IndexController@topics');
+		
+				//-メール一覧
+			Route::get('mail-list', '\App\Http\Controllers\Mypage\IndexController@mailList')->name('maillist');
+			Route::get('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@mailtable')->name('mailtable');
+			Route::post('mail-table/{id}', '\App\Http\Controllers\Mypage\IndexController@sendmail')->name('send_mail');
+
+			Route::get('profile/avatar', 'Mypage\ProfileController@avatar');
+		});
 	});
 });
+
 
 Route::group(['prefix' => 'verification/{user}'], function () {
 	Route::group(['prefix' => '/email'], function () {
@@ -181,8 +214,6 @@ Route::get('flow_of_settlement', 'IndexController@flow_of_settlement');//決済�
 Route::get('mailmaga_done', 'IndexController@mailmaga_done');//メルマガ購読完了
 Route::get('help/{page?}', 'IndexController@help');//目的別ページ
 
-// todo あとで消す
-Route::get('profile_account', 'IndexController@profile_account');//オーナー設定_アカウント
 
 //検索
 //Route::get('search', 'SearchController@index');
@@ -198,3 +229,12 @@ Route::get('space/media/{media}/{width?}/{height?}/{fit?}', 'SpaceController@med
 Route::get('space/{space}', 'SpaceController@index');
 
 Route::get('coming-soon', 'IndexController@comingSoon');
+
+// todo 竹中が追加したページ　消さないで
+Route::get('recruit', 'IndexController@index');// footerの採用情報
+
+
+
+// todo あとで消す
+
+// todo あとで消す　END

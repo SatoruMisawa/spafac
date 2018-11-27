@@ -4,9 +4,9 @@
         <div>
         	<input type="text" name="area" value="" placeholder = "エリア"></input>
         </div>
-        <div><input type="text" placeholder="チェックイン・アウト" list="checkin-out"><i>▼</i>
+        <div><input type="text" placeholder="チェックイン・アウト" list="space_usage"><i>▼</i>
           <datalist id="space_usage" name="space_usage_id">
-            <option value="1" >チェックイン</option>
+            <option value="1">チェックイン</option>
             <option value="2">チェックアウト</option>
           </datalist>
       </div>

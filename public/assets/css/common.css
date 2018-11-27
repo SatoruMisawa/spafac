@@ -44,9 +44,9 @@ body *{
 --------------------------------*/
 
 div.wrap {
-  width: 90% !important;
-  height: 100% !important;
-  position: relative !important;
+  width: 90%;
+  height: 100%;
+  position: relative ;
 }
 
 .inner {

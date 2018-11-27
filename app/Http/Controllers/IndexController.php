@@ -295,14 +295,6 @@ class IndexController extends FrontController
 		return $view;
 	}
 	
-	//オーナー設定_アカウント
-	public function profile_account()
-	{
-		$data = array();
-		$view = view('profile_account', $data);
-		return $view;
-	}
-	
 
 	//
 	public function help()
@@ -311,5 +303,8 @@ class IndexController extends FrontController
 		$view = view('help', $data);
 		return $view;
 	}
-
+	 //採用情報
+	// index () {
+	// 	return view('recruit');
+	// }
 }
