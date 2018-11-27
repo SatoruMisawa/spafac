@@ -12,7 +12,7 @@ class Guest extends User {
 		return $this->hasMany(Reservation::class, 'guest_id');
 	}
 
-    public function applyHourlyPlan(Plan $plan, int $hours, array $options = [], array $optionCounts = []) {
+    public function applyHourlyPlan(Plan $plan, int $hours, $options = [], array $optionCounts = []) {
 		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
@@ -31,7 +31,7 @@ class Guest extends User {
 		$apply->addRelationshipToOptions($options, $optionCounts);
 	}
 
-	public function applyDailyPlan(Plan $plan, array $options = [], array $optionCounts = []) {
+	public function applyDailyPlan(Plan $plan, $options = [], array $optionCounts = []) {
 		if ($this->isSameAs($plan->planner())) {
 			return;
 		}
@@ -50,10 +50,10 @@ class Guest extends User {
 		$apply->addRelationshipToOptions($options, $optionCounts);
 	}
 
-	private function sumOptionPrice(array $options, array $optionCounts) {
+	private function sumOptionPrice($options, array $optionCounts) {
 		$price = 0;
 		foreach ($options as $option) {
-			$price += $option['price'] * $optionCounts[$option['id']];
+			$price += $option->price * $optionCounts[$option->id];
 		}
 
 		return $price;

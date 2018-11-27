@@ -32,7 +32,7 @@ class ApplyController extends Controller
     public function create(Request $request) {
         $guest = Auth::guard('users')->user()->asGuest();
         $plan = $this->planRepository->find($request->plan_id);
-        $options = $this->optionRepository->find($request->option_ids)->toArray();  
+        $options = $this->optionRepository->find($request->option_ids);  
         if ($request->by_day) {
             $guest->applyDailyPlan($plan, $options, $request->option_counts);
         } else {

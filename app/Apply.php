@@ -26,9 +26,9 @@ class Apply extends Model
         return $this->belongsToMany(Option::class);
     }
 
-    public function addRelationshipToOptions(array $options, array $optionCounts) {
+    public function addRelationshipToOptions($options, array $optionCounts) {
         foreach ($options as $option) {
-            $this->options()->save(Option::find($option['id']), [
+            $this->options()->save($option, [
                 'count' => $optionCounts[$option['id']],
             ]);
         }
