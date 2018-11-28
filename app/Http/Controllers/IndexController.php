@@ -24,6 +24,15 @@ class IndexController extends FrontController
 		$query = [];
 		for ($i = 1; $i < 13; $i++) {
 
+
+				/*$space = new Facility;
+				$space = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
+																->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
+																->join('space_space_usage', 'space_space_usage.space_id', '=', 'spaces.id')->first();
+
+				//dd($space->space_id);
+				$space_space_usage = DB::table('space_attachments')->where('space_id','=',$space->space_id )->first();*/
+				//dd($space_space_usage->id);
 			$query[$i] = new Facility;
 			$query[$i] = Facility::join('addresses', 'addresses.id', '=', 'facilities.address_id')//エリア
 				->join('spaces', 'spaces.facility_id', '=', 'facilities.id')//キャパシティー
@@ -293,6 +302,7 @@ class IndexController extends FrontController
 		$view = view('mailmaga_done', $data);
 		return $view;
 	}
+
 
 
 	//
