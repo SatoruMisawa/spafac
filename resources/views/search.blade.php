@@ -339,6 +339,7 @@
             document.getElementById(addressType).value = val;
           }
         }
+
       }
 
       // Bias the autocomplete object to the user's geographical location,
