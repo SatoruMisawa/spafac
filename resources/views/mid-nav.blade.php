@@ -20,7 +20,7 @@
             <option value="12">その他</option>
           </datalist>
       </div>
-      
+
 
       <div><input type="text" placeholder="人数" list="men" name="men"><i>▼</i>
 
