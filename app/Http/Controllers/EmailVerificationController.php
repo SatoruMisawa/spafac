@@ -13,8 +13,10 @@ class EmailVerificationController extends Controller
         try {
             $user->prepareToVerifyEmail();
             Mail::to($user->email)->send(new EmailVerification($user));
-            
-            return redirect()->route('index')->with('message', '確認メールを送信しました。');
+
+            //return redirect()->route('index')->with('message', '確認メールを送信しました。');
+            return view('registration_infopeag');
+
         } catch (\Exception $e) {
             report($e);
             return redirect()->route('index')->withErrors([

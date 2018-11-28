@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function new() {
         try {
-            return view('user.new');   
+            return view('user.new');
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([
@@ -28,12 +28,13 @@ class UserController extends Controller
             ]);
         }
     }
-        
+
     public function create(CreateUserRequest $request) {
         try {
             $user = $this->createUser($request);
             Auth::guard('users')->login($user, true);
             return redirect()->route('verification.email.send', $user->id);
+            
         } catch (Exception $e) {
             report($e);
             return redirect()->back()->withErrors([

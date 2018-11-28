@@ -303,6 +303,7 @@ class IndexController extends FrontController
 		$view = view('help', $data);
 		return $view;
 	}
+
 	 //採用情報
 	// index () {
 	// 	return view('recruit');

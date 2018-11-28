@@ -92,7 +92,7 @@
 						<div class="main__host-detail">
 							<h3 class="sub_discrpt">このスペースの管理者</h3>
 							<h2 class="host_name">
-								{{$owner[0]->name}}
+								{{$owner[0]->family_name}}
 							</h2>
 							<a href="{{ route('mailtable',$space[0]->user_id) }}">メッセージを送る</a>
 						</div>
